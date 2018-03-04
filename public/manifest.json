@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ESF Exporter",
+  "name": "ESF Exporter",
   "icons": [
     {
       "src": "favicon.ico",
