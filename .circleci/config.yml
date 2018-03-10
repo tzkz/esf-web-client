@@ -4,6 +4,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
+      - image: circleci/python:2.7.10
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -23,6 +24,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
+      - run: pip install ansible
 
       - save_cache:
           paths:
