@@ -35,7 +35,7 @@ jobs:
   deploy:
     docker:
       - image: ubuntu:14:04
-    working_directory: ~/repo
+    working_directory: ~/tmp/repo
     steps:
       - run: ansible-playbook site.yml
 
