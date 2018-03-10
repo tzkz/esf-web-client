@@ -4,7 +4,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
-      - image: williamyeh/ansible:ubuntu14.04
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -32,4 +31,22 @@ jobs:
         
       # run tests!
       - run: yarn test
+
+  deploy:
+    docker:
+      - image: ubuntu:14:04
+    working_directory: ~/repo
+    steps:
       - run: ansible-playbook site.yml
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy-prod:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
