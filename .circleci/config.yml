@@ -34,10 +34,11 @@ jobs:
 
   deploy:
     docker:
-      - image: ubuntu:14:04
+      - image: circleci/python:3.6.4
     working_directory: ~/tmp/repo
     steps:
-      - run: ansible-playbook site.yml
+      - run: pip install ansible
+      #- run: ansible-playbook site.yml
 
 workflows:
   version: 2
