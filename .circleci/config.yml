@@ -37,7 +37,7 @@ jobs:
       - image: circleci/python:3.6.4
     working_directory: ~/tmp/repo
     steps:
-      - run: pip install ansible
+      - run: sudo pip install ansible
       #- run: ansible-playbook site.yml
 
 workflows:
