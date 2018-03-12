@@ -17,7 +17,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
 
-  build:
+  build-dev:
     docker:
       - image: circleci/node:6.11.5
     working_directory: ~/repo
@@ -37,8 +37,31 @@ jobs:
           root: ~/repo
           paths:
             - build
+      - run: echo "build-dev"
 
-  deploy:
+  build-prod:
+    docker:
+      - image: circleci/node:6.11.5
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn build
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - build
+      - run: echo "build-prod"
+
+  deploy-dev:
     docker:
       - image: circleci/python:3.6.4
     working_directory: ~/repo
@@ -46,7 +69,20 @@ jobs:
       - run: sudo pip install ansible
       - attach_workspace:
           at: ~/repo
-      - run: ls build
+      - run: ls -la build
+      - run: echo "deploy-dev"
+      #- run: ansible-playbook site.yml
+
+  deploy-prod:
+    docker:
+      - image: circleci/python:3.6.4
+    working_directory: ~/repo
+    steps:
+      - run: sudo pip install ansible
+      - attach_workspace:
+          at: ~/repo
+      - run: ls -la build
+      - run: echo "deploy-prod"
       #- run: ansible-playbook site.yml
 
 workflows:
@@ -54,12 +90,27 @@ workflows:
   build-deploy:
     jobs:
       - unit-test
-      - build:
+      - build-dev:
           requires:
             - unit-test
-      - deploy:
+          filters:
+            branches:
+              only: dev
+      - build-prod:
           requires:
-            - build
+            - unit-test
+          filters:
+            branches:
+              only: master
+      - deploy-dev:
+          requires:
+            - build-dev
+          filters:
+            branches:
+              only: dev
+      - deploy-prod:
+          requires:
+            - build-prod
           filters:
             branches:
               only: master
