@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  unit-test:
     docker:
       # specify the version you desire here
       - image: circleci/node:6.11.5
@@ -44,13 +44,20 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - build
 
   deploy:
     docker:
       - image: circleci/python:3.6.4
-    working_directory: ~/tmp/repo
+    working_directory: ~/repo
     steps:
       - run: sudo pip install ansible
+      - attach_workspace:
+          at: ~/repo
+      - run: ls build
       #- run: ansible-playbook site.yml
 
 workflows:
