@@ -37,6 +37,7 @@ jobs:
           root: ~/repo
           paths:
             - build
+            - ansible
       - run: echo "build-dev"
 
   build-prod:
@@ -59,6 +60,7 @@ jobs:
           root: ~/repo
           paths:
             - build
+            - ansible
       - run: echo "build-prod"
 
   deploy-dev:
