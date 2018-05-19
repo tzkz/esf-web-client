@@ -69,9 +69,7 @@ jobs:
       - run: sudo pip install ansible
       - attach_workspace:
           at: ~/repo
-      - run: ls -la build
-      - run: echo "deploy-dev"
-      #- run: ansible-playbook site.yml
+      - run: ansible-playbook ansible/deploy.yml -i ansible/dev -t copy_www,fix_robots
 
   deploy-prod:
     docker:
