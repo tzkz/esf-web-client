@@ -95,7 +95,7 @@ workflows:
             - unit-test
           filters:
             branches:
-              only: dev
+              only: test
       - build-prod:
           requires:
             - unit-test
@@ -107,7 +107,7 @@ workflows:
             - build-dev
           filters:
             branches:
-              only: dev
+              only: test
       - deploy-prod:
           requires:
             - build-prod
