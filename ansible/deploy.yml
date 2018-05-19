@@ -1,0 +1,23 @@
+- hosts: ui
+  user: root
+  become: true
+  become_user: root
+  vars:
+    www_root: /www/esfexporter-test/
+    robots_disallow_path: /
+  tasks:
+  - name: copy files
+    synchronize:
+      archive: yes
+      recursive: yes
+      delete: yes
+      src: ../build/
+      dest: "{{www_root}}"
+    tags: copy_www
+
+  - name: Fix robots.txt
+    template:
+      src: ./templates/robots.txt.j2
+      dest: "{{ www_root }}/robots.txt"
+    tags: fix_robots
+    
