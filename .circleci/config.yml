@@ -37,15 +37,15 @@ jobs:
 
   deploy-prod:
     docker:
-      - image: circleci/python:3.6.4
+      - image: ansible/ansible:ubuntu1604
+        environment:
+            ANSIBLE_HOST_KEY_CHECKING: no
     working_directory: ~/repo
     steps:
-      - run: sudo pip install ansible
+      - run: pip install ansible
       - attach_workspace:
           at: ~/repo
-      - run: ls -la build
-      - run: echo "deploy-prod"
-      #- run: ansible-playbook site.yml
+      - run: ANSIBLE_REMOTE_TEMP=/home/ubuntu/.ansible/tmp ansible-playbook ./ansible/deploy.yml -i ./ansible/prod -t copy_www,fix_robots
 
 workflows:
   version: 2
@@ -57,7 +57,7 @@ workflows:
             - build-test
           filters:
             branches:
-              only: test
+              only: dev
       - deploy-prod:
           requires:
             - build-test
