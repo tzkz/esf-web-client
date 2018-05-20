@@ -1,9 +1,6 @@
 - hosts: ui
-  user: root
-  become: true
-  become_user: root
   vars:
-    www_root: /www/esfexporter-test/
+    www_root: ~/www/esfexporter-test/
     robots_disallow_path: /
   tasks:
   - name: copy files
