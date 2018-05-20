@@ -1,6 +1,6 @@
 - hosts: ui
   vars:
-    www_root: ~/www/esfexporter-test/
+    www_root: ~/www/dev.esfexporter.com/
     robots_disallow_path: /
   tasks:
   - name: copy files
@@ -8,7 +8,7 @@
       archive: yes
       recursive: yes
       delete: yes
-      src: ~/repo/build/
+      src: ../build/
       dest: "{{www_root}}"
     tags: copy_www
 
