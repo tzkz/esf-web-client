@@ -11,7 +11,7 @@
       archive: yes
       recursive: yes
       delete: yes
-      src: ../build/
+      src: ~/repo/build/
       dest: "{{www_root}}"
     tags: copy_www
 
