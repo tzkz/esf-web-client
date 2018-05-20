@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/timurengineer/esf-web-client.svg?style=shield)](https://circleci.com/gh/timurengineer/esf-web-client)
+
 # ESF Exporter
 ### Quick start
 
