@@ -71,7 +71,7 @@ jobs:
       - run: sudo pip install ansible
       - attach_workspace:
           at: ~/repo
-      - run: ls
+      - run: ssh-keyscan -H test.esfexporter.com >> ~/.ssh/known_hosts
       - run: ansible-playbook ./ansible/deploy.yml -i ./ansible/dev -t copy_www,fix_robots
 
   deploy-prod:
