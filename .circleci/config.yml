@@ -73,13 +73,13 @@ workflows:
             - unit-test
       - deploy-dev:
           requires:
-            - build-dev
+            - build
           filters:
             branches:
               only: test
       - deploy-prod:
           requires:
-            - build-prod
+            - build
           filters:
             branches:
               only: master
