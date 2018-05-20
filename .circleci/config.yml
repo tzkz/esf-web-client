@@ -73,7 +73,7 @@ jobs:
       - run: pip install ansible
       - attach_workspace:
           at: ~/repo
-      - run: ANSIBLE_LOCAL_TEMP=$HOME/.ansible/tmp ANSIBLE_REMOTE_TEMP=$HOME/.ansible/tmp ansible-playbook ./ansible/deploy.yml -i ./ansible/dev -t copy_www,fix_robots
+      - run: ANSIBLE_REMOTE_TEMP=/home/ubuntu/.ansible/tmp ansible-playbook ./ansible/deploy.yml -i ./ansible/dev -t copy_www,fix_robots
 
   deploy-prod:
     docker:
