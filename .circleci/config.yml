@@ -72,7 +72,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: mkdir ~/.ssh && ssh-keyscan -H 52.52.165.140 >> ~/.ssh/known_hosts
-      - run: HOME=/home/ubuntu ansible-playbook ./ansible/deploy.yml -i ./ansible/dev -t copy_www,fix_robots
+      - run: HOME=/root ansible-playbook ./ansible/deploy.yml -i ./ansible/dev -t copy_www,fix_robots
 
   deploy-prod:
     docker:
