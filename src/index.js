@@ -4,6 +4,3 @@ import './index.css';
 import App from './App';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// TODO: enable service worker
-// registerServiceWorker();
