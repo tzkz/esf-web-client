@@ -1,6 +1,5 @@
 - hosts: ui
   vars:
-    www_root: ~/www/dev.esfexporter.com/
     robots_disallow_path: /
   tasks:
   - name: copy files
