@@ -12,5 +12,11 @@ describe('<Section />', () => {
     const wrapper = shallow(<Section><div className="imachild" /></Section>);
 
     expect(wrapper.find('.imachild').length).toEqual(1);
-  })
+  });
+
+  it('should add className prop to container\'s className', () => {
+    const wrapper = shallow(<Section className="test" />);
+
+    expect(wrapper.find('.container').first().prop('className')).toEqual('container test');
+  });
 });
