@@ -14,9 +14,9 @@ describe('<Section />', () => {
     expect(wrapper.find('.imachild').length).toEqual(1);
   });
 
-  it('should add className prop to container\'s className', () => {
-    const wrapper = shallow(<Section className="test" />);
+  it('should pass props down to container div', () => {
+    const wrapper = shallow(<Section foo="bar" />);
 
-    expect(wrapper.find('.container').first().prop('className')).toEqual('container test');
+    expect(wrapper.first().prop('foo')).toEqual('bar');
   });
 });
