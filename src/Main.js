@@ -12,7 +12,7 @@ const Main = () => (
           <div className="description-body">Get what the official app is missing absolutely FREE</div>
         </div>
         <div className="login-form">
-          <div className="first-line">Start by browsing your authentifiation certificate</div>
+          <div className="first-line">Start by browsing your authentication certificate</div>
           <div className="browse-button">
             <label htmlFor="upload-photo">Browse Certificate</label>
             <input type="file" name="photo" id="upload-photo" />
