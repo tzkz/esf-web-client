@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Section.css';
+import './SectionContent.css';
 
-const Section = ({ children, ...props }) => (
+const SectionContent = ({ children, ...props }) => (
   <div className="content" {...props}>{children}</div>
 );
 
-Section.propTypes = {
+SectionContent.propTypes = {
   children: PropTypes.node,
 };
 
-export default Section;
+export default SectionContent;

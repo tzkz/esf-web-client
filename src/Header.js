@@ -1,10 +1,10 @@
 import React from 'react';
-import Section from './Section';
+import SectionContent from './SectionContent';
 import './Header.css';
 
 const Header = () => (
   <header>
-    <Section>
+    <SectionContent>
       <div className="header">
         <div className="title">ESF Exporter</div>
         <div className="nav-bar">
@@ -18,7 +18,7 @@ const Header = () => (
           </div>
         </div>
       </div>
-    </Section>
+    </SectionContent>
   </header>
 );
 
