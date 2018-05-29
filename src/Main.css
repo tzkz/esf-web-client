@@ -20,11 +20,11 @@
 
 .description {
   color: #ffffff;
-  margin-left: 20px; 
+  margin: 0 1em; 
 }
 @media (min-width: 768px){
   .description{
-    margin-left: 20px; 
+    margin-left: 1em; 
   }
 }
 
