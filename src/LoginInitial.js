@@ -9,7 +9,7 @@ const LoginInitial = () => (
       <label htmlFor="upload-photo" className="file-input-label">
         Browse Certificate
       </label>
-      <input type="file" name="upload-photo" className="file-input" />
+      <input type="file" name="upload-photo" id="upload-photo" className="file-input" />
     </div>
     <div className="certificate-link-container">
       <a
