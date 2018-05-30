@@ -12,7 +12,9 @@ const Main = () => (
           <div className="description-title">Export invoices to PDF with ease. One invoice or in bulk</div>
           <div className="description-body">Get what the official app is missing absolutely FREE</div>
         </div>
-        <LoginInitial />
+        <div className="login-area">
+          <LoginInitial />
+        </div>
       </div>
     </SectionContent>
   </section>

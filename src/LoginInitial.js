@@ -4,18 +4,21 @@ import './LoginInitial.css';
 
 const LoginInitial = () => (
   <div className="login-form">
-    <div className="first-line">Start by browsing your authentication certificate</div>
+    <div className="login-description">Start by browsing your authentication certificate</div>
     <div className="browse-button">
-      <label htmlFor="upload-photo">Browse Certificate</label>
-      <input type="file" name="photo" id="upload-photo" />
+      <label htmlFor="upload-photo" className="file-input-label">
+        Browse Certificate
+      </label>
+      <input type="file" name="upload-photo" className="file-input" />
     </div>
-    <div className="select-env" id="env"></div>
-    <a
-      href="http://kgd.gov.kz/sites/default/files/ESF/testovye_ecp_dekabr_2017.zip"
-      className="test-text"
-    >
-      Download test certificates
-    </a>
+    <div className="certificate-link-container">
+      <a
+        href="http://kgd.gov.kz/sites/default/files/ESF/testovye_ecp_dekabr_2017.zip"
+        className="certificate-link"
+      >
+        Download test certificates
+      </a>
+    </div>
   </div>
 );
 

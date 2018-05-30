@@ -56,3 +56,13 @@
     letter-spacing: 0.9px;
   }
 }
+
+.login-area {
+  background-color: #38393c;
+  color: #cdcdcd;
+}
+@media (min-width: 768px){
+  .login-area {
+    flex-basis: 38em;
+  }
+}
