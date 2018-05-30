@@ -9,8 +9,12 @@ const Main = () => (
     <SectionContent>
       <div className="main-inner">
         <div className="description">
-          <div className="description-title">Export invoices to PDF with ease. One invoice or in bulk</div>
-          <div className="description-body">Get what the official app is missing absolutely FREE</div>
+          <div className="description-title">
+            Export invoices to PDF with ease. One invoice or in bulk
+          </div>
+          <div className="description-body">
+            Get what the official app is missing absolutely FREE
+          </div>
         </div>
         <div className="login-area">
           <LoginInitial />
