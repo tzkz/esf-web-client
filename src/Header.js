@@ -3,9 +3,9 @@ import SectionContent from './SectionContent';
 import './Header.css';
 
 const Header = () => (
-  <header>
+  <header className="header">
     <SectionContent>
-      <div className="header">
+      <div className="header-content">
         <div className="title">ESF Exporter</div>
         <div className="nav-bar">
           <div className="nav-item">Contact Us</div>
