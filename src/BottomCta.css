@@ -1,0 +1,10 @@
+.bottomCta {
+  background-color: #f1fcff;
+}
+
+.bottomCtaInner {
+  max-width: 28em;
+  padding: 3em 0;
+  margin-left: auto;
+  margin-right: auto;
+}

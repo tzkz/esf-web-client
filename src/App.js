@@ -4,6 +4,7 @@ import Header from './Header';
 import Main from './Main';
 import Features from './Features';
 import Footer from './Footer';
+import BottomCta from './BottomCta';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <Header />
         <Main />
         <Features />
+        <BottomCta />
         <Footer />
       </div>
     );
