@@ -7,11 +7,11 @@
 .login-description {
   line-height: 1.88;
   letter-spacing: 0.8px;
-  padding: 30px 25px 0;
+  padding: 1.9em 1.5em 0;
 }
 
 .browse-button {
-  padding: 20px 25px;
+  padding: 1.3em 1.5em;
 }
 
 .file-input-label {
@@ -37,7 +37,7 @@
 .certificate-link-container {
   display: block;
   text-align: center;
-  padding: 0 20px 20px;
+  padding: 0 1.5em 1.3em;
 }
 
 .certificate-link {

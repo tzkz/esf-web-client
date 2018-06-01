@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .main-inner {
     height: 474px;
     flex-direction: row;
@@ -19,9 +19,9 @@
 
 .description {
   color: #ffffff;
-  margin: 0 1em; 
+  margin: 0 1.5em;
 }
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .description{
     margin-left: 1em; 
   }
@@ -35,7 +35,7 @@
   margin-bottom: 1em;
   margin-top: 2em; 
 }
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .description-title{
     font-size: 30px;
     line-height: 50px;
@@ -50,7 +50,7 @@
   letter-spacing: 0.8px;
   padding: 0 0 3em;
 }
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .description-body{
     line-height: 2.57;
     letter-spacing: 0.9px;
@@ -62,7 +62,7 @@
   background-color: #38393c;
   color: #cdcdcd;
 }
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .login-area {
     flex-basis: 38em;
   }
