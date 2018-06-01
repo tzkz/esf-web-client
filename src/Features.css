@@ -10,14 +10,14 @@
 
 .feature {
   display: flex;
-  flex: 0 0 16em;
+  flex: 0 0 19em;
   flex-direction: column;
   padding: 3.5em 1em;
   color: #0c4862;
 }
 
 .feature-image-container {
-  flex: 0 0 41%;
+  flex: 0 0 5em;
   margin-bottom: 1em;
   text-align: center;
 }
