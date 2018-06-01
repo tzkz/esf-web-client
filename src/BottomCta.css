@@ -4,7 +4,12 @@
 
 .bottomCtaInner {
   max-width: 28em;
-  padding: 3em 0;
+  padding: 1em 0;
   margin-left: auto;
   margin-right: auto;
+}
+@media (min-width: 768px) {
+  .bottomCtaInner {
+    padding: 3em 0;
+  }
 }
