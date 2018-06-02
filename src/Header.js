@@ -1,6 +1,13 @@
 import React from 'react';
 import SectionContent from './SectionContent';
 import './Header.css';
+import Select from './Select';
+
+const localeOptions = [
+  { value: 'en', label: 'English' },
+  { value: 'ru', label: 'Russian' },
+  { value: 'kz', label: 'Kazakh' }
+]
 
 const Header = () => (
   <header className="header">
@@ -10,11 +17,7 @@ const Header = () => (
         <div className="nav-bar">
           <div className="nav-item">Contact Us</div>
           <div className="nav-item">
-            <select name="select" className="language-select">
-              <option value="value1">Russian</option> 
-              <option value="value2">English</option>
-              <option value="value3">Kazakh</option>
-            </select>
+            <Select options={localeOptions} />
           </div>
         </div>
       </div>
