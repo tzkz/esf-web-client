@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import './LoginInitial.css';
 
@@ -7,7 +8,10 @@ const LoginInitial = () => (
     <div className="login-description">Start by browsing your authentication certificate</div>
     <div className="browse-button">
       <label htmlFor="upload-photo" className="file-input-label">
-        Browse Certificate
+        <FormattedMessage
+          id="LoginInitial.BrowseCertificate"
+          defaultMessage="Browse Certificate"
+        />
       </label>
       <input type="file" name="upload-photo" id="upload-photo" className="file-input" />
     </div>

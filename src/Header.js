@@ -6,7 +6,7 @@ import Select from './Select';
 
 const localeOptions = [
   { value: 'en', label: 'English' },
-  { value: 'kz', label: 'Kazakh' },
+  { value: 'kk', label: 'Kazakh' },
   { value: 'ru', label: 'Russian' },
 ];
 
