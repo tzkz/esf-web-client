@@ -20,7 +20,10 @@ const LoginInitial = () => (
         href="http://kgd.gov.kz/sites/default/files/ESF/testovye_ecp_dekabr_2017.zip"
         className="certificate-link"
       >
-        Download test certificates
+        <FormattedMessage
+          id="LoginInitial.TestCertificateLink"
+          defaultMessage="Download test certificates"
+        />
       </a>
     </div>
   </div>

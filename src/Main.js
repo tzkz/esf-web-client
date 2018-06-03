@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import './Main.css';
 import SectionContent from './SectionContent';
@@ -10,10 +11,16 @@ const Main = () => (
       <div className="main-inner">
         <div className="description">
           <div className="description-title">
-            Export invoices to PDF with ease. One invoice or in bulk
+            <FormattedMessage
+              id="Main.Headline"
+              defaultMessage="Export invoices to PDF with ease. One invoice or in bulk"
+            />
           </div>
           <div className="description-body">
-            Get what the official app is missing absolutely FREE
+            <FormattedMessage
+              id="Main.Subheadline"
+              defaultMessage="Get what the official app is missing absolutely FREE"
+            />
           </div>
         </div>
         <div className="login-area">
