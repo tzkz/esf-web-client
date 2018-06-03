@@ -9,7 +9,6 @@ const styles = {
     boxShadow: 'none',
     minHeight: 'initial',
     cursor: 'pointer',
-    minWidth: '6em',
   }),
   valueContainer: (base) => ({
     ...base,
