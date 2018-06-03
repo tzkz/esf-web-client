@@ -1,3 +1,7 @@
 {
-  "LoginInitial.BrowseCertificate": "Browse Certificate"
+  "Header.ContactUs": "Contact Us",
+  "LoginInitial.BrowseCertificate": "Browse Certificate",
+  "LoginInitial.TestCertificateLink": "Download test certificates",
+  "Main.Headline": "Export invoices to PDF with ease. One invoice or in bulk",
+  "Main.Subheadline": "Get what the official app is missing absolutely FREE"
 }

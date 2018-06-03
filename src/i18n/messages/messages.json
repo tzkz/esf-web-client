@@ -1,7 +1,27 @@
 [
   {
+    "id": "Header.ContactUs",
+    "defaultMessage": "Contact Us",
+    "filepath": "./src/Header.js"
+  },
+  {
     "id": "LoginInitial.BrowseCertificate",
     "defaultMessage": "Browse Certificate",
     "filepath": "./src/LoginInitial.js"
+  },
+  {
+    "id": "LoginInitial.TestCertificateLink",
+    "defaultMessage": "Download test certificates",
+    "filepath": "./src/LoginInitial.js"
+  },
+  {
+    "id": "Main.Headline",
+    "defaultMessage": "Export invoices to PDF with ease. One invoice or in bulk",
+    "filepath": "./src/Main.js"
+  },
+  {
+    "id": "Main.Subheadline",
+    "defaultMessage": "Get what the official app is missing absolutely FREE",
+    "filepath": "./src/Main.js"
   }
 ]
