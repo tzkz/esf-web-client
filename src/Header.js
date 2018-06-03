@@ -6,8 +6,8 @@ import Select from './Select';
 
 const localeOptions = [
   { value: 'en', label: 'English' },
-  { value: 'kk', label: 'Kazakh' },
-  { value: 'ru', label: 'Russian' },
+  { value: 'kk', label: 'Қазақша' },
+  { value: 'ru', label: 'Русский' },
 ];
 
 const Header = ({ localeValue, onLocaleChange }) => (
