@@ -8,7 +8,7 @@ import localeData from './i18n/locales';
 
 import './App.css';
 
-import Header from './Header';
+import Header from './common/Header';
 import Landing from './Landing';
 
 addLocaleData([...en, ...kk, ...ru]);

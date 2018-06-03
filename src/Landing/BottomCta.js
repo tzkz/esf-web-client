@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SectionContent from '../SectionContent';
+import SectionContent from '../common/SectionContent';
 import LoginInitial from './LoginInitial';
 
 import './BottomCta.css';
