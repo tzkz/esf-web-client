@@ -1,14 +1,26 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+
+import SectionContent from './SectionContent';
 
 import './Footer.css';
-import SectionContent from './SectionContent';
 
 const Footer = () => (
   <footer className="footer">
     <SectionContent>
       <div className="footer-inner">
-        <div className="footer-items">Terms of Service</div>
-        <div className="footer-items">Contact Us</div>
+        <div className="footer-items">
+          <FormattedMessage
+            id="Footer.TermsOfService"
+            defaultMessage="Terms of Service"
+          />
+        </div>
+        <div className="footer-items">
+          <FormattedMessage
+            id="Footer.TermsOfService"
+            defaultMessage="Contact Us"
+          />
+        </div>
       </div>
     </SectionContent>
   </footer>
