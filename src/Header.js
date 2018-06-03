@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+
 import SectionContent from './SectionContent';
 import './Header.css';
 import Select from './Select';
@@ -16,8 +18,13 @@ const Header = ({ localeValue, onLocaleChange }) => (
       <div className="header-content">
         <div className="title">ESF Exporter</div>
         <div className="nav-bar">
-          <div className="nav-item">Contact Us</div>
           <div className="nav-item">
+            <FormattedMessage
+              id="Header.ContactUs"
+              defaultMessage="Contact Us"
+            />
+          </div>
+          <div className="nav-item nav-item-lang">
             <Select
               options={localeOptions}
               value={localeValue}
