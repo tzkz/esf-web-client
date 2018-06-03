@@ -1,5 +1,45 @@
 [
   {
+    "id": "Features.FeatureOneTitle",
+    "defaultMessage": "We do not store your data",
+    "filepath": "./src/Features.js"
+  },
+  {
+    "id": "Features.FeatureOneBody",
+    "defaultMessage": "We do not store your information. No logging of your activity. End-to-end encryption",
+    "filepath": "./src/Features.js"
+  },
+  {
+    "id": "Features.FeatureTwoTitle",
+    "defaultMessage": "Your favorite format",
+    "filepath": "./src/Features.js"
+  },
+  {
+    "id": "Features.FeatureTwoBody",
+    "defaultMessage": "Export to PDF is availabe. More formats are coming soon",
+    "filepath": "./src/Features.js"
+  },
+  {
+    "id": "Features.FeatureThreeTitle",
+    "defaultMessage": "Original form structure",
+    "filepath": "./src/Features.js"
+  },
+  {
+    "id": "Features.FeatureThreeBody",
+    "defaultMessage": "Print form structure complies with official ESF rules",
+    "filepath": "./src/Features.js"
+  },
+  {
+    "id": "Footer.TermsOfService",
+    "defaultMessage": "Terms of Service",
+    "filepath": "./src/Footer.js"
+  },
+  {
+    "id": "Footer.ContactUs",
+    "defaultMessage": "Contact Us",
+    "filepath": "./src/Footer.js"
+  },
+  {
     "id": "Header.ContactUs",
     "defaultMessage": "Contact Us",
     "filepath": "./src/Header.js"

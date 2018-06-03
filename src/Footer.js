@@ -17,7 +17,7 @@ const Footer = () => (
         </div>
         <div className="footer-items">
           <FormattedMessage
-            id="Footer.TermsOfService"
+            id="Footer.ContactUs"
             defaultMessage="Contact Us"
           />
         </div>
