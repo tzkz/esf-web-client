@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import SectionContent from './SectionContent';
+import SectionContent from '../SectionContent';
 import lock from './lock.png';
 import doc from './doc.png';
 import bank from './bank.png';

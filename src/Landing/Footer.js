@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import SectionContent from './SectionContent';
+import SectionContent from '../SectionContent';
 
 import './Footer.css';
 

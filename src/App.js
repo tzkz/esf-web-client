@@ -9,10 +9,7 @@ import localeData from './i18n/locales';
 import './App.css';
 
 import Header from './Header';
-import Main from './Main';
-import Features from './Features';
-import Footer from './Footer';
-import BottomCta from './BottomCta';
+import Landing from './Landing';
 
 addLocaleData([...en, ...kk, ...ru]);
 
@@ -37,10 +34,7 @@ class App extends Component {
             localeValue={this.state.locale}
             onLocaleChange={this.onLocaleChange}
           />
-          <Main />
-          <Features />
-          <BottomCta />
-          <Footer />
+          <Landing />
         </div>
       </IntlProvider>
     );

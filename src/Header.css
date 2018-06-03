@@ -43,20 +43,3 @@
 .nav-item-lang {
   flex-basis: 8.1em;
 }
-
-.language-select {
-  font-family: inherit;
-  color: inherit;
-  text-decoration: none;
-  background-color:#ffffff;
-  border: 0;
-  margin: 0;
-  box-shadow: 0;
-  padding-right: 15px;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  appearance: none;
-  cursor: pointer;
-  background: url('droparrow.png') 100% no-repeat;
-}
