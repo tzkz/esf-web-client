@@ -2,7 +2,7 @@
   vars:
     robots_disallow_path: /
   tasks:
-  - name: install rsync
+  - name: "Installing Rsync"
     apt: >
       pkg={{ item }}
       state=latest
@@ -10,8 +10,6 @@
       cache_valid_time=3600
     with_items:
     - rsync
-    tags: copy_www
-
   - name: copy files
     synchronize:
       archive: yes
