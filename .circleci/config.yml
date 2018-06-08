@@ -25,7 +25,7 @@ jobs:
 
   deploy-dev:
     docker:
-      - image: ansible/ansible:ubuntu1604
+      - image: circleci/python:2.7
         environment:
             ANSIBLE_HOST_KEY_CHECKING: no
     working_directory: ~/repo
