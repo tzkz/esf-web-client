@@ -30,7 +30,7 @@ jobs:
             ANSIBLE_HOST_KEY_CHECKING: no
     working_directory: ~/repo
     steps:
-      - run: pip install ansible
+      - run: sudo pip install ansible
       - attach_workspace:
           at: ~/repo
       - run: ANSIBLE_REMOTE_TEMP=/home/ubuntu/.ansible/tmp ansible-playbook ./ansible/deploy.yml -i ./ansible/dev -t copy_www,fix_robots
