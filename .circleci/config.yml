@@ -25,12 +25,13 @@ jobs:
 
   deploy-dev:
     docker:
-      - image: circleci/python:2.7-node
+      - image: circleci/python:2.7
         environment:
             ANSIBLE_HOST_KEY_CHECKING: no
     working_directory: ~/repo
     steps:
       - run: sudo pip install ansible
+      - run: sudo apt install -y rsync
       - attach_workspace:
           at: ~/repo
       - run: ANSIBLE_REMOTE_TEMP=/home/ubuntu/.ansible/tmp ansible-playbook ./ansible/deploy.yml -i ./ansible/dev -t copy_www,fix_robots
