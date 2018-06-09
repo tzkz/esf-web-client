@@ -3,4 +3,4 @@
 
 [ui:vars]
 ansible_user=ubuntu
-www_root=~/www/dev.esfexporter.com/
+www_root=~/www/dev.getesf.com/
