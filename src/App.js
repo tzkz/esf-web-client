@@ -1,13 +1,42 @@
 import React, { Component } from 'react';
+
+import { addLocaleData, IntlProvider } from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import kk from 'react-intl/locale-data/kk';
+import ru from 'react-intl/locale-data/ru';
+import localeData from './i18n/locales';
+
 import './App.css';
-import Section from './Section';
+
+import Header from './common/Header';
+import Landing from './Landing';
+
+addLocaleData([...en, ...kk, ...ru]);
 
 class App extends Component {
+  state = {
+    locale: { value: 'en', label: 'English' },
+  }
+
+  onLocaleChange = (value) => this.setState({ locale: value });
+
   render() {
     return (
-      <div className="App">
-        <Section>Section 1</Section>
-      </div>
+      <IntlProvider
+        locale={this.state.locale.value}
+        messages={{
+          ...localeData.en,
+          ...localeData[this.state.locale.value],
+        }}
+      >
+        <div className="App">
+          <Header
+            localeValue={this.state.locale}
+            onLocaleChange={this.onLocaleChange}
+          />
+          <Landing />
+        </div>
+      </IntlProvider>
     );
   }
 }

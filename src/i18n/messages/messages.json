@@ -1,0 +1,67 @@
+[
+  {
+    "id": "Header.ContactUs",
+    "defaultMessage": "Contact Us",
+    "filepath": "./src/common/Header.js"
+  },
+  {
+    "id": "Features.FeatureOneTitle",
+    "defaultMessage": "We do not store your data",
+    "filepath": "./src/Landing/Features.js"
+  },
+  {
+    "id": "Features.FeatureOneBody",
+    "defaultMessage": "We do not store your information. No logging of your activity. End-to-end encryption",
+    "filepath": "./src/Landing/Features.js"
+  },
+  {
+    "id": "Features.FeatureTwoTitle",
+    "defaultMessage": "Your favorite format",
+    "filepath": "./src/Landing/Features.js"
+  },
+  {
+    "id": "Features.FeatureTwoBody",
+    "defaultMessage": "Export to PDF is availabe. More formats are coming soon",
+    "filepath": "./src/Landing/Features.js"
+  },
+  {
+    "id": "Features.FeatureThreeTitle",
+    "defaultMessage": "Original form structure",
+    "filepath": "./src/Landing/Features.js"
+  },
+  {
+    "id": "Features.FeatureThreeBody",
+    "defaultMessage": "Print form structure complies with official ESF rules",
+    "filepath": "./src/Landing/Features.js"
+  },
+  {
+    "id": "Footer.TermsOfService",
+    "defaultMessage": "Terms of Service",
+    "filepath": "./src/Landing/Footer.js"
+  },
+  {
+    "id": "Footer.ContactUs",
+    "defaultMessage": "Contact Us",
+    "filepath": "./src/Landing/Footer.js"
+  },
+  {
+    "id": "LoginInitial.BrowseCertificate",
+    "defaultMessage": "Browse Certificate",
+    "filepath": "./src/Landing/LoginInitial.js"
+  },
+  {
+    "id": "LoginInitial.TestCertificateLink",
+    "defaultMessage": "Download test certificates",
+    "filepath": "./src/Landing/LoginInitial.js"
+  },
+  {
+    "id": "Main.Headline",
+    "defaultMessage": "Export invoices to PDF with ease. One invoice or in bulk",
+    "filepath": "./src/Landing/Main.js"
+  },
+  {
+    "id": "Main.Subheadline",
+    "defaultMessage": "Get what the official app is missing absolutely FREE",
+    "filepath": "./src/Landing/Main.js"
+  }
+]
