@@ -4,45 +4,6 @@
   justify-content: space-between;
 }
 
-.login-description {
-  line-height: 1.88;
-  letter-spacing: 0.8px;
-  padding: 1.9em 1.5em 0;
-}
-
 .browse-button {
   padding: 1.3em 1.5em;
-}
-
-.file-input-label {
-  display: block;
-  line-height: 3.1;
-  text-align: center;
-  border-radius: 5px;
-  background-color: #729246;
-  color: #e9e3e3;
-  border: unset;
-  cursor: pointer;
-  font-family: inherit;
-  letter-spacing: 0.8px;
-}
-.file-input-label:hover {
-  background-color: #617c3c;
-}
-
-.file-input {
-  display: none;
-}
-
-.certificate-link-container {
-  display: block;
-  text-align: center;
-  padding: 0 1.5em 1.3em;
-}
-
-.certificate-link {
-  color: #a0a0a0;
-  font-size: 0.8em;
-  letter-spacing: 0.6px;
-  text-decoration: none;
 }
