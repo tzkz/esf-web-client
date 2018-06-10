@@ -8,7 +8,7 @@ export const label = {
   textAlign: 'center',
   borderRadius: '5px',
   backgroundColor: '#729246',
-  color: '#e9e3e3',
+  color: '#FFFFFF',
   border: 'unset',
   cursor: 'pointer',
   fontFamily: 'inherit',
