@@ -1,30 +1,39 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { css } from 'emotion';
 
 import './LoginInitial.css';
 
+import FileInput from '../common/FileInput';
+
+const demoButton = {
+  backgroundColor: 'transparent',
+  border: '1px solid #729246',
+  color: '#729246',
+  ':hover': {
+    backgroundColor: 'transparent',
+  },
+};
+
 const LoginInitial = () => (
   <div className="login-form">
-    <div className="login-description">Start by browsing your authentication certificate</div>
-    <div className="browse-button">
-      <label htmlFor="upload-photo" className="file-input-label">
+    <div className="browse-button-container">
+      <FileInput>
         <FormattedMessage
           id="LoginInitial.BrowseCertificate"
           defaultMessage="Browse Certificate"
         />
-      </label>
-      <input type="file" name="upload-photo" id="upload-photo" className="file-input" />
+      </FileInput>
     </div>
-    <div className="certificate-link-container">
-      <a
-        href="http://kgd.gov.kz/sites/default/files/ESF/testovye_ecp_dekabr_2017.zip"
-        className="certificate-link"
+    <div className="browse-button-container">
+      <FileInput
+        labelClassName={css(demoButton)}
       >
         <FormattedMessage
-          id="LoginInitial.TestCertificateLink"
-          defaultMessage="Download test certificates"
+          id="LoginInitial.Demo"
+          defaultMessage="Try Demo"
         />
-      </a>
+      </FileInput>
     </div>
   </div>
 );

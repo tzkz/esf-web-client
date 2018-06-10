@@ -50,8 +50,8 @@
     "filepath": "./src/Landing/LoginInitial.js"
   },
   {
-    "id": "LoginInitial.TestCertificateLink",
-    "defaultMessage": "Download test certificates",
+    "id": "LoginInitial.Demo",
+    "defaultMessage": "Try Demo",
     "filepath": "./src/Landing/LoginInitial.js"
   },
   {
