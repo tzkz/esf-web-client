@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FileInput from './FileInput';
+import FileInput, { label } from './FileInput';
+import { css } from 'emotion';
 
 describe('<FileInput />', () => {
   it('should not blow', () => {
@@ -18,5 +19,11 @@ describe('<FileInput />', () => {
     const wrapper = shallow(<FileInput foo="bar" />);
 
     expect(wrapper.find('input').prop('foo')).toEqual('bar');
+  });
+
+  it('should apply labelClassName to <label>', () => {
+    const wrapper = shallow(<FileInput labelClassName="foo" />);
+
+    expect(wrapper.find('label').prop('className')).toEqual(css(label, 'foo'));
   })
 });
