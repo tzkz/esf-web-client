@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { css } from 'emotion';
 
-import Button from './Button';
+import Button, { button } from './Button';
 
 describe('<Button />', () => {
   it('should not blow', () => {
@@ -12,5 +13,11 @@ describe('<Button />', () => {
     const wrapper = shallow(<Button>foo</Button>);
 
     expect(wrapper.find('button').text()).toEqual('foo');
-  })
+  });
+
+  it('should add className prop to button className', () => {
+    const wrapper = shallow(<Button className="foo" />);
+
+    expect(wrapper.find('button').prop('className')).toEqual(css(button, 'foo'));
+  });
 });
