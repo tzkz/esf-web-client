@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
 export const button = {
-  display: 'block',
-  lineHeight: 3.1,
+  width: '100%',
+  lineHeight: 2.9,
   textAlign: 'center',
   borderRadius: '5px',
   backgroundColor: '#729246',
   color: '#FFFFFF',
   border: 'unset',
+  outline: 'none',
   cursor: 'pointer',
   fontFamily: 'inherit',
+  fontSize: 'inherit',
   letterSpacing: '0.8px',
+  transition: '.2s ease-in-out',
   ':hover': {
     backgroundColor: '#617c3c',
   },

@@ -5,6 +5,7 @@ import { css } from 'emotion';
 import './LoginInitial.css';
 
 import FileInput from '../common/FileInput';
+import Button from '../common/Button';
 
 const demoButton = {
   backgroundColor: 'transparent',
@@ -26,14 +27,14 @@ const LoginInitial = () => (
       </FileInput>
     </div>
     <div className="browse-button-container">
-      <FileInput
-        labelClassName={css(demoButton)}
+      <Button
+        className={css(demoButton)}
       >
         <FormattedMessage
           id="LoginInitial.Demo"
           defaultMessage="Try Demo"
         />
-      </FileInput>
+      </Button>
     </div>
   </div>
 );

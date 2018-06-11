@@ -13,6 +13,7 @@ export const label = {
   cursor: 'pointer',
   fontFamily: 'inherit',
   letterSpacing: '0.8px',
+  transition: '.2s ease-in-out',
   ':hover': {
     backgroundColor: '#617c3c',
   },
