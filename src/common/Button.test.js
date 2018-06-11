@@ -20,4 +20,10 @@ describe('<Button />', () => {
 
     expect(wrapper.find('button').prop('className')).toEqual(css(button, 'foo'));
   });
+
+  it('should pass the rest props down to <button>', () => {
+    const wrapper = shallow(<Button foo="bar" />);
+
+    expect(wrapper.find('button').prop('foo')).toEqual('bar');
+  })
 });

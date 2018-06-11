@@ -21,8 +21,13 @@ export const button = {
   },
 };
 
-const Button = ({ children, className }) => (
-  <button className={css(button, className)}>{children}</button>
+const Button = ({ children, className, ...other }) => (
+  <button
+    className={css(button, className)}
+    {...other}
+  >
+    {children}
+  </button>
 );
 
 Button.propTypes = {
