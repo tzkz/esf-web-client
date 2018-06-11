@@ -9,7 +9,7 @@ export const button = {
   borderRadius: '5px',
   backgroundColor: '#729246',
   color: '#FFFFFF',
-  border: 'unset',
+  border: '1px solid #729246',
   outline: 'none',
   cursor: 'pointer',
   fontFamily: 'inherit',

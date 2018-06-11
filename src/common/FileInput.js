@@ -9,7 +9,7 @@ export const label = {
   borderRadius: '5px',
   backgroundColor: '#729246',
   color: '#FFFFFF',
-  border: 'unset',
+  border: '1px solid #729246',
   cursor: 'pointer',
   fontFamily: 'inherit',
   letterSpacing: '0.8px',
