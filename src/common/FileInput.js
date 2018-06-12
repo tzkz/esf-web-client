@@ -16,6 +16,7 @@ export const label = {
   transition: '.2s ease-in-out',
   ':hover': {
     backgroundColor: '#617c3c',
+    borderColor: '#617c3c',
   },
 };
 

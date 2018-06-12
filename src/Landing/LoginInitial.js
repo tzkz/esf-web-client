@@ -13,6 +13,8 @@ const demoButton = {
   color: '#729246',
   ':hover': {
     backgroundColor: 'transparent',
+    borderColor: '#617c3c',
+    color: '#617c3c',
   },
 };
 
