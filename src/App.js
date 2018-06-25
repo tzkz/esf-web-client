@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom'
 
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -10,6 +14,7 @@ import './App.css';
 
 import Header from './common/Header';
 import Landing from './Landing';
+import Search from './Search';
 
 addLocaleData([...en, ...kk, ...ru]);
 
@@ -29,13 +34,16 @@ class App extends Component {
           ...localeData[this.state.locale.value],
         }}
       >
-        <div className="App">
-          <Header
-            localeValue={this.state.locale}
-            onLocaleChange={this.onLocaleChange}
-          />
-          <Landing />
-        </div>
+        <Router>
+          <div className="App">
+            <Header
+              localeValue={this.state.locale}
+              onLocaleChange={this.onLocaleChange}
+            />
+            <Route exact path="/" component={Landing}/>
+            <Route path="/search" component={Search}/>
+          </div>
+        </Router>
       </IntlProvider>
     );
   }
