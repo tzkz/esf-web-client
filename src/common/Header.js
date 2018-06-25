@@ -16,7 +16,7 @@ const Header = ({ localeValue, onLocaleChange }) => (
   <header className="header">
     <SectionContent>
       <div className="header-content">
-        <div className="title">ESF Exporter</div>
+        <div className="title">GetESF</div>
         <div className="nav-bar">
           <div className="nav-item">
             <FormattedMessage
