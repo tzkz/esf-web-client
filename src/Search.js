@@ -4,6 +4,7 @@ import { css } from 'emotion';
 import SectionContent from './common/SectionContent';
 
 const container = {
+  padding: '0px 9px',
   backgroundColor: '#f8f8f8',
 };
 
@@ -13,6 +14,7 @@ const dataContainer = {
 }
 
 const input = {
+  fontColor: '#bbbbbb',
   borderRadius: '5px',
   backgroundColor: '#ffffff',
   border: '0',
@@ -21,7 +23,7 @@ const input = {
 };
 
 const customInput = {
-  margin: '5px',
+  margin: '22px 3px 10px',
   flex: '0 1 50%',
 }
 
@@ -29,8 +31,8 @@ const Search = () => (
   <div className={css(container)}>
     <SectionContent>
       <div className={css(dataContainer)}>
-        <input type="text" className={css(input, customInput)} placeholder="Date from…" />
-        <input type="text" className={css(input, customInput)} placeholder="Date to…" />
+        <input type="text" className={css(input, customInput)} placeholder="  Date from…" />
+        <input type="text" className={css(input, customInput)} placeholder="  Date to…" />
       </div>
     </SectionContent>
   </div>
