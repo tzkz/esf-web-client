@@ -14,7 +14,7 @@ const dateContainer = {
 }
 
 const input = {
-  fontColor: '#bbbbbb',
+  padding: '10px',
   borderRadius: '5px',
   backgroundColor: '#ffffff',
   border: '0',
