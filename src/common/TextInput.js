@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
 const input = {
@@ -10,8 +11,12 @@ const input = {
   minWidth: '0',
 };
 
-const TextInput = ({ ...other }) => (
-  <input type="text" {...other} className={css(input)} />
+const TextInput = ({ className, ...other }) => (
+  <input type="text" className={css(input, className)} {...other} />
 );
+
+TextInput.propTypes = {
+  className: PropTypes.string,
+};
 
 export default TextInput;
