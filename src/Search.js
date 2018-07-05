@@ -35,11 +35,7 @@ const Search = () => (
       </div>
       <div className={css(largeInputTypes)}>
         <TextInput className={css(customInput, largeInputTypes)} placeholder="Reg number" />
-      </div>
-      <div className={css(largeInputTypes)}>
-        <input type="radio" value="Inbound" className={css(customInput, largeInputTypes)} />
-        <input type="radio" value="Outbound" className={css(customInput, largeInputTypes)} />
-      </div>  
+      </div> 
     </SectionContent>
   </div>
 );
