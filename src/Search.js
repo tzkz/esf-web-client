@@ -2,9 +2,11 @@ import React from 'react';
 import { css } from 'emotion';
 
 import SectionContent from './common/SectionContent';
+import TextInput from './common/TextInput';
 
 const container = {
   backgroundColor: '#f8f8f8',
+  paddingTop: '17px',
 };
 
 const dateContainer = {
@@ -13,27 +15,27 @@ const dateContainer = {
   padding: '0px 9px',
 }
 
-const input = {
-  padding: '10px',
-  borderRadius: '5px',
-  backgroundColor: '#ffffff',
-  border: '0',
-  height: '40px',
-  minWidth: '0',
-};
-
 const customInput = {
-  margin: '22px 3px 10px',
+  margin: '5px 3px 5px',
   flex: '0 1 50%',
+}
+
+const largeInputTypes = {
+  display: 'flex',
+  flex: '0 1 100%',
+  padding: '0px 9px',
 }
 
 const Search = () => (
   <div className={css(container)}>
     <SectionContent>
       <div className={css(dateContainer)}>
-        <input type="text" className={css(input, customInput)} placeholder="Date from…" />
-        <input type="text" className={css(input, customInput)} placeholder="Date to…" />
+        <TextInput className={css(customInput)} placeholder="Date from…" />
+        <TextInput className={css(customInput)} placeholder="Date to…" />
       </div>
+      <div className={css(largeInputTypes)}>
+        <TextInput className={css(customInput, largeInputTypes)} placeholder="Reg number" />
+      </div> 
     </SectionContent>
   </div>
 );
