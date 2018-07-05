@@ -2,13 +2,11 @@ import React from 'react';
 import { css } from 'emotion';
 
 import SectionContent from './common/SectionContent';
+import TextInput from './common/TextInput';
 
 const container = {
-<<<<<<< HEAD
-  padding: '15px 9px 0px 9px',
-=======
->>>>>>> bfc75dbb5e28649f626cb806a1aeda1f795f60e6
   backgroundColor: '#f8f8f8',
+  paddingTop: '17px',
 };
 
 const dateContainer = {
@@ -17,34 +15,31 @@ const dateContainer = {
   padding: '0px 9px',
 }
 
-const input = {
-  padding: '10px',
-  borderRadius: '5px',
-  backgroundColor: '#ffffff',
-  border: '0',
-  height: '40px',
-  minWidth: '0',
-};
-
 const customInput = {
   margin: '5px 3px 5px',
   flex: '0 1 50%',
 }
 
 const largeInputTypes = {
-  flexBasis: '100%',
+  display: 'flex',
+  flex: '0 1 100%',
+  padding: '0px 9px',
 }
 
 const Search = () => (
   <div className={css(container)}>
     <SectionContent>
       <div className={css(dateContainer)}>
-        <input type="text" className={css(input, customInput)} placeholder="Date from…" />
-        <input type="text" className={css(input, customInput)} placeholder="Date to…" />
+        <TextInput className={css(customInput)} placeholder="Date from…" />
+        <TextInput className={css(customInput)} placeholder="Date to…" />
       </div>
       <div className={css(largeInputTypes)}>
-      <input type="text" className={css(input, customInput, largeInputTypes)} placeholder="  Reg number" />
+        <TextInput className={css(customInput, largeInputTypes)} placeholder="Reg number" />
       </div>
+      <div className={css(largeInputTypes)}>
+        <input type="radio" value="Inbound" className={css(customInput, largeInputTypes)} />
+        <input type="radio" value="Outbound" className={css(customInput, largeInputTypes)} />
+      </div>  
     </SectionContent>
   </div>
 );
