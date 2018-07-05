@@ -36,6 +36,9 @@ const Search = () => (
       <div className={css(largeInputTypes)}>
         <TextInput className={css(customInput, largeInputTypes)} placeholder="Reg number" />
       </div> 
+      <div className={css(largeInputTypes)}>
+        <TextInput className={css(customInput, largeInputTypes)} placeholder="Customer/supplier BIN" />
+      </div>
     </SectionContent>
   </div>
 );
