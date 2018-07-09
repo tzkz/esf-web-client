@@ -13,14 +13,14 @@ const styles = {
   valueContainer: (base) => ({
     ...base,
     padding: '0 8px',
-    color: 'inherit',
   }),
   singleValue: (base) => ({
     color: 'inherit',
   }),
-  option: (base) => ({
+  option: (base, state) => ({
     ...base,
     cursor: 'pointer',
+    color: state.isSelected ? 'white' : '#0194bf',
   }),
 };
 const components = {

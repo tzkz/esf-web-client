@@ -40,7 +40,7 @@ class App extends Component {
             <Route
               exact
               path="/"
-              children={( { location }) => (
+              children={({ location }) => (
                 <Header
                   localeValue={this.state.locale}
                   onLocaleChange={this.onLocaleChange}
