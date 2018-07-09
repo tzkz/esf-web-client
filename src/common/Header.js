@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'emotion';
 import { FormattedMessage } from 'react-intl';
 
 import SectionContent from './SectionContent';
@@ -12,8 +13,12 @@ const localeOptions = [
   { value: 'ru', label: 'Русский' },
 ];
 
-const Header = ({ localeValue, onLocaleChange }) => (
-  <header className="header">
+const container = {
+  boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
+}
+
+const Header = ({ localeValue, onLocaleChange, className }) => (
+  <header className={css(container, className)}>
     <SectionContent>
       <div className="header-content">
         <div className="title">GetESF</div>
@@ -42,6 +47,7 @@ Header.propTypes = {
     value: PropTypes.string,
   }),
   onLocaleChange: PropTypes.func,
+  className: PropTypes.string,
 };
 
 export default Header;
