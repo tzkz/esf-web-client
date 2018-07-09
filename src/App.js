@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
+import { css } from 'emotion';
 
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -36,9 +37,19 @@ class App extends Component {
       >
         <Router>
           <div className="App">
-            <Header
-              localeValue={this.state.locale}
-              onLocaleChange={this.onLocaleChange}
+            <Route
+              exact
+              path="/"
+              children={( { location }) => (
+                <Header
+                  localeValue={this.state.locale}
+                  onLocaleChange={this.onLocaleChange}
+                  className={location.pathname === '/' && css({
+                    backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
+                    color: 'white',
+                  })}
+                />
+              )}
             />
             <Route exact path="/" component={Landing}/>
             <Route path="/search" component={Search}/>
