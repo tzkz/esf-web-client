@@ -15,6 +15,7 @@ const localeOptions = [
 
 const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
+  color: '#0194bf',
 }
 
 const Header = ({ localeValue, onLocaleChange, className }) => (
