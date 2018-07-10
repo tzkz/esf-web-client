@@ -7,13 +7,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
-@media (min-width: 768px) {
-  .main-inner {
-    height: 474px;
-    flex-direction: row;
-    align-items: center;
-  }
-}
 
 .description {
   color: #ffffff;
@@ -37,7 +30,7 @@
   .description-title{
     font-size: 30px;
     line-height: 50px;
-    margin-top: 0px; 
+    margin-top: 3em; 
   }
 }
 
@@ -57,11 +50,10 @@
 }
 
 .login-area {
-  background-color: #38393c;
   color: #cdcdcd;
 }
 @media (min-width: 768px) {
   .login-area {
-    flex-basis: 38em;
+    padding: 2em 0;
   }
 }

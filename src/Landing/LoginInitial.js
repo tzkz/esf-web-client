@@ -9,12 +9,10 @@ import Button from '../common/Button';
 
 const demoButton = {
   backgroundColor: 'transparent',
-  border: '1px solid #729246',
-  color: '#729246',
+  border: '2px solid white',
+  color: 'white',
   ':hover': {
     backgroundColor: 'transparent',
-    borderColor: '#617c3c',
-    color: '#617c3c',
   },
 };
 
