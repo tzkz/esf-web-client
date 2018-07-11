@@ -9,33 +9,40 @@ const container = {
   paddingTop: '17px',
 };
 
-const dateContainer = {
+const inputRow = {
   display: 'flex',
-  justifyContent: 'space-around',
-  padding: '0px 9px',
-}
+  padding: '5px 12px',
+};
 
-const customInput = {
-  margin: '5px 3px 5px',
+const dateInput = {
   flex: '0 1 50%',
 }
 
-const largeInputTypes = {
-  display: 'flex',
-  flex: '0 1 100%',
-  padding: '0px 9px',
+const dateFrom = {
+  marginRight: '3px',
+}
+
+const dateTo = {
+  marginLeft: '3px',
+}
+
+const largeInput = {
+  flex:'1',
 }
 
 const Search = () => (
   <div className={css(container)}>
     <SectionContent>
-      <div className={css(dateContainer)}>
-        <TextInput className={css(customInput)} placeholder="Date from…" />
-        <TextInput className={css(customInput)} placeholder="Date to…" />
+      <div className={css(inputRow)}>
+        <TextInput className={css(dateInput, dateFrom)} placeholder="Date from…" />
+        <TextInput className={css(dateInput, dateTo)} placeholder="Date to…" />
       </div>
-      <div className={css(largeInputTypes)}>
-        <TextInput className={css(customInput, largeInputTypes)} placeholder="Reg number" />
+      <div className={css(inputRow)}>
+        <TextInput className={css(largeInput)} placeholder="Reg number" />
       </div> 
+      <div className={css(inputRow)}>
+        <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />
+      </div>  
     </SectionContent>
   </div>
 );
