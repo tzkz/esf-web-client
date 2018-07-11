@@ -11,19 +11,22 @@
 .description {
   color: #ffffff;
   margin: 0 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .description-title {
-  font-size: 24px;
+  font-size: 30px;
   line-height: 1.67;
   font-weight: 600;
   letter-spacing: 1px;
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
   margin-top: 1em;
 }
 @media (min-width: 768px) {
   .description-title{
-    font-size: 30px;
+    font-size: 34px;
     line-height: 50px;
     margin-top: 2em;
   }
