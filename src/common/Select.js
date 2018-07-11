@@ -33,7 +33,7 @@ const components = {
         borderLeft: '5px solid transparent',
         borderRight: '5px solid transparent',
         
-        borderTop: '5px solid #0194bf',
+        borderTop: '5px solid white',
       }}
     />
   ),
