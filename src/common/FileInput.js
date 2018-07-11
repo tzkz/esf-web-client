@@ -20,13 +20,13 @@ export const label = {
   },
 };
 
-const FileInput = ({ children, labelClassName, ...other }) => (
+const FileInput = ({ children, className, ...other }) => (
   <div>
     <label
       htmlFor="file-input"
       className={css(
         label,
-        labelClassName,
+        className,
       )}
     >
       {children}
@@ -43,7 +43,7 @@ const FileInput = ({ children, labelClassName, ...other }) => (
 
 FileInput.propTypes = {
   children: PropTypes.node,
-  labelClassName: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default FileInput;
