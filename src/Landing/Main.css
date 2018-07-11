@@ -12,11 +12,6 @@
   color: #ffffff;
   margin: 0 1.5em;
 }
-@media (min-width: 768px) {
-  .description{
-    margin-left: 1em; 
-  }
-}
 
 .description-title {
   font-size: 24px;
@@ -24,12 +19,13 @@
   font-weight: 600;
   letter-spacing: 1px;
   margin-bottom: 1em;
-  margin-top: 2em; 
+  margin-top: 1em;
 }
 @media (min-width: 768px) {
   .description-title{
     font-size: 30px;
     line-height: 50px;
+    margin-top: 2em;
   }
 }
 
@@ -50,6 +46,7 @@
 
 .login-area {
   color: #cdcdcd;
+  padding: 0 0 2em;
 }
 @media (min-width: 768px) {
   .login-area {
