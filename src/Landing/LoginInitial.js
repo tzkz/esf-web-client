@@ -21,8 +21,8 @@ const LoginInitial = () => (
     <div className="browse-button-container">
       <FileInput>
         <FormattedMessage
-          id="LoginInitial.BrowseCertificate"
-          defaultMessage="Browse Certificate"
+          id="LoginInitial.SignIn"
+          defaultMessage="Sign In"
         />
       </FileInput>
     </div>
