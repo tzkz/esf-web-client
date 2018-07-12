@@ -44,10 +44,14 @@ class App extends Component {
                 <Header
                   localeValue={this.state.locale}
                   onLocaleChange={this.onLocaleChange}
-                  className={location.pathname === '/' && css({
-                    backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
-                    color: 'white',
-                  })}
+                  className={
+                    location.pathname === '/'
+                      ? css({
+                        backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
+                        color: 'white',
+                      })
+                      : ''
+                  }
                 />
               )}
             />
