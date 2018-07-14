@@ -7,24 +7,32 @@ import './LoginInitial.css';
 import FileInput from '../common/FileInput';
 import Button from '../common/Button';
 
-const demoButton = {
+const signInButton = {
   backgroundColor: 'transparent',
-  border: '1px solid #729246',
-  color: '#729246',
+  border: '2px solid white',
+  color: 'white',
   ':hover': {
     backgroundColor: 'transparent',
-    borderColor: '#617c3c',
-    color: '#617c3c',
+    border: '2px solid white',
+  },
+}
+
+const demoButton = {
+  backgroundColor: 'white',
+  border: '2px solid white',
+  color: '#744fc6',
+  ':hover': {
+    backgroundColor: 'white',
   },
 };
 
 const LoginInitial = () => (
   <div className="login-form">
     <div className="browse-button-container">
-      <FileInput>
+      <FileInput className={css(signInButton)}>
         <FormattedMessage
-          id="LoginInitial.BrowseCertificate"
-          defaultMessage="Browse Certificate"
+          id="LoginInitial.SignIn"
+          defaultMessage="Sign In"
         />
       </FileInput>
     </div>

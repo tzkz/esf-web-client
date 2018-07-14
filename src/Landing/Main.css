@@ -1,7 +1,5 @@
 .main {
-  background-image: url(headline-background.jpg);
-  background-size: cover;
-  background-position: center;
+  background-image: linear-gradient(90deg,#744fc6 12%,#697eff 100%);
 }
 
 .main-inner {
@@ -9,37 +7,28 @@
   flex-direction: column;
   justify-content: space-between;
 }
-@media (min-width: 768px) {
-  .main-inner {
-    height: 474px;
-    flex-direction: row;
-    align-items: center;
-  }
-}
 
 .description {
   color: #ffffff;
   margin: 0 1.5em;
-}
-@media (min-width: 768px) {
-  .description{
-    margin-left: 1em; 
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .description-title {
-  font-size: 24px;
+  font-size: 30px;
   line-height: 1.67;
   font-weight: 600;
   letter-spacing: 1px;
-  margin-bottom: 1em;
-  margin-top: 2em; 
+  margin-bottom: 0.8em;
+  margin-top: 1em;
 }
 @media (min-width: 768px) {
   .description-title{
-    font-size: 30px;
+    font-size: 34px;
     line-height: 50px;
-    margin-top: 0px; 
+    margin-top: 2em;
   }
 }
 
@@ -59,11 +48,11 @@
 }
 
 .login-area {
-  background-color: #38393c;
   color: #cdcdcd;
+  padding: 0 0 2em;
 }
 @media (min-width: 768px) {
   .login-area {
-    flex-basis: 38em;
+    padding: 2em 0;
   }
 }

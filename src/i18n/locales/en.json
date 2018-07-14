@@ -1,5 +1,6 @@
 {
   "Header.ContactUs": "Contact Us",
+  "BottomCta.Title": "Try out today",
   "Features.FeatureOneTitle": "We do not store your data",
   "Features.FeatureOneBody": "We do not store your information. No logging of your activity. End-to-end encryption",
   "Features.FeatureTwoTitle": "Your favorite format",
@@ -8,8 +9,8 @@
   "Features.FeatureThreeBody": "Print form structure complies with official ESF rules",
   "Footer.TermsOfService": "Terms of Service",
   "Footer.ContactUs": "Contact Us",
-  "LoginInitial.BrowseCertificate": "Browse Certificate",
+  "LoginInitial.SignIn": "Sign In",
   "LoginInitial.Demo": "Try Demo",
-  "Main.Headline": "Export invoices to PDF with ease. One invoice or in bulk",
+  "Main.Headline": "Export ESF invoices with ease",
   "Main.Subheadline": "Get what the official app is missing absolutely FREE"
 }

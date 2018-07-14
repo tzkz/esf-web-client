@@ -21,8 +21,8 @@ describe('<FileInput />', () => {
     expect(wrapper.find('input').prop('foo')).toEqual('bar');
   });
 
-  it('should apply labelClassName to <label>', () => {
-    const wrapper = shallow(<FileInput labelClassName="foo" />);
+  it('should apply className to <label>', () => {
+    const wrapper = shallow(<FileInput className="foo" />);
 
     expect(wrapper.find('label').prop('className')).toEqual(css(label, 'foo'));
   })
