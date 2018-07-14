@@ -1,9 +1,9 @@
 .login-form {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .browse-button-container {
-  padding: 1.3em 1.5em;
+  flex-basis: 12em;
+  margin: 1.3em 1.5em;
 }

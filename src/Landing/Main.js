@@ -13,7 +13,7 @@ const Main = () => (
           <div className="description-title">
             <FormattedMessage
               id="Main.Headline"
-              defaultMessage="Export invoices to PDF with ease. One invoice or in bulk"
+              defaultMessage="Export ESF invoices with ease"
             />
           </div>
           <div className="description-body">
