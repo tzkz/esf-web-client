@@ -1,5 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
+import { FormattedMessage } from 'react-intl';
 
 import SectionContent from '../common/SectionContent';
 import LoginInitial from './LoginInitial';
@@ -26,7 +27,12 @@ const BottomCta = () => (
   <section className={css(bottomCta)}>
     <SectionContent>
       <div className={css(bottomCtaInner)}>
-        <div className={css(title)}>Try out today</div>
+        <div className={css(title)}>
+          <FormattedMessage
+            id="BottomCta.Title"
+            defaultMessage="Try out today"
+          />
+        </div>
         <LoginInitial />
       </div>
     </SectionContent>

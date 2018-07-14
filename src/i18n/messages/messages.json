@@ -5,6 +5,11 @@
     "filepath": "./src/common/Header.js"
   },
   {
+    "id": "BottomCta.Title",
+    "defaultMessage": "Try out today",
+    "filepath": "./src/Landing/BottomCta.js"
+  },
+  {
     "id": "Features.FeatureOneTitle",
     "defaultMessage": "We do not store your data",
     "filepath": "./src/Landing/Features.js"
