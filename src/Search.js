@@ -12,50 +12,54 @@ const container = {
 const inputRow = {
   display: 'flex',
   padding: '5px 12px',
-  fontSize: '14px',
 };
 
 const dateInput = {
   flex: '0 1 50%',
-}
+};
 
 const dateFrom = {
   marginRight: '3px',
-}
+};
 
 const dateTo = {
   marginLeft: '3px',
-}
+};
 
 const largeInput = {
   flex: '1',
-}
+};
 
 const radioInput = {
   display: 'none',
   ':checked + label': {
     backgroundColor: '#327dd0',
     height: '34px',
-    display: 'flex',
     borderRadius: '5px',
     color: ' #ffffff',
+    paddingTop: '7px',
+    margin: '0px 3px'
   } 
-}
+};
 
-const radioTypes = {
+const radioItemConteiner = {
+  display: 'flex',
   flex: '1',
   borderRadius: '5px',
   backgroundColor: '#ffffff',
-  border: '0',
   height: '40px',
+  alignItems: 'center',
+};
+
+const radioItem = {
+  flex: '1',
   minWidth: '0',
-  fontFamily: 'OpenSans',
 }
 
-const radioTypeId = {
-  paddingTop: '10px',
+const radioLabel = {
   display:'flex',
   justifyContent: 'center',
+  color: '#bbbbbb',
 }
 
 const Search = () => (
@@ -69,14 +73,16 @@ const Search = () => (
         <TextInput className={css(largeInput)} placeholder="Reg number" />
       </div> 
       <div className={css(inputRow)}>
-        <div className={css(radioTypes)}>
-          <input type="radio" name="choose1" id="inbound" className={css(radioInput)}/>
-          <label for="inbound" className={css(radioTypeId)}>Inbound</label>
-        </div>
-        <div className={css(radioTypes)}>
-          <input type="radio" name="choose1" id="outbound" className={css(radioInput)}/>
-          <label for="outbound" className={css(radioTypeId)}>Outbound</label>
-        </div>
+        <div className={css(radioItemConteiner)}>
+          <div className={css(radioItem)}>
+            <input type="radio" name="choose1" id="inbound" className={css(radioInput)}/>
+            <label htmlFor="inbound" className={css(radioLabel)}>Inbound</label>
+          </div>
+          <div className={css(radioItem)}>
+            <input type="radio" name="choose1" id="outbound" className={css(radioInput)}/>
+            <label htmlFor="outbound" className={css(radioLabel)}>Outbound</label>
+          </div>
+        </div>  
       </div>
       <div className={css(inputRow)}>
         <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />

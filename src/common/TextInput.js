@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
 const input = {
+  '::placeholder': {
+    color: '#bbbbbb',
+  },
   padding: '10px',
   borderRadius: '5px',
   backgroundColor: '#ffffff',
