@@ -61,6 +61,10 @@ const radioLabel = {
   color: '#bbbbbb',
 }
 
+const invoiceTypeFonts = {
+  fontSize: '12px',
+}
+
 const Search = () => (
   <div className={css(container)}>
     <SectionContent>
@@ -85,6 +89,26 @@ const Search = () => (
       </div>
       <div className={css(inputRow)}>
         <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />
+      </div>
+      <div className={css(inputRow)}>
+        <div className={css(radioContainer)}>
+          <div className={css(radioItem)}>
+            <input type="radio" name="choose2" id="any" className={css(radioInput)}/>
+            <label htmlFor="any" className={css(radioLabel, invoiceTypeFonts)}>Any</label>
+          </div>
+          <div className={css(radioItem)}>
+            <input type="radio" name="choose2" id="ordinary" className={css(radioInput)}/>
+            <label htmlFor="ordinary" className={css(radioLabel, invoiceTypeFonts)}>Ordinary</label>
+          </div>
+          <div className={css(radioItem)}>
+            <input type="radio" name="choose2" id="corrected" className={css(radioInput)}/>
+            <label htmlFor="corrected" className={css(radioLabel, invoiceTypeFonts)}>Corrected</label>
+          </div>
+          <div className={css(radioItem)}>
+            <input type="radio" name="choose2" id="additional" className={css(radioInput)}/>
+            <label htmlFor="additional" className={css(radioLabel, invoiceTypeFonts)}>Additional</label>
+          </div>
+        </div>  
       </div>
     </SectionContent>
   </div>
