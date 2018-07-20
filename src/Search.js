@@ -39,7 +39,7 @@ const radioInput = {
   } 
 };
 
-const radioConteiner = {
+const radioContainer = {
   display: 'flex',
   flex: '1',
   borderRadius: '5px',
@@ -72,7 +72,7 @@ const Search = () => (
         <TextInput className={css(largeInput)} placeholder="Reg number" />
       </div> 
       <div className={css(inputRow)}>
-        <div className={css(radioConteiner)}>
+        <div className={css(radioContainer)}>
           <div className={css(radioItem)}>
             <input type="radio" name="choose1" id="inbound" className={css(radioInput)}/>
             <label htmlFor="inbound" className={css(radioLabel)}>Inbound</label>
