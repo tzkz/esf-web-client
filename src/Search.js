@@ -34,31 +34,30 @@ const radioInput = {
   display: 'none',
   ':checked + label': {
     backgroundColor: '#327dd0',
-    height: '34px',
     borderRadius: '5px',
     color: ' #ffffff',
-    paddingTop: '7px',
-    margin: '0px 3px'
   } 
 };
 
-const radioItemConteiner = {
+const radioConteiner = {
   display: 'flex',
   flex: '1',
   borderRadius: '5px',
   backgroundColor: '#ffffff',
   height: '40px',
-  alignItems: 'center',
+  padding: '3px'
 };
 
 const radioItem = {
   flex: '1',
-  minWidth: '0',
+  display: 'flex',
 }
 
 const radioLabel = {
-  display:'flex',
+  display: 'flex',
+  flex: '1',
   justifyContent: 'center',
+  alignItems: 'center',
   color: '#bbbbbb',
 }
 
@@ -73,7 +72,7 @@ const Search = () => (
         <TextInput className={css(largeInput)} placeholder="Reg number" />
       </div> 
       <div className={css(inputRow)}>
-        <div className={css(radioItemConteiner)}>
+        <div className={css(radioConteiner)}>
           <div className={css(radioItem)}>
             <input type="radio" name="choose1" id="inbound" className={css(radioInput)}/>
             <label htmlFor="inbound" className={css(radioLabel)}>Inbound</label>
