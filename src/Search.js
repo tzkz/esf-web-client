@@ -69,10 +69,16 @@ const checkboxRow = {
   padding: '5px 12px',
 }
 
-const checkboxContainer = {
+const checkboxContainer1 = {
   display: 'flex',
   backgroundColor: '#ffffff',
-  borderRadius: '5px',
+  borderRadius: '5px 5px 0px 0px',
+}
+
+const checkboxContainer2 = {
+  display: 'flex',
+  backgroundColor: '#ffffff',
+  borderRadius: '0px 0px 5px 5px',
 }
 
 const checkboxItem = {
@@ -101,44 +107,52 @@ const checkboxLabel = {
 const created = {
   borderRadius: '5px 0px 0px 0px',
   borderBottom: 'solid 1px #f8f8f8',
+  borderRight: 'solid 1px #f8f8f8',
 }
 
 const createdChecked = {
   ':checked + label': {
   borderBottom: 'solid 1px #0767d0',
+  borderRight: 'solid 1px #0767d0',
   }
 }
 
 const delivered = {
   borderRadius: '0px 5px 0px 0px',
   borderBottom: 'solid 1px #f8f8f8',
+  borderLeft: 'solid 1px #fcfcfc',
 }
 
 const deliveredChecked = {
   ':checked + label': {
   borderBottom: 'solid 1px #0767d0',
+  borderLeft: 'solid 1px #528dce',
   }
 }
 
 const revoked = {
   borderRadius: '0px 0px 0px 5px',
   borderTop: 'solid 1px #fcfcfc',
+  borderRight: 'solid 1px #f8f8f8',
 }
 
 const revokedChecked = {
   ':checked + label': {
   borderTop: 'solid 1px #528dce',
+  borderRight: 'solid 1px #0767d0',
   }
 }
 
 const cancelled = {
   borderRadius: '0px 0px 5px 0px',
   borderTop: 'solid 1px #fcfcfc',
+  borderLeft: 'solid 1px #fcfcfc',
 }
 
 const cancelledChecked = {
   ':checked + label': {
   borderTop: 'solid 1px #528dce',
+  borderLeft: 'solid 1px #528dce',
   }
 }
 
@@ -168,7 +182,7 @@ const Search = () => (
         <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />
       </div>
       <div className={css(checkboxRow)}>
-        <div className={css(checkboxContainer)}>
+        <div className={css(checkboxContainer1)}>
           <div className={css(checkboxItem)}>
             <input type="checkbox" id="created" className={css(checkboxInput, createdChecked)}/>
             <label htmlFor="created" className={css(checkboxLabel, created)}>Created</label>
@@ -178,7 +192,7 @@ const Search = () => (
             <label htmlFor="delivered" className={css(checkboxLabel, delivered)}>Delivered</label>
           </div>
         </div>  
-        <div className={css(checkboxContainer)}>
+        <div className={css(checkboxContainer2)}>
           <div className={css(checkboxItem)}>
             <input type="checkbox" id="revoked" className={css(checkboxInput, revokedChecked)}/>
             <label htmlFor="revoked" className={css(checkboxLabel, revoked)}>Revoked</label>
