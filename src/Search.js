@@ -65,6 +65,83 @@ const invoiceTypeFonts = {
   fontSize: '12px',
 }
 
+const checkboxRow = {
+  padding: '5px 12px',
+}
+
+const checkboxContainer = {
+  display: 'flex',
+  backgroundColor: '#ffffff',
+  borderRadius: '5px',
+}
+
+const checkboxItem = {
+  display: 'flex',
+  flex: '0 1 50%',
+  justifyContent: 'center',
+  height: '40px',
+}
+
+const checkboxInput = {
+  display: 'none',
+  ':checked + label': {
+    backgroundColor: '#327dd0',
+    color: ' #ffffff',
+  } 
+}
+
+const checkboxLabel = {
+  display: 'flex',
+  flex: '1',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#bbbbbb',
+}
+
+const created = {
+  borderRadius: '5px 0px 0px 0px',
+  borderBottom: 'solid 1px #f8f8f8',
+}
+
+const createdChecked = {
+  ':checked + label': {
+  borderBottom: 'solid 1px #0767d0',
+  }
+}
+
+const delivered = {
+  borderRadius: '0px 5px 0px 0px',
+  borderBottom: 'solid 1px #f8f8f8',
+}
+
+const deliveredChecked = {
+  ':checked + label': {
+  borderBottom: 'solid 1px #0767d0',
+  }
+}
+
+const revoked = {
+  borderRadius: '0px 0px 0px 5px',
+  borderTop: 'solid 1px #fcfcfc',
+}
+
+const revokedChecked = {
+  ':checked + label': {
+  borderTop: 'solid 1px #528dce',
+  }
+}
+
+const cancelled = {
+  borderRadius: '0px 0px 5px 0px',
+  borderTop: 'solid 1px #fcfcfc',
+}
+
+const cancelledChecked = {
+  ':checked + label': {
+  borderTop: 'solid 1px #528dce',
+  }
+}
+
 const Search = () => (
   <div className={css(container)}>
     <SectionContent>
@@ -89,6 +166,28 @@ const Search = () => (
       </div>
       <div className={css(inputRow)}>
         <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />
+      </div>
+      <div className={css(checkboxRow)}>
+        <div className={css(checkboxContainer)}>
+          <div className={css(checkboxItem)}>
+            <input type="checkbox" id="created" className={css(checkboxInput, createdChecked)}/>
+            <label htmlFor="created" className={css(checkboxLabel, created)}>Created</label>
+          </div>  
+          <div className={css(checkboxItem)}>
+            <input type="checkbox" id="delivered" className={css(checkboxInput, deliveredChecked)}/>
+            <label htmlFor="delivered" className={css(checkboxLabel, delivered)}>Delivered</label>
+          </div>
+        </div>  
+        <div className={css(checkboxContainer)}>
+          <div className={css(checkboxItem)}>
+            <input type="checkbox" id="revoked" className={css(checkboxInput, revokedChecked)}/>
+            <label htmlFor="revoked" className={css(checkboxLabel, revoked)}>Revoked</label>
+          </div> 
+          <div className={css(checkboxItem)}>
+            <input type="checkbox" id="cancelled" className={css(checkboxInput, cancelledChecked)}/>
+            <label htmlFor="cancelled" className={css(checkboxLabel, cancelled)}>Cancelled</label>
+          </div>
+        </div>  
       </div>
       <div className={css(inputRow)}>
         <div className={css(radioContainer)}>
