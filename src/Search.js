@@ -92,7 +92,7 @@ const checkboxInput = {
   ':checked + label': {
     backgroundColor: '#327dd0',
     color: ' #ffffff',
-  } 
+  }
 }
 
 const checkboxLabel = {
