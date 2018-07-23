@@ -83,8 +83,7 @@ const checkboxContainer2 = {
 
 const checkboxItem = {
   display: 'flex',
-  flex: '0 1 50%',
-  justifyContent: 'center',
+  flex: '1',
   height: '40px',
 }
 
@@ -112,8 +111,8 @@ const created = {
 
 const createdChecked = {
   ':checked + label': {
-  borderBottom: 'solid 1px #0767d0',
-  borderRight: 'solid 1px #0767d0',
+    borderBottom: 'solid 1px #0767d0',
+    borderRight: 'solid 1px #0767d0',
   }
 }
 
@@ -125,8 +124,8 @@ const delivered = {
 
 const deliveredChecked = {
   ':checked + label': {
-  borderBottom: 'solid 1px #0767d0',
-  borderLeft: 'solid 1px #528dce',
+    borderBottom: 'solid 1px #0767d0',
+    borderLeft: 'solid 1px #528dce',
   }
 }
 
@@ -138,8 +137,8 @@ const revoked = {
 
 const revokedChecked = {
   ':checked + label': {
-  borderTop: 'solid 1px #528dce',
-  borderRight: 'solid 1px #0767d0',
+    borderTop: 'solid 1px #528dce',
+    borderRight: 'solid 1px #0767d0',
   }
 }
 
@@ -151,8 +150,8 @@ const cancelled = {
 
 const cancelledChecked = {
   ':checked + label': {
-  borderTop: 'solid 1px #528dce',
-  borderLeft: 'solid 1px #528dce',
+    borderTop: 'solid 1px #528dce',
+    borderLeft: 'solid 1px #528dce',
   }
 }
 
