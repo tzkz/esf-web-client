@@ -36,7 +36,7 @@ const radioInput = {
     backgroundColor: '#327dd0',
     borderRadius: '5px',
     color: ' #ffffff',
-  } 
+  }
 };
 
 const radioContainer = {
@@ -91,7 +91,7 @@ const checkboxInput = {
   display: 'none',
   ':checked + label': {
     backgroundColor: '#327dd0',
-    color: ' #ffffff',
+    color: '#ffffff',
   }
 }
 
@@ -155,16 +155,31 @@ const cancelledChecked = {
   }
 }
 
+const buttonRow = {
+  display: 'flex',
+  padding: '25px 12px',
+}
+
+const button = {
+  flex: '1',
+  height: '50px',
+  backgroundColor: '#327dd0',
+  border: 'none',
+  borderRadius: '5px',
+  color: '#ffffff',
+  fontSize: '14px',
+}
+
 const Search = () => (
   <div className={css(container)}>
     <SectionContent>
       <div className={css(inputRow)}>
-        <TextInput className={css(dateInput, dateFrom)} placeholder="Date from…" />
-        <TextInput className={css(dateInput, dateTo)} placeholder="Date to…" />
+        <TextInput className={css(dateInput, dateFrom)} placeholder="Date from…"/>
+        <TextInput className={css(dateInput, dateTo)} placeholder="Date to…"/>
       </div>
       <div className={css(inputRow)}>
-        <TextInput className={css(largeInput)} placeholder="Reg number" />
-      </div> 
+        <TextInput className={css(largeInput)} placeholder="Reg number"/>
+      </div>
       <div className={css(inputRow)}>
         <div className={css(radioContainer)}>
           <div className={css(radioItem)}>
@@ -175,22 +190,22 @@ const Search = () => (
             <input type="radio" name="choose1" id="outbound" className={css(radioInput)}/>
             <label htmlFor="outbound" className={css(radioLabel)}>Outbound</label>
           </div>
-        </div>  
+        </div>
       </div>
       <div className={css(inputRow)}>
-        <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />
+        <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN"/>
       </div>
       <div className={css(checkboxRow)}>
         <div className={css(checkboxContainer1)}>
           <div className={css(checkboxItem)}>
             <input type="checkbox" id="created" className={css(checkboxInput, createdChecked)}/>
             <label htmlFor="created" className={css(checkboxLabel, created)}>Created</label>
-          </div>  
+          </div>
           <div className={css(checkboxItem)}>
             <input type="checkbox" id="delivered" className={css(checkboxInput, deliveredChecked)}/>
             <label htmlFor="delivered" className={css(checkboxLabel, delivered)}>Delivered</label>
           </div>
-        </div>  
+        </div>
         <div className={css(checkboxContainer2)}>
           <div className={css(checkboxItem)}>
             <input type="checkbox" id="revoked" className={css(checkboxInput, revokedChecked)}/>
@@ -200,7 +215,7 @@ const Search = () => (
             <input type="checkbox" id="cancelled" className={css(checkboxInput, cancelledChecked)}/>
             <label htmlFor="cancelled" className={css(checkboxLabel, cancelled)}>Cancelled</label>
           </div>
-        </div>  
+        </div>
       </div>
       <div className={css(inputRow)}>
         <div className={css(radioContainer)}>
@@ -220,7 +235,12 @@ const Search = () => (
             <input type="radio" name="choose2" id="additional" className={css(radioInput)}/>
             <label htmlFor="additional" className={css(radioLabel, invoiceTypeFonts)}>Additional</label>
           </div>
-        </div>  
+        </div>
+      </div>
+      <div className={css(buttonRow)}>
+        <button className={css(button)}>
+          <text id="LoginInitial.Demo" defaultMessage="Try Demo"/>Search
+        </button>
       </div>
     </SectionContent>
   </div>
