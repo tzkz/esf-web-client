@@ -68,9 +68,6 @@ const invoiceTypeFonts = {
 
 const checkboxRow = {
   padding: '5px 12px',
-  ':hover': {
-    backgroundColor: '327dd0',
-  },
 }
 
 const checkboxContainer1 = {
@@ -160,12 +157,12 @@ const cancelledChecked = {
 }
 
 const buttonRow = {
-  display: 'flex',
   padding: '25px 12px',
 }
 
 const button = {
   backgroundColor: '#327dd0',
+  border: 'none',
   ':hover': {
     backgroundColor: '#327dd0',
   },
@@ -175,45 +172,45 @@ const Search = () => (
   <div className={css(container)}>
     <SectionContent>
       <div className={css(inputRow)}>
-        <TextInput className={css(dateInput, dateFrom)} placeholder="Date from…"/>
-        <TextInput className={css(dateInput, dateTo)} placeholder="Date to…"/>
+        <TextInput className={css(dateInput, dateFrom)} placeholder="Date from…" />
+        <TextInput className={css(dateInput, dateTo)} placeholder="Date to…" />
       </div>
       <div className={css(inputRow)}>
-        <TextInput className={css(largeInput)} placeholder="Reg number"/>
+        <TextInput className={css(largeInput)} placeholder="Reg number" />
       </div>
       <div className={css(inputRow)}>
         <div className={css(radioContainer)}>
           <div className={css(radioItem)}>
-            <input type="radio" name="choose1" id="inbound" className={css(radioInput)}/>
+            <input type="radio" name="choose1" id="inbound" className={css(radioInput)} />
             <label htmlFor="inbound" className={css(radioLabel)}>Inbound</label>
           </div>
           <div className={css(radioItem)}>
-            <input type="radio" name="choose1" id="outbound" className={css(radioInput)}/>
+            <input type="radio" name="choose1" id="outbound" className={css(radioInput)} />
             <label htmlFor="outbound" className={css(radioLabel)}>Outbound</label>
           </div>
         </div>
       </div>
       <div className={css(inputRow)}>
-        <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN"/>
+        <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />
       </div>
       <div className={css(checkboxRow)}>
         <div className={css(checkboxContainer1)}>
           <div className={css(checkboxItem)}>
-            <input type="checkbox" id="created" className={css(checkboxInput, createdChecked)}/>
+            <input type="checkbox" id="created" className={css(checkboxInput, createdChecked)} />
             <label htmlFor="created" className={css(checkboxLabel, created)}>Created</label>
           </div>
           <div className={css(checkboxItem)}>
-            <input type="checkbox" id="delivered" className={css(checkboxInput, deliveredChecked)}/>
+            <input type="checkbox" id="delivered" className={css(checkboxInput, deliveredChecked)} />
             <label htmlFor="delivered" className={css(checkboxLabel, delivered)}>Delivered</label>
           </div>
         </div>
         <div className={css(checkboxContainer2)}>
           <div className={css(checkboxItem)}>
-            <input type="checkbox" id="revoked" className={css(checkboxInput, revokedChecked)}/>
+            <input type="checkbox" id="revoked" className={css(checkboxInput, revokedChecked)} />
             <label htmlFor="revoked" className={css(checkboxLabel, revoked)}>Revoked</label>
           </div> 
           <div className={css(checkboxItem)}>
-            <input type="checkbox" id="cancelled" className={css(checkboxInput, cancelledChecked)}/>
+            <input type="checkbox" id="cancelled" className={css(checkboxInput, cancelledChecked)} />
             <label htmlFor="cancelled" className={css(checkboxLabel, cancelled)}>Cancelled</label>
           </div>
         </div>
@@ -221,19 +218,19 @@ const Search = () => (
       <div className={css(inputRow)}>
         <div className={css(radioContainer)}>
           <div className={css(radioItem)}>
-            <input type="radio" name="choose2" id="any" className={css(radioInput)}/>
+            <input type="radio" name="choose2" id="any" className={css(radioInput)} />
             <label htmlFor="any" className={css(radioLabel, invoiceTypeFonts)}>Any</label>
           </div>
           <div className={css(radioItem)}>
-            <input type="radio" name="choose2" id="ordinary" className={css(radioInput)}/>
+            <input type="radio" name="choose2" id="ordinary" className={css(radioInput)} />
             <label htmlFor="ordinary" className={css(radioLabel, invoiceTypeFonts)}>Ordinary</label>
           </div>
           <div className={css(radioItem)}>
-            <input type="radio" name="choose2" id="corrected" className={css(radioInput)}/>
+            <input type="radio" name="choose2" id="corrected" className={css(radioInput)} />
             <label htmlFor="corrected" className={css(radioLabel, invoiceTypeFonts)}>Corrected</label>
           </div>
           <div className={css(radioItem)}>
-            <input type="radio" name="choose2" id="additional" className={css(radioInput)}/>
+            <input type="radio" name="choose2" id="additional" className={css(radioInput)} />
             <label htmlFor="additional" className={css(radioLabel, invoiceTypeFonts)}>Additional</label>
           </div>
         </div>
