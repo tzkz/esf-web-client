@@ -3,6 +3,7 @@ import { css } from 'emotion';
 
 import SectionContent from './common/SectionContent';
 import TextInput from './common/TextInput';
+import Button from './common/Button';
 
 const container = {
   backgroundColor: '#f8f8f8',
@@ -67,6 +68,9 @@ const invoiceTypeFonts = {
 
 const checkboxRow = {
   padding: '5px 12px',
+  ':hover': {
+    backgroundColor: '327dd0',
+  },
 }
 
 const checkboxContainer1 = {
@@ -161,13 +165,10 @@ const buttonRow = {
 }
 
 const button = {
-  flex: '1',
-  height: '50px',
   backgroundColor: '#327dd0',
-  border: 'none',
-  borderRadius: '5px',
-  color: '#ffffff',
-  fontSize: '14px',
+  ':hover': {
+    backgroundColor: '#327dd0',
+  },
 }
 
 const Search = () => (
@@ -238,9 +239,9 @@ const Search = () => (
         </div>
       </div>
       <div className={css(buttonRow)}>
-        <button className={css(button)}>
-          <text id="LoginInitial.Demo" defaultMessage="Try Demo"/>Search
-        </button>
+        <Button className={css(button)}>
+          Search
+        </Button>
       </div>
     </SectionContent>
   </div>
