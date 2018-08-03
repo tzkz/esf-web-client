@@ -7,7 +7,7 @@ import Button from './common/Button';
 
 const container = {
   paddingTop: '17px',
-};
+}
 
 const innerContainer = {
   display: 'flex',
@@ -48,25 +48,23 @@ const inputRow = {
   maxWidth: '400px',
   marginLeft: 'auto',
   marginRight: 'auto',
-  '@media(min-width: 768px)': {
-  }
-};
+}
 
 const dateInput = {
   flex: '0 1 50%',
-};
+}
 
 const dateFrom = {
   marginRight: '3px',
-};
+}
 
 const dateTo = {
   marginLeft: '3px',
-};
+}
 
 const largeInput = {
   flex: '1',
-};
+}
 
 const radioInput = {
   display: 'none',
@@ -75,7 +73,7 @@ const radioInput = {
     borderRadius: '5px',
     color: ' #ffffff',
   }
-};
+}
 
 const radioContainer = {
   display: 'flex',
@@ -83,8 +81,8 @@ const radioContainer = {
   borderRadius: '5px',
   backgroundColor: '#ffffff',
   height: '40px',
-  padding: '3px'
-};
+  padding: '3px',
+}
 
 const radioItem = {
   flex: '1',
@@ -203,8 +201,6 @@ const buttonRow = {
   maxWidth: '400px',
   marginLeft: 'auto',
   marginRight: 'auto',
-  '@media(min-width: 768px)': {
-  }
 }
 
 const button = {
@@ -212,7 +208,7 @@ const button = {
   border: 'none',
   ':hover': {
     backgroundColor: '#327dd0',
-  },
+  }
 }
 
 const Search = () => (
@@ -292,7 +288,6 @@ const Search = () => (
               </div>
             </div>
           </div>
-        
           <div className={css(buttonRow)}>
             <Button className={css(button)}>
               Search
