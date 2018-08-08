@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { css } from 'emotion';
 
@@ -17,7 +18,7 @@ const signInButton = {
   },
 }
 
-const demoButton = {
+export const demoButton = {
   backgroundColor: 'white',
   border: '2px solid white',
   color: '#744fc6',
@@ -26,7 +27,7 @@ const demoButton = {
   },
 };
 
-const LoginInitial = () => (
+const LoginInitial = ({ onDemoClick }) => (
   <div className="login-form">
     <div className="browse-button-container">
       <FileInput className={css(signInButton)}>
@@ -39,6 +40,7 @@ const LoginInitial = () => (
     <div className="browse-button-container">
       <Button
         className={css(demoButton)}
+        onClick={onDemoClick}
       >
         <FormattedMessage
           id="LoginInitial.Demo"
@@ -48,5 +50,9 @@ const LoginInitial = () => (
     </div>
   </div>
 );
+
+LoginInitial.propTypes = {
+  onDemoClick: PropTypes.func,
+}
 
 export default LoginInitial;
