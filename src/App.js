@@ -16,6 +16,7 @@ import './App.css';
 import Header from './common/Header';
 import Landing from './Landing';
 import Search from './Search';
+import Result from './Result';
 
 addLocaleData([...en, ...kk, ...ru]);
 
@@ -57,6 +58,7 @@ class App extends Component {
             />
             <Route exact path="/" component={Landing}/>
             <Route path="/search" component={Search}/>
+            <Route path="/result" component={Result}/>
           </div>
         </Router>
       </IntlProvider>
