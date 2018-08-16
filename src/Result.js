@@ -76,6 +76,14 @@ const resultChecked = {
   }
 }
 
+const invoices = [
+  { regnumber: 'ESF-39200431-01', amount: '832 902,93', currency: 'KZT' },
+  { regnumber: 'ESF-39200431-02', amount: '1 832 902,93', currency: 'KZT' },
+  { regnumber: 'ESF-39200431-03', amount: '99 832 902,93', currency: 'KZT' },
+  { regnumber: 'ESF-39200431-04', amount: '902,93', currency: 'KZT' },
+  { regnumber: 'ESF-39200431-05', amount: '32 902,93', currency: 'KZT' },
+];
+
 const Result = () => (
   <div className={css(container)}>
     <SectionContent>
@@ -90,51 +98,18 @@ const Result = () => (
                 Amount
               </div>
             </div>
-            <div className={css(innerForm)}>
-              <label className={css(checkboxItems)}>ESF-39200431-00
-                <input type="checkbox"  className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
-                <div className={css(checkboxSubstitute)}></div>
-              </label>
-              <div>
-                T-99342333
+            {invoices.map((item) => (
+              <div className={css(innerForm)}>
+                <label className={css(checkboxItems)}>
+                  {item.regnumber}
+                  <input type="checkbox"  className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
+                  <div className={css(checkboxSubstitute)}></div>
+                </label>
+                <div>
+                  {`${item.currency} ${item.amount}`}
+                </div>
               </div>
-            </div>
-            <div className={css(innerForm)}>
-            <label className={css(checkboxItems)}>ESF-39200432-00
-                <input type="checkbox" className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
-                <div className={css(checkboxSubstitute)}></div>
-              </label>
-              <div>
-                T-99342333
-              </div>
-            </div>
-            <div className={css(innerForm)}>
-            <label className={css(checkboxItems)}>ESF-39200433-00
-                <input type="checkbox" className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
-                <div className={css(checkboxSubstitute)}></div>
-              </label>
-              <div>
-                T-99342333
-              </div>
-            </div>
-            <div className={css(innerForm)}>
-            <label className={css(checkboxItems)}>ESF-39200434-00
-                <input type="checkbox" className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
-                <div className={css(checkboxSubstitute)}></div>
-              </label>
-              <div>
-                T-99342333
-              </div>
-            </div>
-            <div className={css(innerForm)}>
-            <label className={css(checkboxItems)}>ESF-39200435-00
-                <input type="checkbox" className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
-                <div className={css(checkboxSubstitute)}></div>
-              </label>
-              <div>
-                T-99342333
-              </div>
-            </div>
+            ))}
           </div>
       </div>
     </SectionContent>
