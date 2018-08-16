@@ -99,7 +99,7 @@ const Result = () => (
               </div>
             </div>
             {invoices.map((item) => (
-              <div className={css(innerForm)}>
+              <div className={css(innerForm)} key={item.regnumber}>
                 <label className={css(checkboxItems)}>
                   {item.regnumber}
                   <input type="checkbox"  className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
