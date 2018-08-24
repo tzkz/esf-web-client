@@ -66,11 +66,11 @@ const checkboxSubstitute = {
   opacity: '0.54',
   border: '2px solid #010101',
   borderRadius: '2px',
-  marginRight: '15px'
 }
 
 const regNumber = {
-  flexGrow: '1'
+  flexGrow: '1',
+  marginLeft: '15px'
 }
 
 
