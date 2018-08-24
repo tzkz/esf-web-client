@@ -8,7 +8,7 @@ const container = {
   backgroundColor: '#f8f8f8',
   paddingTop: '17px',
   marginTop: '2px'
-};
+}
 
 const innerContainer = {
   display: 'flex',
@@ -18,7 +18,7 @@ const innerContainer = {
   fontSize: '12px',
 }
 
-const formContainer = {
+const resultsContainer = {
   backgroundColor: '#ffffff',
   flexGrow: '1',
   marginLeft: '15px',
@@ -27,7 +27,8 @@ const formContainer = {
   boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.4)',
 }
 
-const innerForm = {
+
+const itemContainer = {
   display: 'flex',
   paddingLeft: '15px',
   paddingRight: '15px',
@@ -35,23 +36,30 @@ const innerForm = {
   alignItems: 'center',
   borderBottom: 'solid 1px #dadce0',
   justifyContent: 'space-between'
-
 }
 
-const formHeader = {
-  display: 'flex',
-  flexDirection: 'row-reverse'
-}
-
-const checkboxItems = {
-  display: 'flex',
-}
-
-const checkboxStyle = {
-  display: 'none'
+const checkboxInput = {
+  display: 'none',
+  ':checked+div': {
+    backgroundColor: '#327dd0',
+    opacity: '1',
+    border: '2px solid #327dd0',
+  },
+  ':checked+div:after': {
+    transform: 'rotate(45deg)',
+    content: '" "',
+    position: 'absolute',
+    left: '4',
+    top: '0',
+    width: '6px',
+    height: '11px',
+    border: '5px solid #ffffff',
+    borderWidth: '0 2px 2px 0'
+  }
 }
 
 const checkboxSubstitute = {
+  cursor: 'pointer',
   height: '18px',
   width: '18px',
   position: 'relative',
@@ -61,27 +69,10 @@ const checkboxSubstitute = {
   marginRight: '15px'
 }
 
-const checkboxSubstituteChecked = {
-  ':checked+div':{
-    backgroundColor: '#327dd0',
-    opacity: '1',
-    border: '5px solid #327dd0',
-    }
+const regNumber = {
+  flexGrow: '1'
 }
 
-const resultChecked = {
-  ':checked+div:after':{
-  transform: 'rotate(45deg)',
-  content: '" "',
-  position: 'absolute',
-  left: '2px',
-  top: '-2px',
-  width: '6px',
-  height: '11px',
-  border: '5px solid #ffffff',
-  borderWidth: '0 2px 2px 0'
-  }
-}
 
 const invoices = [
   { regnumber: 'ESF-39200431-01', amount: '832 902,93', currency: 'KZT' },
@@ -95,32 +86,37 @@ const Result = () => (
   <div className={css(container)}>
     <SectionContent>
       <div className={css(innerContainer)}>
-          <div className={css(formContainer)}>
-            <div className={css(innerForm)}>
-              <label className={css(formHeader)}>Reg number
-                <input type="checkbox" className={css(checkboxStyle)} />
-                <div className={css(checkboxSubstitute)}></div>
-              </label>
+          <div className={css(resultsContainer)}>
+
+            <div className={css(itemContainer)}>
+              <div>
+                <label>
+                  <input type="checkbox" className={css(checkboxInput)} />
+                  <div className={css(checkboxSubstitute)}></div>
+                </label>
+              </div>
+              <div className={css(regNumber)}>
+                Reg number
+              </div>
               <div>
                 Amount
               </div>
             </div>
+
             {invoices.map((item) => (
-              <div className={css(innerForm)} key={item.regnumber}>
-                <div className={css(checkboxItems)}>
+              <div className={css(itemContainer)} key={item.regnumber}>
+                <div>
                   <label>
-                    <input type="checkbox"  className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
+                    <input type="checkbox"  className={css(checkboxInput)} />
                     <div className={css(checkboxSubstitute)}></div>
                   </label>
-                  <div>
-                    {item.regnumber}
-                  </div>
                 </div>
-                <div className={css(checkboxItems)}>
-                  <div>
-                    {`${item.currency} ${item.amount}`}
-                  </div>
-                </div>
+                <div className={css(regNumber)}>
+                  {item.regnumber}
+                </div>  
+                <div>
+                  {`${item.currency} ${item.amount}`}
+                </div>  
               </div>
             ))}
           </div>
