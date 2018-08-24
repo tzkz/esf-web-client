@@ -29,21 +29,26 @@ const formContainer = {
 
 const innerForm = {
   display: 'flex',
-  justifyContent: 'space-between',
   paddingLeft: '15px',
   paddingRight: '15px',
   height: '48px',
   alignItems: 'center',
   borderBottom: 'solid 1px #dadce0',
+  justifyContent: 'space-between'
+
+}
+
+const formHeader = {
+  display: 'flex',
+  flexDirection: 'row-reverse'
 }
 
 const checkboxItems = {
   display: 'flex',
-  flexDirection: 'row-reverse',
 }
 
 const checkboxStyle = {
-  opacity: '0',
+  display: 'none'
 }
 
 const checkboxSubstitute = {
@@ -52,6 +57,8 @@ const checkboxSubstitute = {
   position: 'relative',
   opacity: '0.54',
   border: '2px solid #010101',
+  borderRadius: '2px',
+  marginRight: '15px'
 }
 
 const checkboxSubstituteChecked = {
@@ -90,7 +97,7 @@ const Result = () => (
       <div className={css(innerContainer)}>
           <div className={css(formContainer)}>
             <div className={css(innerForm)}>
-              <label className={css(checkboxItems)}>Reg number
+              <label className={css(formHeader)}>Reg number
                 <input type="checkbox" className={css(checkboxStyle)} />
                 <div className={css(checkboxSubstitute)}></div>
               </label>
@@ -100,13 +107,19 @@ const Result = () => (
             </div>
             {invoices.map((item) => (
               <div className={css(innerForm)} key={item.regnumber}>
-                <label className={css(checkboxItems)}>
-                  {item.regnumber}
-                  <input type="checkbox"  className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
-                  <div className={css(checkboxSubstitute)}></div>
-                </label>
-                <div>
-                  {`${item.currency} ${item.amount}`}
+                <div className={css(checkboxItems)}>
+                  <label>
+                    <input type="checkbox"  className={css(checkboxStyle, resultChecked, checkboxSubstituteChecked)} />
+                    <div className={css(checkboxSubstitute)}></div>
+                  </label>
+                  <div>
+                    {item.regnumber}
+                  </div>
+                </div>
+                <div className={css(checkboxItems)}>
+                  <div>
+                    {`${item.currency} ${item.amount}`}
+                  </div>
                 </div>
               </div>
             ))}
