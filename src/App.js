@@ -18,6 +18,9 @@ import Landing from './Landing';
 import Search from './Search';
 import Result from './Result';
 
+if (!window.Intl) {
+  require('intl');
+}
 addLocaleData([...en, ...kk, ...ru]);
 
 class App extends Component {
