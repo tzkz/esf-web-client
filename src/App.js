@@ -25,7 +25,7 @@ addLocaleData([...en, ...kk, ...ru]);
 
 class App extends Component {
   state = {
-    locale: { value: 'en', label: 'English' },
+    locale: { value: 'en', label: '🇺🇸 Eng' },
   }
 
   onLocaleChange = (value) => this.setState({ locale: value });

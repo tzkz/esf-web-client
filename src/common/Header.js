@@ -8,9 +8,9 @@ import './Header.css';
 import Select from './Select';
 
 const localeOptions = [
-  { value: 'en', label: 'English' },
-  { value: 'kk', label: 'Қазақша' },
-  { value: 'ru', label: 'Русский' },
+  { value: 'en', label: '🇺🇸 Eng' },
+  { value: 'kk', label: '🇰🇿 Қаз' },
+  { value: 'ru', label: '🇷🇺 Рус' },
 ];
 
 const container = {
