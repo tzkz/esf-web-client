@@ -12,7 +12,7 @@ const input = {
 };
 
 const TextInput = ({ className, ...other }) => (
-  <input type="text" className={css(input, className)} {...other} />
+  <input type="text" size={10} className={css(input, className)} {...other} />
 );
 
 TextInput.propTypes = {
