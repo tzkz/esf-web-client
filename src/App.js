@@ -15,6 +15,9 @@ import './App.css';
 import Landing from './Landing';
 import Search from './Search';
 import Result from './Result';
+import Pin from './Pin';
+import Password from './Password';
+import Company from './Company';
 
 if (!window.Intl) {
   require('intl');
@@ -48,7 +51,10 @@ class App extends Component {
               path="/search"
               render={() => <Search locale={this.state.locale} onLocaleChange={this.onLocaleChange} />}
             />
-            <Route path="/result" component={Result}/>
+            <Route path="/result" component={Result} />
+            <Route path="/pin" component={Pin} />
+            <Route path="/password" component={Password} />
+            <Route path="/company" component={Company} />
           </div>
         </Router>
       </IntlProvider>
