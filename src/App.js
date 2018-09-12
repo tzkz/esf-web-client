@@ -44,7 +44,10 @@ class App extends Component {
               path="/"
               render={() => <Landing locale={this.state.locale} onLocaleChange={this.onLocaleChange} />}
             />
-            <Route path="/search" component={Search}/>
+            <Route
+              path="/search"
+              render={() => <Search locale={this.state.locale} onLocaleChange={this.onLocaleChange} />}
+            />
             <Route path="/result" component={Result}/>
           </div>
         </Router>
