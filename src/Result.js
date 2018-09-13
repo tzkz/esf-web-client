@@ -44,16 +44,17 @@ const sidebarItemActive = {
 const wrapperContainer = {
   backgroundColor: '#f8f8f8',
   flexGrow: '1',
-  maxWidth: '457px',
   borderRadius: '5px',
 }
 
 const resultsContainer = {
   backgroundColor: '#ffffff',
   flexGrow: '1',
-  margin: '30px',
   borderRadius: '5px',
   boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.4)',
+  '@media(min-width: 400px)': {
+    margin: '30px',
+  }
 }
 
 const itemContainer = {
