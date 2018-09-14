@@ -1,5 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
+import Button from './common/Button';
 
 const container = {
   backgroundColor: '#ffffff',
@@ -17,85 +18,95 @@ const header = {
   fontSize: '24px',
   fontWeight: '600',
   lineHeight: '1.38',
-  textAlign: 'left',
-  color: '#262626',
-  paddingTop: '160px',
-}
-
-const demoEntry = {
-  fontFamily: 'Open Sans',
-  fontSize: '16px',
-  fontWeight: '600',
-  lineHeight: '1.38',
   letterSpacing: 'normal',
   textAlign: 'left',
   color: '#262626',
-  paddingTop: '40px',
-  paddingBottom: '15px',
+  paddingTop: '160px',
+  paddingBottom: '50px',
 }
 
 const pinInput = {
   width: '290px',
   height: '40px',
+  fontSize: '16px',
   borderRadius: '5px',
   backgroundColor: '#ffffff',
-  border: 'solid 1px #f41111',
+  border: 'solid 1px #707070cd',
   paddingLeft: '10px',
+  color: '#bbbbbb',
 }
 
-const requiredField = {
-  width: '39px',
-  height: '13px',
+const Arrow = {
+  transform: 'rotate(45deg)',
+  marginTop: '10px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  marginBottom: '-5px',
+  width: '10px',
+  height: '10px',
+  backgroundColor: 'rgba(97, 97, 97, 1)',
+}
+
+const demoEntry = {
   fontFamily: 'Open Sans',
-  fontSize: '9px',
+  fontSize: '14px',
   fontWeight: '600',
-  textAlign: 'left',
-  color: '#f41111',
-  paddingTop: '3px',
+  lineHeight: '1.3',
+  width: '206px',
+  height: '29px',
+  borderRadius: '2px',
+  letterSpacing: 'normal',
+  textAlign: 'center',
+  backgroundColor: 'rgba(97, 97, 97, 1)',
+  opacity: '1',
+  color: '#ffffff',
+  paddingTop: '5px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
 }
 
 const buttonsContainer = {
   display: 'flex',
   justifyContent: 'space-between',
-  paddingTop: '15px',
+  marginTop: '30px',
 }
 
 const buttons = {
   width: '140px',
   height: '40px',
   borderRadius: '5px',
+  lineHeight: '1.38',
   border: 'solid 1px #327dd0',
   color: '#327dd0',
   backgroundColor: 'transparent',
+  ':hover': {
+    backgroundColor: '#327dd0',
+    color: '#ffffff',
+  }
 }
 
-const buttonsActive = {
-  color: '#ffffff',
-  backgroundColor: '#327dd0'
-}
 
 const Pin = () => (
   <div className={css(container)}>
     <div className={css(innerContainer)}>
       <div className={css(header)}>
-        Enter Certificate Pin
-      </div>
-      <div className={css(demoEntry)}>
-        Enter "Qwerty12" for demo:
+        Enter Certificate PIN
       </div>
       <div>
         <input type="text" className={css(pinInput)} placeholder="Pin"/>
       </div>
-      <div className={css(requiredField)}>
-        Required
+      <div className={css(Arrow)}>
+      </div>
+      <div className={css(demoEntry)}>
+        Enter "Qwerty12" for demo
       </div>
       <div className={css(buttonsContainer)}>
-        <button className={css(buttons)}>
+        <Button className={css(buttons)}>
           Cancel
-        </button>
-        <button className={css(buttons, buttonsActive)}>
+        </Button>
+        <Button className={css(buttons)}>
           Continue
-        </button>
+        </Button>
       </div>
     </div>
   </div>
