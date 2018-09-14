@@ -41,7 +41,7 @@ const Arrow = {
   marginTop: '10px',
   marginLeft: 'auto',
   marginRight: 'auto',
-  marginBottom: '-5px',
+  marginBottom: '-7px',
   width: '10px',
   height: '10px',
   backgroundColor: 'rgba(97, 97, 97, 1)',
