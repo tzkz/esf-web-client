@@ -85,6 +85,11 @@ const buttons = {
   }
 }
 
+const buttonsChecked = {
+  backgroundColor: '#327dd0',
+  color: '#ffffff',
+}
+
 
 const Pin = () => (
   <div className={css(container)}>
@@ -104,7 +109,7 @@ const Pin = () => (
         <Button className={css(buttons)}>
           Cancel
         </Button>
-        <Button className={css(buttons)}>
+        <Button className={css(buttons, buttonsChecked)}>
           Continue
         </Button>
       </div>
