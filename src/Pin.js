@@ -80,14 +80,16 @@ const buttons = {
   color: '#327dd0',
   backgroundColor: 'transparent',
   ':hover': {
-    backgroundColor: '#327dd0',
-    color: '#ffffff',
+    backgroundColor: 'transparent',
   }
 }
 
 const buttonsChecked = {
   backgroundColor: '#327dd0',
   color: '#ffffff',
+  ':hover': {
+    backgroundColor: '#327dd0',
+  }
 }
 
 
