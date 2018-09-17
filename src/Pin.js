@@ -33,7 +33,6 @@ const pinInput = {
   backgroundColor: '#ffffff',
   border: 'solid 1px #707070cd',
   paddingLeft: '10px',
-  color: '#bbbbbb',
 }
 
 const Arrow = {
