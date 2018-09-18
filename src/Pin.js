@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from 'emotion';
 import Button from './common/Button';
+import SectionContent from './common/SectionContent';
 
 const container = {
   backgroundColor: '#ffffff',
@@ -104,34 +105,36 @@ const buttonsChecked = {
 
 const Pin = () => (
   <div className={css(container)}>
-    <div className={css(innerContainer)}>
+    <SectionContent>
       <button className={css(closeButton)}>
         <svg className={css(closeButton)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
           <path d="M14 1.4L8.4 7l5.6 5.6-1.4 1.4L7 8.4 1.4 14 0 12.6 5.6 7 0 1.4 1.4 0 7 5.6 12.6 0z" fill="#262626"/>
         </svg>
       </button>
-      <div className={css(header)}>
-        Enter Certificate PIN
-      </div>
-      <div>
-        <input type="text" className={css(pinInput)} placeholder="Pin"/>
-      </div>
-      <div className={css(toolTipContainer)}>
-        <div className={css(Arrow)}>
+      <div className={css(innerContainer)}>
+        <div className={css(header)}>
+          Enter Certificate PIN
         </div>
-        <div className={css(demoEntry)}>
-          Enter "Qwerty12" for demo
+        <div>
+          <input type="text" className={css(pinInput)} placeholder="Pin"/>
+        </div>
+        <div className={css(toolTipContainer)}>
+          <div className={css(Arrow)}>
+          </div>
+          <div className={css(demoEntry)}>
+            Enter "Qwerty12" for demo
+          </div>
+        </div>
+        <div className={css(buttonsContainer)}>
+          <Button className={css(buttons)}>
+            Cancel
+          </Button>
+          <Button className={css(buttons, buttonsChecked)}>
+            Continue
+          </Button>
         </div>
       </div>
-      <div className={css(buttonsContainer)}>
-        <Button className={css(buttons)}>
-          Cancel
-        </Button>
-        <Button className={css(buttons, buttonsChecked)}>
-          Continue
-        </Button>
-      </div>
-    </div>
+      </SectionContent>
   </div>
 );
 
