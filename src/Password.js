@@ -80,8 +80,15 @@ const buttons = {
   color: '#327dd0',
   backgroundColor: 'transparent',
   ':hover': {
+    backgroundColor: 'transparent',
+  }
+}
+
+const buttonsChecked = {
+  backgroundColor: '#327dd0',
+  color: '#ffffff',
+  ':hover': {
     backgroundColor: '#327dd0',
-    color: '#ffffff',
   }
 }
 
@@ -104,7 +111,7 @@ const Password = () => (
         <Button className={css(buttons)}>
           Cancel
         </Button>
-        <Button className={css(buttons)}>
+        <Button className={css(buttons, buttonsChecked)}>
           Continue
         </Button>
       </div>
