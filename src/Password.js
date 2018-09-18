@@ -13,6 +13,15 @@ const innerContainer = {
   margin: 'auto',
 }
 
+const closeButton = {
+  border: 'none',
+  outline: 'none',
+  backgroundColor: 'transparent',
+  float: 'right',
+  marginTop: '20px',
+  width: '14px',
+}
+
 const header = {
   fontFamily: 'Open Sans',
   fontSize: '24px',
@@ -96,6 +105,11 @@ const buttonsChecked = {
 const Password = () => (
   <div className={css(container)}>
     <div className={css(innerContainer)}>
+      <button className={css(closeButton)}>
+        <svg className={css(closeButton)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+          <path d="M14 1.4L8.4 7l5.6 5.6-1.4 1.4L7 8.4 1.4 14 0 12.6 5.6 7 0 1.4 1.4 0 7 5.6 12.6 0z" fill="#262626"/>
+        </svg>
+      </button>
       <div className={css(header)}>
         Enter account password
         for ID 161141016493
