@@ -53,7 +53,6 @@ const toolTipContainer = {
 const Arrow = {
   position: 'absolute',
   transform: 'rotate(45deg)',
-  marginRight: '-150px',
   width: '23px',
   height: '23px',
   backgroundColor: 'rgba(97, 97, 97, 1)',
@@ -71,7 +70,6 @@ const demoEntry = {
   letterSpacing: 'normal',
   textAlign: 'center',
   backgroundColor: 'rgba(97, 97, 97, 1)',
-  opacity: '1',
   color: '#ffffff',
   paddingTop: '5px',
 }
