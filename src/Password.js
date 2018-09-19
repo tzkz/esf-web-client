@@ -129,7 +129,7 @@ const Password = () => (
         </div>
         <div className={css(toolTip)}>
           <div className={css(toolTipInner)}>
-            Enter "Qwerty12" for demo
+            Enter "TestPass123" for demo
           </div>
         </div>
         <div className={css(buttonsContainer)}>
