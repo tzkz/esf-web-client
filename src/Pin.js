@@ -46,20 +46,25 @@ const pinInput = {
   marginBottom: '15px',
 }
 
-const toolTipContainer = {
+const toolTipArrow = {
   display: 'flex',
   justifyContent: 'center',
 }
 
 const Arrow = {
-  position: 'absolute',
-  transform: 'rotate(45deg)',
-  width: '23px',
-  height: '23px',
-  backgroundColor: 'rgba(97, 97, 97, 1)',
+  width: '0', 
+  height: '0', 
+  borderLeft: '5px solid transparent',
+  borderRight: '5px solid transparent',
+  borderBottom: '5px solid rgba(97, 97, 97, 0.9)',
 }
 
-const demoEntry = {
+const toolTip = {
+  display: 'flex',
+  justifyContent: 'center',
+}
+
+const toolTipInner = {
   position: 'relative',
   fontFamily: 'Open Sans',
   fontSize: '14px',
@@ -70,7 +75,7 @@ const demoEntry = {
   borderRadius: '2px',
   letterSpacing: 'normal',
   textAlign: 'center',
-  backgroundColor: 'rgba(97, 97, 97, 1)',
+  backgroundColor: 'rgba(97, 97, 97, 0.9)',
   color: '#ffffff',
   paddingTop: '5px',
 }
@@ -118,10 +123,12 @@ const Pin = () => (
         <div>
           <input type="text" className={css(pinInput)} placeholder="Pin"/>
         </div>
-        <div className={css(toolTipContainer)}>
+        <div className={css(toolTipArrow)}>
           <div className={css(Arrow)}>
           </div>
-          <div className={css(demoEntry)}>
+        </div>
+        <div className={css(toolTip)}>
+          <div className={css(toolTipInner)}>
             Enter "Qwerty12" for demo
           </div>
         </div>
