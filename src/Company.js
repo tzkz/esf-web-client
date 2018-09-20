@@ -95,7 +95,7 @@ const Company = () => (
           Select your company
         </div>
         <div className={css(companyDropbtn)}>
-          <Select 
+          <Select placeholder="Company"
             options={companyOptions}
           />
         </div>
