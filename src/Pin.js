@@ -123,9 +123,11 @@ const Pin = () => (
         <div className={css(header)}>
           Enter Certificate PIN
         </div>
-        <div>
-          <TextInput className={css(pinInput)} placeholder="Pin"/>
-        </div>
+        <form action="" method="get">
+          <div>
+            <TextInput className={css(pinInput)} placeholder="Pin"/>
+          </div>
+        </form>
         <div className={css(toolTipArrow)}>
           <div className={css(Arrow)}>
           </div>
@@ -136,12 +138,14 @@ const Pin = () => (
           </div>
         </div>
         <div className={css(buttonsContainer)}>
-          <Button className={css(buttons)}>
-            Cancel
-          </Button>
-          <Button className={css(buttons, buttonsChecked)}>
-            Continue
-          </Button>
+          <form action="" method="get">
+            <Button className={css(buttons)}>
+              Cancel
+            </Button>
+            <Button className={css(buttons, buttonsChecked)}>
+              Continue
+            </Button>
+          </form>
         </div>
       </div>
       </SectionContent>
