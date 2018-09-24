@@ -11,8 +11,12 @@ const container = {
 }
 
 const innerContainer = {
+  display: 'flex',
   maxWidth: '290px',
+  justifyContent: 'center',
+  flexDirection: 'column',
   margin: 'auto',
+  minHeight: '568px',
 }
 
 const closeButton = {
@@ -30,11 +34,10 @@ const header = {
   fontSize: '24px',
   fontWeight: '600',
   lineHeight: '1.38',
-  letterSpacing: 'normal',
+  letterSpacing: '1.2',
   textAlign: 'left',
   color: '#262626',
-  paddingTop: '160px',
-  paddingBottom: '50px',
+  marginBottom: '25px',
 }
 
 const pinInput = {
@@ -46,12 +49,13 @@ const pinInput = {
   outline: 'none',
   border: 'solid 1px #707070cd',
   paddingLeft: '10px',
-  marginBottom: '15px',
+  marginTop: '25px',
 }
 
 const toolTipArrow = {
   display: 'flex',
   justifyContent: 'center',
+  marginTop: '15px',
 }
 
 const Arrow = {
@@ -142,6 +146,8 @@ const Pin = () => (
             <Button className={css(buttons)}>
               Cancel
             </Button>
+          </form>
+          <form action="" method="get">
             <Button className={css(buttons, buttonsChecked)}>
               Continue
             </Button>
