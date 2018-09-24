@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'emotion';
 import Button from './common/Button';
 import SectionContent from './common/SectionContent';
+import TextInput from './common/TextInput';
 
 const container = {
   backgroundColor: '#ffffff',
@@ -127,7 +128,7 @@ const Password = () => (
         </div>
         <form action="" method="get">
           <div>
-            <input type="text" className={css(passwordInput)} placeholder="Password"/>
+            <TextInput className={css(passwordInput)} placeholder="Password"/>
           </div>
         </form>
         <div className={css(toolTipArrow)}>
