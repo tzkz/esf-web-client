@@ -15,6 +15,7 @@ const innerContainer = {
   justifyContent: 'center',
   flexDirection: 'column',
   margin: 'auto',
+  minHeight: '568px',
 }
 
 const closeButton = {
@@ -35,8 +36,7 @@ const header = {
   letterSpacing: 'normal',
   textAlign: 'left',
   color: '#262626',
-  paddingTop: '160px',
-  paddingBottom: '50px',
+  marginBottom: '25px',
 }
 
 const passwordInput = {
@@ -48,12 +48,13 @@ const passwordInput = {
   backgroundColor: '#ffffff',
   border: 'solid 1px #707070cd',
   paddingLeft: '10px',
-  marginBottom: '15px',
+  marginTop: '25px',
 }
 
 const toolTipArrow = {
   display: 'flex',
   justifyContent: 'center',
+  marginTop: '15px',
 }
 
 const Arrow = {
@@ -124,9 +125,11 @@ const Password = () => (
           Enter account password
           for ID 161141016493
         </div>
-        <div>
-          <input type="text" className={css(passwordInput)} placeholder="Password"/>
-        </div>
+        <form action="" method="get">
+          <div>
+            <input type="text" className={css(passwordInput)} placeholder="Password"/>
+          </div>
+        </form>
         <div className={css(toolTipArrow)}>
           <div className={css(Arrow)}>
           </div>
@@ -137,12 +140,16 @@ const Password = () => (
           </div>
         </div>
         <div className={css(buttonsContainer)}>
-          <Button className={css(buttons)}>
-            Cancel
-          </Button>
-          <Button className={css(buttons, buttonsChecked)}>
-            Continue
-          </Button>
+          <form action="" method="get">
+            <Button className={css(buttons)}>
+              Cancel
+            </Button>
+          </form>
+          <form action="" method="get">
+            <Button className={css(buttons, buttonsChecked)}>
+              Continue
+            </Button>
+          </form>
         </div>
       </div>
     </SectionContent>
