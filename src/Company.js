@@ -105,12 +105,16 @@ const Company = () => (
           />
         </div>
         <div className={css(buttonsContainer)}>
-          <Button className={css(buttons)}>
-            Cancel
-          </Button>
-          <Button className={css(buttons, buttonsChecked)}>
-            Continue
-          </Button>
+          <form action="" method="get">
+            <Button className={css(buttons)}>
+              Cancel
+            </Button>
+          </form>
+          <form action="" method="get">
+            <Button className={css(buttons, buttonsChecked)}>
+              Continue
+            </Button>
+          </form>
         </div>
       </div>
     </SectionContent>
