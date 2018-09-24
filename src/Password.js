@@ -24,6 +24,7 @@ const closeButton = {
   float: 'right',
   marginTop: '20px',
   width: '14px',
+  cursor: 'pointer',
 }
 
 const header = {
