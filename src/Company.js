@@ -11,8 +11,12 @@ const container = {
 }
 
 const innerContainer = {
+  display: 'flex',
   maxWidth: '290px',
+  justifyContent: 'center',
+  flexDirection: 'column',
   margin: 'auto',
+  minHeight: '568px',
 }
 
 const closeButton = {
@@ -33,8 +37,7 @@ const header = {
   letterSpacing: 'normal',
   textAlign: 'left',
   color: '#262626',
-  paddingTop: '160px',
-  paddingBottom: '50px',
+  marginBottom: '25px',
 }
 
 const companyDropbtn = {
@@ -47,6 +50,7 @@ const companyDropbtn = {
   letterSpacing:'normal',
   textAlign: 'left',
   color: '#262626',
+  marginTop: '25px',
 }
 
 const buttonsContainer = {
