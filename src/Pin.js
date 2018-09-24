@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'emotion';
 import Button from './common/Button';
 import SectionContent from './common/SectionContent';
+import TextInput from './common/TextInput';
 
 const container = {
   backgroundColor: '#ffffff',
@@ -42,6 +43,7 @@ const pinInput = {
   fontSize: '16px',
   borderRadius: '5px',
   backgroundColor: '#ffffff',
+  outline: 'none',
   border: 'solid 1px #707070cd',
   paddingLeft: '10px',
   marginBottom: '15px',
@@ -122,7 +124,7 @@ const Pin = () => (
           Enter Certificate PIN
         </div>
         <div>
-          <input type="text" className={css(pinInput)} placeholder="Pin"/>
+          <TextInput className={css(pinInput)} placeholder="Pin"/>
         </div>
         <div className={css(toolTipArrow)}>
           <div className={css(Arrow)}>
