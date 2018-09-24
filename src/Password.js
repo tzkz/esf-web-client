@@ -10,7 +10,10 @@ const container = {
 }
 
 const innerContainer = {
+  display: 'flex',
   maxWidth: '290px',
+  justifyContent: 'center',
+  flexDirection: 'column',
   margin: 'auto',
 }
 
