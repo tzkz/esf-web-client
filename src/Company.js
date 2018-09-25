@@ -105,23 +105,21 @@ const Company = () => (
           Hello John Doe,
           Select your company
         </div>
-        <div className={css(companyDropbtn)}>
-          <Select placeholder="Company"
-            options={companyOptions}
-          />
-        </div>
-        <div className={css(buttonsContainer)}>
-          <form action="" method="get">
+        <form action="" method="get">
+          <div className={css(companyDropbtn)}>
+            <Select placeholder="Company"
+              options={companyOptions}
+            />
+          </div>
+          <div className={css(buttonsContainer)}>
             <Button className={css(buttons)}>
               Cancel
             </Button>
-          </form>
-          <form action="" method="get">
             <Button className={css(buttons, buttonsChecked)}>
               Continue
             </Button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </SectionContent>
   </div>
