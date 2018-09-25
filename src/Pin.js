@@ -105,7 +105,7 @@ const buttons = {
   color: '#327dd0',
   backgroundColor: '#ffffff',
   ':hover': {
-    backgroundColor: '#E1E1E1',
+    backgroundColor: '#ebf2fa',
   }
 }
 
@@ -114,6 +114,7 @@ const buttonsChecked = {
   color: '#ffffff',
   ':hover': {
     backgroundColor: '#60A3EE',
+    border: 'solid 1px #60A3EE',
   }
 }
 
