@@ -66,7 +66,6 @@ const buttonsContainer = {
 const buttons = {
   width: '138px',
   height: '40px',
-  borderRadius: '5px',
   lineHeight: '1.38',
   border: 'solid 1px #327dd0',
   color: '#327dd0',
