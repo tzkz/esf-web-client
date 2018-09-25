@@ -66,9 +66,9 @@ const buttons = {
   lineHeight: '1.38',
   border: 'solid 1px #327dd0',
   color: '#327dd0',
-  backgroundColor: 'transparent',
+  backgroundColor: '#ffffff',
   ':hover': {
-    backgroundColor: 'transparent',
+    backgroundColor: '#E1E1E1',
   }
 }
 
@@ -76,7 +76,7 @@ const buttonsChecked = {
   backgroundColor: '#327dd0',
   color: '#ffffff',
   ':hover': {
-    backgroundColor: '#327dd0',
+    backgroundColor: '#60A3EE',
   }
 }
 
