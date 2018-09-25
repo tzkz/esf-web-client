@@ -136,28 +136,24 @@ const Password = () => (
           <div>
             <TextInput className={css(passwordInput)} placeholder="Password"/>
           </div>
-        </form>
-        <div className={css(toolTipArrow)}>
-          <div className={css(Arrow)}>
+          <div className={css(toolTipArrow)}>
+            <div className={css(Arrow)}>
+            </div>
           </div>
-        </div>
-        <div className={css(toolTip)}>
-          <div className={css(toolTipInner)}>
-            Enter "TestPass123" for demo
+          <div className={css(toolTip)}>
+            <div className={css(toolTipInner)}>
+              Enter "TestPass123" for demo
+            </div>
           </div>
-        </div>
-        <div className={css(buttonsContainer)}>
-          <form action="" method="get">
+          <div className={css(buttonsContainer)}>
             <Button className={css(buttons)}>
               Cancel
             </Button>
-          </form>
-          <form action="" method="get">
             <Button className={css(buttons, buttonsChecked)}>
               Continue
             </Button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </SectionContent>
   </div>
