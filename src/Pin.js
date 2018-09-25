@@ -20,11 +20,15 @@ const innerContainer = {
 }
 
 const closeButton = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+}
+
+const closeButtonInner = {
   border: 'none',
   outline: 'none',
   backgroundColor: 'transparent',
-  float: 'right',
-  marginTop: '20px',
+  margin: '13px 13px 0px 0px',
   width: '14px',
   cursor: 'pointer',
 }
@@ -118,11 +122,13 @@ const buttonsChecked = {
 const Pin = () => (
   <div className={css(container)}>
     <SectionContent>
-      <button className={css(closeButton)}>
-        <svg className={css(closeButton)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-          <path d="M14 1.4L8.4 7l5.6 5.6-1.4 1.4L7 8.4 1.4 14 0 12.6 5.6 7 0 1.4 1.4 0 7 5.6 12.6 0z" fill="#262626"/>
-        </svg>
-      </button>
+      <div className={css(closeButton)}>
+        <button className={css(closeButtonInner)}>
+          <svg className={css(closeButtonInner)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+            <path d="M14 1.4L8.4 7l5.6 5.6-1.4 1.4L7 8.4 1.4 14 0 12.6 5.6 7 0 1.4 1.4 0 7 5.6 12.6 0z" fill="#262626"/>
+          </svg>
+        </button>
+      </div>
       <div className={css(innerContainer)}>
         <div className={css(header)}>
           Enter Certificate PIN
