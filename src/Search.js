@@ -1,16 +1,18 @@
 import React from 'react';
 import { css } from 'emotion';
 
+import Header from './common/Header';
 import SectionContent from './common/SectionContent';
 import TextInput from './common/TextInput';
 import Button from './common/Button';
 
 const container = {
-  paddingTop: '17px',
 }
 
 const innerContainer = {
   display: 'flex',
+  paddingTop: '16px',
+  paddingBottom: '16px',
 }
 
 const sidebarContainer = {
@@ -208,8 +210,12 @@ const button = {
   }
 }
 
-const Search = () => (
+const Search = ({ locale, onLocaleChange }) => (
   <div className={css(container)}>
+    <Header
+      localeValue={locale}
+      onLocaleChange={onLocaleChange}
+    />
     <SectionContent>
       <div className={css(innerContainer)}>
         <div className={css(sidebarContainer)}>

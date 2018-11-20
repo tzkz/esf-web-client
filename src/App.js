@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
-import { css } from 'emotion';
 
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -13,10 +12,12 @@ import localeData from './i18n/locales';
 
 import './App.css';
 
-import Header from './common/Header';
 import Landing from './Landing';
 import Search from './Search';
 import Result from './Result';
+import Pin from './Pin';
+import Password from './Password';
+import Company from './Company';
 
 if (!window.Intl) {
   require('intl');
@@ -44,24 +45,16 @@ class App extends Component {
             <Route
               exact
               path="/"
-              children={({ location }) => (
-                <Header
-                  localeValue={this.state.locale}
-                  onLocaleChange={this.onLocaleChange}
-                  className={
-                    location.pathname === '/'
-                      ? css({
-                        backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
-                        color: 'white',
-                      })
-                      : ''
-                  }
-                />
-              )}
+              render={() => <Landing locale={this.state.locale} onLocaleChange={this.onLocaleChange} />}
             />
-            <Route exact path="/" component={Landing}/>
-            <Route path="/search" component={Search}/>
-            <Route path="/result" component={Result}/>
+            <Route
+              path="/search"
+              render={() => <Search locale={this.state.locale} onLocaleChange={this.onLocaleChange} />}
+            />
+            <Route path="/result" component={Result} />
+            <Route path="/pin" component={Pin} />
+            <Route path="/password" component={Password} />
+            <Route path="/company" component={Company} />
           </div>
         </Router>
       </IntlProvider>
