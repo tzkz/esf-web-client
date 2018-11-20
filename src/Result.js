@@ -51,6 +51,8 @@ const resultsContainer = {
   backgroundColor: '#ffffff',
   flexGrow: '1',
   borderRadius: '5px',
+  marginRight: '15px',
+  marginLeft: '15px',
   boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.4)',
   '@media(min-width: 400px)': {
     margin: '30px',
