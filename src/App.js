@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-} from 'react-router-dom'
+} from 'react-router-dom';
+import classnames from 'classnames';
+import { css } from 'emotion';
 
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -24,6 +26,10 @@ if (!window.Intl) {
 }
 addLocaleData([...en, ...kk, ...ru]);
 
+const container = {
+  height: '100%',
+};
+
 class App extends Component {
   state = {
     locale: 'en',
@@ -41,7 +47,7 @@ class App extends Component {
         }}
       >
         <Router>
-          <div className="App">
+          <div className={classnames('App', css(container))}>
             <Route
               exact
               path="/"

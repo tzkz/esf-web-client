@@ -3,13 +3,18 @@ import { css } from 'emotion';
 
 import Header from '../common/Header';
 import Main from './Main';
-import Features from './Features';
 import Footer from './Footer';
-import BottomCta from './BottomCta';
 
+const container = {
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+};
 
 const Landing = ({ locale, onLocaleChange }) => (
-  <div>
+  <div
+    className={css(container)}
+  >
     <Header
       localeValue={locale}
       onLocaleChange={onLocaleChange}
@@ -19,8 +24,6 @@ const Landing = ({ locale, onLocaleChange }) => (
       })}
     />
     <Main />
-    <Features />
-    <BottomCta />
     <Footer />
   </div>
 );
