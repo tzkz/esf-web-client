@@ -5,13 +5,7 @@ import { FormattedMessage } from 'react-intl';
 
 import SectionContent from './SectionContent';
 import './Header.css';
-import Select from './Select';
-
-const localeOptions = [
-  { value: 'en', label: '🇺🇸 Eng' },
-  { value: 'kk', label: '🇰🇿 Қаз' },
-  { value: 'ru', label: '🇷🇺 Рус' },
-];
+import LangSelect from './LangSelect';
 
 const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
@@ -31,8 +25,7 @@ const Header = ({ localeValue, onLocaleChange, className }) => (
             />
           </div>
           <div className="nav-item nav-item-lang">
-            <Select
-              options={localeOptions}
+            <LangSelect
               value={localeValue}
               onChange={onLocaleChange}
             />
@@ -44,9 +37,7 @@ const Header = ({ localeValue, onLocaleChange, className }) => (
 );
 
 Header.propTypes = {
-  localeValue: PropTypes.shape({
-    value: PropTypes.string,
-  }),
+  localeValue: PropTypes.string,
   onLocaleChange: PropTypes.func,
   className: PropTypes.string,
 };
