@@ -26,18 +26,18 @@ addLocaleData([...en, ...kk, ...ru]);
 
 class App extends Component {
   state = {
-    locale: { value: 'en', label: '🇺🇸 Eng' },
+    locale: 'en',
   }
 
-  onLocaleChange = (value) => this.setState({ locale: value });
+  onLocaleChange = (locale) => this.setState({ locale });
 
   render() {
     return (
       <IntlProvider
-        locale={this.state.locale.value}
+        locale={this.state.locale}
         messages={{
           ...localeData.en,
-          ...localeData[this.state.locale.value],
+          ...localeData[this.state.locale],
         }}
       >
         <Router>
