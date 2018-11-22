@@ -12,23 +12,65 @@ const container = {
   color: '#0194bf',
 }
 
+const headerContent = {
+  display: 'flex',
+  alignItems: 'center',
+  height: '74px',
+  '@media (min-width: 768px)': {
+    justifyContent: 'space-between',
+    height: '6.25em',
+  }
+};
+
+const leftContainer = {
+  flex: '1',
+  '@media (min-width: 768px)': {
+    display: 'none',
+  }
+}
+
+const rightContainer = {
+  flex: '1',
+}
+
+const burgerButton = {
+  padding: '10px 16px 10px 24px',
+  border: 'none',
+  background: 'none',
+  cursor: 'pointer',
+  whiteSpace: 'nowrap',
+};
+
+const burger = (
+  <svg viewBox='0 0 24 24' width='24' height='24'>
+    <path fill="#FFF" d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' />
+  </svg>
+);
+
 const Header = ({ localeValue, onLocaleChange, className }) => (
   <header className={css(container, className)}>
     <SectionContent>
-      <div className="header-content">
+      <div className={css(headerContent)}>
+        <div className={css(leftContainer)}>
+          <button className={css(burgerButton)}>
+            {burger}
+          </button>
+        </div>
         <div className="title">GetESF</div>
-        <div className="nav-bar">
-          <div className="nav-item">
-            <FormattedMessage
-              id="Header.ContactUs"
-              defaultMessage="Contact Us"
-            />
-          </div>
-          <div className="nav-item nav-item-lang">
-            <LangSelect
-              value={localeValue}
-              onChange={onLocaleChange}
-            />
+        <div className={css(rightContainer)}>
+          <div className="nav-bar">
+            <div className="nav-item">
+              <FormattedMessage
+                id="Header.ContactUs"
+                defaultMessage="Contact Us"
+              />
+            </div>
+            <div className="nav-item nav-item-lang">
+              <LangSelect
+                value={localeValue}
+                onChange={onLocaleChange}
+              />
+            </div>
           </div>
         </div>
       </div>
