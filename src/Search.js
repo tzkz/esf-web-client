@@ -215,6 +215,7 @@ const Search = ({ locale, onLocaleChange }) => (
     <Header
       localeValue={locale}
       onLocaleChange={onLocaleChange}
+      burgerClassName={css({ fill: '#327dd0' })}
     />
     <SectionContent>
       <div className={css(innerContainer)}>

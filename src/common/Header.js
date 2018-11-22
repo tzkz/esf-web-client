@@ -48,12 +48,12 @@ const burger = (
   </svg>
 );
 
-const Header = ({ localeValue, onLocaleChange, className }) => (
+const Header = ({ localeValue, onLocaleChange, className, burgerClassName }) => (
   <header className={css(container, className)}>
     <SectionContent>
       <div className={css(headerContent)}>
         <div className={css(leftContainer)}>
-          <button className={css(burgerButton)}>
+          <button className={css(burgerButton, burgerClassName)}>
             {burger}
           </button>
         </div>
