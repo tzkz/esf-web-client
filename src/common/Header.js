@@ -48,12 +48,12 @@ const burger = (
   </svg>
 );
 
-const Header = ({ localeValue, onLocaleChange, className, burgerClassName }) => (
+const Header = ({ localeValue, onLocaleChange, className, burgerClassName, onMenuClick }) => (
   <header className={css(container, className)}>
     <SectionContent>
       <div className={css(headerContent)}>
         <div className={css(leftContainer)}>
-          <button className={css(burgerButton, burgerClassName)}>
+          <button className={css(burgerButton, burgerClassName)} onClick={onMenuClick}>
             {burger}
           </button>
         </div>
@@ -83,6 +83,8 @@ Header.propTypes = {
   localeValue: PropTypes.string,
   onLocaleChange: PropTypes.func,
   className: PropTypes.string,
+  burgerClassName: PropTypes.string,
+  onMenuClick: PropTypes.func,
 };
 
 export default Header;

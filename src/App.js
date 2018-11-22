@@ -33,9 +33,12 @@ const container = {
 class App extends Component {
   state = {
     locale: 'en',
+    showSidebar: false,
   }
 
-  onLocaleChange = (locale) => this.setState({ locale });
+  onLocaleChange = (locale) => this.setState({ locale })
+
+  onMenuClick = () => this.setState({ showSidebar: true })
 
   render() {
     return (
@@ -48,6 +51,11 @@ class App extends Component {
       >
         <Router>
           <div className={classnames('App', css(container))}>
+            {this.state.showSidebar && (
+              <div>
+                Sidebar
+              </div>
+            )}
             <Route
               exact
               path="/"
@@ -55,7 +63,13 @@ class App extends Component {
             />
             <Route
               path="/search"
-              render={() => <Search locale={this.state.locale} onLocaleChange={this.onLocaleChange} />}
+              render={() => (
+                <Search
+                  locale={this.state.locale}
+                  onLocaleChange={this.onLocaleChange}
+                  onMenuClick={this.onMenuClick}
+                />
+              )}
             />
             <Route path="/result" component={Result} />
             <Route path="/pin" component={Pin} />

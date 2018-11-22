@@ -210,12 +210,13 @@ const button = {
   }
 }
 
-const Search = ({ locale, onLocaleChange }) => (
+const Search = ({ locale, onLocaleChange, onMenuClick }) => (
   <div className={css(container)}>
     <Header
       localeValue={locale}
       onLocaleChange={onLocaleChange}
       burgerClassName={css({ fill: '#327dd0' })}
+      onMenuClick={onMenuClick}
     />
     <SectionContent>
       <div className={css(innerContainer)}>
