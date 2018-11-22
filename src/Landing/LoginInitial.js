@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { css } from 'emotion';
 
-import './LoginInitial.css';
-
 import FileInput from '../common/FileInput';
 import Button from '../common/Button';
 
@@ -27,9 +25,20 @@ export const demoButton = {
   },
 };
 
+const loginform = {
+  display: 'flex',
+  justifyContent: 'center',
+  padding: '0 16px',
+};
+
+const browseButtonContainer = {
+  flexBasis: '12em',
+  margin: '1.3em .5em',
+};
+
 const LoginInitial = ({ onDemoClick }) => (
-  <div className="login-form">
-    <div className="browse-button-container">
+  <div className={css(loginform)}>
+    <div className={css(browseButtonContainer)}>
       <FileInput className={css(signInButton)}>
         <FormattedMessage
           id="LoginInitial.SignIn"
@@ -37,7 +46,7 @@ const LoginInitial = ({ onDemoClick }) => (
         />
       </FileInput>
     </div>
-    <div className="browse-button-container">
+    <div className={css(browseButtonContainer)}>
       <Button
         className={css(demoButton)}
         onClick={onDemoClick}
