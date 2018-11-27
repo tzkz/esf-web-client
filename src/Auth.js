@@ -6,7 +6,11 @@ class Auth extends React.Component {
     return (
       <div>
         {!this.props.p12decrypted && (
-          <Pin onPinSubmit={this.props.onPinSubmit} />
+          <Pin
+            onPinSubmit={this.props.onPinSubmit}
+            onPinChange={this.props.onPinChange}
+            p12error={this.props.p12error}
+          />
         )}
       </div>
     )

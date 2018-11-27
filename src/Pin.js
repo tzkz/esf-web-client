@@ -118,6 +118,16 @@ const buttonsChecked = {
   }
 }
 
+const errorMessage = {
+  color: 'red',
+  fontSize: 12,
+  padding: '0 12px',
+}
+
+const errorInput = {
+  borderColor: 'red',
+}
+
 
 class Pin extends React.Component{
   state = {
@@ -129,7 +139,12 @@ class Pin extends React.Component{
     this.props.onPinSubmit(this.state.pin)
   }
 
-  onPinChange = (event) => this.setState({ pin: event.target.value })
+  onPinChange = (event) => {
+    this.setState({ pin: event.target.value })
+    if (this.props.onPinChange) {
+      this.props.onPinChange(event)
+    }
+  }
 
   render() {
     return (
@@ -149,11 +164,16 @@ class Pin extends React.Component{
             <form onSubmit={this.onSubmit}>
               <div>
                 <TextInput
-                  className={css(pinInput)}
+                  className={css(pinInput, this.props.p12error && errorInput)}
                   placeholder="Pin"
                   value={this.state.pin}
                   onChange={this.onPinChange}
                 />
+                {this.props.p12error &&
+                  <div className={css(errorMessage)}>
+                    Wrong PIN
+                  </div>
+                }
               </div>
               <div className={css(toolTipArrow)}>
                 <div className={css(Arrow)}>

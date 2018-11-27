@@ -40,6 +40,7 @@ class App extends Component {
     showSidebar: false,
     p12b64: '',
     p12decrypted: null,
+    p12error: null,
     user: null,
   }
 
@@ -50,10 +51,15 @@ class App extends Component {
   onDemoClick = () => this.setState({ p12b64: testKey })
 
   onPinSubmit = (pin) => {
-    const p12decrypted = decryptP12(this.state.p12b64, pin)
-
-    this.setState({ p12decrypted })
+    try {
+      const p12decrypted = decryptP12(this.state.p12b64, pin)
+      this.setState({ p12decrypted })
+    } catch (error) {
+      this.setState({ p12error: error })
+    }
   }
+
+  onPinChange = () => this.setState({ p12error: null })
 
   onPasswordSubmit = (password) => {
     // TODO: get user info and set user state
@@ -85,8 +91,10 @@ class App extends Component {
               render={() => this.state.p12b64
                 ? <Auth
                     p12decrypted={this.state.p12decrypted}
+                    p12error={this.state.p12error}
                     user={this.state.user}
                     onPinSubmit={this.onPinSubmit}
+                    onPinChange={this.onPinChange}
                     onPasswordSubmit={this.onPasswordSubmit}
                     onLogin={this.onLogin}
                   />
