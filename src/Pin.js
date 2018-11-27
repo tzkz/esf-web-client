@@ -7,7 +7,13 @@ import TextInput from './common/TextInput';
 const container = {
   backgroundColor: '#ffffff',
   margin: 'auto 16px',
-  minHeight: '568px',
+  height: '100%',
+}
+
+const sectionContent = {
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
 }
 
 const innerContainer = {
@@ -16,7 +22,6 @@ const innerContainer = {
   justifyContent: 'center',
   flexDirection: 'column',
   margin: 'auto',
-  minHeight: '568px',
 }
 
 const closeButton = {
@@ -149,7 +154,7 @@ class Pin extends React.Component{
   render() {
     return (
       <div className={css(container)}>
-        <SectionContent>
+        <SectionContent className={css(sectionContent)}>
           <div className={css(closeButton)}>
             <button className={css(closeButtonInner)}>
               <svg className={css(closeButtonInner)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
