@@ -14,6 +14,7 @@ import localeData from './i18n/locales';
 
 import './App.css';
 
+import Auth from './Auth';
 import Landing from './Landing';
 import Search from './Search';
 import Result from './Result';
@@ -34,6 +35,7 @@ class App extends Component {
   state = {
     locale: 'en',
     showSidebar: false,
+    p12b64: '',
   }
 
   onLocaleChange = (locale) => this.setState({ locale })
@@ -59,7 +61,16 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => <Landing locale={this.state.locale} onLocaleChange={this.onLocaleChange} />}
+              render={() => this.state.p12b64
+                ? <Auth
+                    locale={this.state.locale}
+                    p12b64={this.state.p12b64}
+                  />
+                : <Landing
+                    locale={this.state.locale}
+                    onLocaleChange={this.onLocaleChange}
+                  />
+              }
             />
             <Route
               path="/search"
