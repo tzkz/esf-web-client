@@ -119,45 +119,65 @@ const buttonsChecked = {
 }
 
 
-const Pin = () => (
-  <div className={css(container)}>
-    <SectionContent>
-      <div className={css(closeButton)}>
-        <button className={css(closeButtonInner)}>
-          <svg className={css(closeButtonInner)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-            <path d="M14 1.4L8.4 7l5.6 5.6-1.4 1.4L7 8.4 1.4 14 0 12.6 5.6 7 0 1.4 1.4 0 7 5.6 12.6 0z" fill="#262626"/>
-          </svg>
-        </button>
-      </div>
-      <div className={css(innerContainer)}>
-        <div className={css(header)}>
-          Enter Certificate PIN
-        </div>
-        <form action="" method="get">
-          <div>
-              <TextInput className={css(pinInput)} placeholder="Pin"/>
+class Pin extends React.Component{
+  state = {
+    pin: '',
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault()
+    this.props.onPinSubmit(this.state.pin)
+  }
+
+  onPinChange = (event) => this.setState({ pin: event.target.value })
+
+  render() {
+    return (
+      <div className={css(container)}>
+        <SectionContent>
+          <div className={css(closeButton)}>
+            <button className={css(closeButtonInner)}>
+              <svg className={css(closeButtonInner)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                <path d="M14 1.4L8.4 7l5.6 5.6-1.4 1.4L7 8.4 1.4 14 0 12.6 5.6 7 0 1.4 1.4 0 7 5.6 12.6 0z" fill="#262626"/>
+              </svg>
+            </button>
           </div>
-          <div className={css(toolTipArrow)}>
-            <div className={css(Arrow)}>
+          <div className={css(innerContainer)}>
+            <div className={css(header)}>
+              Enter Certificate PIN
             </div>
+            <form onSubmit={this.onSubmit}>
+              <div>
+                <TextInput
+                  className={css(pinInput)}
+                  placeholder="Pin"
+                  value={this.state.pin}
+                  onChange={this.onPinChange}
+                />
+              </div>
+              <div className={css(toolTipArrow)}>
+                <div className={css(Arrow)}>
+                </div>
+              </div>
+              <div className={css(toolTip)}>
+                <div className={css(toolTipInner)}>
+                  Enter "Qwerty12" for demo
+                </div>
+              </div>
+              <div className={css(buttonsContainer)}>
+                <Button className={css(buttons)}>
+                  Cancel
+                </Button>
+                <Button className={css(buttons, buttonsChecked)}>
+                  Continue
+                </Button>
+              </div>
+            </form>
           </div>
-          <div className={css(toolTip)}>
-            <div className={css(toolTipInner)}>
-              Enter "Qwerty12" for demo
-            </div>
-          </div>
-          <div className={css(buttonsContainer)}>
-            <Button className={css(buttons)}>
-              Cancel
-            </Button>
-            <Button className={css(buttons, buttonsChecked)}>
-              Continue
-            </Button>
-          </div>
-        </form>
+          </SectionContent>
       </div>
-      </SectionContent>
-  </div>
-);
+    );
+  }
+}
 
 export default Pin;

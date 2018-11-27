@@ -11,7 +11,7 @@ const container = {
   flexDirection: 'column',
 };
 
-const Landing = ({ locale, onLocaleChange }) => (
+const Landing = ({ locale, onLocaleChange, onDemoClick }) => (
   <div
     className={css(container)}
   >
@@ -23,7 +23,7 @@ const Landing = ({ locale, onLocaleChange }) => (
         color: 'white',
       })}
     />
-    <Main />
+    <Main onDemoClick={onDemoClick} />
     <Footer />
   </div>
 );
