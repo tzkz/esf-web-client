@@ -60,10 +60,10 @@ workflows:
             - build-test
           filters:
             branches:
-              only: dev
-      - deploy-prod:
-          requires:
-            - build-test
-          filters:
-            branches:
               only: master
+      # - deploy-prod:
+      #     requires:
+      #       - build-test
+      #     filters:
+      #       branches:
+      #         only: master
