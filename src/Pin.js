@@ -27,16 +27,6 @@ const pinInput = {
   marginTop: '25px',
 }
 
-const errorMessage = {
-  color: 'red',
-  fontSize: 12,
-  padding: '0 12px',
-}
-
-const errorInput = {
-  borderColor: 'red',
-}
-
 class Pin extends React.Component{
   state = {
     pin: '',
@@ -63,16 +53,12 @@ class Pin extends React.Component{
           Enter Certificate PIN
         </div>
         <TextInput
-          className={css(pinInput, this.props.p12error && errorInput)}
+          className={css(pinInput)}
           placeholder="Pin"
           value={this.state.pin}
           onChange={this.onPinChange}
+          errorMessage={this.props.p12error && 'Wrong PIN'}
         />
-        {this.props.p12error &&
-          <div className={css(errorMessage)}>
-            Wrong PIN
-          </div>
-        }
         <Tooltip>
           Enter "Qwerty12" for demo
         </Tooltip>
