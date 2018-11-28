@@ -20,7 +20,7 @@ const tooltipBody = {
   fontFamily: 'Open Sans',
   fontSize: '14px',
   fontWeight: '600',
-  lineHeight: '1.3',
+  // lineHeight: '1.3',
   height: '29px',
   borderRadius: '2px',
   letterSpacing: 'normal',
