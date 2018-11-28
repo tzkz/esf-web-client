@@ -1,8 +1,8 @@
 import React from 'react';
 import { css } from 'emotion';
-import Button from './common/Button';
 import SectionContent from './common/SectionContent';
 import TextInput from './common/TextInput';
+import AuthForm from './AuthForm';
 
 const container = {
   backgroundColor: '#ffffff',
@@ -96,33 +96,6 @@ const toolTipInner = {
   paddingTop: '5px',
 }
 
-const buttonsContainer = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginTop: '30px',
-}
-
-const buttons = {
-  width: '138px',
-  height: '40px',
-  lineHeight: '1.38',
-  border: 'solid 1px #327dd0',
-  color: '#327dd0',
-  backgroundColor: '#ffffff',
-  ':hover': {
-    backgroundColor: '#ebf2fa',
-  }
-}
-
-const buttonsChecked = {
-  backgroundColor: '#327dd0',
-  color: '#ffffff',
-  ':hover': {
-    backgroundColor: '#60A3EE',
-    border: 'solid 1px #60A3EE',
-  }
-}
-
 const errorMessage = {
   color: 'red',
   fontSize: 12,
@@ -166,7 +139,7 @@ class Pin extends React.Component{
             <div className={css(header)}>
               Enter Certificate PIN
             </div>
-            <form onSubmit={this.onSubmit}>
+            <AuthForm onSubmit={this.onSubmit}>
               <div>
                 <TextInput
                   className={css(pinInput, this.props.p12error && errorInput)}
@@ -189,15 +162,7 @@ class Pin extends React.Component{
                   Enter "Qwerty12" for demo
                 </div>
               </div>
-              <div className={css(buttonsContainer)}>
-                <Button className={css(buttons)}>
-                  Cancel
-                </Button>
-                <Button className={css(buttons, buttonsChecked)}>
-                  Continue
-                </Button>
-              </div>
-            </form>
+            </AuthForm>
           </div>
           </SectionContent>
       </div>
