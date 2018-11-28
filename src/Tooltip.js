@@ -6,6 +6,7 @@ const container = {
   flexDirection: 'column',
   alignItems: 'center',
   paddingTop: '15px',
+  flexShrink: '0',
 }
 
 const arrow = {
@@ -20,7 +21,6 @@ const tooltipBody = {
   fontFamily: 'Open Sans',
   fontSize: '14px',
   fontWeight: '600',
-  // lineHeight: '1.3',
   height: '29px',
   borderRadius: '2px',
   letterSpacing: 'normal',

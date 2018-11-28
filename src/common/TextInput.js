@@ -8,7 +8,7 @@ const input = {
   backgroundColor: '#ffffff',
   border: '0',
   height: '40px',
-  minWidth: '0',
+  width: '100%',
 };
 
 const errorInput = {

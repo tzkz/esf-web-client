@@ -12,11 +12,10 @@ const formTitle = {
   letterSpacing: '1.2',
   textAlign: 'left',
   color: '#262626',
-  marginBottom: '25px',
+  paddingBottom: '25px',
 }
 
 const pinInput = {
-  width: '290px',
   height: '40px',
   fontSize: '16px',
   borderRadius: '5px',

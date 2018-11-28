@@ -3,10 +3,11 @@ import { css } from 'emotion'
 
 import Button from './common/Button'
 
-const buttonsContainer = {
+const buttonContainer = {
   display: 'flex',
   justifyContent: 'space-between',
-  marginTop: '30px',
+  paddingTop: '30px',
+  flexShrink: '0',
 }
 
 const buttons = {
@@ -33,7 +34,7 @@ const buttonsChecked = {
 const AuthForm = ({ children, onCancel, ...other }) => (
   <form {...other}>
     {children}
-    <div className={css(buttonsContainer)}>
+    <div className={css(buttonContainer)}>
       <Button className={css(buttons)} type="button" onClick={onCancel}>
         Cancel
       </Button>
