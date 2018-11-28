@@ -12,17 +12,17 @@ const container = {
 class Auth extends React.Component {
   state = {
     p12decrypted: null,
-    p12error: null,
+    pinError: null,
   }
 
-  onPinChange = () => this.setState({ p12error: null })
+  onPinChange = () => this.setState({ pinError: null })
 
   onPinSubmit = (pin) => {
     try {
       const p12decrypted = decryptP12(this.props.p12b64, pin)
       this.setState({ p12decrypted })
     } catch (error) {
-      this.setState({ p12error: error })
+      this.setState({ pinError: error })
     }
   }
 
@@ -34,7 +34,7 @@ class Auth extends React.Component {
             onSubmit={this.onPinSubmit}
             onCancel={this.props.onCancel}
             onPinChange={this.onPinChange}
-            p12error={this.state.p12error}
+            pinError={this.state.pinError}
           />
         )}
       </div>

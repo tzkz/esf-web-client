@@ -57,7 +57,7 @@ class Pin extends React.Component{
           placeholder="Pin"
           value={this.state.pin}
           onChange={this.onPinChange}
-          errorMessage={this.props.p12error && 'Wrong PIN'}
+          errorMessage={this.props.pinError && 'Wrong PIN'}
         />
         <Tooltip>
           Enter "Qwerty12" for demo
