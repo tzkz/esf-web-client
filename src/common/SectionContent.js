@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './SectionContent.css';
+import { css } from 'emotion';
 
-const SectionContent = ({ children, ...props }) => (
-  <div className="content" {...props}>{children}</div>
+const container = {
+  maxWidth: '960px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  '@media (min-width: 768px)': {
+    padding: '0 1em',
+  }
+}
+
+const SectionContent = ({ children, className, ...props }) => (
+  <div className={css(container, className)} {...props}>{children}</div>
 );
 
 SectionContent.propTypes = {

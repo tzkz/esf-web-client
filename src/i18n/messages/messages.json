@@ -5,6 +5,11 @@
     "filepath": "./src/common/Header.js"
   },
   {
+    "id": "BottomCta.Title",
+    "defaultMessage": "Try out today",
+    "filepath": "./src/Landing/BottomCta.js"
+  },
+  {
     "id": "Features.FeatureOneTitle",
     "defaultMessage": "We do not store your data",
     "filepath": "./src/Landing/Features.js"
@@ -45,8 +50,8 @@
     "filepath": "./src/Landing/Footer.js"
   },
   {
-    "id": "LoginInitial.BrowseCertificate",
-    "defaultMessage": "Browse Certificate",
+    "id": "LoginInitial.SignIn",
+    "defaultMessage": "Sign In",
     "filepath": "./src/Landing/LoginInitial.js"
   },
   {
@@ -56,7 +61,7 @@
   },
   {
     "id": "Main.Headline",
-    "defaultMessage": "Export invoices to PDF with ease. One invoice or in bulk",
+    "defaultMessage": "Export ESF invoices with ease",
     "filepath": "./src/Landing/Main.js"
   },
   {

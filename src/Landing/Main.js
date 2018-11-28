@@ -5,7 +5,7 @@ import './Main.css';
 import SectionContent from '../common/SectionContent';
 import LoginInitial from './LoginInitial';
 
-const Main = () => (
+const Main = ({ onDemoClick }) => (
   <section className="main">
     <SectionContent>
       <div className="main-inner">
@@ -13,7 +13,7 @@ const Main = () => (
           <div className="description-title">
             <FormattedMessage
               id="Main.Headline"
-              defaultMessage="Export invoices to PDF with ease. One invoice or in bulk"
+              defaultMessage="Export ESF invoices with ease"
             />
           </div>
           <div className="description-body">
@@ -24,7 +24,7 @@ const Main = () => (
           </div>
         </div>
         <div className="login-area">
-          <LoginInitial />
+          <LoginInitial onDemoClick={onDemoClick} />
         </div>
       </div>
     </SectionContent>

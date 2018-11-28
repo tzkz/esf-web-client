@@ -9,22 +9,24 @@ export const label = {
   borderRadius: '5px',
   backgroundColor: '#729246',
   color: '#FFFFFF',
-  border: 'unset',
+  border: '1px solid #729246',
   cursor: 'pointer',
   fontFamily: 'inherit',
   letterSpacing: '0.8px',
+  transition: '.2s ease-in-out',
   ':hover': {
     backgroundColor: '#617c3c',
+    borderColor: '#617c3c',
   },
 };
 
-const FileInput = ({ children, labelClassName, ...other }) => (
+const FileInput = ({ children, className, ...other }) => (
   <div>
     <label
       htmlFor="file-input"
       className={css(
         label,
-        labelClassName,
+        className,
       )}
     >
       {children}
@@ -41,7 +43,7 @@ const FileInput = ({ children, labelClassName, ...other }) => (
 
 FileInput.propTypes = {
   children: PropTypes.node,
-  labelClassName: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default FileInput;

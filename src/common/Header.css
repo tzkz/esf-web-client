@@ -1,20 +1,3 @@
-.header {
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 6.25em;
-  color: #0194bf;
-}
-@media (min-width: 768px) {
-  .header-content {
-    justify-content: space-between;
-  }
-}
-
 .title {
   font-family: 'Cuprum', sans-serif;
   font-size: 2.25em;
