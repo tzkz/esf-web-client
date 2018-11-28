@@ -33,7 +33,7 @@ class Pin extends React.Component{
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.onPinSubmit(this.state.pin)
+    this.props.onSubmit(this.state.pin)
   }
 
   onPinChange = (event) => {
@@ -47,6 +47,7 @@ class Pin extends React.Component{
     return (
       <AuthStep
         onSubmit={this.onSubmit}
+        onCancel={this.props.onCancel}
       >
         <div className={css(formTitle)}>
           Enter Certificate PIN

@@ -21,7 +21,6 @@ import Result from './Result';
 import Pin from './Pin';
 import Password from './Password';
 import Company from './Company';
-import { decryptP12 } from './crypt';
 
 if (!window.Intl) {
   require('intl');
@@ -39,8 +38,6 @@ class App extends Component {
     locale: 'en',
     showSidebar: false,
     p12b64: '',
-    p12decrypted: null,
-    p12error: null,
     user: null,
   }
 
@@ -50,23 +47,8 @@ class App extends Component {
 
   onDemoClick = () => this.setState({ p12b64: testKey })
 
-  onPinSubmit = (pin) => {
-    try {
-      const p12decrypted = decryptP12(this.state.p12b64, pin)
-      this.setState({ p12decrypted })
-    } catch (error) {
-      this.setState({ p12error: error })
-    }
-  }
-
-  onPinChange = () => this.setState({ p12error: null })
-
-  onPasswordSubmit = (password) => {
-    // TODO: get user info and set user state
-  }
-
-  onLogin = (password) => {
-    // TODO: obtain session id and set state
+  onAuthCancel = () => {
+    this.setState({ p12b64: '', user: null })
   }
 
   render() {
@@ -90,13 +72,8 @@ class App extends Component {
               path="/"
               render={() => this.state.p12b64
                 ? <Auth
-                    p12decrypted={this.state.p12decrypted}
-                    p12error={this.state.p12error}
-                    user={this.state.user}
-                    onPinSubmit={this.onPinSubmit}
-                    onPinChange={this.onPinChange}
-                    onPasswordSubmit={this.onPasswordSubmit}
-                    onLogin={this.onLogin}
+                    p12b64={this.state.p12b64}
+                    onCancel={this.onAuthCancel}
                   />
                 : <Landing
                     locale={this.state.locale}
