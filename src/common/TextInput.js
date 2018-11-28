@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { css } from 'emotion'
 
 const input = {
   padding: '10px',
@@ -9,7 +9,7 @@ const input = {
   border: '0',
   height: '40px',
   width: '100%',
-};
+}
 
 const errorInput = {
   borderColor: 'red',
@@ -40,4 +40,4 @@ TextInput.propTypes = {
   errorText: PropTypes.string,
 };
 
-export default TextInput;
+export default TextInput
