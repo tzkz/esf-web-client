@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import SectionContent from './common/SectionContent';
 import TextInput from './common/TextInput';
 import AuthForm from './AuthForm';
+import Tooltip from './Tooltip';
 
 const container = {
   backgroundColor: '#ffffff',
@@ -61,41 +62,6 @@ const pinInput = {
   marginTop: '25px',
 }
 
-const toolTipArrow = {
-  display: 'flex',
-  justifyContent: 'center',
-  marginTop: '15px',
-}
-
-const Arrow = {
-  width: '0', 
-  height: '0', 
-  borderLeft: '5px solid transparent',
-  borderRight: '5px solid transparent',
-  borderBottom: '5px solid rgba(97, 97, 97, 0.9)',
-}
-
-const toolTip = {
-  display: 'flex',
-  justifyContent: 'center',
-}
-
-const toolTipInner = {
-  position: 'relative',
-  fontFamily: 'Open Sans',
-  fontSize: '14px',
-  fontWeight: '600',
-  lineHeight: '1.3',
-  width: '206px',
-  height: '29px',
-  borderRadius: '2px',
-  letterSpacing: 'normal',
-  textAlign: 'center',
-  backgroundColor: 'rgba(97, 97, 97, 0.9)',
-  color: '#ffffff',
-  paddingTop: '5px',
-}
-
 const errorMessage = {
   color: 'red',
   fontSize: 12,
@@ -136,32 +102,24 @@ class Pin extends React.Component{
             </button>
           </div>
           <div className={css(innerContainer)}>
-            <div className={css(header)}>
-              Enter Certificate PIN
-            </div>
             <AuthForm onSubmit={this.onSubmit}>
-              <div>
-                <TextInput
-                  className={css(pinInput, this.props.p12error && errorInput)}
-                  placeholder="Pin"
-                  value={this.state.pin}
-                  onChange={this.onPinChange}
-                />
-                {this.props.p12error &&
-                  <div className={css(errorMessage)}>
-                    Wrong PIN
-                  </div>
-                }
+              <div className={css(header)}>
+                Enter Certificate PIN
               </div>
-              <div className={css(toolTipArrow)}>
-                <div className={css(Arrow)}>
+              <TextInput
+                className={css(pinInput, this.props.p12error && errorInput)}
+                placeholder="Pin"
+                value={this.state.pin}
+                onChange={this.onPinChange}
+              />
+              {this.props.p12error &&
+                <div className={css(errorMessage)}>
+                  Wrong PIN
                 </div>
-              </div>
-              <div className={css(toolTip)}>
-                <div className={css(toolTipInner)}>
-                  Enter "Qwerty12" for demo
-                </div>
-              </div>
+              }
+              <Tooltip>
+                Enter "Qwerty12" for demo
+              </Tooltip>
             </AuthForm>
           </div>
           </SectionContent>
