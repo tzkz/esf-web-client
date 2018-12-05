@@ -21,6 +21,7 @@ import Result from './Result';
 import Pin from './Pin';
 import Password from './Password';
 import Company from './Company';
+import Sidebar from './Sidebar';
 
 if (!window.Intl) {
   require('intl');
@@ -45,6 +46,8 @@ class App extends Component {
 
   onMenuClick = () => this.setState({ showSidebar: true })
 
+  onOverlayClick = () => this.setState({ showSidebar: false })
+
   onDemoClick = () => this.setState({ p12b64: testKey })
 
   onAuthCancel = () => {
@@ -63,9 +66,9 @@ class App extends Component {
         <Router>
           <div className={classnames('App', css(container))}>
             {this.state.showSidebar && (
-              <div>
-                Sidebar
-              </div>
+              <Sidebar 
+                onOverlayClick={this.onOverlayClick}
+              />
             )}
             <Route
               exact
