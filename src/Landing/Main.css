@@ -1,15 +1,3 @@
-.main {
-  background-image: linear-gradient(90deg,#744fc6 12%,#697eff 100%);
-  display: flex;
-  flex: 1;
-}
-
-.main-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .description {
   color: #ffffff;
   margin: 0 1.5em;
@@ -46,15 +34,5 @@
     line-height: 2.57;
     letter-spacing: 0.9px;
     padding: 0;
-  }
-}
-
-.login-area {
-  color: #cdcdcd;
-  padding: 0 0 2em;
-}
-@media (min-width: 768px) {
-  .login-area {
-    padding: 2em 0;
   }
 }
