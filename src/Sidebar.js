@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
+import Select from './common/Select';
 
-const sidebarContainer = {
+const Container = {
   position: 'fixed',
   display: 'flex',
   width: '100%',
@@ -11,7 +12,7 @@ const sidebarContainer = {
 }
 
 const drawerContainer = {
-  width: '75%',
+  flexBasis: '75%',
   height: '100%',
   boxShadow: '0 19px 36px 0 rgba(0, 0, 0, 0.28)',
 }
@@ -25,20 +26,6 @@ const dropdownContainer = {
   fontFamily: 'roboto',
   height: '30%',
   paddingBottom: '15px',
-}
-
-const dropdown = {
-  display: 'flex',
-  alignItems: 'center',
-}
-
-const Arrow = {
-  width: '0', 
-  height: '0', 
-  borderLeft: '5px solid transparent',
-  borderRight: '5px solid transparent',
-  borderTop: '5px solid #ffffff',
-  marginLeft: '5px',
 }
 
 const searchResultContainer = {
@@ -77,20 +64,23 @@ const resultsButton = {
 
 const overlayContainer = {
   backgroundColor: 'transparent',
-  width: '25%',
+  flexGrow: '1',
   height: '100%',
 }
 
+const companyOptions = [
+  {value:'option1', label: 'ТОО "Самая лучшая компания"'},
+  {value:'option2', label: 'ТОО "Компания Тимура"'},
+  {value:'option3', label: 'ТОО "Компания Ербола"'},
+];
+
 const Sidebar = ({ onOverlayClick }) => (
-  <div className={css(sidebarContainer)}>
+  <div className={css(Container)}>
     <div className={css(drawerContainer)}>
       <div className={css(dropdownContainer)}>
-        <div className={css(dropdown)}>
-          <div>
-            ТОО "Самая лучшая компа...
-          </div>
-          <div className={css(Arrow)} />
-        </div>
+        <Select placeholder="Company"
+          options={companyOptions}
+        />
       </div>
       <div className={css(searchResultContainer)}>
         <div className={css(searchButtonContainer)}>
@@ -113,8 +103,7 @@ const Sidebar = ({ onOverlayClick }) => (
         </div>
       </div>
     </div>
-    <div className={css(overlayContainer)} onClick={onOverlayClick}>
-    </div>
+    <div className={css(overlayContainer)} onClick={onOverlayClick} />
   </div>
 );
 
