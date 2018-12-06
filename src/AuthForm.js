@@ -11,7 +11,7 @@ const buttonContainer = {
 }
 
 const buttons = {
-  width: '138px',
+  width: '48%',
   height: '40px',
   lineHeight: '1.38',
   border: 'solid 1px #327dd0',

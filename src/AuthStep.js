@@ -5,19 +5,17 @@ import AuthForm from './AuthForm'
 
 const container = {
   backgroundColor: '#ffffff',
-  height: '100%',
+  minHeight: '100%',
   display: 'flex',
   flexDirection: 'column',
+  justifyContent: 'space-between',
 }
 
 const form = {
-  display: 'flex',
-  justifyContent: 'center',
-  flexDirection: 'column',
   alignSelf: 'center',
-  flexGrow: '1',
   width: '100%',
-  maxWidth: '290px',
+  maxWidth: '414px',
+  padding: '24px',
 }
 
 const header = {
