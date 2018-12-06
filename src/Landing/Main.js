@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { css } from 'emotion';
 
-import './Main.css';
 import SectionContent from '../common/SectionContent';
 import FileInput from '../common/FileInput';
 import Button from '../common/Button';
@@ -12,6 +11,34 @@ const main = {
   background: 'linear-gradient(90deg, #744fc6 12%, #697eff 100%)',
   display: 'flex',
   flex: '1',
+  color: '#FFFFFF',
+  textAlign: 'center',
+}
+
+const headline = {
+  fontSize: '30px',
+  lineHeight: '1.67',
+  fontWeight: '600',
+  letterSpacing: '1px',
+  margin: '1em 24px 0',
+  '@media (min-width: 768px)': {
+    fontSize: '34px',
+    lineHeight: '50px',
+    margin: '2em 24px 0',
+  },
+}
+
+const subheadline = {
+  fontSize: '18px',
+  fontWeight: '600',
+  lineHeight: '1.67',
+  letterSpacing: '0.8px',
+  padding: '16px 24px 0',
+  '@media (min-width: 768px)': {
+    lineHeight: '2.57',
+    letterSpacing: '0.9px',
+    padding: '8px 24px 0',
+  }
 }
 
 const demoButton = {
@@ -34,10 +61,10 @@ export const signInButton = {
   },
 };
 
-const loginform = {
+const buttons = {
   display: 'flex',
   justifyContent: 'center',
-  padding: '0 16px',
+  padding: '16px 16px 0',
   '@media (min-width: 768px)': {
     padding: '2em 16px',
   }
@@ -51,21 +78,19 @@ const browseButtonContainer = {
 const Main = ({ onDemoClick }) => (
   <section className={css(main)}>
     <SectionContent>
-      <div className="description">
-        <div className="description-title">
-          <FormattedMessage
-            id="Main.Headline"
-            defaultMessage="Export ESF invoices with ease"
-          />
-        </div>
-        <div className="description-body">
-          <FormattedMessage
-            id="Main.Subheadline"
-            defaultMessage="Get what the official app is missing absolutely FREE"
-          />
-        </div>
+      <div className={css(headline)}>
+        <FormattedMessage
+          id="Main.Headline"
+          defaultMessage="Export ESF invoices with ease"
+        />
       </div>
-      <div className={css(loginform)}>
+      <div className={css(subheadline)}>
+        <FormattedMessage
+          id="Main.Subheadline"
+          defaultMessage="Get what the official app is missing absolutely FREE"
+        />
+      </div>
+      <div className={css(buttons)}>
         <div className={css(browseButtonContainer)}>
           <FileInput className={css(signInButton)}>
             <FormattedMessage
