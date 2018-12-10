@@ -12,7 +12,7 @@ const Container = {
 }
 
 const drawerContainer = {
-  flexBasis: '75%',
+  width: '264px',
   height: '100%',
   boxShadow: '0 19px 36px 0 rgba(0, 0, 0, 0.28)',
 }
@@ -24,7 +24,7 @@ const dropdownContainer = {
   backgroundColor: '#744fc6',
   color: '#ffffff',
   fontFamily: 'roboto',
-  height: '30%',
+  height: '172px',
   paddingBottom: '15px',
 }
 
@@ -85,8 +85,8 @@ const Sidebar = ({ onOverlayClick }) => (
       <div className={css(searchResultContainer)}>
         <div className={css(searchButtonContainer)}>
           <div className={css(magnifierSymbol)}>
-            <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24" height="17.5" width="17.5" enable-background="new 0 0 17 17"><g color="#327dd0">
-            <path fill="currentColor" d="M 9 2 C 5.1 2 2 5.1 2 9 C 2 12.9 5.1 16 9 16 C 10.722428 16 12.28779 15.386196 13.5 14.375 L 14 14.875 L 14 15.6875 L 20.3125 22 L 22 20.3125 L 15.6875 14 L 14.8125 14 L 14.34375 13.53125 C 15.372135 12.314388 16 10.738606 16 9 C 16 5.1 12.9 2 9 2 z M 9 4 C 11.8 4 14 6.2 14 9 C 14 11.8 11.8 14 9 14 C 6.2 14 4 11.8 4 9 C 4 6.2 6.2 4 9 4 z"/></g>
+            <svg height='17.6px' width='17.5px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.5 17.6'><defs />
+            <path fill='#327dd0' id='path' d='M15.5 1161.4l5 5-1.5 1.5-5-5v-.8l-.3-.3a6.362 6.362 0 0 1-4.2 1.5 6.039 6.039 0 0 1-4.6-1.9 6.6 6.6 0 0 1-1.9-4.6 6.039 6.039 0 0 1 1.9-4.6 6.6 6.6 0 0 1 4.6-1.9 6.19 6.19 0 0 1 4.6 1.9 6.6 6.6 0 0 1 1.9 4.6 6.361 6.361 0 0 1-1.5 4.2l.3.3h.7zm-9.2-1.3a4.224 4.224 0 0 0 3.2 1.3 4.377 4.377 0 0 0 3.2-1.3 4.588 4.588 0 0 0 0-6.4 4.224 4.224 0 0 0-3.2-1.3 4.377 4.377 0 0 0-3.2 1.3 4.224 4.224 0 0 0-1.3 3.2 4.626 4.626 0 0 0 1.3 3.2z' className='cls-1' transform='translate(-3 -1150.3)' />
             </svg>
           </div>
           <div className={css(searchButton)}>
@@ -95,7 +95,11 @@ const Sidebar = ({ onOverlayClick }) => (
         </div>
         <div className={css(resultsButtonContainer)}>
           <div className={css(checklistIcon)}>
-          <svg height="12" width="16" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><g color="#727272"><path fill="currentColor" d="M512 1248v192q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h320q40 0 68 28t28 68zm0-512v192q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h320q40 0 68 28t28 68zm1280 512v192q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h960q40 0 68 28t28 68zm-1280-1024v192q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h320q40 0 68 28t28 68zm1280 512v192q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h960q40 0 68 28t28 68zm0-512v192q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h960q40 0 68 28t28 68z"/></g></svg>
+            <svg height='10px' width='18px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.9 10'>
+              <defs />
+            <path fill='#727272' id='path' d='M779.2 1086.8v-2h2v2zm0 4v-2h2v2zm0 4v-2h2v2zm3.9-10h14v2h-14zm0 6v-2h14v2zm0 4v-2h14v2z'
+            className='cls-1' transform='translate(-779.2 -1084.8)' />
+            </svg>
           </div>
           <div className={css(resultsButton)}>
             Results
