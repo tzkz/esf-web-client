@@ -27,7 +27,7 @@ class Landing extends React.Component {
   }
 
   render() {
-    const { locale, onLocaleChange } = this.props;
+    const { locale, onLocaleChange, onMenuClick } = this.props;
     const { p12base64 } = this.state;
 
     return (
@@ -40,6 +40,7 @@ class Landing extends React.Component {
           <Header
             localeValue={locale}
             onLocaleChange={onLocaleChange}
+            onMenuClick={onMenuClick}
             className={css({
               backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
               color: 'white',

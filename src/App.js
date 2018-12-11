@@ -71,6 +71,7 @@ class App extends Component {
                   locale={this.state.locale}
                   onLocaleChange={this.onLocaleChange}
                   onAuthCancel={this.onAuthCancel}
+                  onMenuClick={this.onMenuClick}
                 />
               )}
             />
