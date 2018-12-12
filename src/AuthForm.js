@@ -12,22 +12,22 @@ const buttonContainer = {
 
 const buttons = {
   width: '48%',
-  height: '40px',
+  height: '50px',
   lineHeight: '1.38',
-  border: 'solid 1px #327dd0',
-  color: '#327dd0',
+  border: 'solid 1px #697eff',
+  color: '#697eff',
   backgroundColor: '#ffffff',
   ':hover': {
-    backgroundColor: '#ebf2fa',
+    backgroundColor: '#F1F3FF',
   }
 }
 
 const buttonsChecked = {
-  backgroundColor: '#327dd0',
+  backgroundColor: '#697eff',
   color: '#ffffff',
   ':hover': {
-    backgroundColor: '#60A3EE',
-    border: 'solid 1px #60A3EE',
+    backgroundColor: '#6073E8',
+    border: 'solid 1px #6073E8',
   }
 }
 
