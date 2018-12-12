@@ -16,7 +16,6 @@ const formTitle = {
 }
 
 const pinInput = {
-  height: '40px',
   fontSize: '16px',
   borderRadius: '5px',
   backgroundColor: '#ffffff',

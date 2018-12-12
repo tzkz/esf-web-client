@@ -10,7 +10,7 @@ describe('<TextInput />', () => {
     borderRadius: '5px',
     backgroundColor: '#ffffff',
     border: '0',
-    height: '40px',
+    height: '50px',
     width: '100%',
   };
 
