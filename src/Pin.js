@@ -1,7 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
 import TextInput from './common/TextInput';
-import Tooltip from './Tooltip';
 import AuthStep from './AuthStep';
 
 const formTitle = {
@@ -13,16 +12,6 @@ const formTitle = {
   textAlign: 'left',
   color: '#262626',
   paddingBottom: '25px',
-}
-
-const pinInput = {
-  fontSize: '16px',
-  borderRadius: '5px',
-  backgroundColor: '#ffffff',
-  outline: 'none',
-  border: 'solid 1px #707070cd',
-  paddingLeft: '10px',
-  marginTop: '25px',
 }
 
 class Pin extends React.Component{
@@ -52,15 +41,14 @@ class Pin extends React.Component{
           Enter Certificate PIN
         </div>
         <TextInput
-          className={css(pinInput)}
+          label="PIN"
           placeholder="Pin"
           value={this.state.pin}
           onChange={this.onPinChange}
-          errorMessage={this.props.pinError && 'Wrong PIN'}
+          helperText={'Enter "Qwerty12" for demo'}
+          errorMessage={this.props.pinError && 'Wrong PIN. Enter "Qwerty12" for demo'}
+          type="password"
         />
-        <Tooltip>
-          Enter "Qwerty12" for demo
-        </Tooltip>
       </AuthStep>
     );
   }
