@@ -19,7 +19,7 @@ class Auth extends React.Component {
 
   onPinSubmit = (pin) => {
     try {
-      const p12decrypted = decryptP12(this.props.p12b64, pin)
+      const p12decrypted = decryptP12(this.props.p12base64, pin)
       this.setState({ p12decrypted })
     } catch (error) {
       this.setState({ pinError: error })
@@ -43,7 +43,7 @@ class Auth extends React.Component {
 }
 
 Auth.propTypes = {
-  p12b64: PropTypes.string,
+  p12base64: PropTypes.string,
   onCancel: PropTypes.func,
 }
 

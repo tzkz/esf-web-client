@@ -32,7 +32,7 @@ class Landing extends React.Component {
 
     return (
       p12base64 ? (
-        <Auth p12b64={p12base64} onCancel={this.onAuthCancel} />
+        <Auth p12base64={p12base64} onCancel={this.onAuthCancel} />
       ) : (
         <div
           className={css(container)}
