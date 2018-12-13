@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { css } from 'emotion';
+
 import TextInput from './common/TextInput';
 import AuthStep from './AuthStep';
+import { decryptP12 } from './crypt'
 
 const formTitle = {
   fontSize: '24px',
@@ -12,17 +15,20 @@ const formTitle = {
 class Pin extends React.Component{
   state = {
     pin: '',
+    pinError: null,
+  }
+
+  onPinChange = (event) => {
+    this.setState({ pin: event.target.value, pinError: null })
   }
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.onSubmit(this.state.pin)
-  }
-
-  onPinChange = (event) => {
-    this.setState({ pin: event.target.value })
-    if (this.props.onPinChange) {
-      this.props.onPinChange(event)
+    try {
+      const p12decrypted = decryptP12(this.props.p12base64, this.state.pin)
+      this.props.onDecrypt(p12decrypted)
+    } catch (error) {
+      this.setState({ pinError: error })
     }
   }
 
@@ -41,12 +47,18 @@ class Pin extends React.Component{
           value={this.state.pin}
           onChange={this.onPinChange}
           helperText={'Enter "Qwerty12" for demo'}
-          errorMessage={this.props.pinError && 'Wrong PIN. Enter "Qwerty12" for demo'}
+          errorMessage={this.state.pinError && 'Wrong PIN. Enter "Qwerty12" for demo'}
           type="password"
         />
       </AuthStep>
     );
   }
+}
+
+Pin.propTypes = {
+  onDecrypt: PropTypes.func,
+  onCancel: PropTypes.func,
+  p12base64: PropTypes.string,
 }
 
 export default Pin;
