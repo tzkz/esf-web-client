@@ -5,6 +5,7 @@ import { css } from 'emotion'
 const container = {
   display: 'flex',
   flexDirection: 'column-reverse',
+  paddingBottom: '16px',
 }
 
 const input = {
@@ -34,7 +35,7 @@ const helperStyle = {
   fontFamily: 'inherit',
   fontSize: '12px',
   color: 'rgb(0,0,0,.5)',
-  padding: '2px 12px 0',
+  padding: '2px 16px 0',
 }
 
 const errorContainer = {
