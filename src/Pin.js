@@ -4,14 +4,9 @@ import TextInput from './common/TextInput';
 import AuthStep from './AuthStep';
 
 const formTitle = {
-  fontFamily: 'Open Sans',
   fontSize: '24px',
-  fontWeight: '600',
-  lineHeight: '1.38',
-  letterSpacing: '1.2',
-  textAlign: 'left',
-  color: '#262626',
-  paddingBottom: '25px',
+  color: 'rgb(0,0,0,0.87)',
+  paddingBottom: '24px',
 }
 
 class Pin extends React.Component{
