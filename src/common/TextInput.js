@@ -23,7 +23,7 @@ const labelStyle = {
   fontFamily: 'inherit',
   fontSize: '12px',
   color: 'rgb(0,0,0,.5)',
-  paddingLeft: '16px',
+  padding: '0 0 4px 16px',
 }
 
 const labelError = {
@@ -34,13 +34,13 @@ const helperStyle = {
   fontFamily: 'inherit',
   fontSize: '12px',
   color: 'rgb(0,0,0,.5)',
-  paddingLeft: '12px',
+  padding: '2px 12px 0',
 }
 
 const errorContainer = {
   color: '#B00020',
   fontSize: 12,
-  padding: '0 12px',
+  padding: '2px 12px 0',
 }
 
 const TextInput = ({ className, errorMessage, label, helperText, ...other }) => (
