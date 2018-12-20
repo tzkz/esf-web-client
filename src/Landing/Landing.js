@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { css } from 'emotion';
 
 import Header from '../common/Header';
@@ -59,6 +60,12 @@ class Landing extends React.Component {
       )
     )
   }
-} 
+}
 
-export default Landing;
+const mapStateToProps = (state) => {
+  return {
+    sessionId: state.sessionId,
+  }
+}
+
+export default connect(mapStateToProps)(Landing);
