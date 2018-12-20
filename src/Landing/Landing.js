@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { css } from 'emotion';
 
 import Header from '../common/Header';
@@ -29,6 +30,12 @@ class Landing extends React.Component {
   render() {
     const { locale, onLocaleChange, onMenuClick } = this.props;
     const { p12base64 } = this.state;
+
+    if (this.props.sessionId) {
+      return (
+        <Redirect to="/search" />
+      )
+    }
 
     return (
       p12base64 ? (

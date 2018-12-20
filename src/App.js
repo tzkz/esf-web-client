@@ -35,6 +35,7 @@ class App extends Component {
   state = {
     locale: 'en',
     showSidebar: false,
+    sessionId: null,
     user: null,
   }
 
@@ -72,6 +73,7 @@ class App extends Component {
                   onLocaleChange={this.onLocaleChange}
                   onAuthCancel={this.onAuthCancel}
                   onMenuClick={this.onMenuClick}
+                  sessionId={this.state.sessionId}
                 />
               )}
             />
