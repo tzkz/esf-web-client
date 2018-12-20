@@ -1,8 +1,9 @@
-import React from 'react';
-import { css } from 'emotion';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { css } from 'emotion'
 
-import TextInput from './common/TextInput';
-import AuthStep from './AuthStep';
+import TextInput from './common/TextInput'
+import AuthStep from './AuthStep'
 
 const formTitle = {
   fontSize: '24px',
@@ -13,11 +14,12 @@ const formTitle = {
 class Password extends React.Component {
   state = {
     password: '',
-    environment: '',
+    passwordError: null,
+    environment: 'test',
   }
 
-  onPinChange = (event) => {
-    this.setState({ pin: event.target.value })
+  onPasswordChange = (event) => {
+    this.setState({ password: event.target.value })
   }
 
   onSubmit = (event) => {
@@ -45,14 +47,7 @@ class Password extends React.Component {
           value={this.state.password}
           onChange={this.onPasswordChange}
           helperText={'Enter "TestPass123" for demo'}
-          errorMessage={this.state.pinError && 'Wrong Password. Enter "TestPass123" for demo'}
-          type="password"
-        />
-        <TextInput
-          label="Environment"
-          placeholder="Environment"
-          value={this.state.environment}
-          onChange={(event) => this.setState({ environment: event.target.value })}
+          errorMessage={this.state.passwordError && 'Wrong Password. Enter "TestPass123" for demo'}
           type="password"
         />
       </AuthStep>
@@ -60,4 +55,9 @@ class Password extends React.Component {
   }
 }
 
-export default Password;
+Password.propTypes = {
+  onCancel: PropTypes.func,
+  p12decrypted: PropTypes.object,
+}
+
+export default Password
