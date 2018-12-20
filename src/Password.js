@@ -4,6 +4,7 @@ import { css } from 'emotion'
 
 import TextInput from './common/TextInput'
 import AuthStep from './AuthStep'
+import { extractIdFromKey } from './crypt'
 
 const formTitle = {
   fontSize: '24px',
@@ -39,7 +40,7 @@ class Password extends React.Component {
           Enter Account Password
         </div>
         <div className={css(formTitle)}>
-          for ID 161141016493
+          for ID {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
         </div>
         <TextInput
           label="Password"
