@@ -1,8 +1,8 @@
 import { combineReducers, createStore } from 'redux'
 import { throttle } from 'lodash'
 
-const SET_SESSION_ID = 'SET_SESSION_ID'
-const SET_USER = 'SET_USER'
+export const SET_SESSION_ID = 'SET_SESSION_ID'
+export const SET_USER = 'SET_USER'
 
 const sessionId = (state = null, action) => {
   switch (action.type) {
