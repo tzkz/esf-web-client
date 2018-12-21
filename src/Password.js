@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { css } from 'emotion'
 
 import TextInput from './common/TextInput'
 import AuthStep from './AuthStep'
-import { extractIdFromKey } from './crypt'
+import { extractIdFromKey, extractCert, toTrimmedPem } from './crypt'
+import { apiCall } from './apiUtils';
+import { SET_SESSION_ID } from './store';
 
 const formTitle = {
   fontSize: '24px',
@@ -16,18 +19,40 @@ class Password extends React.Component {
   state = {
     password: '',
     passwordError: null,
-    environment: 'test',
   }
 
   onPasswordChange = (event) => {
-    this.setState({ password: event.target.value })
+    this.setState({ password: event.target.value, passwordError: false })
+  }
+
+  onSubmitError = (error) => {
+    if (error.name === 'ApiError') {
+      return error.response.json()
+        .then((json) => {
+          if (json.error.faultcode === 'ns1:SecurityError') {
+            this.setState({ passwordError: true })
+          }
+        })
+    }
   }
 
   onSubmit = (event) => {
-    const { password, environment } = this.state;
+    const { password } = this.state;
+    const { dispatch } = this.props;
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        username: extractIdFromKey(this.props.p12decrypted),
+        password,
+        x509Certificate: toTrimmedPem(extractCert(this.props.p12decrypted)),
+      })
+    }
 
     event.preventDefault()
-    this.props.onSubmit({ password, environment })
+
+    return apiCall('/sessions/createsession', options)
+      .then(({ sessionId }) => dispatch({ type: SET_SESSION_ID,  sessionId }))
+      .catch(this.onSubmitError)
   }
 
   render() {
@@ -50,6 +75,7 @@ class Password extends React.Component {
           helperText={'Enter "TestPass123" for demo'}
           errorMessage={this.state.passwordError && 'Wrong Password. Enter "TestPass123" for demo'}
           type="password"
+          autoFocus
         />
       </AuthStep>
     );
@@ -61,4 +87,4 @@ Password.propTypes = {
   p12decrypted: PropTypes.object,
 }
 
-export default Password
+export default connect()(Password)

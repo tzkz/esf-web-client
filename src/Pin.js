@@ -49,6 +49,7 @@ class Pin extends React.Component{
           helperText={'Enter "Qwerty12" for demo'}
           errorMessage={this.state.pinError && 'Wrong PIN. Enter "Qwerty12" for demo'}
           type="password"
+          autoFocus
         />
       </AuthStep>
     );
