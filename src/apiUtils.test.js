@@ -3,7 +3,7 @@ import config from './config';
 
 describe('apiUtils.js', () => {
   describe('apiCall()', () => {
-    const response = { json: jest.fn().mockResolvedValue() }
+    const response = { json: jest.fn().mockResolvedValue(), ok: true }
     global.fetch = jest.fn().mockResolvedValue(response)
     config.apiHost = 'https://example.com'
 
@@ -38,6 +38,17 @@ describe('apiUtils.js', () => {
       return apiCall('/foo')
         .then(() => {
           expect(response.json).toBeCalled()
+        })
+    })
+
+    it('rejects if response is not ok', () => {
+      response.ok = false;
+
+      return apiCall('/foo')
+        .then(() => Promise.reject('shouldnotresolve'))
+        .catch((error) => {
+          expect(error).not.toEqual('shouldnotresolve')
+          expect(error.response).toEqual(response)
         })
     })
   })
