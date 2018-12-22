@@ -7,7 +7,7 @@ import TextInput from './common/TextInput'
 import AuthStep from './AuthStep'
 import { extractIdFromKey, extractCert, toTrimmedPem } from './crypt'
 import { apiCall } from './apiUtils';
-import { SET_SESSION_ID, SET_USER } from './store';
+import { SET_SESSION_ID, SET_USER, SET_PASSWORD } from './store';
 
 const formTitle = {
   fontSize: '24px',
@@ -54,7 +54,10 @@ class Password extends React.Component {
     return apiCall('/sessions/currentuser', options)
   }
 
-  setUser = ({ user }) => this.props.dispatch({ type: SET_USER, user })
+  setUser = ({ user }) => {
+    this.props.dispatch({ type: SET_USER, user })
+    this.props.dispatch({ type: SET_PASSWORD, password: this.state.password })
+  }
 
   onSubmit = (event) => {
     const { password } = this.state;
