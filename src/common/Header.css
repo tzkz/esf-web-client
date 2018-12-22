@@ -21,6 +21,7 @@
   line-height: 1.5;
   font-weight: 600;
   padding-left: 34px;
+  cursor: pointer;
 }
 
 .nav-item-lang {

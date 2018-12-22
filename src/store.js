@@ -3,6 +3,7 @@ import { throttle } from 'lodash'
 
 export const SET_SESSION_ID = 'SET_SESSION_ID'
 export const SET_USER = 'SET_USER'
+export const SET_PASSWORD = 'SET_PASSWORD'
 
 const sessionId = (state = null, action) => {
   switch (action.type) {
@@ -17,6 +18,15 @@ const user = (state = null, action) => {
   switch (action.type) {
     case SET_USER:
       return action.user;
+    default:
+      return state;
+  }
+}
+
+const password = (state = null, action) => {
+  switch (action.type) {
+    case SET_PASSWORD:
+      return action.password;
     default:
       return state;
   }
@@ -47,6 +57,7 @@ const store = createStore(
   combineReducers({
     sessionId,
     user,
+    password,
   }),
   loadState(),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

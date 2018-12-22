@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { css } from 'emotion';
 import { FormattedMessage } from 'react-intl';
 
 import SectionContent from './SectionContent';
 import './Header.css';
 import LangSelect from './LangSelect';
+import { logOut } from '../apiUtils';
 
 const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
@@ -48,7 +50,10 @@ const burger = (
   </svg>
 );
 
-const Header = ({ localeValue, onLocaleChange, className, burgerClassName, onMenuClick }) => (
+const Header = ({
+  localeValue, onLocaleChange, className, burgerClassName,
+  onMenuClick, sessionId, user, password, dispatch
+}) => (
   <header className={css(container, className)}>
     <SectionContent>
       <div className={css(headerContent)}>
@@ -60,6 +65,14 @@ const Header = ({ localeValue, onLocaleChange, className, burgerClassName, onMen
         <div className="title">GetESF</div>
         <div className={css(rightContainer)}>
           <div className="nav-bar">
+            { sessionId &&
+              <div className="nav-item" onClick={() => logOut({ user, password, sessionId}, dispatch)}>
+                <FormattedMessage
+                  id="Header.Logout"
+                  defaultMessage="Log Out"
+                />
+              </div>
+            }
             <div className="nav-item">
               <FormattedMessage
                 id="Header.ContactUs"
@@ -87,4 +100,12 @@ Header.propTypes = {
   onMenuClick: PropTypes.func,
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    sessionId: state.sessionId,
+    user: state.user,
+    password: state.password,
+  }
+}
+
+export default connect(mapStateToProps)(Header);
