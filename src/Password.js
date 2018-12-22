@@ -7,7 +7,7 @@ import TextInput from './common/TextInput'
 import AuthStep from './AuthStep'
 import { extractIdFromKey, extractCert, toTrimmedPem } from './crypt'
 import { apiCall } from './apiUtils';
-import { SET_SESSION_ID } from './store';
+import { SET_SESSION_ID, SET_USER } from './store';
 
 const formTitle = {
   fontSize: '24px',
@@ -36,9 +36,28 @@ class Password extends React.Component {
     }
   }
 
+  setSessionId = ({ sessionId }) => {
+    this.props.dispatch({ type: SET_SESSION_ID,  sessionId })
+    return { sessionId }
+  }
+
+  fetchUser = ({ sessionId }) => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        username: extractIdFromKey(this.props.p12decrypted),
+        password: this.state.password,
+        sessionId,
+      }),
+    }
+
+    return apiCall('/sessions/currentuser', options)
+  }
+
+  setUser = ({ user }) => this.props.dispatch({ type: SET_USER, user })
+
   onSubmit = (event) => {
     const { password } = this.state;
-    const { dispatch } = this.props;
     const options = {
       method: 'POST',
       body: JSON.stringify({
@@ -51,7 +70,9 @@ class Password extends React.Component {
     event.preventDefault()
 
     return apiCall('/sessions/createsession', options)
-      .then(({ sessionId }) => dispatch({ type: SET_SESSION_ID,  sessionId }))
+      .then(this.setSessionId)
+      .then(this.fetchUser)
+      .then(this.setUser)
       .catch(this.onSubmitError)
   }
 
@@ -73,7 +94,7 @@ class Password extends React.Component {
           value={this.state.password}
           onChange={this.onPasswordChange}
           helperText={'Enter "TestPass123" for demo'}
-          errorMessage={this.state.passwordError && 'Wrong Password. Enter "TestPass123" for demo'}
+          errorMessage={this.state.passwordError ? 'Wrong Password. Enter "TestPass123" for demo' : ''}
           type="password"
           autoFocus
         />
