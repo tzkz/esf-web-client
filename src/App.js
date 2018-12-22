@@ -81,8 +81,9 @@ class App extends Component {
               />
               <Route
                 path="/search"
-                render={() => (
+                render={(props) => (
                   <Search
+                    {...props}
                     locale={this.state.locale}
                     onLocaleChange={this.onLocaleChange}
                     onMenuClick={this.onMenuClick}

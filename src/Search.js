@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import { css } from 'emotion';
 
 import Header from './common/Header';
@@ -210,7 +212,7 @@ const button = {
   }
 }
 
-const Search = ({ locale, onLocaleChange, onMenuClick }) => (
+const Search = ({ locale, onLocaleChange, onMenuClick, sessionId }) => sessionId ? (
   <div className={css(container)}>
     <Header
       localeValue={locale}
@@ -304,6 +306,14 @@ const Search = ({ locale, onLocaleChange, onMenuClick }) => (
       </div>
     </SectionContent>
   </div>
+) : (
+  <Redirect to="/" />
 );
 
-export default Search;
+const mapStateToProps = (state) => {
+  return {
+    sessionId: state.sessionId,
+  }
+}
+
+export default connect(mapStateToProps)(Search);
