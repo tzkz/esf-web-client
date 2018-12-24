@@ -5,7 +5,6 @@ import { css } from 'emotion';
 import { FormattedMessage } from 'react-intl';
 
 import SectionContent from './SectionContent';
-import './Header.css';
 import LangSelect from './LangSelect';
 import { logOut } from '../apiUtils';
 
@@ -31,8 +30,38 @@ const leftContainer = {
   }
 }
 
+const title = {
+  fontFamily: 'Cuprum, sans-serif',
+  fontSize: '2.25em',
+  letterSpacing: '1.8px',
+  fontWeight: 'bold',
+}
+
 const rightContainer = {
+  display: 'flex',
   flex: '1',
+  justifyContent: 'flex-end',
+}
+
+const navItem = {
+  display: 'none',
+  fontSize: '16px',
+  lineheight: 1.5,
+  fontWeight: 600,
+  padding: '0 16px',
+  cursor: 'pointer',
+  '@media (min-width: 768px)': {
+    display: 'block',
+  },
+}
+
+const navItemLogout = {
+  display: 'block',
+}
+
+const navItemLang = {
+  flexBasis: '8.1em',
+  padding: '0 0 0 16px',
 }
 
 const burgerButton = {
@@ -62,29 +91,30 @@ const Header = ({
             {burger}
           </button>
         </div>
-        <div className="title">GetESF</div>
+        <div className={css(title)}>GetESF</div>
         <div className={css(rightContainer)}>
-          <div className="nav-bar">
-            { sessionId &&
-              <div className="nav-item" onClick={() => logOut({ user, password, sessionId}, dispatch)}>
-                <FormattedMessage
-                  id="Header.Logout"
-                  defaultMessage="Log Out"
-                />
-              </div>
-            }
-            <div className="nav-item">
+          { sessionId &&
+            <div
+              className={css(navItem, navItemLogout)}
+              onClick={() => logOut({ user, password, sessionId}, dispatch)}
+            >
               <FormattedMessage
-                id="Header.ContactUs"
-                defaultMessage="Contact Us"
+                id="Header.Logout"
+                defaultMessage="Log Out"
               />
             </div>
-            <div className="nav-item nav-item-lang">
-              <LangSelect
-                value={localeValue}
-                onChange={onLocaleChange}
-              />
-            </div>
+          }
+          <div className={css(navItem)}>
+            <FormattedMessage
+              id="Header.ContactUs"
+              defaultMessage="Contact Us"
+            />
+          </div>
+          <div className={css(navItem, navItemLang)}>
+            <LangSelect
+              value={localeValue}
+              onChange={onLocaleChange}
+            />
           </div>
         </div>
       </div>
