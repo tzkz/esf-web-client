@@ -6,6 +6,7 @@ import Button from './common/Button'
 import Radio from './common/Radio';
 
 const formContainerInner = {
+  width: '100%',
   maxWidth: '400px',
   marginLeft: 'auto',
   marginRight: 'auto',
@@ -13,6 +14,7 @@ const formContainerInner = {
 
 const inputRow = {
   display: 'flex',
+  width: '100%',
   padding: '5px 12px',
 }
 
@@ -28,8 +30,8 @@ const dateTo = {
   marginLeft: '3px',
 }
 
-const largeInput = {
-  flex: '1',
+const textInputContainer = {
+  padding: '0 12px',
 }
 
 const checkboxRow = {
@@ -148,19 +150,25 @@ const typeRadioContainer = {
 class SearchForm extends React.Component {
   render() {
     return (
-      <div className={css(formContainerInner)}>
+      <form className={css(formContainerInner)}>
         <div className={css(inputRow)}>
           <TextInput className={css(dateInput, dateFrom)} placeholder="Date from…" />
           <TextInput className={css(dateInput, dateTo)} placeholder="Date to…" />
         </div>
-        <div className={css(inputRow)}>
-          <TextInput className={css(largeInput)} placeholder="Reg number" />
+        <div className={css(textInputContainer)}>
+          <TextInput
+            label="Registration Number"
+            placeholder="Registration Number"
+          />
         </div>
         <div className={css(inputRow)}>
          <Radio options={directionOptions} name="direction" />
         </div>
-        <div className={css(inputRow)}>
-          <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />
+        <div className={css(textInputContainer)}>
+          <TextInput
+            label="Counterparty BIN"
+            placeholder="Counterparty BIN"
+          />
         </div>
         <div className={css(checkboxRow)}>
           <div className={css(checkboxContainer1)}>
@@ -192,7 +200,7 @@ class SearchForm extends React.Component {
             Search
           </Button>
         </div>
-      </div>
+      </form>
     )
   }
 }
