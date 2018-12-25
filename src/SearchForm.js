@@ -3,6 +3,7 @@ import { css } from 'emotion'
 
 import TextInput from './common/TextInput'
 import Button from './common/Button'
+import Radio from './common/Radio';
 
 const formContainerInner = {
   maxWidth: '400px',
@@ -29,41 +30,6 @@ const dateTo = {
 
 const largeInput = {
   flex: '1',
-}
-
-const radioInput = {
-  display: 'none',
-  ':checked + label': {
-    backgroundColor: '#327dd0',
-    borderRadius: '5px',
-    color: ' #ffffff',
-  }
-}
-
-const radioContainer = {
-  display: 'flex',
-  flex: '1',
-  borderRadius: '5px',
-  backgroundColor: '#ffffff',
-  height: '40px',
-  padding: '3px',
-}
-
-const radioItem = {
-  flex: '1',
-  display: 'flex',
-}
-
-const radioLabel = {
-  display: 'flex',
-  flex: '1',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: '#bbbbbb',
-}
-
-const invoiceTypeFonts = {
-  fontSize: '12px',
 }
 
 const checkboxRow = {
@@ -168,6 +134,18 @@ const button = {
   }
 }
 
+const directionOptions = [
+  { id: 'foo', value: 'INBOUND', label: 'Inbound' },
+  { id: 'bar', value: 'OUTBOUND', label: 'Outbound' },
+]
+
+const typeOptions = [
+  { id: 'foo', value: 'any', label: 'Any' },
+  { id: 'bar', value: 'ORDINARY', label: 'Ordinary' },
+  { id: 'baz', value: 'FIXED', label: 'Corrected' },
+  { id: 'zoo', value: 'ADDITIONAL', label: 'Additional' },
+]
+
 class SearchForm extends React.Component {
   render() {
     return (
@@ -180,16 +158,7 @@ class SearchForm extends React.Component {
           <TextInput className={css(largeInput)} placeholder="Reg number" />
         </div>
         <div className={css(inputRow)}>
-          <div className={css(radioContainer)}>
-            <div className={css(radioItem)}>
-              <input type="radio" name="choose1" id="inbound" className={css(radioInput)} />
-              <label htmlFor="inbound" className={css(radioLabel)}>Inbound</label>
-            </div>
-            <div className={css(radioItem)}>
-              <input type="radio" name="choose1" id="outbound" className={css(radioInput)} />
-              <label htmlFor="outbound" className={css(radioLabel)}>Outbound</label>
-            </div>
-          </div>
+         <Radio options={directionOptions} name="direction" />
         </div>
         <div className={css(inputRow)}>
           <TextInput className={css(largeInput)} placeholder="Customer/supplier BIN" />
@@ -217,24 +186,7 @@ class SearchForm extends React.Component {
           </div>
         </div>
         <div className={css(inputRow)}>
-          <div className={css(radioContainer)}>
-            <div className={css(radioItem)}>
-              <input type="radio" name="choose2" id="any" className={css(radioInput)} />
-              <label htmlFor="any" className={css(radioLabel, invoiceTypeFonts)}>Any</label>
-            </div>
-            <div className={css(radioItem)}>
-              <input type="radio" name="choose2" id="ordinary" className={css(radioInput)} />
-              <label htmlFor="ordinary" className={css(radioLabel, invoiceTypeFonts)}>Ordinary</label>
-            </div>
-            <div className={css(radioItem)}>
-              <input type="radio" name="choose2" id="corrected" className={css(radioInput)} />
-              <label htmlFor="corrected" className={css(radioLabel, invoiceTypeFonts)}>Corrected</label>
-            </div>
-            <div className={css(radioItem)}>
-              <input type="radio" name="choose2" id="additional" className={css(radioInput)} />
-              <label htmlFor="additional" className={css(radioLabel, invoiceTypeFonts)}>Additional</label>
-            </div>
-          </div>
+          <Radio options={typeOptions} name="type" />
         </div>
         <div className={css(buttonRow)}>
           <Button className={css(button)}>
