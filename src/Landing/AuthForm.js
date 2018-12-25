@@ -10,35 +10,26 @@ const buttonContainer = {
   flexShrink: '0',
 }
 
-const buttons = {
+const button = {
   width: '48%',
-  height: '50px',
-  lineHeight: '1.38',
-  border: 'solid 1px #697eff',
+}
+
+const cancelButton = {
   color: '#697eff',
   backgroundColor: '#ffffff',
   ':hover': {
     backgroundColor: '#F1F3FF',
-  }
-}
-
-const buttonsChecked = {
-  backgroundColor: '#697eff',
-  color: '#ffffff',
-  ':hover': {
-    backgroundColor: '#6073E8',
-    border: 'solid 1px #6073E8',
-  }
+  },
 }
 
 const AuthForm = ({ children, onCancel, ...other }) => (
   <form {...other}>
     {children}
     <div className={css(buttonContainer)}>
-      <Button className={css(buttons)} type="button" onClick={onCancel}>
+      <Button className={css(button, cancelButton)} type="button" onClick={onCancel}>
         Cancel
       </Button>
-      <Button className={css(buttons, buttonsChecked)} type="submit">
+      <Button className={css(button)} type="submit">
         Continue
       </Button>
     </div>
