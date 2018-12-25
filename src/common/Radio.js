@@ -13,7 +13,7 @@ const container = {
 const radioInput = {
   display: 'none',
   ':checked + label': {
-    backgroundColor: '#327dd0',
+    backgroundColor: '#697EFF',
     borderRadius: '5px',
     color: ' #ffffff',
   }
