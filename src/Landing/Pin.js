@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { css } from 'emotion';
 
-import TextInput from './common/TextInput';
+import TextInput from '../common/TextInput';
 import AuthStep from './AuthStep';
-import { decryptP12 } from './crypt'
+import { decryptP12 } from '../crypt'
 
 const formTitle = {
   fontSize: '24px',

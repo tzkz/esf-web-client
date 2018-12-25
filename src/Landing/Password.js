@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { css } from 'emotion'
 
-import TextInput from './common/TextInput'
+import TextInput from '../common/TextInput'
 import AuthStep from './AuthStep'
-import { extractIdFromKey, extractCert, toTrimmedPem } from './crypt'
-import { apiCall } from './apiUtils';
-import { SET_SESSION_ID, SET_USER, SET_PASSWORD } from './store';
+import { extractIdFromKey, extractCert, toTrimmedPem } from '../crypt'
+import { apiCall } from '../apiUtils';
+import { SET_SESSION_ID, SET_USER, SET_PASSWORD } from '../store';
 
 const formTitle = {
   fontSize: '24px',

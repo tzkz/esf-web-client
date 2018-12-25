@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from 'emotion'
 
-import Button from './common/Button'
+import Button from '../common/Button'
 
 const buttonContainer = {
   display: 'flex',
