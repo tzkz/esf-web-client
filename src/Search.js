@@ -40,7 +40,7 @@ const sidebarItemActive = {
   backgroundColor: '#f8f8f8',
 }
 
-const formContainer = {
+const mainArea = {
   backgroundColor: '#f8f8f8',
   flexGrow: '1',
   borderRadius: '5px',
@@ -230,7 +230,7 @@ const Search = ({ locale, onLocaleChange, onMenuClick, }) => (
               Result
             </div>
           </div>
-          <div className={css(formContainer)}>
+          <div className={css(mainArea)}>
             <div className={css(formContainerInner)}>
               <div className={css(inputRow)}>
                 <TextInput className={css(dateInput, dateFrom)} placeholder="Date from…" />
