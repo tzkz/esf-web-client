@@ -4,7 +4,6 @@ import {
   Route,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import classnames from 'classnames';
 import { css } from 'emotion';
 
 import { addLocaleData, IntlProvider } from 'react-intl';
@@ -14,8 +13,6 @@ import ru from 'react-intl/locale-data/ru';
 import localeData from './i18n/locales';
 
 import store from './store';
-
-import './App.css';
 
 import Landing from './Landing';
 import Search from './Search';
@@ -29,6 +26,7 @@ addLocaleData([...en, ...kk, ...ru]);
 
 const container = {
   height: '100%',
+  fontFamily: '\'Open Sans\', sans-serif',
 };
 
 class App extends Component {
@@ -57,7 +55,7 @@ class App extends Component {
           }}
         >
           <Router>
-            <div className={classnames('App', css(container))}>
+            <div className={css(container)}>
               {this.state.showSidebar && (
                 <Sidebar 
                   onOverlayClick={this.onOverlayClick}

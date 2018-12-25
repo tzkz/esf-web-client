@@ -269,7 +269,7 @@ const Search = ({ locale, onLocaleChange, onMenuClick, }) => (
                   <div className={css(checkboxItem)}>
                     <input type="checkbox" id="revoked" className={css(checkboxInput, revokedChecked)} />
                     <label htmlFor="revoked" className={css(checkboxLabel, revoked)}>Revoked</label>
-                  </div> 
+                  </div>
                   <div className={css(checkboxItem)}>
                     <input type="checkbox" id="cancelled" className={css(checkboxInput, cancelledChecked)} />
                     <label htmlFor="cancelled" className={css(checkboxLabel, cancelled)}>Cancelled</label>
