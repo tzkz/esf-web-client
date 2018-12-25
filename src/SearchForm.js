@@ -129,14 +129,6 @@ const buttonRow = {
   padding: '25px 12px',
 }
 
-const button = {
-  backgroundColor: '#327dd0',
-  border: 'none',
-  ':hover': {
-    backgroundColor: '#327dd0',
-  }
-}
-
 const directionOptions = [
   { id: 'foo', value: 'INBOUND', label: 'Inbound' },
   { id: 'bar', value: 'OUTBOUND', label: 'Outbound' },
@@ -196,7 +188,7 @@ class SearchForm extends React.Component {
           <Radio options={typeOptions} name="type" className={css(typeRadioContainer)} />
         </div>
         <div className={css(buttonRow)}>
-          <Button className={css(button)}>
+          <Button>
             Search
           </Button>
         </div>

@@ -7,9 +7,9 @@ export const button = {
   lineHeight: 2.9,
   textAlign: 'center',
   borderRadius: '5px',
-  backgroundColor: '#729246',
+  backgroundColor: '#697EFF',
   color: '#FFFFFF',
-  border: '1px solid #729246',
+  border: '1px solid #697EFF',
   outline: 'none',
   cursor: 'pointer',
   fontFamily: 'inherit',
@@ -17,7 +17,8 @@ export const button = {
   letterSpacing: '0.8px',
   transition: '.2s ease-in-out',
   ':hover': {
-    backgroundColor: '#617c3c',
+    backgroundColor: '#6073E8',
+    border: 'solid 1px #6073E8',
   },
 };
 
