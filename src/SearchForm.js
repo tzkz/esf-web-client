@@ -149,6 +149,10 @@ const typeOptions = [
   { id: 'zoo', value: 'ADDITIONAL', label: 'Additional' },
 ]
 
+const typeRadioContainer = {
+  fontSize: '13px',
+}
+
 class SearchForm extends React.Component {
   render() {
     return (
@@ -189,7 +193,7 @@ class SearchForm extends React.Component {
           </div>
         </div>
         <div className={css(inputRow)}>
-          <Radio options={typeOptions} name="type" />
+          <Radio options={typeOptions} name="type" className={css(typeRadioContainer)} />
         </div>
         <div className={css(buttonRow)}>
           <Button className={css(button)}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from 'emotion'
 
-const radioContainer = {
+const container = {
   display: 'flex',
   flex: '1',
   borderRadius: '5px',
@@ -35,8 +35,8 @@ const radioLabel = {
   },
 }
 
-const Radio = ({ options, name }) => (
-  <div className={css(radioContainer)}>
+const Radio = ({ options, name, className }) => (
+  <div className={css(container, className)}>
     {options.map((option) => (
       <div className={css(radioItem)} key={option.id}>
         <input type="radio" name={name} id={option.value} className={css(radioInput)} />
