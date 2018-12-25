@@ -59,11 +59,6 @@ const navItemLogout = {
   display: 'block',
 }
 
-const navItemLang = {
-  flexBasis: '8.1em',
-  padding: '0 0 0 16px',
-}
-
 const burgerButton = {
   padding: '10px 16px 10px 24px',
   border: 'none',
@@ -93,6 +88,12 @@ const Header = ({
         </div>
         <div className={css(title)}>GetESF</div>
         <div className={css(rightContainer)}>
+          <div className={css(navItem)}>
+            <LangSelect
+              value={localeValue}
+              onChange={onLocaleChange}
+            />
+          </div>
           { sessionId &&
             <div
               className={css(navItem, navItemLogout)}
@@ -104,18 +105,6 @@ const Header = ({
               />
             </div>
           }
-          <div className={css(navItem)}>
-            <FormattedMessage
-              id="Header.ContactUs"
-              defaultMessage="Contact Us"
-            />
-          </div>
-          <div className={css(navItem, navItemLang)}>
-            <LangSelect
-              value={localeValue}
-              onChange={onLocaleChange}
-            />
-          </div>
         </div>
       </div>
     </SectionContent>
