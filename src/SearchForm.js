@@ -15,7 +15,7 @@ const formContainerInner = {
 const inputRow = {
   display: 'flex',
   width: '100%',
-  padding: '5px 12px',
+  padding: '0 12px 16px',
 }
 
 const dateInput = {
@@ -35,7 +35,7 @@ const textInputContainer = {
 }
 
 const checkboxRow = {
-  padding: '5px 12px',
+  padding: '0 12px 16px',
 }
 
 const checkboxContainer1 = {
@@ -59,7 +59,7 @@ const checkboxItem = {
 const checkboxInput = {
   display: 'none',
   ':checked + label': {
-    backgroundColor: '#327dd0',
+    backgroundColor: '#697EFF',
     color: '#ffffff',
   }
 }
@@ -83,8 +83,8 @@ const created = {
 
 const createdChecked = {
   ':checked + label': {
-    borderBottom: 'solid 1px #0767d0',
-    borderRight: 'solid 1px #0767d0',
+    borderBottom: 'solid 1px #5668D1',
+    borderRight: 'solid 1px #5668D1',
   }
 }
 
@@ -96,8 +96,8 @@ const delivered = {
 
 const deliveredChecked = {
   ':checked + label': {
-    borderBottom: 'solid 1px #0767d0',
-    borderLeft: 'solid 1px #528dce',
+    borderBottom: 'solid 1px #5668D1',
+    borderLeft: 'solid 1px #7689FF',
   }
 }
 
@@ -109,8 +109,8 @@ const revoked = {
 
 const revokedChecked = {
   ':checked + label': {
-    borderTop: 'solid 1px #528dce',
-    borderRight: 'solid 1px #0767d0',
+    borderTop: 'solid 1px #7689FF',
+    borderRight: 'solid 1px #5668D1',
   }
 }
 
@@ -122,8 +122,8 @@ const cancelled = {
 
 const cancelledChecked = {
   ':checked + label': {
-    borderTop: 'solid 1px #528dce',
-    borderLeft: 'solid 1px #528dce',
+    borderTop: 'solid 1px #7689FF',
+    borderLeft: 'solid 1px #7689FF',
   }
 }
 
@@ -157,7 +157,7 @@ class SearchForm extends React.Component {
         </div>
         <div className={css(textInputContainer)}>
           <TextInput
-            label="Registration Number"
+            label="Registration Number (Optional)"
             placeholder="Registration Number"
           />
         </div>
@@ -166,7 +166,7 @@ class SearchForm extends React.Component {
         </div>
         <div className={css(textInputContainer)}>
           <TextInput
-            label="Counterparty BIN"
+            label="Counterparty BIN (Optional)"
             placeholder="Counterparty BIN"
           />
         </div>
