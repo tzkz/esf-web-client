@@ -68,6 +68,9 @@ const checkboxLabel = {
   alignItems: 'center',
   justifyContent: 'center',
   color: '#bbbbbb',
+  ':hover': {
+    cursor: 'pointer',
+  },
 }
 
 const created = {

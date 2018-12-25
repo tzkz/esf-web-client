@@ -30,6 +30,9 @@ const radioLabel = {
   justifyContent: 'center',
   alignItems: 'center',
   color: '#bbbbbb',
+  ':hover': {
+    cursor: 'pointer',
+  },
 }
 
 const Radio = ({ options, name }) => (
