@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { css } from 'emotion';
 
 import SectionContent from './common/SectionContent';
@@ -106,29 +107,21 @@ const regNumber = {
   marginLeft: '15px',
 }
 
-
-const invoices = [
-  { regnumber: 'ESF-39200431-01', amount: '832 902,93', currency: 'KZT' },
-  { regnumber: 'ESF-39200431-02', amount: '1 832 902,93', currency: 'KZT' },
-  { regnumber: 'ESF-39200431-03', amount: '99 832 902,93', currency: 'KZT' },
-  { regnumber: 'ESF-39200431-04', amount: '902,93', currency: 'KZT' },
-  { regnumber: 'ESF-39200431-05', amount: '32 902,93', currency: 'KZT' },
-];
-
-const Result = () => (
+const Result = ({ searchResult }) => (
   <PrivateComponent>
     <div className={css(container)}>
       <SectionContent>
         <div className={css(innerContainer)}>
-            <div className={css(sidebarContainer)}>
-              <div className={css(sidebarItems)}>
-                Search
-              </div>
-              <div className={css(sidebarItems, sidebarItemActive)}>
-                Result
-              </div>
+          <div className={css(sidebarContainer)}>
+            <div className={css(sidebarItems)}>
+              Search
             </div>
-            <div className={css(wrapperContainer)}>
+            <div className={css(sidebarItems, sidebarItemActive)}>
+              Result
+            </div>
+          </div>
+          <div className={css(wrapperContainer)}>
+            {searchResult &&
               <div className={css(resultsContainer)}>
                 <div className={css(itemContainer)}>
                   <div>
@@ -141,11 +134,11 @@ const Result = () => (
                     Reg number
                   </div>
                   <div>
-                    Amount
+                    Status
                   </div>
                 </div>
-                {invoices.map((item) => (
-                  <div className={css(itemContainer)} key={item.regnumber}>
+                {searchResult.invoiceInfoList.invoiceInfo.map((item) => (
+                  <div className={css(itemContainer)} key={item.invoiceId}>
                     <div>
                       <label>
                         <input type="checkbox"  className={css(checkboxInput)} />
@@ -153,19 +146,24 @@ const Result = () => (
                       </label>
                     </div>
                     <div className={css(regNumber)}>
-                      {item.regnumber}
-                    </div>  
+                      {item.registrationNumber}
+                    </div>
                     <div>
-                      {`${item.currency} ${item.amount}`}
-                    </div>  
+                      {item.invoiceStatus}
+                    </div>
                   </div>
                 ))}
               </div>
-            </div>  
+            }
+          </div>
         </div>
       </SectionContent>
     </div>
   </PrivateComponent>
 );
 
-export default Result;
+const mapStateToProps = (state) => ({
+  searchResult: state.searchResult,
+})
+
+export default connect(mapStateToProps)(Result);
