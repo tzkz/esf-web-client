@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'emotion';
 
 import SectionContent from './common/SectionContent';
+import PrivateComponent from './common/PrivateComponent';
 
 
 const container = {
@@ -115,54 +116,56 @@ const invoices = [
 ];
 
 const Result = () => (
-  <div className={css(container)}>
-    <SectionContent>
-      <div className={css(innerContainer)}>
-          <div className={css(sidebarContainer)}>
-            <div className={css(sidebarItems)}>
-              Search
-            </div>
-            <div className={css(sidebarItems, sidebarItemActive)}>
-              Result
-            </div>
-          </div>
-          <div className={css(wrapperContainer)}>
-            <div className={css(resultsContainer)}>
-              <div className={css(itemContainer)}>
-                <div>
-                  <label>
-                    <input type="checkbox" className={css(checkboxInput)} />
-                    <div className={css(checkboxSubstitute)}></div>
-                  </label>
-                </div>
-                <div className={css(regNumber)}>
-                  Reg number
-                </div>
-                <div>
-                  Amount
-                </div>
+  <PrivateComponent>
+    <div className={css(container)}>
+      <SectionContent>
+        <div className={css(innerContainer)}>
+            <div className={css(sidebarContainer)}>
+              <div className={css(sidebarItems)}>
+                Search
               </div>
-              {invoices.map((item) => (
-                <div className={css(itemContainer)} key={item.regnumber}>
+              <div className={css(sidebarItems, sidebarItemActive)}>
+                Result
+              </div>
+            </div>
+            <div className={css(wrapperContainer)}>
+              <div className={css(resultsContainer)}>
+                <div className={css(itemContainer)}>
                   <div>
                     <label>
-                      <input type="checkbox"  className={css(checkboxInput)} />
+                      <input type="checkbox" className={css(checkboxInput)} />
                       <div className={css(checkboxSubstitute)}></div>
                     </label>
                   </div>
                   <div className={css(regNumber)}>
-                    {item.regnumber}
-                  </div>  
+                    Reg number
+                  </div>
                   <div>
-                    {`${item.currency} ${item.amount}`}
-                  </div>  
+                    Amount
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>  
-      </div>
-    </SectionContent>
-  </div>
+                {invoices.map((item) => (
+                  <div className={css(itemContainer)} key={item.regnumber}>
+                    <div>
+                      <label>
+                        <input type="checkbox"  className={css(checkboxInput)} />
+                        <div className={css(checkboxSubstitute)}></div>
+                      </label>
+                    </div>
+                    <div className={css(regNumber)}>
+                      {item.regnumber}
+                    </div>  
+                    <div>
+                      {`${item.currency} ${item.amount}`}
+                    </div>  
+                  </div>
+                ))}
+              </div>
+            </div>  
+        </div>
+      </SectionContent>
+    </div>
+  </PrivateComponent>
 );
 
 export default Result;
