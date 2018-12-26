@@ -134,7 +134,7 @@ class Result extends React.Component {
           <Header
             localeValue={locale}
             onLocaleChange={onLocaleChange}
-            burgerClassName={css({ fill: '#327dd0' })}
+            burgerClassName={css({ fill: '#697EFF' })}
             onMenuClick={onMenuClick}
           />
           <SectionContent>

@@ -10,7 +10,7 @@ import { logOut } from '../apiUtils';
 
 const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
-  color: '#0194bf',
+  color: '#697EFF',
 }
 
 const headerContent = {
