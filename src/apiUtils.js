@@ -1,5 +1,5 @@
 import config from './config'
-import { SET_USER, SET_PASSWORD, SET_SESSION_ID } from './store';
+import { SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT } from './store';
 
 const rejectError = (response) => {
   const error = new Error()
@@ -38,5 +38,6 @@ export const logOut = ({ user, password, sessionId }, dispatch) => {
       dispatch({ type: SET_USER, user: null })
       dispatch({ type: SET_PASSWORD, password: null })
       dispatch({ type: SET_SESSION_ID, sessionId: null })
+      dispatch({ type: SET_SEARCH_RESULT, searchResult: null })
     })
 }
