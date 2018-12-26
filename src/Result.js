@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
+import { isEmpty } from 'lodash';
 
 import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
+import { apiCall } from './apiUtils';
+import { SET_SEARCH_RESULT } from './store';
 
 
 const container = {
@@ -108,14 +111,26 @@ const regNumber = {
 }
 
 class Result extends React.Component {
+  componentDidMount() {
+    if (this.props.location.search) {
+      const options = {
+        headers: {
+          'Session-ID': this.props.sessionId,
+        }
+      }
+
+      apiCall(`/invoices/queryinvoice${this.props.location.search}`, options)
+        .then((searchResult) => this.props.dispatch({ type: SET_SEARCH_RESULT, searchResult }))
+        .catch((error) => console.error(error))
+    }
+  }
   render() {
-    const { searchResult, location } = this.props
+    const { searchResult } = this.props
 
     return (
       <PrivateComponent>
         <div className={css(container)}>
           <SectionContent>
-            {location.search}
             <div className={css(innerContainer)}>
               <div className={css(sidebarContainer)}>
                 <div className={css(sidebarItems)}>
@@ -126,7 +141,7 @@ class Result extends React.Component {
                 </div>
               </div>
               <div className={css(wrapperContainer)}>
-                {searchResult &&
+                {!isEmpty(searchResult) &&
                   <div className={css(resultsContainer)}>
                     <div className={css(itemContainer)}>
                       <div>
@@ -171,6 +186,7 @@ class Result extends React.Component {
 
 const mapStateToProps = (state) => ({
   searchResult: state.searchResult,
+  sessionId: state.sessionId,
 })
 
 export default connect(mapStateToProps)(Result);
