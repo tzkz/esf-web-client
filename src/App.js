@@ -85,7 +85,17 @@ class App extends Component {
                   />
                 )}
               />
-              <Route path="/result" component={Result} />
+              <Route
+                path="/result"
+                render={(props) => (
+                  <Result
+                    {...props}
+                    locale={this.state.locale}
+                    onLocaleChange={this.onLocaleChange}
+                    onMenuClick={this.onMenuClick}
+                  />
+                )}
+              />
             </div>
           </Router>
         </IntlProvider>

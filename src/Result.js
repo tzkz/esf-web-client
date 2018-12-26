@@ -7,19 +7,20 @@ import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
 import { apiCall } from './apiUtils';
 import { SET_SEARCH_RESULT } from './store';
+import Header from './common/Header';
 
 
 const container = {
-  marginTop: '2px',
-  '@media(min-width: 400px)': {
-    paddingTop: '17px',
-  }
 }
 
 const innerContainer = {
   display: 'flex',
   fontSize: '12px',
   justifyContent: 'center',
+  marginTop: '2px',
+  '@media(min-width: 400px)': {
+    paddingTop: '17px',
+  }
 }
 
 const sidebarContainer = {
@@ -125,11 +126,17 @@ class Result extends React.Component {
     }
   }
   render() {
-    const { searchResult } = this.props
+    const { searchResult, locale, onLocaleChange, onMenuClick } = this.props
 
     return (
       <PrivateComponent>
         <div className={css(container)}>
+          <Header
+            localeValue={locale}
+            onLocaleChange={onLocaleChange}
+            burgerClassName={css({ fill: '#327dd0' })}
+            onMenuClick={onMenuClick}
+          />
           <SectionContent>
             <div className={css(innerContainer)}>
               <div className={css(sidebarContainer)}>
