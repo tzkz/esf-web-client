@@ -11,12 +11,17 @@ import { logOut } from '../apiUtils';
 const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
   color: '#697EFF',
+  height: '60px',
+}
+
+const sectionContent = {
+  height: '100%',
 }
 
 const headerContent = {
+  height: '100%',
   display: 'flex',
   alignItems: 'center',
-  height: '74px',
   '@media (min-width: 768px)': {
     justifyContent: 'space-between',
     height: '6.25em',
@@ -79,7 +84,7 @@ const Header = ({
   onMenuClick, sessionId, user, password, dispatch
 }) => (
   <header className={css(container, className)}>
-    <SectionContent>
+    <SectionContent className={css(sectionContent)}>
       <div className={css(headerContent)}>
         <div className={css(leftContainer)}>
           <button className={css(burgerButton, burgerClassName)} onClick={onMenuClick}>

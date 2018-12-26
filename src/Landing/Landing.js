@@ -52,6 +52,7 @@ class Landing extends React.Component {
             className={css({
               backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
               color: 'white',
+              height: '74px',
             })}
           />
           <Main onDemoClick={this.onDemoClick} />
