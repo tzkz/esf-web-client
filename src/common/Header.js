@@ -12,6 +12,9 @@ const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
   color: '#697EFF',
   height: '60px',
+  '@media (min-width: 768px)': {
+    height: '100px',
+  }
 }
 
 const sectionContent = {
@@ -24,7 +27,6 @@ const headerContent = {
   alignItems: 'center',
   '@media (min-width: 768px)': {
     justifyContent: 'space-between',
-    height: '6.25em',
   }
 };
 
