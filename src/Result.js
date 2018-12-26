@@ -107,60 +107,67 @@ const regNumber = {
   marginLeft: '15px',
 }
 
-const Result = ({ searchResult }) => (
-  <PrivateComponent>
-    <div className={css(container)}>
-      <SectionContent>
-        <div className={css(innerContainer)}>
-          <div className={css(sidebarContainer)}>
-            <div className={css(sidebarItems)}>
-              Search
-            </div>
-            <div className={css(sidebarItems, sidebarItemActive)}>
-              Result
-            </div>
-          </div>
-          <div className={css(wrapperContainer)}>
-            {searchResult &&
-              <div className={css(resultsContainer)}>
-                <div className={css(itemContainer)}>
-                  <div>
-                    <label>
-                      <input type="checkbox" className={css(checkboxInput)} />
-                      <div className={css(checkboxSubstitute)}></div>
-                    </label>
-                  </div>
-                  <div className={css(regNumber)}>
-                    Reg number
-                  </div>
-                  <div>
-                    Status
-                  </div>
+class Result extends React.Component {
+  render() {
+    const { searchResult, location } = this.props
+
+    return (
+      <PrivateComponent>
+        <div className={css(container)}>
+          <SectionContent>
+            {location.search}
+            <div className={css(innerContainer)}>
+              <div className={css(sidebarContainer)}>
+                <div className={css(sidebarItems)}>
+                  Search
                 </div>
-                {searchResult.invoiceInfoList.invoiceInfo.map((item) => (
-                  <div className={css(itemContainer)} key={item.invoiceId}>
-                    <div>
-                      <label>
-                        <input type="checkbox"  className={css(checkboxInput)} />
-                        <div className={css(checkboxSubstitute)}></div>
-                      </label>
-                    </div>
-                    <div className={css(regNumber)}>
-                      {item.registrationNumber}
-                    </div>
-                    <div>
-                      {item.invoiceStatus}
-                    </div>
-                  </div>
-                ))}
+                <div className={css(sidebarItems, sidebarItemActive)}>
+                  Result
+                </div>
               </div>
-            }
-          </div>
+              <div className={css(wrapperContainer)}>
+                {searchResult &&
+                  <div className={css(resultsContainer)}>
+                    <div className={css(itemContainer)}>
+                      <div>
+                        <label>
+                          <input type="checkbox" className={css(checkboxInput)} />
+                          <div className={css(checkboxSubstitute)}></div>
+                        </label>
+                      </div>
+                      <div className={css(regNumber)}>
+                        Reg number
+                      </div>
+                      <div>
+                        Status
+                      </div>
+                    </div>
+                    {searchResult.invoiceInfoList.invoiceInfo.map((item) => (
+                      <div className={css(itemContainer)} key={item.invoiceId}>
+                        <div>
+                          <label>
+                            <input type="checkbox"  className={css(checkboxInput)} />
+                            <div className={css(checkboxSubstitute)}></div>
+                          </label>
+                        </div>
+                        <div className={css(regNumber)}>
+                          {item.registrationNumber}
+                        </div>
+                        <div>
+                          {item.invoiceStatus}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                }
+              </div>
+            </div>
+          </SectionContent>
         </div>
-      </SectionContent>
-    </div>
-  </PrivateComponent>
-);
+      </PrivateComponent>
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
   searchResult: state.searchResult,
