@@ -1,3 +1,4 @@
 {
-  "LoginInitial.SignIn": "Войти"
+  "LoginInitial.SignIn": "Войти",
+  "Header.Logout": "Выйти"
 }
