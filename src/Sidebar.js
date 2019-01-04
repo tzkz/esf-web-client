@@ -10,7 +10,6 @@ const Container = {
   width: '100%',
   height: '100%',
   fontSize: '16px',
-  fontFamily: 'roboto',
 }
 
 const drawerContainer = {
@@ -35,7 +34,6 @@ const searchResultContainer = {
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: '#fafafa',
-  fontFamily: 'roboto',
   height: '70%',
 }
 
