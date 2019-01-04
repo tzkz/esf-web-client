@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
-import { decryptP12 } from './crypt'
 
 import Pin from './Pin'
+import Password from './Password';
 
 const container = {
   height: '100%',
@@ -12,29 +12,24 @@ const container = {
 class Auth extends React.Component {
   state = {
     p12decrypted: null,
-    pinError: null,
   }
 
-  onPinChange = () => this.setState({ pinError: null })
-
-  onPinSubmit = (pin) => {
-    try {
-      const p12decrypted = decryptP12(this.props.p12b64, pin)
-      this.setState({ p12decrypted })
-    } catch (error) {
-      this.setState({ pinError: error })
-    }
-  }
+  onDecrypt = (p12decrypted) => this.setState({ p12decrypted })
 
   render() {
     return (
       <div className={css(container)}>
         {!this.state.p12decrypted && (
           <Pin
-            onSubmit={this.onPinSubmit}
+            onDecrypt={this.onDecrypt}
             onCancel={this.props.onCancel}
-            onPinChange={this.onPinChange}
-            pinError={this.state.pinError}
+            p12base64={this.props.p12base64}
+          />
+        )}
+        {this.state.p12decrypted && (
+          <Password
+            onCancel={this.props.onCancel}
+            p12decrypted={this.state.p12decrypted}
           />
         )}
       </div>
@@ -43,7 +38,7 @@ class Auth extends React.Component {
 }
 
 Auth.propTypes = {
-  p12b64: PropTypes.string,
+  p12base64: PropTypes.string,
   onCancel: PropTypes.func,
 }
 

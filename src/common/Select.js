@@ -20,7 +20,7 @@ const styles = {
   option: (base, state) => ({
     ...base,
     cursor: 'pointer',
-    color: state.isSelected ? 'white' : '#0194bf',
+    color: state.isSelected ? 'white' : '#697EFF',
   }),
 };
 const components = {

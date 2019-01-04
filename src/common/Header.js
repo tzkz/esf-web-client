@@ -1,24 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { css } from 'emotion';
 import { FormattedMessage } from 'react-intl';
 
 import SectionContent from './SectionContent';
-import './Header.css';
 import LangSelect from './LangSelect';
+import { logOut } from '../apiUtils';
 
 const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
-  color: '#0194bf',
+  color: '#697EFF',
+  height: '60px',
+  '@media (min-width: 768px)': {
+    height: '100px',
+  }
+}
+
+const sectionContent = {
+  height: '100%',
 }
 
 const headerContent = {
+  height: '100%',
   display: 'flex',
   alignItems: 'center',
-  height: '74px',
   '@media (min-width: 768px)': {
     justifyContent: 'space-between',
-    height: '6.25em',
   }
 };
 
@@ -29,8 +37,33 @@ const leftContainer = {
   }
 }
 
+const title = {
+  fontFamily: 'Cuprum, sans-serif',
+  fontSize: '2.25em',
+  letterSpacing: '1.8px',
+  fontWeight: 'bold',
+}
+
 const rightContainer = {
+  display: 'flex',
   flex: '1',
+  justifyContent: 'flex-end',
+}
+
+const navItem = {
+  display: 'none',
+  fontSize: '16px',
+  lineheight: 1.5,
+  fontWeight: 600,
+  padding: '0 16px',
+  cursor: 'pointer',
+  '@media (min-width: 768px)': {
+    display: 'block',
+  },
+}
+
+const navItemLogout = {
+  display: 'block',
 }
 
 const burgerButton = {
@@ -48,31 +81,37 @@ const burger = (
   </svg>
 );
 
-const Header = ({ localeValue, onLocaleChange, className, burgerClassName, onMenuClick }) => (
+const Header = ({
+  localeValue, onLocaleChange, className, burgerClassName,
+  onMenuClick, sessionId, user, password, dispatch
+}) => (
   <header className={css(container, className)}>
-    <SectionContent>
+    <SectionContent className={css(sectionContent)}>
       <div className={css(headerContent)}>
         <div className={css(leftContainer)}>
           <button className={css(burgerButton, burgerClassName)} onClick={onMenuClick}>
             {burger}
           </button>
         </div>
-        <div className="title">GetESF</div>
+        <div className={css(title)}>GetESF</div>
         <div className={css(rightContainer)}>
-          <div className="nav-bar">
-            <div className="nav-item">
-              <FormattedMessage
-                id="Header.ContactUs"
-                defaultMessage="Contact Us"
-              />
-            </div>
-            <div className="nav-item nav-item-lang">
-              <LangSelect
-                value={localeValue}
-                onChange={onLocaleChange}
-              />
-            </div>
+          <div className={css(navItem)}>
+            <LangSelect
+              value={localeValue}
+              onChange={onLocaleChange}
+            />
           </div>
+          { sessionId &&
+            <div
+              className={css(navItem, navItemLogout)}
+              onClick={() => logOut({ user, password, sessionId}, dispatch)}
+            >
+              <FormattedMessage
+                id="Header.Logout"
+                defaultMessage="Log Out"
+              />
+            </div>
+          }
         </div>
       </div>
     </SectionContent>
@@ -87,4 +126,12 @@ Header.propTypes = {
   onMenuClick: PropTypes.func,
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    sessionId: state.sessionId,
+    user: state.user,
+    password: state.password,
+  }
+}
+
+export default connect(mapStateToProps)(Header);

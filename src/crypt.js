@@ -14,6 +14,14 @@ export const extractCert = (p12) => {
   return cert;
 }
 
+export const extractIdFromKey = (p12) => (
+  extractCert(p12)
+    .subject
+    .getField({ name: 'serialName' })
+    .value
+    .slice(3)
+)
+
 export const toTrimmedPem = (x509) => {
   const pem = forge.pki.certificateToPem(x509)
 

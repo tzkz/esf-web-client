@@ -1,20 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { css } from 'emotion';
+import { isEmpty } from 'lodash';
 
 import SectionContent from './common/SectionContent';
+import PrivateComponent from './common/PrivateComponent';
+import { apiCall } from './apiUtils';
+import { SET_SEARCH_RESULT } from './store';
+import Header from './common/Header';
 
 
 const container = {
-  marginTop: '2px',
-  '@media(min-width: 400px)': {
-    paddingTop: '17px',
-  }
 }
 
 const innerContainer = {
   display: 'flex',
   fontSize: '12px',
   justifyContent: 'center',
+  marginTop: '2px',
+  '@media(min-width: 400px)': {
+    paddingTop: '17px',
+  }
 }
 
 const sidebarContainer = {
@@ -105,64 +111,89 @@ const regNumber = {
   marginLeft: '15px',
 }
 
+class Result extends React.Component {
+  componentDidMount() {
+    if (this.props.location.search) {
+      const options = {
+        headers: {
+          'Session-ID': this.props.sessionId,
+        }
+      }
 
-const invoices = [
-  { regnumber: 'ESF-39200431-01', amount: '832 902,93', currency: 'KZT' },
-  { regnumber: 'ESF-39200431-02', amount: '1 832 902,93', currency: 'KZT' },
-  { regnumber: 'ESF-39200431-03', amount: '99 832 902,93', currency: 'KZT' },
-  { regnumber: 'ESF-39200431-04', amount: '902,93', currency: 'KZT' },
-  { regnumber: 'ESF-39200431-05', amount: '32 902,93', currency: 'KZT' },
-];
+      apiCall(`/invoices/queryinvoice${this.props.location.search}`, options)
+        .then((searchResult) => this.props.dispatch({ type: SET_SEARCH_RESULT, searchResult }))
+        .catch((error) => console.error(error))
+    }
+  }
+  render() {
+    const { searchResult, locale, onLocaleChange, onMenuClick } = this.props
 
-const Result = () => (
-  <div className={css(container)}>
-    <SectionContent>
-      <div className={css(innerContainer)}>
-          <div className={css(sidebarContainer)}>
-            <div className={css(sidebarItems)}>
-              Search
-            </div>
-            <div className={css(sidebarItems, sidebarItemActive)}>
-              Result
-            </div>
-          </div>
-          <div className={css(wrapperContainer)}>
-            <div className={css(resultsContainer)}>
-              <div className={css(itemContainer)}>
-                <div>
-                  <label>
-                    <input type="checkbox" className={css(checkboxInput)} />
-                    <div className={css(checkboxSubstitute)}></div>
-                  </label>
+    return (
+      <PrivateComponent>
+        <div className={css(container)}>
+          <Header
+            localeValue={locale}
+            onLocaleChange={onLocaleChange}
+            burgerClassName={css({ fill: '#697EFF' })}
+            onMenuClick={onMenuClick}
+          />
+          <SectionContent>
+            <div className={css(innerContainer)}>
+              <div className={css(sidebarContainer)}>
+                <div className={css(sidebarItems)}>
+                  Search
                 </div>
-                <div className={css(regNumber)}>
-                  Reg number
-                </div>
-                <div>
-                  Amount
+                <div className={css(sidebarItems, sidebarItemActive)}>
+                  Result
                 </div>
               </div>
-              {invoices.map((item) => (
-                <div className={css(itemContainer)} key={item.regnumber}>
-                  <div>
-                    <label>
-                      <input type="checkbox"  className={css(checkboxInput)} />
-                      <div className={css(checkboxSubstitute)}></div>
-                    </label>
+              <div className={css(wrapperContainer)}>
+                {!isEmpty(searchResult) &&
+                  <div className={css(resultsContainer)}>
+                    <div className={css(itemContainer)}>
+                      <div>
+                        <label>
+                          <input type="checkbox" className={css(checkboxInput)} />
+                          <div className={css(checkboxSubstitute)}></div>
+                        </label>
+                      </div>
+                      <div className={css(regNumber)}>
+                        Reg number
+                      </div>
+                      <div>
+                        Status
+                      </div>
+                    </div>
+                    {searchResult.invoiceInfoList.invoiceInfo.map((item) => (
+                      <div className={css(itemContainer)} key={item.invoiceId}>
+                        <div>
+                          <label>
+                            <input type="checkbox"  className={css(checkboxInput)} />
+                            <div className={css(checkboxSubstitute)}></div>
+                          </label>
+                        </div>
+                        <div className={css(regNumber)}>
+                          {item.registrationNumber}
+                        </div>
+                        <div>
+                          {item.invoiceStatus}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div className={css(regNumber)}>
-                    {item.regnumber}
-                  </div>  
-                  <div>
-                    {`${item.currency} ${item.amount}`}
-                  </div>  
-                </div>
-              ))}
+                }
+              </div>
             </div>
-          </div>  
-      </div>
-    </SectionContent>
-  </div>
-);
+          </SectionContent>
+        </div>
+      </PrivateComponent>
+    );
+  }
+}
 
-export default Result;
+const mapStateToProps = (state) => ({
+  searchResult: state.searchResult,
+  sessionId: state.sessionId,
+})
+
+export default connect(mapStateToProps)(Result);
