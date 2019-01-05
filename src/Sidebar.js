@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from 'emotion';
 import Select from './common/Select';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logOut } from './apiUtils';
 
 const Container = {
   position: 'fixed',
@@ -87,7 +89,7 @@ const companyOptions = [
   {value:'option3', label: 'ТОО "Компания Ербола"'},
 ];
 
-const Sidebar = ({ onOverlayClick }) => (
+const Sidebar = ({ onOverlayClick, sessionId, user, password, dispatch }) => (
   <div className={css(Container)}>
     <div className={css(drawerContainer)}>
       <div className={css(dropdownContainer)}>
@@ -149,7 +151,7 @@ const Sidebar = ({ onOverlayClick }) => (
             <path fill='currentColor' id='ic_power_settings_new_24px' d='M13 3h-2v10h2zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0 1 19 12 7 7 0 1 1 7.58 6.58L6.17 5.17A8.992 8.992 0 1 0 21 12a8.932 8.932 0 0 0-3.17-6.83z' className='cls-1' transform='translate(-3 -3)' />
           </svg>
           </div>
-          <div className={css(buttons)}>
+          <div className={css(buttons)} onClick={() => logOut({ user, password, sessionId}, dispatch)}>
             Log Out
           </div>
         </div>
@@ -163,4 +165,13 @@ Sidebar.propTypes = {
   onOverlayClick: PropTypes.func,
 };
 
-export default Sidebar
+const mapStateToProps = (state) => {
+  return {
+    sessionId: state.sessionId,
+    user: state.user,
+    password: state.password,
+  }
+}
+
+export default connect(mapStateToProps)(Sidebar);
+
