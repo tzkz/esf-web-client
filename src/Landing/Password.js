@@ -86,10 +86,7 @@ class Password extends React.Component {
         onCancel={this.props.onCancel}
       >
         <div className={css(formTitle)}>
-          Enter Account Password
-        </div>
-        <div className={css(formTitle)}>
-          for ID {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
+          Account ID {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
         </div>
         <TextInput
           label="Password"
