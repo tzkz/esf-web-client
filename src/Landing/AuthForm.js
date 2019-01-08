@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from 'emotion'
 
 import Button from '../common/Button'
+import Spinner from '../common/Spinner';
 
 const buttonContainer = {
   display: 'flex',
@@ -22,7 +23,7 @@ const cancelButton = {
   },
 }
 
-const AuthForm = ({ children, onCancel, ...other }) => (
+const AuthForm = ({ children, onCancel, isLoading, ...other }) => (
   <form {...other}>
     {children}
     <div className={css(buttonContainer)}>
@@ -30,7 +31,7 @@ const AuthForm = ({ children, onCancel, ...other }) => (
         Cancel
       </Button>
       <Button className={css(button)} type="submit">
-        Continue
+        {isLoading ? <Spinner size={12} /> : <span>Continue</span>}
       </Button>
     </div>
   </form>

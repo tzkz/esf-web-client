@@ -19,6 +19,7 @@ class Password extends React.Component {
   state = {
     password: '',
     passwordError: null,
+    isLoading: false,
   }
 
   onPasswordChange = (event) => {
@@ -26,6 +27,7 @@ class Password extends React.Component {
   }
 
   onSubmitError = (error) => {
+    this.setState({ isLoading: false })
     if (error.name === 'ApiError') {
       return error.response.json()
         .then((json) => {
@@ -71,6 +73,7 @@ class Password extends React.Component {
     }
 
     event.preventDefault()
+    this.setState({ isLoading: true })
 
     return apiCall('/sessions/createsession', options)
       .then(this.setSessionId)
@@ -84,6 +87,7 @@ class Password extends React.Component {
       <AuthStep
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
+        isLoading={this.state.isLoading}
       >
         <div className={css(formTitle)}>
           Account ID {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
