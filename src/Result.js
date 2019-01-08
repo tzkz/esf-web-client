@@ -8,6 +8,7 @@ import PrivateComponent from './common/PrivateComponent';
 import { apiCall } from './apiUtils';
 import { SET_SEARCH_RESULT } from './store';
 import Header from './common/Header';
+import Spinner from './common/Spinner';
 
 
 const container = {
@@ -112,6 +113,10 @@ const regNumber = {
 }
 
 class Result extends React.Component {
+  state = {
+    isLoading: false,
+  }
+
   componentDidMount() {
     if (this.props.location.search) {
       const options = {
@@ -120,9 +125,12 @@ class Result extends React.Component {
         }
       }
 
+      this.setState({ isLoading: true })
+
       apiCall(`/invoices/queryinvoice${this.props.location.search}`, options)
         .then((searchResult) => this.props.dispatch({ type: SET_SEARCH_RESULT, searchResult }))
         .catch((error) => console.error(error))
+        .finally(() => this.setState({ isLoading: false }))
     }
   }
   render() {
@@ -148,7 +156,14 @@ class Result extends React.Component {
                 </div>
               </div>
               <div className={css(wrapperContainer)}>
-                {!isEmpty(searchResult) &&
+                {this.state.isLoading &&
+                  <Spinner
+                    size={12}
+                    color="#697EFF"
+                    className={css({ margin: '24px 0' })}
+                  />
+                }
+                {!isEmpty(searchResult) && !this.state.isLoading &&
                   <div className={css(resultsContainer)}>
                     <div className={css(itemContainer)}>
                       <div>
