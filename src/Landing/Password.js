@@ -101,6 +101,7 @@ class Password extends React.Component {
           errorMessage={this.state.passwordError ? 'Wrong Password. Enter "TestPass123" for demo' : ''}
           type="password"
           autoFocus
+          disabled={this.state.isLoading}
         />
       </AuthStep>
     );
