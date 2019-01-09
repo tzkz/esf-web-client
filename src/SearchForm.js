@@ -168,6 +168,7 @@ class SearchForm extends React.Component {
                 noBorder
                 block
                 isOutsideRange={() => false}
+                readOnly
               />
             )}
           </Media>
