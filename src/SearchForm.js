@@ -167,7 +167,7 @@ class SearchForm extends React.Component {
                 onFocusChange={focusedInput => this.setState({ focusedInput })}
                 noBorder
                 block
-                numberOfMonths={1}
+                isOutsideRange={() => false}
               />
             )}
           </Media>
