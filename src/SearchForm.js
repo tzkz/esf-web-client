@@ -141,6 +141,10 @@ class SearchForm extends React.Component {
     focusedInput: null,
     direction: 'INBOUND',
     type: 'any',
+    created: true,
+    delivered: true,
+    revoked: true,
+    cancelled: true,
   }
 
   onDirectionChange = (event) => {
@@ -149,6 +153,12 @@ class SearchForm extends React.Component {
 
   onTypeChange = (event) => {
     this.setState({ type: event.target.value })
+  }
+
+  onStatusChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.checked,
+    })
   }
 
   render() {
@@ -189,21 +199,49 @@ class SearchForm extends React.Component {
         <div className={css(checkboxRow)}>
           <div className={css(checkboxContainer1)}>
             <div className={css(checkboxItem)}>
-              <input type="checkbox" id="created" className={css(checkboxInput, createdChecked)} />
+              <input
+                type="checkbox"
+                id="created"
+                name="created"
+                className={css(checkboxInput, createdChecked)}
+                onChange={this.onStatusChange}
+                checked={this.state.created}
+              />
               <label htmlFor="created" className={css(checkboxLabel, created)}>Created</label>
             </div>
             <div className={css(checkboxItem)}>
-              <input type="checkbox" id="delivered" className={css(checkboxInput, deliveredChecked)} />
+              <input
+                type="checkbox"
+                id="delivered"
+                name="delivered"
+                className={css(checkboxInput, deliveredChecked)}
+                onChange={this.onStatusChange}
+                checked={this.state.delivered}
+              />
               <label htmlFor="delivered" className={css(checkboxLabel, delivered)}>Delivered</label>
             </div>
           </div>
           <div className={css(checkboxContainer2)}>
             <div className={css(checkboxItem)}>
-              <input type="checkbox" id="revoked" className={css(checkboxInput, revokedChecked)} />
+              <input
+                type="checkbox"
+                id="revoked"
+                name="revoked"
+                className={css(checkboxInput, revokedChecked)}
+                onChange={this.onStatusChange}
+                checked={this.state.revoked}
+              />
               <label htmlFor="revoked" className={css(checkboxLabel, revoked)}>Revoked</label>
             </div>
             <div className={css(checkboxItem)}>
-              <input type="checkbox" id="cancelled" className={css(checkboxInput, cancelledChecked)} />
+              <input
+                type="checkbox"
+                id="cancelled"
+                name="cancelled"
+                className={css(checkboxInput, cancelledChecked)}
+                onChange={this.onStatusChange}
+                checked={this.state.cancelled}
+              />
               <label htmlFor="cancelled" className={css(checkboxLabel, cancelled)}>Cancelled</label>
             </div>
           </div>
