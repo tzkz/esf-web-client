@@ -1,0 +1,21 @@
+.DateInput_input__focused {
+  border-bottom: 2px solid #697EFF;
+}
+
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #7689FF;
+  border: 1px double #7689FF;
+}
+
+.CalendarDay__selected_span {
+  background: #C8D0FF;
+  border: 1px double #BAC4FF;
+}
+
+.CalendarDay__selected_span:active,
+.CalendarDay__selected_span:hover {
+  background: #9FACFF;
+  border: 1px double #9FACFF;
+}

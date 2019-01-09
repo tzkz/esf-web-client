@@ -21,6 +21,7 @@ import Sidebar from './Sidebar';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import './react_dates_overrides.css';
 
 if (!window.Intl) {
   require('intl');
