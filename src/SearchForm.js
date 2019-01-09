@@ -1,5 +1,8 @@
 import React from 'react'
 import { css } from 'emotion'
+import { DateRangePicker } from 'react-dates'
+import Media from 'react-media'
+import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 
 import TextInput from './common/TextInput'
 import Button from './common/Button'
@@ -12,22 +15,14 @@ const formContainerInner = {
   marginRight: 'auto',
 }
 
+const datePickerContainer = {
+  padding: '0 12px 16px',
+}
+
 const inputRow = {
   display: 'flex',
   width: '100%',
   padding: '0 12px 16px',
-}
-
-const dateInput = {
-  flex: '0 1 50%',
-}
-
-const dateFrom = {
-  marginRight: '3px',
-}
-
-const dateTo = {
-  marginLeft: '3px',
 }
 
 const textInputContainer = {
@@ -148,12 +143,34 @@ const typeRadioContainer = {
 }
 
 class SearchForm extends React.Component {
+  state = {
+    startDate: null,
+    endDate: null,
+    focusedInput: null,
+  }
+
   render() {
     return (
       <form className={css(formContainerInner)}>
-        <div className={css(inputRow)}>
-          <TextInput className={css(dateInput, dateFrom)} placeholder="Date from…" />
-          <TextInput className={css(dateInput, dateTo)} placeholder="Date to…" />
+        <div className={css(datePickerContainer)}>
+          <Media query="(min-width: 1024px)">
+            {(matches) => (
+              <DateRangePicker
+                orientation={ !matches
+                  ? VERTICAL_ORIENTATION
+                  : HORIZONTAL_ORIENTATION
+                }
+                withFullScreenPortal={!matches}
+                startDate={this.state.startDate}
+                startDateId="your_unique_start_date_id"
+                endDate={this.state.endDate}
+                endDateId="your_unique_end_date_id"
+                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
+                focusedInput={this.state.focusedInput}
+                onFocusChange={focusedInput => this.setState({ focusedInput })}
+              />
+            )}
+          </Media>
         </div>
         <div className={css(textInputContainer)}>
           <TextInput

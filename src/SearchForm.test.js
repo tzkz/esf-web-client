@@ -1,6 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer';
 
+import 'react-dates/initialize';
+
 import SearchForm from './SearchForm'
 
 describe('<SearchForm />', () => {

@@ -19,6 +19,9 @@ import Search from './Search';
 import Result from './Result';
 import Sidebar from './Sidebar';
 
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+
 if (!window.Intl) {
   require('intl');
 }
