@@ -168,18 +168,20 @@ class SearchForm extends React.Component {
                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
                 focusedInput={this.state.focusedInput}
                 onFocusChange={focusedInput => this.setState({ focusedInput })}
+                noBorder
+                block
               />
             )}
           </Media>
+        </div>
+        <div className={css(inputRow)}>
+         <Radio options={directionOptions} name="direction" />
         </div>
         <div className={css(textInputContainer)}>
           <TextInput
             label="Registration Number (Optional)"
             placeholder="Registration Number"
           />
-        </div>
-        <div className={css(inputRow)}>
-         <Radio options={directionOptions} name="direction" />
         </div>
         <div className={css(textInputContainer)}>
           <TextInput
