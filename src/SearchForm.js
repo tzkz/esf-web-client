@@ -5,7 +5,6 @@ import Media from 'react-media'
 import moment from 'moment';
 import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 
-import TextInput from './common/TextInput'
 import Button from './common/Button'
 import Radio from './common/Radio';
 
@@ -20,10 +19,6 @@ const inputRow = {
   display: 'flex',
   width: '100%',
   padding: '8px 12px 16px',
-}
-
-const textInputContainer = {
-  padding: '0 12px',
 }
 
 const checkboxRow = {
@@ -175,20 +170,6 @@ class SearchForm extends React.Component {
         </div>
         <div className={css(inputRow)}>
          <Radio options={directionOptions} name="direction" />
-        </div>
-        <div className={css(textInputContainer)}>
-          <TextInput
-            label="Registration Number (Optional)"
-            placeholder="Registration Number"
-            small
-          />
-        </div>
-        <div className={css(textInputContainer)}>
-          <TextInput
-            label="Counterparty BIN (Optional)"
-            placeholder="Counterparty BIN"
-            small
-          />
         </div>
         <div className={css(checkboxRow)}>
           <div className={css(checkboxContainer1)}>
