@@ -24,13 +24,6 @@
   border: 1px solid #697EFF;
 }
 
-.CalendarDay__selected,
-.CalendarDay__selected:active,
-.CalendarDay__selected:hover {
-  background: #7689FF;
-  border: 1px double #7689FF;
-}
-
 .CalendarDay__selected_span {
   background: #C8D0FF;
   border: 1px double #BAC4FF;
@@ -47,6 +40,13 @@
   background: #C8D0FF;
   border: 1px double #BAC4FF;
   color: #697EFF;
+}
+
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #7689FF;
+  border: 1px double #7689FF;
 }
 
 .DayPickerKeyboardShortcuts_show__bottomRight::before {
