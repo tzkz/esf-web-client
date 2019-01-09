@@ -35,11 +35,19 @@ const radioLabel = {
   },
 }
 
-const Radio = ({ options, name, className }) => (
+const Radio = ({ options, name, className, onOptionChange, selectedOption }) => (
   <div className={css(container, className)}>
     {options.map((option) => (
       <div className={css(radioItem)} key={option.id}>
-        <input type="radio" name={name} id={option.value} className={css(radioInput)} />
+        <input
+          type="radio"
+          name={name}
+          id={option.value}
+          value={option.value}
+          onChange={onOptionChange}
+          checked={option.value === selectedOption}
+          className={css(radioInput)}
+        />
         <label htmlFor={option.value} className={css(radioLabel)}>{option.label}</label>
       </div>
     ))}

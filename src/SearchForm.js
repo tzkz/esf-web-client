@@ -139,6 +139,16 @@ class SearchForm extends React.Component {
     startDate: moment().subtract(7, 'days'),
     endDate: moment(),
     focusedInput: null,
+    direction: 'INBOUND',
+    type: 'any',
+  }
+
+  onDirectionChange = (event) => {
+    this.setState({ direction: event.target.value })
+  }
+
+  onTypeChange = (event) => {
+    this.setState({ type: event.target.value })
   }
 
   render() {
@@ -169,7 +179,12 @@ class SearchForm extends React.Component {
           </Media>
         </div>
         <div className={css(inputRow)}>
-         <Radio options={directionOptions} name="direction" />
+         <Radio
+          options={directionOptions}
+          name="direction"
+          selectedOption={this.state.direction}
+          onOptionChange={this.onDirectionChange}
+        />
         </div>
         <div className={css(checkboxRow)}>
           <div className={css(checkboxContainer1)}>
@@ -194,7 +209,13 @@ class SearchForm extends React.Component {
           </div>
         </div>
         <div className={css(inputRow)}>
-          <Radio options={typeOptions} name="type" className={css(typeRadioContainer)} />
+          <Radio
+            options={typeOptions}
+            name="type"
+            className={css(typeRadioContainer)}
+            selectedOption={this.state.type}
+            onOptionChange={this.onTypeChange}
+          />
         </div>
         <div className={css(buttonRow)}>
           <Button>
