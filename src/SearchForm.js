@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from 'emotion'
 import { DateRangePicker } from 'react-dates'
 import Media from 'react-media'
+import moment from 'moment';
 import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 
 import TextInput from './common/TextInput'
@@ -140,8 +141,8 @@ const typeRadioContainer = {
 
 class SearchForm extends React.Component {
   state = {
-    startDate: null,
-    endDate: null,
+    startDate: moment().subtract(7, 'days'),
+    endDate: moment(),
     focusedInput: null,
   }
 
@@ -166,6 +167,7 @@ class SearchForm extends React.Component {
                 onFocusChange={focusedInput => this.setState({ focusedInput })}
                 noBorder
                 block
+                numberOfMonths={1}
               />
             )}
           </Media>
