@@ -54,6 +54,10 @@
   border-right: 33px solid #697EFF;
 }
 
+.DayPickerKeyboardShortcuts_show__bottomRight:hover::before {
+  border-right: 33px solid #6073E8;
+}
+
 .DateRangePickerInput_arrow {
   margin: 0 12px;
 }
