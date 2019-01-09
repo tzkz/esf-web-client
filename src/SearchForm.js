@@ -15,14 +15,10 @@ const formContainerInner = {
   marginRight: 'auto',
 }
 
-const datePickerContainer = {
-  padding: '0 12px 16px',
-}
-
 const inputRow = {
   display: 'flex',
   width: '100%',
-  padding: '0 12px 16px',
+  padding: '8px 12px 16px',
 }
 
 const textInputContainer = {
@@ -30,7 +26,7 @@ const textInputContainer = {
 }
 
 const checkboxRow = {
-  padding: '0 12px 16px',
+  padding: '8px 12px 16px',
 }
 
 const checkboxContainer1 = {
@@ -152,7 +148,7 @@ class SearchForm extends React.Component {
   render() {
     return (
       <form className={css(formContainerInner)}>
-        <div className={css(datePickerContainer)}>
+        <div className={css(inputRow)}>
           <Media query="(min-width: 1024px)">
             {(matches) => (
               <DateRangePicker
@@ -181,12 +177,14 @@ class SearchForm extends React.Component {
           <TextInput
             label="Registration Number (Optional)"
             placeholder="Registration Number"
+            small
           />
         </div>
         <div className={css(textInputContainer)}>
           <TextInput
             label="Counterparty BIN (Optional)"
             placeholder="Counterparty BIN"
+            small
           />
         </div>
         <div className={css(checkboxRow)}>

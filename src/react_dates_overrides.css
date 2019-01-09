@@ -1,3 +1,7 @@
+.DateRangePicker {
+  flex-grow: 1;
+}
+
 .DateRangePickerInput {
   background-color: transparent;
   display: flex;
@@ -12,11 +16,13 @@
 
 .DateInput_input {
   border-radius: 5px;
-  border: 1px solid rgb(0,0,0,.5);
+  /* border: 1px solid rgb(0,0,0,.5); */
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .DateInput_input__focused {
-  border: 2px solid #697EFF;
+  border: 1px solid #697EFF;
 }
 
 .CalendarDay__selected,
