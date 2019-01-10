@@ -1,9 +1,9 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { css } from 'emotion'
 import { DateRangePicker } from 'react-dates'
 import Media from 'react-media'
-import moment from 'moment';
+import moment from 'moment'
 import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 
 import Button from './common/Button'
@@ -171,11 +171,28 @@ class SearchForm extends React.Component {
   }
 
   onSubmit = (event) => {
-    const { direction, startDate, endDate } = this.state;
-    const queryString = createQueryString({ direction, startDate, endDate })
+    const {
+      direction,
+      startDate,
+      endDate,
+      type,
+      created,
+      delivered,
+      revoked,
+      cancelled,
+    } = this.state;
 
     event.preventDefault()
-    this.props.history.push(`/result${queryString}`)
+    this.props.onSubmit({
+      direction,
+      startDate,
+      endDate,
+      type,
+      created,
+      delivered,
+      revoked,
+      cancelled,
+    })
   }
 
   render() {
@@ -282,4 +299,8 @@ class SearchForm extends React.Component {
   }
 }
 
-export default withRouter(SearchForm)
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func,
+}
+
+export default SearchForm
