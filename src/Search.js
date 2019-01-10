@@ -10,8 +10,13 @@ export const createQueryString = (form) => {
   const direction = form.direction ? `direction=${form.direction}` : ''
   const dateFrom = form.startDate ? `&dateFrom=${form.startDate.format('YYYY-MM-DD')}` : ''
   const dateTo = form.endDate ? `&dateTo=${form.endDate.format('YYYY-MM-DD')}` : ''
+  const created = form.created ? `&statuses[]=CREATED` : ''
+  const delivered = form.delivered ? `&statuses[]=DELIVERED` : ''
+  const revoked = form.revoked ? `&statuses[]=REVOKED` : ''
+  const cancelled = form.cancelled ? `&statuses[]=CANCELED` : ''
+  const statuses = `${created}${delivered}${revoked}${cancelled}`
 
-  return `?${direction}${dateFrom}${dateTo}`
+  return `?${direction}${dateFrom}${dateTo}${statuses}`
 }
 
 const container = {
