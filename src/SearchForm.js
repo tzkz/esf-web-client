@@ -9,14 +9,6 @@ import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/consta
 import Button from './common/Button'
 import Radio from './common/Radio';
 
-export const createQueryString = (form) => {
-  const direction = form.direction ? `direction=${form.direction}` : ''
-  const dateFrom = form.startDate ? `&dateFrom=${form.startDate.format('YYYY-MM-DD')}` : ''
-  const dateTo = form.endDate ? `&dateTo=${form.endDate.format('YYYY-MM-DD')}` : ''
-
-  return `?${direction}${dateFrom}${dateTo}`
-}
-
 const formContainerInner = {
   width: '100%',
   maxWidth: '400px',
