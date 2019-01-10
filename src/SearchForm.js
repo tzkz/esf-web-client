@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { css } from 'emotion'
 import { DateRangePicker } from 'react-dates'
 import Media from 'react-media'
@@ -169,9 +170,17 @@ class SearchForm extends React.Component {
     })
   }
 
+  onSubmit = (event) => {
+    const { direction, startDate, endDate } = this.state;
+    const queryString = createQueryString({ direction, startDate, endDate })
+
+    event.preventDefault()
+    this.props.history.push(`/result${queryString}`)
+  }
+
   render() {
     return (
-      <form className={css(formContainerInner)}>
+      <form className={css(formContainerInner)} onSubmit={this.onSubmit}>
         <div className={css(inputRow)}>
           <Media query="(min-width: 1024px)">
             {(matches) => (
@@ -273,4 +282,4 @@ class SearchForm extends React.Component {
   }
 }
 
-export default SearchForm
+export default withRouter(SearchForm)

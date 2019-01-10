@@ -1,4 +1,7 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
 import renderer from 'react-test-renderer'
 import moment from 'moment'
 
@@ -20,7 +23,11 @@ describe('createQueryString()', () => {
 
 describe('<SearchForm />', () => {
   it('renders without crashing', () => {
-    const rendered = renderer.create(<SearchForm />).toJSON();
+    const rendered = renderer.create(
+      <Router>
+        <SearchForm />
+      </Router>
+    ).toJSON();
     expect(rendered).toBeTruthy();
   });
 })
