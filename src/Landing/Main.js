@@ -17,9 +17,7 @@ const main = {
 
 const headline = {
   fontSize: '30px',
-  lineHeight: '1.67',
   fontWeight: '600',
-  letterSpacing: '1px',
   margin: '1em 24px 0',
   '@media (min-width: 768px)': {
     fontSize: '34px',
@@ -32,11 +30,9 @@ const subheadline = {
   fontSize: '18px',
   fontWeight: '600',
   lineHeight: '1.67',
-  letterSpacing: '0.8px',
   padding: '16px 24px 0',
   '@media (min-width: 768px)': {
     lineHeight: '2.57',
-    letterSpacing: '0.9px',
     padding: '8px 24px 0',
   }
 }
