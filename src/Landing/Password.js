@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { css } from 'emotion'
+import Alert from 'react-s-alert'
 
 import TextInput from '../common/TextInput'
 import AuthStep from './AuthStep'
@@ -29,13 +30,23 @@ class Password extends React.Component {
   onSubmitError = (error) => {
     this.setState({ isLoading: false })
     if (error.name === 'ApiError') {
-      return error.response.json()
-        .then((json) => {
-          if (json.error.faultcode === 'ns1:SecurityError') {
-            this.setState({ passwordError: true })
-          }
-        })
+      return this.handleApiError(error)
     }
+    return this.handleUnknownError(error)
+  }
+
+  handleApiError = (error) => {
+    Alert.info(error.body.soapError.faultstring)
+    if (error.body.soapError.faultcode === 'ns1:SecurityError') {
+      this.setState({ passwordError: true })
+    }
+  }
+
+  handleUnknownError = (error) => {
+    if (error.response) {
+      return Alert.info(`${error.response.status} ${error.response.statusText}`)
+    }
+    return Alert.info(`${error.name}: ${error.message}`)
   }
 
   setSessionId = ({ sessionId }) => {
