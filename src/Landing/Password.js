@@ -36,10 +36,10 @@ class Password extends React.Component {
   }
 
   handleApiError = (error) => {
-    Alert.info(error.body.soapError.faultstring)
     if (error.body.soapError.faultcode === 'ns1:SecurityError') {
-      this.setState({ passwordError: true })
+      return this.setState({ passwordError: true })
     }
+    Alert.info(error.body.soapError.faultstring)
   }
 
   handleUnknownError = (error) => {
