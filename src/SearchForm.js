@@ -126,9 +126,9 @@ const directionOptions = [
 
 const typeOptions = [
   { id: 'foo', value: 'any', label: 'Any' },
-  { id: 'bar', value: 'ORDINARY', label: 'Ordinary' },
-  { id: 'baz', value: 'FIXED', label: 'Corrected' },
-  { id: 'zoo', value: 'ADDITIONAL', label: 'Additional' },
+  { id: 'bar', value: 'ORDINARY_INVOICE', label: 'Ordinary' },
+  { id: 'baz', value: 'FIXED_INVOICE', label: 'Corrected' },
+  { id: 'zoo', value: 'ADDITIONAL_INVOICE', label: 'Additional' },
 ]
 
 const typeRadioContainer = {
@@ -141,7 +141,7 @@ class SearchForm extends React.Component {
     endDate: moment(),
     focusedInput: null,
     direction: 'INBOUND',
-    type: 'any',
+    invoiceType: 'any',
     created: true,
     delivered: true,
     revoked: true,
@@ -153,7 +153,7 @@ class SearchForm extends React.Component {
   }
 
   onTypeChange = (event) => {
-    this.setState({ type: event.target.value })
+    this.setState({ invoiceType: event.target.value })
   }
 
   onStatusChange = (event) => {
@@ -167,7 +167,7 @@ class SearchForm extends React.Component {
       direction,
       startDate,
       endDate,
-      type,
+      invoiceType,
       created,
       delivered,
       revoked,
@@ -179,7 +179,7 @@ class SearchForm extends React.Component {
       direction,
       startDate,
       endDate,
-      type,
+      invoiceType,
       created,
       delivered,
       revoked,
@@ -277,7 +277,7 @@ class SearchForm extends React.Component {
             options={typeOptions}
             name="type"
             className={css(typeRadioContainer)}
-            selectedOption={this.state.type}
+            selectedOption={this.state.invoiceType}
             onOptionChange={this.onTypeChange}
           />
         </div>
