@@ -6,18 +6,20 @@ import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
 import SearchForm from './SearchForm';
 
-export const createQueryString = (form) => {
-  const direction = form.direction ? `direction=${form.direction}` : ''
-  const dateFrom = form.startDate ? `&dateFrom=${form.startDate.format('YYYY-MM-DD')}` : ''
-  const dateTo = form.endDate ? `&dateTo=${form.endDate.format('YYYY-MM-DD')}` : ''
-  const created = form.created ? `&statuses[]=CREATED` : ''
-  const delivered = form.delivered ? `&statuses[]=DELIVERED` : ''
-  const revoked = form.revoked ? `&statuses[]=REVOKED` : ''
-  const cancelled = form.cancelled ? `&statuses[]=CANCELED` : ''
-  const statuses = `${created}${delivered}${revoked}${cancelled}`
-
-  return `?${direction}${dateFrom}${dateTo}${statuses}`
-}
+export const createQueryString = ({
+  direction, startDate, endDate, created, delivered, revoked, cancelled, invoiceType,
+}) => (
+  `?
+    ${direction ? `direction=${direction}` : ''}
+    ${startDate ? `&dateFrom=${startDate.format('YYYY-MM-DD')}` : ''}
+    ${endDate ? `&dateTo=${endDate.format('YYYY-MM-DD')}` : ''}
+    ${created ? `&statuses[]=CREATED` : ''}
+    ${delivered ? `&statuses[]=DELIVERED` : ''}
+    ${revoked ? `&statuses[]=REVOKED` : ''}
+    ${cancelled ? `&statuses[]=CANCELED` : ''}
+    ${invoiceType && invoiceType !== 'any' ? `&invoiceType=${invoiceType}` : ''}
+  `.replace(/\s/g, '')
+)
 
 const container = {
 }

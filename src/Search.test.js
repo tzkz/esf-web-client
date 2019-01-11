@@ -11,11 +11,12 @@ describe('createQueryString()', () => {
       delivered: true,
       revoked: false,
       cancelled: false,
+      invoiceType: 'ORDINARY_INVOICE',
     }
 
     expect(createQueryString(form))
       .toEqual(
-        '?direction=INBOUND&dateFrom=2018-12-01&dateTo=2018-12-31&statuses[]=CREATED&statuses[]=DELIVERED'
+        '?direction=INBOUND&dateFrom=2018-12-01&dateTo=2018-12-31&statuses[]=CREATED&statuses[]=DELIVERED&invoiceType=ORDINARY_INVOICE'
       )
   })
 })
