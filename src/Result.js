@@ -209,22 +209,24 @@ class Result extends React.Component {
                         Status
                       </div>
                     </div>
-                    {searchResult.invoiceInfoList.invoiceInfo.map((item) => (
-                      <div className={css(itemContainer)} key={item.invoiceId}>
-                        <div>
-                          <label>
-                            <input type="checkbox"  className={css(checkboxInput)} />
-                            <div className={css(checkboxSubstitute)}></div>
-                          </label>
+                    {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo &&
+                      searchResult.invoiceInfoList.invoiceInfo.map((item) => (
+                        <div className={css(itemContainer)} key={item.invoiceId}>
+                          <div>
+                            <label>
+                              <input type="checkbox"  className={css(checkboxInput)} />
+                              <div className={css(checkboxSubstitute)}></div>
+                            </label>
+                          </div>
+                          <div className={css(regNumber)}>
+                            {item.registrationNumber}
+                          </div>
+                          <div>
+                            {item.invoiceStatus}
+                          </div>
                         </div>
-                        <div className={css(regNumber)}>
-                          {item.registrationNumber}
-                        </div>
-                        <div>
-                          {item.invoiceStatus}
-                        </div>
-                      </div>
-                    ))}
+                      ))
+                    }
                   </div>
                 }
               </div>
