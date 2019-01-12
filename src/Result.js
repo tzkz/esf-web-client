@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
 import { isEmpty } from 'lodash';
+import Alert from 'react-s-alert';
 
 import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
@@ -118,21 +119,50 @@ class Result extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.location.search) {
-      const options = {
-        headers: {
-          'Session-ID': this.props.sessionId,
-        }
-      }
+    const { sessionId, location: { search } } = this.props;
 
-      this.setState({ isLoading: true })
-
-      apiCall(`/invoices/queryinvoice${this.props.location.search}`, options)
-        .then((searchResult) => this.props.dispatch({ type: SET_SEARCH_RESULT, searchResult }))
-        .catch((error) => console.error(error))
-        .finally(() => this.setState({ isLoading: false }))
+    if (search) {
+      this.fetchInvoices({ search, sessionId })
     }
   }
+
+  fetchInvoices = ({ search, sessionId }) => {
+    const options = {
+      headers: {
+        'Session-ID': sessionId,
+      }
+    }
+
+    this.setState({ isLoading: true })
+
+    return apiCall(`/invoices/queryinvoice${search}`, options)
+      .then(this.setSearchResult)
+      .catch(this.onFetchFail)
+      .finally(() => this.setState({ isLoading: false }))
+  }
+
+  setSearchResult = (searchResult) => (
+    this.props.dispatch({ type: SET_SEARCH_RESULT, searchResult })
+  )
+
+  onFetchFail = (error) => {
+    if (error.name === 'ApiError') {
+      return this.handleApiError(error)
+    }
+    return this.handleUnknownError(error)
+  }
+
+  handleApiError = (error) => {
+    Alert.info(error.body.soapError.faultstring)
+  }
+
+  handleUnknownError = (error) => {
+    if (error.response) {
+      return Alert.info(`${error.response.status} ${error.response.statusText}`)
+    }
+    return Alert.info(`${error.name}: ${error.message}`)
+  }
+
   render() {
     const { searchResult, locale, onLocaleChange, onMenuClick } = this.props
 
