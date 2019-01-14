@@ -10,6 +10,7 @@ import { apiCall } from './apiUtils';
 import { SET_SEARCH_RESULT } from './store';
 import Header from './common/Header';
 import Spinner from './common/Spinner';
+import Checkbox from './common/Checkbox';
 
 
 const container = {
@@ -76,36 +77,6 @@ const itemContainer = {
   alignItems: 'center',
   borderBottom: 'solid 1px #dadce0',
   justifyContent: 'space-between',
-}
-
-const checkboxInput = {
-  display: 'none',
-  ':checked+div': {
-    backgroundColor: '#327dd0',
-    opacity: '1',
-    border: '2px solid #327dd0',
-  },
-  ':checked+div:after': {
-    transform: 'rotate(45deg)',
-    content: '" "',
-    position: 'absolute',
-    left: '4',
-    top: '0',
-    width: '6px',
-    height: '11px',
-    border: '5px solid #ffffff',
-    borderWidth: '0 2px 2px 0',
-  }
-}
-
-const checkboxSubstitute = {
-  cursor: 'pointer',
-  height: '18px',
-  width: '18px',
-  position: 'relative',
-  opacity: '0.54',
-  border: '2px solid #010101',
-  borderRadius: '2px',
 }
 
 const regNumber = {
@@ -196,12 +167,7 @@ class Result extends React.Component {
                 {!isEmpty(searchResult) && !this.state.isLoading &&
                   <div className={css(resultsContainer)}>
                     <div className={css(itemContainer)}>
-                      <div>
-                        <label>
-                          <input type="checkbox" className={css(checkboxInput)} />
-                          <div className={css(checkboxSubstitute)}></div>
-                        </label>
-                      </div>
+                      <Checkbox id="selectAllCheckbox" />
                       <div className={css(regNumber)}>
                         Reg number
                       </div>
@@ -212,12 +178,7 @@ class Result extends React.Component {
                     {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo &&
                       searchResult.invoiceInfoList.invoiceInfo.map((item) => (
                         <div className={css(itemContainer)} key={item.invoiceId}>
-                          <div>
-                            <label>
-                              <input type="checkbox"  className={css(checkboxInput)} />
-                              <div className={css(checkboxSubstitute)}></div>
-                            </label>
-                          </div>
+                          <Checkbox id={`checkbox-${item.invoiceId}`} />
                           <div className={css(regNumber)}>
                             {item.registrationNumber}
                           </div>
