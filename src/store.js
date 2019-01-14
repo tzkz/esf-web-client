@@ -5,6 +5,7 @@ export const SET_SESSION_ID = 'SET_SESSION_ID'
 export const SET_USER = 'SET_USER'
 export const SET_PASSWORD = 'SET_PASSWORD'
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
+export const SET_CHECKED_INVOICE = 'SET_CHECKED_INVOICE'
 
 const sessionId = (state = null, action) => {
   switch (action.type) {
@@ -37,6 +38,21 @@ const searchResult = (state = null, action) => {
   switch (action.type) {
     case SET_SEARCH_RESULT:
       return action.searchResult;
+    case SET_CHECKED_INVOICE:
+      return {
+        ...state,
+        invoiceInfoList: {
+          invoiceInfo: state.invoiceInfoList.invoiceInfo.map((item) => {
+            if (item.invoiceId === action.item.invoiceId) {
+              return {
+                ...item,
+                checked: action.checked,
+              }
+            }
+            return item
+          })
+        }
+      }
     default:
       return state;
   }
