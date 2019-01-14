@@ -81,7 +81,11 @@ const itemContainer = {
 
 const regNumber = {
   flexGrow: '1',
-  marginLeft: '15px',
+  marginLeft: '12px',
+}
+
+const status = {
+  marginLeft: '12px',
 }
 
 class Result extends React.Component {
@@ -171,7 +175,7 @@ class Result extends React.Component {
                       <div className={css(regNumber)}>
                         Reg number
                       </div>
-                      <div>
+                      <div className={css(status)}>
                         Status
                       </div>
                     </div>
@@ -182,7 +186,7 @@ class Result extends React.Component {
                           <div className={css(regNumber)}>
                             {item.registrationNumber}
                           </div>
-                          <div>
+                          <div className={css(status)}>
                             {item.invoiceStatus}
                           </div>
                         </div>

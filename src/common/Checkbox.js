@@ -9,9 +9,9 @@ const container ={
 const checkboxInput = {
   display: 'none',
   ':checked+label': {
-    backgroundColor: '#327dd0',
+    backgroundColor: '#697EFF',
     opacity: '1',
-    border: '2px solid #327dd0',
+    border: '2px solid #697EFF',
   },
   ':checked+label:after': {
     transform: 'rotate(45deg)',
@@ -35,6 +35,7 @@ const checkboxLabel = {
   opacity: '0.54',
   border: '2px solid #010101',
   borderRadius: '2px',
+  margin: '2px',
 }
 
 const Checkbox = ({ id, ...props }) => (
