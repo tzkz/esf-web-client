@@ -38,12 +38,14 @@ const checkboxLabel = {
   margin: '2px',
 }
 
-const Checkbox = ({ id, ...props }) => (
+const Checkbox = ({ id, checked, onChange, ...props }) => (
   <div className={css(container)}>
     <input
       type="checkbox"
       id={id}
       className={css(checkboxInput)}
+      checked={checked}
+      onChange={onChange}
       {...props}
     />
     <label htmlFor={id} className={css(checkboxLabel)}></label>
@@ -52,6 +54,8 @@ const Checkbox = ({ id, ...props }) => (
 
 Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default Checkbox
