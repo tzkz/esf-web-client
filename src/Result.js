@@ -7,7 +7,7 @@ import Alert from 'react-s-alert';
 import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
 import { apiCall } from './apiUtils';
-import { SET_SEARCH_RESULT } from './store';
+import { SET_SEARCH_RESULT, SET_CHECKED_INVOICE } from './store';
 import Header from './common/Header';
 import Spinner from './common/Spinner';
 import Checkbox from './common/Checkbox';
@@ -88,9 +88,27 @@ const status = {
   marginLeft: '12px',
 }
 
+const addCheckedState = (invoice) => ({
+  ...invoice,
+  checked: false,
+})
+
+const addCheckedStates = (searchResult) => {
+  if (searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo) {
+    return {
+      ...searchResult,
+      invoiceInfoList: {
+        invoiceInfo: searchResult.invoiceInfoList.invoiceInfo.map(addCheckedState)
+      }
+    }
+  }
+  return searchResult
+}
+
 class Result extends React.Component {
   state = {
     isLoading: false,
+    selectAllChecked: false,
   }
 
   componentDidMount() {
@@ -111,6 +129,7 @@ class Result extends React.Component {
     this.setState({ isLoading: true })
 
     return apiCall(`/invoices/queryinvoice${search}`, options)
+      .then(addCheckedStates)
       .then(this.setSearchResult)
       .catch(this.onFetchFail)
       .finally(() => this.setState({ isLoading: false }))
@@ -125,6 +144,19 @@ class Result extends React.Component {
       return this.handleApiError(error)
     }
     return this.handleUnknownError(error)
+  }
+
+  onCheckboxChange = (event, item) => {
+    const checked = event.target.checked
+    this.props.dispatch({
+      type: SET_CHECKED_INVOICE,
+      item,
+      checked,
+    })
+  }
+
+  onSelectAllChange = (event) => {
+    this.setState({ selectAllChecked: event.target.checked })
   }
 
   handleApiError = (error) => {
@@ -171,7 +203,11 @@ class Result extends React.Component {
                 {!isEmpty(searchResult) && !this.state.isLoading &&
                   <div className={css(resultsContainer)}>
                     <div className={css(itemContainer)}>
-                      <Checkbox id="selectAllCheckbox" />
+                      <Checkbox
+                        id="selectAllCheckbox"
+                        checked={this.state.selectAllChecked}
+                        onChange={this.onSelectAllChange}
+                      />
                       <div className={css(regNumber)}>
                         Reg number
                       </div>
@@ -182,7 +218,11 @@ class Result extends React.Component {
                     {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo &&
                       searchResult.invoiceInfoList.invoiceInfo.map((item) => (
                         <div className={css(itemContainer)} key={item.invoiceId}>
-                          <Checkbox id={`checkbox-${item.invoiceId}`} />
+                          <Checkbox
+                            id={`checkbox-${item.invoiceId}`}
+                            checked={item.checked}
+                            onChange={(event) => this.onCheckboxChange(event, item)}
+                          />
                           <div className={css(regNumber)}>
                             {item.registrationNumber}
                           </div>
