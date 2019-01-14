@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
-import Select from './common/Select';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from './apiUtils';
@@ -83,19 +82,10 @@ const overlayContainer = {
   height: '100%',
 }
 
-const companyOptions = [
-  {value:'option1', label: 'ТОО "Самая лучшая компания"'},
-  {value:'option2', label: 'ТОО "Компания Тимура"'},
-  {value:'option3', label: 'ТОО "Компания Ербола"'},
-];
-
 const Sidebar = ({ onOverlayClick, sessionId, user, password, dispatch }) => (
   <div className={css(Container)}>
     <div className={css(drawerContainer)}>
       <div className={css(dropdownContainer)}>
-        <Select
-          options={companyOptions} value
-        />
       </div>
       <div className={css(searchResultContainer, navItemPadding)}>
         <NavLink exact to="/search" className={css(navLinkItem)} activeStyle={(active)}>
