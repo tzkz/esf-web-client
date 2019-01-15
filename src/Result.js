@@ -146,8 +146,8 @@ class Result extends React.Component {
     return this.handleUnknownError(error)
   }
 
-  onCheckboxChange = (event, item) => {
-    const checked = event.target.checked
+  onItemClick = (event, item) => {
+    const checked = !item.checked
     this.props.dispatch({
       type: SET_CHECKED_INVOICE,
       item,
@@ -217,11 +217,17 @@ class Result extends React.Component {
                     </div>
                     {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo &&
                       searchResult.invoiceInfoList.invoiceInfo.map((item) => (
-                        <div className={css(itemContainer)} key={item.invoiceId}>
+                        <div
+                          className={css(itemContainer, item.checked && { background: '#F5F5F5' })}
+                          key={item.invoiceId}
+                          onClick={(event) => {
+                            this.onItemClick(event, item)
+                          }}
+                        >
                           <Checkbox
                             id={`checkbox-${item.invoiceId}`}
                             checked={item.checked}
-                            onChange={(event) => this.onCheckboxChange(event, item)}
+                            onClick={(event) => event.stopPropagation()}
                           />
                           <div className={css(regNumber)}>
                             {item.registrationNumber}
