@@ -13,7 +13,12 @@ import { SET_SESSION_ID, SET_USER, SET_PASSWORD } from '../store';
 const formTitle = {
   fontSize: '24px',
   color: 'rgb(0,0,0,0.87)',
-  paddingBottom: '24px',
+  paddingBottom: '12px',
+}
+
+const subtitle = {
+  color: 'rgb(0,0,0,0.87)',
+  paddingBottom: '12px',
 }
 
 class Password extends React.Component {
@@ -101,7 +106,10 @@ class Password extends React.Component {
         isLoading={this.state.isLoading}
       >
         <div className={css(formTitle)}>
-          Account ID {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
+          Account Password
+        </div>
+        <div className={css(subtitle)}>
+          For {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
         </div>
         <TextInput
           label="Password"
