@@ -7,7 +7,7 @@ import Alert from 'react-s-alert';
 import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
 import { apiCall } from './apiUtils';
-import { SET_SEARCH_RESULT, SET_CHECKED_INVOICE } from './store';
+import { SET_SEARCH_RESULT } from './store';
 import Header from './common/Header';
 import Spinner from './common/Spinner';
 import Checkbox from './common/Checkbox';
@@ -88,27 +88,11 @@ const status = {
   marginLeft: '12px',
 }
 
-const addCheckedState = (invoice) => ({
-  ...invoice,
-  checked: false,
-})
-
-const addCheckedStates = (searchResult) => {
-  if (searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo) {
-    return {
-      ...searchResult,
-      invoiceInfoList: {
-        invoiceInfo: searchResult.invoiceInfoList.invoiceInfo.map(addCheckedState)
-      }
-    }
-  }
-  return searchResult
-}
-
 class Result extends React.Component {
   state = {
     isLoading: false,
     selectAllChecked: false,
+    selected: [],
   }
 
   componentDidMount() {
@@ -129,7 +113,6 @@ class Result extends React.Component {
     this.setState({ isLoading: true })
 
     return apiCall(`/invoices/queryinvoice${search}`, options)
-      .then(addCheckedStates)
       .then(this.setSearchResult)
       .catch(this.onFetchFail)
       .finally(() => this.setState({ isLoading: false }))
@@ -147,12 +130,24 @@ class Result extends React.Component {
   }
 
   onItemClick = (event, item) => {
-    const checked = !item.checked
-    this.props.dispatch({
-      type: SET_CHECKED_INVOICE,
-      item,
-      checked,
-    })
+    const { selected } = this.state
+    const selectedIndex = selected.indexOf(item.invoiceId)
+    let newSelected = []
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, item.invoiceId);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1),
+      );
+    }
+
+    this.setState({ selected: newSelected })
   }
 
   onSelectAllChange = (event) => {
@@ -218,15 +213,15 @@ class Result extends React.Component {
                     {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo &&
                       searchResult.invoiceInfoList.invoiceInfo.map((item) => (
                         <div
-                          className={css(itemContainer, item.checked && { background: '#F5F5F5' })}
+                          className={
+                            css(itemContainer, this.state.selected.indexOf(item.invoiceId) > -1 && { background: '#F5F5F5' })
+                          }
                           key={item.invoiceId}
-                          onClick={(event) => {
-                            this.onItemClick(event, item)
-                          }}
+                          onClick={(event) => this.onItemClick(event, item)}
                         >
                           <Checkbox
                             id={`checkbox-${item.invoiceId}`}
-                            checked={item.checked}
+                            checked={this.state.selected.indexOf(item.invoiceId) > -1}
                             onClick={(event) => event.stopPropagation()}
                           />
                           <div className={css(regNumber)}>
