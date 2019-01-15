@@ -81,7 +81,9 @@ const headerContainer = {
 
 const itemContainer = {
   ...headerContainer,
-  cursor: 'pointer',
+  ':hover': {
+    cursor: 'pointer',
+  },
 }
 
 const regNumber = {
