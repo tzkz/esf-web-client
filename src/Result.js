@@ -69,7 +69,7 @@ const resultsContainer = {
   }
 }
 
-const itemContainer = {
+const headerContainer = {
   display: 'flex',
   paddingLeft: '15px',
   paddingRight: '15px',
@@ -79,6 +79,11 @@ const itemContainer = {
   justifyContent: 'space-between',
 }
 
+const itemContainer = {
+  ...headerContainer,
+  cursor: 'pointer',
+}
+
 const regNumber = {
   flexGrow: '1',
   marginLeft: '12px',
@@ -86,6 +91,13 @@ const regNumber = {
 
 const status = {
   marginLeft: '12px',
+}
+
+const getIvoiceIds = (searchResult) => {
+  const getInvoiceId = (item) => item.invoiceId
+
+  return searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo &&
+    searchResult.invoiceInfoList.invoiceInfo.map(getInvoiceId)
 }
 
 class Result extends React.Component {
@@ -151,7 +163,12 @@ class Result extends React.Component {
   }
 
   onSelectAllChange = (event) => {
-    this.setState({ selectAllChecked: event.target.checked })
+    const checked = event.target.checked
+    const { searchResult } = this.props
+    this.setState({
+      selectAllChecked: checked,
+      selected: checked ? getIvoiceIds(searchResult) : []
+    })
   }
 
   handleApiError = (error) => {
@@ -197,7 +214,7 @@ class Result extends React.Component {
                 }
                 {!isEmpty(searchResult) && !this.state.isLoading &&
                   <div className={css(resultsContainer)}>
-                    <div className={css(itemContainer)}>
+                    <div className={css(headerContainer)}>
                       <Checkbox
                         id="selectAllCheckbox"
                         checked={this.state.selectAllChecked}
