@@ -71,7 +71,7 @@ const resultsContainer = {
 
 const headerContainer = {
   display: 'flex',
-  paddingLeft: '14px',
+  paddingLeft: '16px',
   paddingRight: '16px',
   height: '48px',
   alignItems: 'center',
