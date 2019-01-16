@@ -36,6 +36,20 @@ jobs:
           at: ~/repo
       - run: ansible-playbook ./ansible/deploy.yml -i ./ansible/dev -t copy_www,fix_robots
 
+  deploy-beta:
+    docker:
+      - image: circleci/python:2.7
+        environment:
+            ANSIBLE_HOST_KEY_CHECKING: no
+            ANSIBLE_REMOTE_TEMP: /home/ubuntu/.ansible/tmp
+    working_directory: ~/repo
+    steps:
+      - run: sudo pip install ansible
+      - run: sudo apt install -y rsync
+      - attach_workspace:
+          at: ~/repo
+      - run: ansible-playbook ./ansible/deploy.yml -i ./ansible/beta -t copy_www,fix_robots
+
   deploy-prod:
     docker:
       - image: circleci/python:2.7
@@ -61,9 +75,9 @@ workflows:
           filters:
             branches:
               only: master
-      # - deploy-prod:
-      #     requires:
-      #       - build-test
-      #     filters:
-      #       branches:
-      #         only: master
+      - deploy-beta:
+          requires:
+            - build-test
+          filters:
+            branches:
+              only: beta
