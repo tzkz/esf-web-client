@@ -17,9 +17,7 @@ const main = {
 
 const headline = {
   fontSize: '30px',
-  lineHeight: '1.67',
   fontWeight: '600',
-  letterSpacing: '1px',
   margin: '1em 24px 0',
   '@media (min-width: 768px)': {
     fontSize: '34px',
@@ -32,11 +30,9 @@ const subheadline = {
   fontSize: '18px',
   fontWeight: '600',
   lineHeight: '1.67',
-  letterSpacing: '0.8px',
   padding: '16px 24px 0',
   '@media (min-width: 768px)': {
     lineHeight: '2.57',
-    letterSpacing: '0.9px',
     padding: '8px 24px 0',
   }
 }
@@ -51,19 +47,23 @@ const demoButton = {
   },
 }
 
-export const signInButton = {
+const signInLabel = {
   backgroundColor: 'white',
   border: '2px solid white',
   color: '#744fc6',
-  ':hover': {
-    backgroundColor: 'rgb(255,255,255, .9)',
-    border: '2px solid white',
+};
+
+export const signInButton = {
+  ':hover + label': {
+    backgroundColor: 'rgba(255,255,255, .9)',
+    border: '2px solid rgba(255,255,255, .9)',
   },
 };
 
 const buttons = {
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   padding: '16px 16px 0',
   '@media (min-width: 768px)': {
     padding: '2em 16px',
@@ -92,7 +92,7 @@ const Main = ({ onDemoClick }) => (
       </div>
       <div className={css(buttons)}>
         <div className={css(browseButtonContainer)}>
-          <FileInput className={css(signInButton)}>
+          <FileInput className={css(signInButton)} labelClassName={css(signInLabel)}>
             <FormattedMessage
               id="LoginInitial.SignIn"
               defaultMessage="Sign In"

@@ -6,6 +6,21 @@ import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
 import SearchForm from './SearchForm';
 
+export const createQueryString = ({
+  direction, startDate, endDate, created, delivered, revoked, cancelled, invoiceType,
+}) => (
+  `?
+    ${direction ? `direction=${direction}` : ''}
+    ${startDate ? `&dateFrom=${startDate.format('YYYY-MM-DD')}` : ''}
+    ${endDate ? `&dateTo=${endDate.format('YYYY-MM-DD')}` : ''}
+    ${created ? `&statuses[]=CREATED` : ''}
+    ${delivered ? `&statuses[]=DELIVERED` : ''}
+    ${revoked ? `&statuses[]=REVOKED` : ''}
+    ${cancelled ? `&statuses[]=CANCELED` : ''}
+    ${invoiceType && invoiceType !== 'any' ? `&invoiceType=${invoiceType}` : ''}
+  `.replace(/\s/g, '')
+)
+
 const container = {
 }
 
@@ -46,32 +61,38 @@ const mainArea = {
   paddingTop: '15px',
 }
 
-const Search = ({ locale, onLocaleChange, onMenuClick, }) => (
-  <PrivateComponent>
-    <div className={css(container)}>
-      <Header
-        localeValue={locale}
-        onLocaleChange={onLocaleChange}
-        burgerClassName={css({ fill: '#697EFF' })}
-        onMenuClick={onMenuClick}
-      />
-      <SectionContent>
-        <div className={css(innerContainer)}>
-          <div className={css(sidebarContainer)}>
-            <div className={css(sidebarItems, sidebarItemActive)}>
-              Search
+const Search = ({ locale, onLocaleChange, onMenuClick, history }) => {
+  const onSubmit = (form) => {
+    history.push(`/result${createQueryString(form)}`)
+  }
+
+  return (
+    <PrivateComponent>
+      <div className={css(container)}>
+        <Header
+          localeValue={locale}
+          onLocaleChange={onLocaleChange}
+          burgerClassName={css({ fill: '#697EFF' })}
+          onMenuClick={onMenuClick}
+        />
+        <SectionContent>
+          <div className={css(innerContainer)}>
+            <div className={css(sidebarContainer)}>
+              <div className={css(sidebarItems, sidebarItemActive)}>
+                Search
+              </div>
+              <div className={css(sidebarItems)}>
+                Result
+              </div>
             </div>
-            <div className={css(sidebarItems)}>
-              Result
+            <div className={css(mainArea)}>
+              <SearchForm onSubmit={onSubmit} />
             </div>
           </div>
-          <div className={css(mainArea)}>
-            <SearchForm />
-          </div>
-        </div>
-      </SectionContent>
-    </div>
-  </PrivateComponent>
-);
+        </SectionContent>
+      </div>
+    </PrivateComponent>
+  )
+}
 
 export default Search;

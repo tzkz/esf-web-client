@@ -3,9 +3,18 @@ import { SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT } from './sto
 
 const rejectError = (response) => {
   const error = new Error()
+  const contentType = response.headers.get('content-type')
 
-  error.name = "ApiError"
   error.response = response
+
+  if (contentType && contentType.includes('application/json')) {
+    error.name = "ApiError"
+    return response.json()
+      .then((body) => {
+        error.body = body;
+        return Promise.reject(error)
+      })
+  }
 
   return Promise.reject(error)
 }

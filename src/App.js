@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { css } from 'emotion';
+import Alert from 'react-s-alert';
 
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -18,6 +19,13 @@ import Landing from './Landing';
 import Search from './Search';
 import Result from './Result';
 import Sidebar from './Sidebar';
+
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/stackslide.css';
+
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import './react_dates_overrides.css';
 
 if (!window.Intl) {
   require('intl');
@@ -95,6 +103,12 @@ class App extends Component {
                     onMenuClick={this.onMenuClick}
                   />
                 )}
+              />
+              <Alert
+                stack={{ limit: 3 }}
+                effect="stackslide"
+                position="top"
+                timeout={5000}
               />
             </div>
           </Router>

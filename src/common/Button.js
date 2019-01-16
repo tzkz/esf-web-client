@@ -20,6 +20,11 @@ export const button = {
     backgroundColor: '#6073E8',
     border: 'solid 1px #6073E8',
   },
+  ':disabled': {
+    backgroundColor: 'rgba(0, 0, 0, .12)',
+    border: 'none',
+    color: 'rgba(0, 0, 0, .38)',
+  }
 };
 
 const Button = ({ children, className, ...other }) => (

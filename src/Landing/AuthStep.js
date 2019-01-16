@@ -35,7 +35,7 @@ const closeButton = {
   cursor: 'pointer',
 }
 
-const AuthStep = ({ children, onSubmit, onCancel }) => (
+const AuthStep = ({ children, onSubmit, onCancel, isLoading }) => (
   <div className={css(container)}>
     <div className={css(header)}>
       <button className={css(closeButton)} onClick={onCancel}>
@@ -48,6 +48,7 @@ const AuthStep = ({ children, onSubmit, onCancel }) => (
       className={css(form)}
       onSubmit={onSubmit}
       onCancel={onCancel}
+      isLoading={isLoading}
     >
       {children}
     </AuthForm>

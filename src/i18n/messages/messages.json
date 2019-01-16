@@ -5,16 +5,6 @@
     "filepath": "./src/common/Header.js"
   },
   {
-    "id": "Footer.TermsOfService",
-    "defaultMessage": "Terms of Service",
-    "filepath": "./src/Landing/Footer.js"
-  },
-  {
-    "id": "Footer.ContactUs",
-    "defaultMessage": "Contact Us",
-    "filepath": "./src/Landing/Footer.js"
-  },
-  {
     "id": "Main.Headline",
     "defaultMessage": "Export ESF invoices with ease",
     "filepath": "./src/Landing/Main.js"

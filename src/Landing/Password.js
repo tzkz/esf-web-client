@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { css } from 'emotion'
+import Alert from 'react-s-alert'
 
 import TextInput from '../common/TextInput'
 import AuthStep from './AuthStep'
@@ -12,13 +13,19 @@ import { SET_SESSION_ID, SET_USER, SET_PASSWORD } from '../store';
 const formTitle = {
   fontSize: '24px',
   color: 'rgb(0,0,0,0.87)',
-  paddingBottom: '24px',
+  paddingBottom: '12px',
+}
+
+const subtitle = {
+  color: 'rgb(0,0,0,0.87)',
+  paddingBottom: '12px',
 }
 
 class Password extends React.Component {
   state = {
     password: '',
     passwordError: null,
+    isLoading: false,
   }
 
   onPasswordChange = (event) => {
@@ -26,14 +33,25 @@ class Password extends React.Component {
   }
 
   onSubmitError = (error) => {
+    this.setState({ isLoading: false })
     if (error.name === 'ApiError') {
-      return error.response.json()
-        .then((json) => {
-          if (json.error.faultcode === 'ns1:SecurityError') {
-            this.setState({ passwordError: true })
-          }
-        })
+      return this.handleApiError(error)
     }
+    return this.handleUnknownError(error)
+  }
+
+  handleApiError = (error) => {
+    if (error.body.soapError.faultcode === 'ns1:SecurityError') {
+      return this.setState({ passwordError: true })
+    }
+    Alert.info(error.body.soapError.faultstring)
+  }
+
+  handleUnknownError = (error) => {
+    if (error.response) {
+      return Alert.info(`${error.response.status} ${error.response.statusText}`)
+    }
+    return Alert.info(`${error.name}: ${error.message}`)
   }
 
   setSessionId = ({ sessionId }) => {
@@ -71,6 +89,7 @@ class Password extends React.Component {
     }
 
     event.preventDefault()
+    this.setState({ isLoading: true })
 
     return apiCall('/sessions/createsession', options)
       .then(this.setSessionId)
@@ -84,12 +103,13 @@ class Password extends React.Component {
       <AuthStep
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
+        isLoading={this.state.isLoading}
       >
         <div className={css(formTitle)}>
-          Enter Account Password
+          Account Password
         </div>
-        <div className={css(formTitle)}>
-          for ID {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
+        <div className={css(subtitle)}>
+          For {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
         </div>
         <TextInput
           label="Password"
@@ -100,6 +120,7 @@ class Password extends React.Component {
           errorMessage={this.state.passwordError ? 'Wrong Password. Enter "TestPass123" for demo' : ''}
           type="password"
           autoFocus
+          disabled={this.state.isLoading}
         />
       </AuthStep>
     );

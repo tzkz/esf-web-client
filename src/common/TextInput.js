@@ -14,7 +14,6 @@ const input = {
   padding: '10px 16px',
   borderRadius: '5px',
   backgroundColor: '#ffffff',
-  height: '50px',
   width: '100%',
   outline: 'none',
   color: 'rgb(0,0,0,.87)',
@@ -44,7 +43,7 @@ const errorContainer = {
   padding: '2px 12px 0',
 }
 
-const TextInput = ({ className, errorMessage, label, helperText, ...other }) => (
+const TextInput = ({ className, errorMessage, label, helperText, small, ...other }) => (
   <div className={css(container)}>
     {errorMessage &&
       <div className={css(errorContainer)}>{errorMessage}</div>
@@ -57,6 +56,7 @@ const TextInput = ({ className, errorMessage, label, helperText, ...other }) => 
       size={10}
       className={css({
         ...input,
+        height: small ? '40px': '50px',
         border: errorMessage ? '2px solid #B00020' : 'solid 1px rgb(0,0,0,.5)',
         ':focus': {
           border: errorMessage ? '2px solid #B00020' : '2px solid #697eff',
@@ -76,6 +76,7 @@ TextInput.propTypes = {
   errorMessage: PropTypes.string,
   label: PropTypes.string,
   helperText: PropTypes.string,
+  small: PropTypes.bool,
 };
 
 export default TextInput

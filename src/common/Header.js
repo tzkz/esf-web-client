@@ -63,7 +63,10 @@ const navItem = {
 }
 
 const navItemLogout = {
-  display: 'block',
+  display: 'none',
+  '@media (min-width: 768px)': {
+    display: 'block',
+  },
 }
 
 const burgerButton = {
