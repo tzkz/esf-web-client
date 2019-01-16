@@ -71,12 +71,19 @@ const resultsContainer = {
 
 const headerContainer = {
   display: 'flex',
-  paddingLeft: '15px',
-  paddingRight: '15px',
+  paddingLeft: '14px',
+  paddingRight: '16px',
   height: '48px',
   alignItems: 'center',
   borderBottom: 'solid 1px #dadce0',
   justifyContent: 'space-between',
+}
+
+const tableTitleContainer = {
+  ...headerContainer,
+  height: '64px',
+  padding: '0 16px',
+  fontSize: '20px',
 }
 
 const itemContainer = {
@@ -216,6 +223,9 @@ class Result extends React.Component {
                 }
                 {!isEmpty(searchResult) && !this.state.isLoading &&
                   <div className={css(resultsContainer)}>
+                    <div className={css(tableTitleContainer)}>
+                      Invoices
+                    </div>
                     <div className={css(headerContainer)}>
                       <Checkbox
                         id="selectAllCheckbox"
