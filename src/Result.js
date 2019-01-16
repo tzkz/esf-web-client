@@ -102,6 +102,19 @@ const status = {
   marginLeft: '12px',
 }
 
+const downloadButton = {
+  background: 'none',
+  border: 'none',
+  outline: 'none',
+  color: 'inherit',
+  fontFamily: 'inherit',
+  fontSize: '14px',
+  textTransform: 'uppercase',
+  ':hover': {
+    cursor: 'pointer',
+  }
+}
+
 const getIvoiceIds = (searchResult) => {
   const getInvoiceId = (item) => item.invoiceId
 
@@ -180,6 +193,10 @@ class Result extends React.Component {
     })
   }
 
+  onDowloadClick = () => {
+    Alert.info('Download!')
+  }
+
   handleApiError = (error) => {
     Alert.info(error.body.soapError.faultstring)
   }
@@ -241,6 +258,14 @@ class Result extends React.Component {
                       }
                       {!isEmpty(selected) &&
                         <span>{selected.length} selected</span>
+                      }
+                      {!isEmpty(selected) &&
+                        <button
+                          className={css(downloadButton)}
+                          onClick={this.onDowloadClick}
+                        >
+                          Download
+                        </button>
                       }
                     </div>
                     <div className={css(headerContainer)}>
