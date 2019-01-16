@@ -110,6 +110,7 @@ const downloadButton = {
   fontFamily: 'inherit',
   fontSize: '14px',
   textTransform: 'uppercase',
+  padding: '10px 8px',
   ':hover': {
     cursor: 'pointer',
   }
