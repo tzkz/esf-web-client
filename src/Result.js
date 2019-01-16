@@ -192,6 +192,7 @@ class Result extends React.Component {
   }
 
   render() {
+    const { selected } = this.state
     const { searchResult, locale, onLocaleChange, onMenuClick } = this.props
 
     return (
@@ -223,8 +224,24 @@ class Result extends React.Component {
                 }
                 {!isEmpty(searchResult) && !this.state.isLoading &&
                   <div className={css(resultsContainer)}>
-                    <div className={css(tableTitleContainer)}>
-                      Invoices
+                    <div
+                      className={
+                        css(
+                          tableTitleContainer,
+                          !isEmpty(selected) && {
+                            color: '#697EFF',
+                            background: '#E3E7FF',
+                            fontSize: '16px',
+                          }
+                        )
+                      }
+                    >
+                      {isEmpty(selected) &&
+                        <span>Invoices</span>
+                      }
+                      {!isEmpty(selected) &&
+                        <span>{selected.length} selected</span>
+                      }
                     </div>
                     <div className={css(headerContainer)}>
                       <Checkbox
