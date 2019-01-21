@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { css } from 'emotion';
 import { isEmpty } from 'lodash';
 import Alert from 'react-s-alert';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
@@ -123,6 +125,35 @@ const getIvoiceIds = (searchResult) => {
     searchResult.invoiceInfoList.invoiceInfo.map(getInvoiceId)
 }
 
+const fetchPdf = (item) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(item),
+    mode: 'cors',
+  }
+
+  return apiCall('/pdfs', options)
+    .then((result) => ({ ...result, invoiceId: item.invoiceId }))
+}
+
+const fetchPdfs = ({ selected, invoiceInfo }) => {
+  const selectedInvoices = invoiceInfo.filter((item) => {
+    return selected.includes(item.invoiceId)
+  })
+
+  return Promise.all(selectedInvoices.map(fetchPdf))
+}
+
+const generateZip = (pdfs) => {
+  const zip = new JSZip()
+
+  for (let i = 0; i < pdfs.length; i++) {
+    zip.file(`${pdfs[i].invoiceId}.pdf`, pdfs[i].pdfBase64, { base64: true })
+  }
+
+  return zip.generateAsync({ type: 'blob' })
+}
+
 class Result extends React.Component {
   state = {
     isLoading: false,
@@ -195,7 +226,12 @@ class Result extends React.Component {
   }
 
   onDowloadClick = () => {
-    Alert.info('Download!')
+    const { selected } = this.state
+    const { searchResult: { invoiceInfoList: { invoiceInfo }} } = this.props
+
+    return fetchPdfs({ selected, invoiceInfo })
+      .then(generateZip)
+      .then((blob) => saveAs(blob, `invoices-${Date.now()}`))
   }
 
   handleApiError = (error) => {
