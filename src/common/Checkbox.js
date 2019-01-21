@@ -39,20 +39,30 @@ const checkedLabel = {
   }
 }
 
-const Checkbox = ({ id, checked, onChange, ...props }) => {
-  return (
-    <div className={css(container)}>
-      <input
-        type="checkbox"
-        id={id}
-        className={css(checkboxInput)}
-        checked={checked}
-        onChange={(event) => onChange ? onChange(event) : undefined}
-        {...props}
-      />
-      <label htmlFor={id} className={css(checkboxLabel, checked && checkedLabel)}></label>
-    </div>
-  )
+class Checkbox extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    if (this.props.checked !== nextProps.checked) {
+      return true
+    }
+    return false
+  }
+  render() {
+    const { id, checked, onChange, ...props } = this.props;
+
+    return (
+      <div className={css(container)}>
+        <input
+          type="checkbox"
+          id={id}
+          className={css(checkboxInput)}
+          checked={checked}
+          onChange={(event) => onChange ? onChange(event) : undefined}
+          {...props}
+        />
+        <label htmlFor={id} className={css(checkboxLabel, checked && checkedLabel)}></label>
+      </div>
+    )
+  }
 }
 
 Checkbox.propTypes = {
