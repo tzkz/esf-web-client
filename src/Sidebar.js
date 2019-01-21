@@ -4,6 +4,7 @@ import { css } from 'emotion';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from './apiUtils';
+import LangSelect from '../src/common/LangSelect';
 
 const Container = {
   position: 'fixed',
@@ -11,6 +12,7 @@ const Container = {
   width: '100%',
   height: '100%',
   fontSize: '16px',
+  zIndex: '1000',
 }
 
 const drawerContainer = {
@@ -44,11 +46,11 @@ const navLinkItem = {
   margin: '0px 10px',
 }
 
-const active = {
-  backgroundColor: '#e3e7ff',
-  borderRadius: '5px',
-  color: '#697eff',
-}
+// const active = {
+//   backgroundColor: '#e3e7ff',
+//   borderRadius: '5px',
+//   color: '#697eff',
+// }
 
 const buttonsContainer = {
   display: 'flex',
@@ -71,6 +73,14 @@ const splitLine = {
   margin: '10px 0px',
 }
 
+const logOutButton = {
+  border: 'none',
+  backgroundColor: 'transparent',
+  padding: '0px',
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+}
+
 const navItemPadding = {
   paddingTop: '25px',
   paddingBottom: '2px',
@@ -82,13 +92,18 @@ const overlayContainer = {
   height: '100%',
 }
 
-const Sidebar = ({ onOverlayClick, sessionId, user, password, dispatch }) => (
+const langSelectButton = {
+  flexGrow: '1',
+  margin: '12px 5px',
+}
+
+const Sidebar = ({ localeValue, onLocaleChange, onOverlayClick, sessionId, user, password, dispatch }) => (
   <div className={css(Container)}>
     <div className={css(drawerContainer)}>
       <div className={css(dropdownContainer)}>
       </div>
       <div className={css(searchResultContainer, navItemPadding)}>
-        <NavLink exact to="/search" className={css(navLinkItem)} activeStyle={(active)}>
+        <NavLink exact to="/search" className={css(navLinkItem)}>
           <div className={css(buttonsContainer)}>
             <div className={css(icons)}>
               <svg height='17.6px' width='17.5px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.5 17.6'><defs />
@@ -100,7 +115,7 @@ const Sidebar = ({ onOverlayClick, sessionId, user, password, dispatch }) => (
             </div>
           </div>
         </NavLink>
-        <NavLink exact to="/result" className={css(navLinkItem)} activeStyle={(active)}>
+        <NavLink exact to="/result" className={css(navLinkItem)}>
           <div className={css(buttonsContainer)}>
             <div className={css(icons)}>
               <svg height='10px' width='18px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.9 10'><defs />
@@ -115,27 +130,15 @@ const Sidebar = ({ onOverlayClick, sessionId, user, password, dispatch }) => (
         <div className={css(splitLine)} />
         <div className={css(buttonsContainer, navLinkItem)}>
           <div className={css(icons)}>
-          <svg height='20px' width='20px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><defs />
-            <path fill='#727272' id='ic_language_24px' d='M11.99 2A10 10 0 1 0 22 12 10 10 0 0 0 11.99 2zm6.93 6h-2.95a15.649 15.649 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04A14.087 14.087 0 0 1 13.91 8h-3.82A14.087 14.087 0 0 1 12 4.04zM4.26 14a7.822 7.822 0 0 1 0-4h3.38a16.515 16.515 0 0 0-.14 2 16.515 16.515 0 0 0 .14 2zm.82 2h2.95a15.649 15.649 0 0 0 1.38 3.56A7.987 7.987 0 0 1 5.08 16zm2.95-8H5.08a7.987 7.987 0 0 1 4.33-3.56A15.649 15.649 0 0 0 8.03 8zM12 19.96A14.087 14.087 0 0 1 10.09 16h3.82A14.087 14.087 0 0 1 12 19.96zM14.34 14H9.66a14.713 14.713 0 0 1-.16-2 14.585 14.585 0 0 1 .16-2h4.68a14.585 14.585 0 0 1 .16 2 14.713 14.713 0 0 1-.16 2zm.25 5.56A15.649 15.649 0 0 0 15.97 16h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14a16.515 16.515 0 0 0 .14-2 16.515 16.515 0 0 0-.14-2h3.38a7.822 7.822 0 0 1 0 4z' className='cls-1' transform='translate(-2 -2)' />
-          </svg>
-          </div>
-          <div className={css(buttons)}>
-            English
-          </div>
-        </div>
-        <NavLink exact to="/" className={css(navLinkItem)} activeStyle={(active)}>
-          <div className={css(buttonsContainer)}>
-            <div className={css(icons)}>
             <svg height='20px' width='20px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><defs />
-              <path fill='currentColor' id='ic_help_outline_24px' d='M11 18h2v-2h-2zm1-16a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.011 8.011 0 0 1-8 8zm0-14a4 4 0 0 0-4 4h2a2 2 0 0 1 4 0c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5a4 4 0 0 0-4-4z' className='cls-1' transform='translate(-2 -2)' />
+              <path fill='#727272' id='ic_language_24px' d='M11.99 2A10 10 0 1 0 22 12 10 10 0 0 0 11.99 2zm6.93 6h-2.95a15.649 15.649 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04A14.087 14.087 0 0 1 13.91 8h-3.82A14.087 14.087 0 0 1 12 4.04zM4.26 14a7.822 7.822 0 0 1 0-4h3.38a16.515 16.515 0 0 0-.14 2 16.515 16.515 0 0 0 .14 2zm.82 2h2.95a15.649 15.649 0 0 0 1.38 3.56A7.987 7.987 0 0 1 5.08 16zm2.95-8H5.08a7.987 7.987 0 0 1 4.33-3.56A15.649 15.649 0 0 0 8.03 8zM12 19.96A14.087 14.087 0 0 1 10.09 16h3.82A14.087 14.087 0 0 1 12 19.96zM14.34 14H9.66a14.713 14.713 0 0 1-.16-2 14.585 14.585 0 0 1 .16-2h4.68a14.585 14.585 0 0 1 .16 2 14.713 14.713 0 0 1-.16 2zm.25 5.56A15.649 15.649 0 0 0 15.97 16h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14a16.515 16.515 0 0 0 .14-2 16.515 16.515 0 0 0-.14-2h3.38a7.822 7.822 0 0 1 0 4z' className='cls-1' transform='translate(-2 -2)' />
             </svg>
-            </div>
-            <div className={css(buttons)} >
-              Contact Us
-            </div>
           </div>
-        </NavLink>
-        <div className={css(buttonsContainer, navLinkItem)}>
+          <LangSelect className={css( langSelectButton)} value={localeValue} onChange={onLocaleChange}>
+            English
+          </LangSelect>
+        </div>
+        <button className={css(logOutButton, buttonsContainer, navLinkItem)}>
           <div className={css(icons)}>
           <svg height='18px' width='18px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><defs />
             <path fill='currentColor' id='ic_power_settings_new_24px' d='M13 3h-2v10h2zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0 1 19 12 7 7 0 1 1 7.58 6.58L6.17 5.17A8.992 8.992 0 1 0 21 12a8.932 8.932 0 0 0-3.17-6.83z' className='cls-1' transform='translate(-3 -3)' />
@@ -144,7 +147,7 @@ const Sidebar = ({ onOverlayClick, sessionId, user, password, dispatch }) => (
           <div className={css(buttons)} onClick={() => logOut({ user, password, sessionId}, dispatch)}>
             Log Out
           </div>
-        </div>
+        </button>
       </div>
     </div>
     <div className={css(overlayContainer)} onClick={onOverlayClick} />
@@ -153,6 +156,8 @@ const Sidebar = ({ onOverlayClick, sessionId, user, password, dispatch }) => (
 
 Sidebar.propTypes = {
   onOverlayClick: PropTypes.func,
+  localeValue: PropTypes.string,
+  onLocaleChange: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {

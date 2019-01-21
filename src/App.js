@@ -67,6 +67,8 @@ class App extends Component {
               {this.state.showSidebar && (
                 <Sidebar 
                   onOverlayClick={this.onOverlayClick}
+                  locale={this.state.locale}
+                  onLocaleChange={this.onLocaleChange}
                 />
               )}
               <Route
