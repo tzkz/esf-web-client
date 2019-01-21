@@ -46,12 +46,6 @@ const navLinkItem = {
   margin: '0px 10px',
 }
 
-// const active = {
-//   backgroundColor: '#e3e7ff',
-//   borderRadius: '5px',
-//   color: '#697eff',
-// }
-
 const buttonsContainer = {
   display: 'flex',
   alignItems: 'center',
@@ -138,13 +132,13 @@ const Sidebar = ({ localeValue, onLocaleChange, onOverlayClick, sessionId, user,
             English
           </LangSelect>
         </div>
-        <button className={css(logOutButton, buttonsContainer, navLinkItem)}>
+        <button className={css(logOutButton, buttonsContainer, navLinkItem)} onClick={() => logOut({ user, password, sessionId}, dispatch)}>
           <div className={css(icons)}>
           <svg height='18px' width='18px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><defs />
             <path fill='currentColor' id='ic_power_settings_new_24px' d='M13 3h-2v10h2zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0 1 19 12 7 7 0 1 1 7.58 6.58L6.17 5.17A8.992 8.992 0 1 0 21 12a8.932 8.932 0 0 0-3.17-6.83z' className='cls-1' transform='translate(-3 -3)' />
           </svg>
           </div>
-          <div className={css(buttons)} onClick={() => logOut({ user, password, sessionId}, dispatch)}>
+          <div className={css(buttons)}>
             Log Out
           </div>
         </button>
