@@ -157,6 +157,7 @@ const generateZip = (pdfs) => {
 class Result extends React.Component {
   state = {
     isLoading: false,
+    isDownloading: false,
     selectAllChecked: false,
     selected: [],
   }
@@ -229,9 +230,12 @@ class Result extends React.Component {
     const { selected } = this.state
     const { searchResult: { invoiceInfoList: { invoiceInfo }} } = this.props
 
+    this.setState({ isDownloading: true })
+
     return fetchPdfs({ selected, invoiceInfo })
       .then(generateZip)
       .then((blob) => saveAs(blob, `invoices-${Date.now()}`))
+      .finally(() => this.setState({ isDownloading: false }))
   }
 
   handleApiError = (error) => {
@@ -300,8 +304,12 @@ class Result extends React.Component {
                         <button
                           className={css(downloadButton)}
                           onClick={this.onDowloadClick}
+                          disabled={this.state.isDownloading}
                         >
-                          Download
+                          {this.state.isDownloading ?
+                            <Spinner size={12} color="#697EFF" /> :
+                            <span>Download</span>
+                          }
                         </button>
                       }
                     </div>
