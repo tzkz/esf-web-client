@@ -33,8 +33,8 @@ if (!window.Intl) {
 addLocaleData([...en, ...kk, ...ru]);
 
 const container = {
-  height: '100%',
   fontFamily: '\'Open Sans\', sans-serif',
+  minHeight: '100vh',
 };
 
 class App extends Component {

@@ -4,7 +4,6 @@
 
 html {
   background-color: #262626;
-  height: 100%;
 }
 
 body {
@@ -13,9 +12,4 @@ body {
   margin: 0 auto;
   padding: 0;
   font-family: sans-serif;
-  height: 100%;
-}
-
-#root {
-  height: 100%;
 }
