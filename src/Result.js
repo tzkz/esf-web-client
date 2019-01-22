@@ -240,11 +240,7 @@ class Result extends React.Component {
             <div className={css(innerContainer)}>
               <div className={css(wrapperContainer)}>
                 {this.state.isLoading &&
-                  <Spinner
-                    size={12}
-                    color="#697EFF"
-                    className={css({ margin: '24px 0' })}
-                  />
+                  <Spinner size={12} className={css({ margin: '24px 0' })} />
                 }
                 {!isEmpty(searchResult) && !this.state.isLoading &&
                   <div className={css(resultsContainer)}>
@@ -273,7 +269,7 @@ class Result extends React.Component {
                           disabled={this.state.isDownloading}
                         >
                           {this.state.isDownloading ?
-                            <Spinner size={12} color="#697EFF" /> :
+                            <Spinner size={12} /> :
                             <span>Download</span>
                           }
                         </button>
