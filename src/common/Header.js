@@ -32,9 +32,6 @@ const headerContent = {
 
 const leftContainer = {
   flex: '1',
-  '@media (min-width: 768px)': {
-    display: 'none',
-  }
 }
 
 const title = {
