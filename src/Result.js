@@ -28,32 +28,6 @@ const innerContainer = {
   }
 }
 
-const sidebarContainer = {
-  display: 'none',
-  '@media(min-width: 768px)': {
-    display: 'block',
-    backgroundColor: 'transparent',
-    flexBasis: '150px',
-    marginTop: '20px',
-  }
-}
-
-const sidebarItems = {
-  color: '#262626',
-  padding: '0px 15px',
-  fontSize: '16px',
-  fontWeight: '600',
-  backgroundColor: 'transparent',
-  borderRadius: '5px 0px 0px 5px',
-  height: '40px',
-  display: 'flex',
-  alignItems: 'center',
-}
-
-const sidebarItemActive = {
-  backgroundColor: '#f8f8f8',
-}
-
 const wrapperContainer = {
   backgroundColor: '#f8f8f8',
   flexGrow: '1',
@@ -264,14 +238,6 @@ class Result extends React.Component {
           />
           <SectionContent>
             <div className={css(innerContainer)}>
-              <div className={css(sidebarContainer)}>
-                <div className={css(sidebarItems)}>
-                  Search
-                </div>
-                <div className={css(sidebarItems, sidebarItemActive)}>
-                  Result
-                </div>
-              </div>
               <div className={css(wrapperContainer)}>
                 {this.state.isLoading &&
                   <Spinner
