@@ -11,6 +11,7 @@
     "lodash": "^4.17.11",
     "moment": "^2.23.0",
     "node-forge": "^0.7.6",
+    "promise.prototype.finally": "^3.1.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dates": "^18.3.1",

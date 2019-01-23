@@ -6,6 +6,7 @@ import {
 import { Provider } from 'react-redux';
 import { css } from 'emotion';
 import Alert from 'react-s-alert';
+import promiseFinally from 'promise.prototype.finally';
 
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -26,6 +27,8 @@ import 'react-s-alert/dist/s-alert-css-effects/stackslide.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import './react_dates_overrides.css';
+
+promiseFinally.shim(); // Promise.prototype.finally() polyfill
 
 if (!window.Intl) {
   require('intl');
