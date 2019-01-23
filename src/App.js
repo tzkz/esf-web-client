@@ -36,7 +36,6 @@ if (!window.Intl) {
 addLocaleData([...en, ...kk, ...ru]);
 
 const container = {
-  fontFamily: '\'Open Sans\', sans-serif',
   minHeight: '100vh',
 };
 

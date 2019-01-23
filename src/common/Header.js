@@ -28,7 +28,6 @@ const leftContainer = {
 }
 
 const title = {
-  fontFamily: 'Cuprum, sans-serif',
   fontSize: '24px',
   fontWeight: 'bold',
 }
