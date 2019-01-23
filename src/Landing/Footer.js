@@ -2,11 +2,11 @@ import React from 'react'
 import { css } from 'emotion';
 
 const container = {
-  height: '60px',
+  height: '80px',
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
   backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
+  paddingTop: '18px',
 }
 
 const logo = {
