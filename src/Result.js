@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { css } from 'emotion';
 import { isEmpty } from 'lodash';
 import Alert from 'react-s-alert';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 import SectionContent from './common/SectionContent';
 import PrivateComponent from './common/PrivateComponent';
@@ -26,32 +28,6 @@ const innerContainer = {
   }
 }
 
-const sidebarContainer = {
-  display: 'none',
-  '@media(min-width: 768px)': {
-    display: 'block',
-    backgroundColor: 'transparent',
-    flexBasis: '150px',
-    marginTop: '20px',
-  }
-}
-
-const sidebarItems = {
-  color: '#262626',
-  padding: '0px 15px',
-  fontSize: '16px',
-  fontWeight: '600',
-  backgroundColor: 'transparent',
-  borderRadius: '5px 0px 0px 5px',
-  height: '40px',
-  display: 'flex',
-  alignItems: 'center',
-}
-
-const sidebarItemActive = {
-  backgroundColor: '#f8f8f8',
-}
-
 const wrapperContainer = {
   backgroundColor: '#f8f8f8',
   flexGrow: '1',
@@ -71,12 +47,19 @@ const resultsContainer = {
 
 const headerContainer = {
   display: 'flex',
-  paddingLeft: '15px',
-  paddingRight: '15px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   height: '48px',
   alignItems: 'center',
   borderBottom: 'solid 1px #dadce0',
   justifyContent: 'space-between',
+}
+
+const tableTitleContainer = {
+  ...headerContainer,
+  height: '64px',
+  padding: '0 16px',
+  fontSize: '20px',
 }
 
 const itemContainer = {
@@ -95,6 +78,20 @@ const status = {
   marginLeft: '12px',
 }
 
+const downloadButton = {
+  background: 'none',
+  border: 'none',
+  outline: 'none',
+  color: 'inherit',
+  fontFamily: 'inherit',
+  fontSize: '14px',
+  textTransform: 'uppercase',
+  padding: '10px 8px',
+  ':hover': {
+    cursor: 'pointer',
+  }
+}
+
 const getIvoiceIds = (searchResult) => {
   const getInvoiceId = (item) => item.invoiceId
 
@@ -102,9 +99,39 @@ const getIvoiceIds = (searchResult) => {
     searchResult.invoiceInfoList.invoiceInfo.map(getInvoiceId)
 }
 
+const fetchPdf = (item) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(item),
+    mode: 'cors',
+  }
+
+  return apiCall('/pdfs', options)
+    .then((result) => ({ ...result, invoiceId: item.invoiceId }))
+}
+
+const fetchPdfs = ({ selected, invoiceInfo }) => {
+  const selectedInvoices = invoiceInfo.filter((item) => {
+    return selected.includes(item.invoiceId)
+  })
+
+  return Promise.all(selectedInvoices.map(fetchPdf))
+}
+
+const generateZip = (pdfs) => {
+  const zip = new JSZip()
+
+  for (let i = 0; i < pdfs.length; i++) {
+    zip.file(`${pdfs[i].invoiceId}.pdf`, pdfs[i].pdfBase64, { base64: true })
+  }
+
+  return zip.generateAsync({ type: 'blob' })
+}
+
 class Result extends React.Component {
   state = {
     isLoading: false,
+    isDownloading: false,
     selectAllChecked: false,
     selected: [],
   }
@@ -173,6 +200,18 @@ class Result extends React.Component {
     })
   }
 
+  onDowloadClick = () => {
+    const { selected } = this.state
+    const { searchResult: { invoiceInfoList: { invoiceInfo }} } = this.props
+
+    this.setState({ isDownloading: true })
+
+    return fetchPdfs({ selected, invoiceInfo })
+      .then(generateZip)
+      .then((blob) => saveAs(blob, `invoices-${Date.now()}`))
+      .finally(() => this.setState({ isDownloading: false }))
+  }
+
   handleApiError = (error) => {
     Alert.info(error.body.soapError.faultstring)
   }
@@ -185,6 +224,7 @@ class Result extends React.Component {
   }
 
   render() {
+    const { selected } = this.state
     const { searchResult, locale, onLocaleChange, onMenuClick } = this.props
 
     return (
@@ -198,24 +238,43 @@ class Result extends React.Component {
           />
           <SectionContent>
             <div className={css(innerContainer)}>
-              <div className={css(sidebarContainer)}>
-                <div className={css(sidebarItems)}>
-                  Search
-                </div>
-                <div className={css(sidebarItems, sidebarItemActive)}>
-                  Result
-                </div>
-              </div>
               <div className={css(wrapperContainer)}>
                 {this.state.isLoading &&
-                  <Spinner
-                    size={12}
-                    color="#697EFF"
-                    className={css({ margin: '24px 0' })}
-                  />
+                  <Spinner size={12} className={css({ margin: '24px 0' })} />
                 }
                 {!isEmpty(searchResult) && !this.state.isLoading &&
                   <div className={css(resultsContainer)}>
+                    <div
+                      className={
+                        css(
+                          tableTitleContainer,
+                          !isEmpty(selected) && {
+                            color: '#697EFF',
+                            background: '#E3E7FF',
+                            fontSize: '16px',
+                          }
+                        )
+                      }
+                    >
+                      {isEmpty(selected) &&
+                        <span>Invoices</span>
+                      }
+                      {!isEmpty(selected) &&
+                        <span>{selected.length} selected</span>
+                      }
+                      {!isEmpty(selected) &&
+                        <button
+                          className={css(downloadButton)}
+                          onClick={this.onDowloadClick}
+                          disabled={this.state.isDownloading}
+                        >
+                          {this.state.isDownloading ?
+                            <Spinner size={12} /> :
+                            <span>Download</span>
+                          }
+                        </button>
+                      }
+                    </div>
                     <div className={css(headerContainer)}>
                       <Checkbox
                         id="selectAllCheckbox"

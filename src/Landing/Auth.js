@@ -6,7 +6,7 @@ import Pin from './Pin'
 import Password from './Password';
 
 const container = {
-  height: '100%',
+  height: '100vh',
 }
 
 class Auth extends React.Component {

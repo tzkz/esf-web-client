@@ -36,7 +36,7 @@ const AuthForm = ({ children, onCancel, isLoading, ...other }) => (
         Cancel
       </Button>
       <Button className={css(button)} type="submit" disabled={isLoading}>
-        {isLoading ? <Spinner size={12} /> : <span>Continue</span>}
+        {isLoading ? <Spinner size={12} color="#FFF" /> : <span>Continue</span>}
       </Button>
     </div>
   </form>

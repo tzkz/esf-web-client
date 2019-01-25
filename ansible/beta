@@ -1,0 +1,6 @@
+[ui]
+52.52.165.140
+
+[ui:vars]
+ansible_user=ubuntu
+www_root=~/www/beta.getesf.com/

@@ -41,6 +41,9 @@ class Password extends React.Component {
   }
 
   handleApiError = (error) => {
+    if (!error.body.soapError) {
+      return Alert.info('Unknown API Error')
+    }
     if (error.body.soapError.faultcode === 'ns1:SecurityError') {
       return this.setState({ passwordError: true })
     }
