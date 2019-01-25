@@ -43,7 +43,8 @@ const errorContainer = {
   padding: '2px 12px 0',
 }
 
-const TextInput = ({ className, errorMessage, label, helperText, small, ...other }) => (
+const TextInput = React.forwardRef(
+  ({ className, errorMessage, label, helperText, small, ...other }, ref) => (
   <div className={css(container)}>
     {errorMessage &&
       <div className={css(errorContainer)}>{errorMessage}</div>
@@ -66,10 +67,11 @@ const TextInput = ({ className, errorMessage, label, helperText, small, ...other
         },
       }, className)}
       {...other}
+      ref={ref}
     />
     <label className={css(labelStyle, errorMessage && labelError)}>{label}</label>
   </div>
-);
+));
 
 TextInput.propTypes = {
   className: PropTypes.string,

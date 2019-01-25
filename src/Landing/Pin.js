@@ -18,6 +18,20 @@ class Pin extends React.Component{
     pinError: null,
   }
 
+  componentDidMount() {
+    if (this.props.show && this.inputRef.current) {
+      this.inputRef.current.focus()
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.show && !prevProps.show) {
+      this.inputRef.current.focus()
+    }
+  }
+
+  inputRef = React.createRef()
+
   onPinChange = (event) => {
     this.setState({ pin: event.target.value, pinError: null })
   }
@@ -50,7 +64,7 @@ class Pin extends React.Component{
           helperText={'Enter "Qwerty12" for demo'}
           errorMessage={this.state.pinError && 'Wrong PIN. Enter "Qwerty12" for demo'}
           type="password"
-          autoFocus
+          ref={this.inputRef}
         />
       </AuthStep>
     );

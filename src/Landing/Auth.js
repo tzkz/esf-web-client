@@ -27,7 +27,7 @@ class Auth extends React.Component {
         <Password
           onCancel={this.props.onCancel}
           p12decrypted={this.state.p12decrypted}
-          show={this.state.p12decrypted}
+          show={!!this.state.p12decrypted}
         />
       </div>
     )

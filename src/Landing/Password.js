@@ -28,6 +28,20 @@ class Password extends React.Component {
     isLoading: false,
   }
 
+  componentDidMount() {
+    if (this.props.show) {
+      this.inputRef.current.focus()
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.show && !prevProps.show) {
+      this.inputRef.current.focus()
+    }
+  }
+
+  inputRef = React.createRef()
+
   onPasswordChange = (event) => {
     this.setState({ password: event.target.value, passwordError: false })
   }
@@ -124,8 +138,8 @@ class Password extends React.Component {
           helperText={'Enter "TestPass123" for demo'}
           errorMessage={this.state.passwordError ? 'Wrong Password. Enter "TestPass123" for demo' : ''}
           type="password"
-          autoFocus
           disabled={this.state.isLoading}
+          ref={this.inputRef}
         />
       </AuthStep>
     );
