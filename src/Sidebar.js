@@ -39,7 +39,7 @@ const searchResultContainer = {
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: '#fafafa',
-  flexBasis: '100%',
+  flexGrow: '1',
   flexShrink: '0',
 }
 
