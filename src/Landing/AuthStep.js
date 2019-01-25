@@ -11,7 +11,7 @@ const container = {
   position: 'fixed',
   top: 0,
   bottom: 0,
-  transition: 'left 300ms ease-out, right 300ms ease-out',
+  transition: 'all 300ms ease-out',
 }
 
 const form = {
@@ -70,17 +70,19 @@ class AuthStep extends React.Component {
     }
     if (!this.props.show && prevProps.show) {
       this.setState({ position: {
-        left: '-100vw',
-        right: '100vw',
+        left: 0,
+        right: 0,
+        top: '100vh',
+        bottom: '-100vh',
       }})
     }
   }
 
   render() {
-    const { children, onSubmit, onCancel, isLoading } = this.props
+    const { children, onSubmit, onCancel, isLoading, className } = this.props
 
     return (
-      <div className={css(container, this.state.position)}>
+      <div className={css(container, className, this.state.position)}>
         <div className={css(header)}>
           <button className={css(closeButton)} onClick={onCancel}>
             {closeIcon}

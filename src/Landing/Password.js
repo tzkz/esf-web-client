@@ -108,6 +108,7 @@ class Password extends React.Component {
         onCancel={this.props.onCancel}
         isLoading={this.state.isLoading}
         show={this.props.show}
+        className={css({ transitionDelay: '300ms' })}
       >
         <div className={css(formTitle)}>
           Account Password
