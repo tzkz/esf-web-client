@@ -37,7 +37,7 @@ const searchResultContainer = {
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: '#fafafa',
-  height: '70%',
+  height: '100%',
 }
 
 const navLinkItem = {
@@ -65,6 +65,12 @@ const splitLine = {
   height: '0px',
   borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
   margin: '10px 0px',
+}
+
+const active = {
+  backgroundColor: '#e3e7ff',
+  borderRadius: '5px',
+  color: '#697eff',
 }
 
 const logOutButton = {
@@ -97,7 +103,7 @@ const Sidebar = ({ localeValue, onLocaleChange, onOverlayClick, sessionId, user,
       <div className={css(dropdownContainer)}>
       </div>
       <div className={css(searchResultContainer, navItemPadding)}>
-        <NavLink exact to="/search" className={css(navLinkItem)}>
+        <NavLink to="/search" className={css(navLinkItem)} activeClassName={css(active)} onClick={onOverlayClick}>
           <div className={css(buttonsContainer)}>
             <div className={css(icons)}>
               <svg height='17.6px' width='17.5px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.5 17.6'><defs />
@@ -109,7 +115,7 @@ const Sidebar = ({ localeValue, onLocaleChange, onOverlayClick, sessionId, user,
             </div>
           </div>
         </NavLink>
-        <NavLink exact to="/result" className={css(navLinkItem)}>
+        <NavLink to="/result" className={css(navLinkItem)} activeClassName={css(active)} onClick={onOverlayClick}>
           <div className={css(buttonsContainer)}>
             <div className={css(icons)}>
               <svg height='10px' width='18px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.9 10'><defs />
