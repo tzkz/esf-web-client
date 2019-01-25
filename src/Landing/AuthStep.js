@@ -70,10 +70,8 @@ class AuthStep extends React.Component {
     }
     if (!this.props.show && prevProps.show) {
       this.setState({ position: {
-        left: 0,
-        right: 0,
-        top: '100vh',
-        bottom: '-100vh',
+        left: '-100vw',
+        right: '100vw',
       }})
     }
   }
