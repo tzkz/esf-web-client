@@ -107,6 +107,7 @@ class Password extends React.Component {
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
         isLoading={this.state.isLoading}
+        show={this.props.show}
       >
         <div className={css(formTitle)}>
           Account Password
@@ -133,6 +134,7 @@ class Password extends React.Component {
 Password.propTypes = {
   onCancel: PropTypes.func,
   p12decrypted: PropTypes.object,
+  show: PropTypes.bool,
 }
 
 export default connect()(Password)

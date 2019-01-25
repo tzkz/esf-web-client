@@ -37,6 +37,7 @@ class Pin extends React.Component{
       <AuthStep
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
+        show={this.props.show}
       >
         <div className={css(formTitle)}>
           Enter Certificate PIN
@@ -60,6 +61,7 @@ Pin.propTypes = {
   onDecrypt: PropTypes.func,
   onCancel: PropTypes.func,
   p12base64: PropTypes.string,
+  show: PropTypes.bool,
 }
 
 export default Pin;
