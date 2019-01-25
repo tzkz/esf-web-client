@@ -40,26 +40,23 @@ class Landing extends React.Component {
     }
 
     return (
-      p12base64 ? (
-        <Auth p12base64={p12base64} onCancel={this.onAuthCancel} />
-      ) : (
-        <div
-          className={css(container)}
-        >
-          <Header
-            localeValue={locale}
-            onLocaleChange={onLocaleChange}
-            onMenuClick={onMenuClick}
-            className={css({
-              backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
-              color: 'white',
-              height: '74px',
-            })}
-          />
-          <Main onDemoClick={this.onDemoClick} />
-          <Footer />
-        </div>
-      )
+      <div className={css(container)}>
+        <Header
+          localeValue={locale}
+          onLocaleChange={onLocaleChange}
+          onMenuClick={onMenuClick}
+          className={css({
+            backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
+            color: 'white',
+            height: '74px',
+          })}
+        />
+        <Main onDemoClick={this.onDemoClick} />
+        <Footer />
+        {p12base64 &&
+          <Auth p12base64={p12base64} onCancel={this.onAuthCancel} />
+        }
+      </div>
     )
   }
 }

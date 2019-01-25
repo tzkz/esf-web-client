@@ -6,7 +6,6 @@ import Pin from './Pin'
 import Password from './Password';
 
 const container = {
-  height: '100vh',
 }
 
 class Auth extends React.Component {
@@ -19,19 +18,17 @@ class Auth extends React.Component {
   render() {
     return (
       <div className={css(container)}>
-        {!this.state.p12decrypted && (
-          <Pin
-            onDecrypt={this.onDecrypt}
-            onCancel={this.props.onCancel}
-            p12base64={this.props.p12base64}
-          />
-        )}
-        {this.state.p12decrypted && (
-          <Password
-            onCancel={this.props.onCancel}
-            p12decrypted={this.state.p12decrypted}
-          />
-        )}
+        <Pin
+          onDecrypt={this.onDecrypt}
+          onCancel={this.props.onCancel}
+          p12base64={this.props.p12base64}
+          show={!this.state.p12decrypted}
+        />
+        <Password
+          onCancel={this.props.onCancel}
+          p12decrypted={this.state.p12decrypted}
+          show={this.state.p12decrypted}
+        />
       </div>
     )
   }
