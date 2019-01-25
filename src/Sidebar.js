@@ -21,6 +21,7 @@ const drawerContainer = {
   width: '264px',
   height: '100%',
   boxShadow: '0 19px 36px 0 rgba(0, 0, 0, 0.28)',
+  overflowY: 'scroll',
 }
 
 const dropdownContainer = {
@@ -29,15 +30,17 @@ const dropdownContainer = {
   justifyContent: 'center',
   backgroundColor: '#744fc6',
   color: '#ffffff',
-  height: '172px',
+  flexBasis: '172px',
   paddingBottom: '15px',
+  flexShrink: '0',
 }
 
 const searchResultContainer = {
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: '#fafafa',
-  height: '100%',
+  flexBasis: '100%',
+  flexShrink: '0',
 }
 
 const navLinkItem = {
