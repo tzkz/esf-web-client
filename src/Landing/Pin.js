@@ -32,11 +32,18 @@ class Pin extends React.Component{
     }
   }
 
+  onCancel = (event) => {
+    this.setState({ pin: '', pinError: null })
+    if (this.props.onCancel) {
+      this.props.onCancel(event)
+    }
+  }
+
   render() {
     return (
       <AuthStep
         onSubmit={this.onSubmit}
-        onCancel={this.props.onCancel}
+        onCancel={this.onCancel}
       >
         <div className={css(formTitle)}>
           Enter Certificate PIN

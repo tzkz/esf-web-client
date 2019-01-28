@@ -41,6 +41,9 @@ class Password extends React.Component {
   }
 
   handleApiError = (error) => {
+    if (!error.body.soapError) {
+      return Alert.info('Unknown API Error')
+    }
     if (error.body.soapError.faultcode === 'ns1:SecurityError') {
       return this.setState({ passwordError: true })
     }
@@ -104,6 +107,8 @@ class Password extends React.Component {
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
         isLoading={this.state.isLoading}
+        show={this.props.show}
+        className={css({ transitionDelay: '400ms' })}
       >
         <div className={css(formTitle)}>
           Account Password
@@ -119,8 +124,8 @@ class Password extends React.Component {
           helperText={'Enter "TestPass123" for demo'}
           errorMessage={this.state.passwordError ? 'Wrong Password. Enter "TestPass123" for demo' : ''}
           type="password"
-          autoFocus
           disabled={this.state.isLoading}
+          autoFocus
         />
       </AuthStep>
     );
@@ -130,6 +135,7 @@ class Password extends React.Component {
 Password.propTypes = {
   onCancel: PropTypes.func,
   p12decrypted: PropTypes.object,
+  show: PropTypes.bool,
 }
 
 export default connect()(Password)

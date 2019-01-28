@@ -6,6 +6,7 @@ import {
 import { Provider } from 'react-redux';
 import { css } from 'emotion';
 import Alert from 'react-s-alert';
+import promiseFinally from 'promise.prototype.finally';
 
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -27,21 +28,21 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import './react_dates_overrides.css';
 
+promiseFinally.shim(); // Promise.prototype.finally() polyfill
+
 if (!window.Intl) {
   require('intl');
 }
 addLocaleData([...en, ...kk, ...ru]);
 
 const container = {
-  height: '100%',
-  fontFamily: '\'Open Sans\', sans-serif',
+  minHeight: '100vh',
 };
 
 class App extends Component {
   state = {
     locale: 'en',
     showSidebar: false,
-    user: null,
   }
 
   onLocaleChange = (locale) => this.setState({ locale })
@@ -49,8 +50,6 @@ class App extends Component {
   onMenuClick = () => this.setState({ showSidebar: true })
 
   onOverlayClick = () => this.setState({ showSidebar: false })
-
-  onAuthCancel = () => this.setState({ user: null })
 
   render() {
     return (
@@ -67,6 +66,8 @@ class App extends Component {
               {this.state.showSidebar && (
                 <Sidebar 
                   onOverlayClick={this.onOverlayClick}
+                  localeValue={this.state.locale}
+                  onLocaleChange={this.onLocaleChange}
                 />
               )}
               <Route
@@ -77,7 +78,6 @@ class App extends Component {
                     {...props}
                     locale={this.state.locale}
                     onLocaleChange={this.onLocaleChange}
-                    onAuthCancel={this.onAuthCancel}
                     onMenuClick={this.onMenuClick}
                   />
                 )}
