@@ -55,19 +55,23 @@ class Auth extends React.Component {
   }
 
   render() {
+    const { show } = this.props
+
     return (
       <div className={css(container, this.state.position )}>
-        <Pin
-          onDecrypt={this.onDecrypt}
-          onCancel={this.onCancel}
-          p12base64={this.props.p12base64}
-          show={!this.state.p12decrypted}
-        />
-        <Password
-          onCancel={this.onCancel}
-          p12decrypted={this.state.p12decrypted}
-          show={!!this.state.p12decrypted}
-        />
+        {show && !this.state.p12decrypted &&
+          <Pin
+            onDecrypt={this.onDecrypt}
+            onCancel={this.onCancel}
+            p12base64={this.props.p12base64}
+          />
+        }
+        {!!this.state.p12decrypted &&
+          <Password
+            onCancel={this.onCancel}
+            p12decrypted={this.state.p12decrypted}
+          />
+        }
       </div>
     )
   }

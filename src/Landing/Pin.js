@@ -18,20 +18,6 @@ class Pin extends React.Component{
     pinError: null,
   }
 
-  componentDidMount() {
-    if (this.props.show && this.inputRef.current) {
-      this.inputRef.current.focus()
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.show && !prevProps.show) {
-      this.inputRef.current.focus()
-    }
-  }
-
-  inputRef = React.createRef()
-
   onPinChange = (event) => {
     this.setState({ pin: event.target.value, pinError: null })
   }
@@ -46,12 +32,18 @@ class Pin extends React.Component{
     }
   }
 
+  onCancel = (event) => {
+    this.setState({ pin: '', pinError: null })
+    if (this.props.onCancel) {
+      this.props.onCancel(event)
+    }
+  }
+
   render() {
     return (
       <AuthStep
         onSubmit={this.onSubmit}
-        onCancel={this.props.onCancel}
-        show={this.props.show}
+        onCancel={this.onCancel}
       >
         <div className={css(formTitle)}>
           Enter Certificate PIN
@@ -64,7 +56,7 @@ class Pin extends React.Component{
           helperText={'Enter "Qwerty12" for demo'}
           errorMessage={this.state.pinError && 'Wrong PIN. Enter "Qwerty12" for demo'}
           type="password"
-          ref={this.inputRef}
+          autoFocus
         />
       </AuthStep>
     );
@@ -75,7 +67,6 @@ Pin.propTypes = {
   onDecrypt: PropTypes.func,
   onCancel: PropTypes.func,
   p12base64: PropTypes.string,
-  show: PropTypes.bool,
 }
 
 export default Pin;

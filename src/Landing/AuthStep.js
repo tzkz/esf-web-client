@@ -9,9 +9,10 @@ const container = {
   flexDirection: 'column',
   justifyContent: 'space-between',
   position: 'absolute',
+  left: 0,
+  right: 0,
   top: 0,
   bottom: 0,
-  transition: 'all 400ms ease-out',
 }
 
 const form = {
@@ -45,42 +46,12 @@ const closeIcon = (
 )
 
 class AuthStep extends React.Component {
-  state = {
-    position: {
-      left: '100vw',
-      right: '-100vw',
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.show) {
-      this.setState({ position: {
-        left: 0,
-        right: 0,
-      }})
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.show && !prevProps.show) {
-      this.setState({ position: {
-        left: 0,
-        right: 0,
-      }})
-    }
-    if (!this.props.show && prevProps.show) {
-      this.setState({ position: {
-        left: '-100vw',
-        right: '100vw',
-      }})
-    }
-  }
 
   render() {
     const { children, onSubmit, onCancel, isLoading, className } = this.props
 
     return (
-      <div className={css(container, className, this.state.position)}>
+      <div className={css(container, className)}>
         <div className={css(header)}>
           <button className={css(closeButton)} onClick={onCancel}>
             {closeIcon}
