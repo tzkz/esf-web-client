@@ -8,7 +8,7 @@ const container = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  position: 'fixed',
+  position: 'absolute',
   top: 0,
   bottom: 0,
   transition: 'all 400ms ease-out',
