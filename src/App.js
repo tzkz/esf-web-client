@@ -43,7 +43,6 @@ class App extends Component {
   state = {
     locale: 'en',
     showSidebar: false,
-    user: null,
   }
 
   onLocaleChange = (locale) => this.setState({ locale })
@@ -51,8 +50,6 @@ class App extends Component {
   onMenuClick = () => this.setState({ showSidebar: true })
 
   onOverlayClick = () => this.setState({ showSidebar: false })
-
-  onAuthCancel = () => this.setState({ user: null })
 
   render() {
     return (
@@ -81,7 +78,6 @@ class App extends Component {
                     {...props}
                     locale={this.state.locale}
                     onLocaleChange={this.onLocaleChange}
-                    onAuthCancel={this.onAuthCancel}
                     onMenuClick={this.onMenuClick}
                   />
                 )}

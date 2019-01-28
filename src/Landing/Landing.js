@@ -26,7 +26,6 @@ class Landing extends React.Component {
 
   onAuthCancel = () => {
     this.setState({ p12base64: '' })
-    this.props.onAuthCancel()
   }
 
   render() {
@@ -66,7 +65,6 @@ Landing.propTypes = {
   locale: PropTypes.string,
   onLocaleChange: PropTypes.func,
   onMenuClick: PropTypes.func,
-  onAuthCancel: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {
