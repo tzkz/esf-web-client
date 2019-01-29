@@ -1,6 +1,9 @@
 [![CircleCI](https://circleci.com/gh/timurengineer/esf-web-client.svg?style=shield)](https://circleci.com/gh/timurengineer/esf-web-client)
 
 # GetESF Web App
+### Prerequisites
+- Node.js 10+
+
 ### Quick start
 
 ```
