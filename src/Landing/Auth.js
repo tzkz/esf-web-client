@@ -9,7 +9,7 @@ const container = {
   position: 'fixed',
   left: 0,
   right: 0,
-  transition: 'all 400ms ease-out',
+  transition: 'all 300ms ease-out',
 }
 
 class Auth extends React.Component {
@@ -55,11 +55,9 @@ class Auth extends React.Component {
   }
 
   render() {
-    const { show } = this.props
-
     return (
       <div className={css(container, this.state.position )}>
-        {show && !this.state.p12decrypted &&
+        {!this.state.p12decrypted &&
           <Pin
             onDecrypt={this.onDecrypt}
             onCancel={this.onCancel}
