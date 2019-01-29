@@ -1,22 +1,25 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 import SectionContent from './SectionContent';
 
 describe('<SectionContent />', () => {
-  it('should not blow', () => {
-    expect(shallow(<SectionContent />).length).toEqual(1);
+  it('renders without crashing', () => {
+    const rendered = renderer.create(<SectionContent />).toJSON();
+    expect(rendered).toBeTruthy();
   });
 
   it('should render children', () => {
-    const wrapper = shallow(<SectionContent><div className="imachild" /></SectionContent>);
+    const testRenderer = renderer.create(<SectionContent><div className="imachild" /></SectionContent>)
+    const testInstance = testRenderer.root
 
-    expect(wrapper.find('.imachild').length).toEqual(1);
+    expect(testInstance.findByProps({ className: 'imachild' })).toBeTruthy()
   });
 
   it('should pass props down to container div', () => {
-    const wrapper = shallow(<SectionContent foo="bar" />);
+    const testRenderer = renderer.create(<SectionContent foo="bar" />)
+    const testInstance = testRenderer.root
 
-    expect(wrapper.first().prop('foo')).toEqual('bar');
+    expect(testInstance.findByType('div').props.foo).toEqual('bar');
   });
 });
