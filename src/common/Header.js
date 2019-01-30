@@ -3,16 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
 
-import SectionContent from './SectionContent';
-
 const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
   color: '#697EFF',
   height: '60px',
-}
-
-const sectionContent = {
-  height: '100%',
 }
 
 const headerContent = {
@@ -54,18 +48,16 @@ const burger = (
 
 const Header = ({ className, burgerClassName, onMenuClick }) => (
   <header className={css(container, className)}>
-    <SectionContent className={css(sectionContent)}>
-      <div className={css(headerContent)}>
-        <div className={css(leftContainer)}>
-          <button className={css(burgerButton, burgerClassName)} onClick={onMenuClick}>
-            {burger}
-          </button>
-        </div>
-        <div className={css(rightContainer)}>
-          <div className={css(title)}>GetESF</div>
-        </div>
+    <div className={css(headerContent)}>
+      <div className={css(leftContainer)}>
+        <button className={css(burgerButton, burgerClassName)} onClick={onMenuClick}>
+          {burger}
+        </button>
       </div>
-    </SectionContent>
+      <div className={css(rightContainer)}>
+        <div className={css(title)}>GetESF</div>
+      </div>
+    </div>
   </header>
 );
 
