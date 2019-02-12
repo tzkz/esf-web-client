@@ -1,3 +1,3 @@
 export default {
-  apiHost: '/api/v1',
+  apiHost: 'https://api.dev.getesf.com/v1',
 }
