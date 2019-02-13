@@ -2,23 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
-import { FormattedMessage } from 'react-intl';
-
-import SectionContent from './SectionContent';
-import LangSelect from './LangSelect';
-import { logOut } from '../apiUtils';
 
 const container = {
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
   color: '#697EFF',
   height: '60px',
-  '@media (min-width: 768px)': {
-    height: '100px',
-  }
-}
-
-const sectionContent = {
-  height: '100%',
 }
 
 const headerContent = {
@@ -31,42 +19,16 @@ const headerContent = {
 };
 
 const leftContainer = {
-  flex: '1',
-  '@media (min-width: 768px)': {
-    display: 'none',
-  }
 }
 
 const title = {
-  fontFamily: 'Cuprum, sans-serif',
-  fontSize: '2.25em',
-  letterSpacing: '1.8px',
+  fontSize: '24px',
   fontWeight: 'bold',
 }
 
 const rightContainer = {
   display: 'flex',
   flex: '1',
-  justifyContent: 'flex-end',
-}
-
-const navItem = {
-  display: 'none',
-  fontSize: '16px',
-  lineheight: 1.5,
-  fontWeight: 600,
-  padding: '0 16px',
-  cursor: 'pointer',
-  '@media (min-width: 768px)': {
-    display: 'block',
-  },
-}
-
-const navItemLogout = {
-  display: 'none',
-  '@media (min-width: 768px)': {
-    display: 'block',
-  },
 }
 
 const burgerButton = {
@@ -84,40 +46,18 @@ const burger = (
   </svg>
 );
 
-const Header = ({
-  localeValue, onLocaleChange, className, burgerClassName,
-  onMenuClick, sessionId, user, password, dispatch
-}) => (
+const Header = ({ className, burgerClassName, onMenuClick }) => (
   <header className={css(container, className)}>
-    <SectionContent className={css(sectionContent)}>
-      <div className={css(headerContent)}>
-        <div className={css(leftContainer)}>
-          <button className={css(burgerButton, burgerClassName)} onClick={onMenuClick}>
-            {burger}
-          </button>
-        </div>
-        <div className={css(title)}>GetESF</div>
-        <div className={css(rightContainer)}>
-          <div className={css(navItem)}>
-            <LangSelect
-              value={localeValue}
-              onChange={onLocaleChange}
-            />
-          </div>
-          { sessionId &&
-            <div
-              className={css(navItem, navItemLogout)}
-              onClick={() => logOut({ user, password, sessionId}, dispatch)}
-            >
-              <FormattedMessage
-                id="Header.Logout"
-                defaultMessage="Log Out"
-              />
-            </div>
-          }
-        </div>
+    <div className={css(headerContent)}>
+      <div className={css(leftContainer)}>
+        <button className={css(burgerButton, burgerClassName)} onClick={onMenuClick}>
+          {burger}
+        </button>
       </div>
-    </SectionContent>
+      <div className={css(rightContainer)}>
+        <div className={css(title)}>GetESF</div>
+      </div>
+    </div>
   </header>
 );
 

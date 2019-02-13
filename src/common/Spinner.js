@@ -48,7 +48,7 @@ const Spinner = ({ size, color, className }) => {
 
 Spinner.defaultProps = {
   size: 18,
-  color: '#FFF',
+  color: '#697EFF',
 }
 
 export default Spinner

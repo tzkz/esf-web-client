@@ -18,11 +18,10 @@ const main = {
 const headline = {
   fontSize: '30px',
   fontWeight: '600',
-  margin: '1em 24px 0',
+  margin: '10vh 24px 0',
   '@media (min-width: 768px)': {
     fontSize: '34px',
     lineHeight: '50px',
-    margin: '2em 24px 0',
   },
 }
 

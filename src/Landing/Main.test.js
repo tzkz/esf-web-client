@@ -1,10 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
+import { IntlProvider } from 'react-intl';
+import localeData from '../i18n/locales';
 
-import Main from './Main';
+import Component from './Main';
+
+const Main = (...props) => (
+  <IntlProvider locale="en" messages={localeData.en}>
+    <Component {...props} />
+  </IntlProvider>
+)
 
 describe('<Main />', () => {
-  it('should not blow', () => {
-    expect(shallow(<Main />).length).toEqual(1);
+  it('renders without crashing', () => {
+    const rendered = renderer.create(<Main />).toJSON();
+    expect(rendered).toBeTruthy();
   });
 });

@@ -1,10 +1,24 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
+import renderer from 'react-test-renderer';
 
-import Landing from './Landing';
+import Component from './Landing';
+
+import localeData from '../i18n/locales';
+import store from '../store';
+
+const Landing = (...props) => (
+  <Provider store={store}>
+    <IntlProvider locale="en" messages={localeData.en}>
+      <Component {...props} />
+    </IntlProvider>
+  </Provider>
+)
 
 describe('<Landing />', () => {
-  it('should not blow', () => {
-    expect(shallow(<Landing />).length).toEqual(1);
+  it('renders without crashing', () => {
+    const rendered = renderer.create(<Landing />).toJSON();
+    expect(rendered).toBeTruthy();
   });
 });
