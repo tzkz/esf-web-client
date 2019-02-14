@@ -53,8 +53,7 @@ class Pin extends React.Component{
           placeholder="Pin"
           value={this.state.pin}
           onChange={this.onPinChange}
-          helperText={'Enter "Qwerty12" for demo'}
-          errorMessage={this.state.pinError && 'Wrong PIN. Enter "Qwerty12" for demo'}
+          errorMessage={this.state.pinError && 'Wrong PIN'}
           type="password"
           autoFocus
         />

@@ -121,8 +121,7 @@ class Password extends React.Component {
           placeholder="Password"
           value={this.state.password}
           onChange={this.onPasswordChange}
-          helperText={'Enter "TestPass123" for demo'}
-          errorMessage={this.state.passwordError ? 'Wrong Password. Enter "TestPass123" for demo' : ''}
+          errorMessage={this.state.passwordError ? 'Wrong Password' : ''}
           type="password"
           disabled={this.state.isLoading}
           autoFocus
