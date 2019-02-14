@@ -32,6 +32,13 @@ export const apiCall = (endpoint, optionsArg) => {
     .then((response) => response.ok ? response.json() : rejectError(response))
 }
 
+export const resetStore = (dispatch) => {
+  dispatch({ type: SET_USER, user: null })
+  dispatch({ type: SET_PASSWORD, password: null })
+  dispatch({ type: SET_SESSION_ID, sessionId: null })
+  dispatch({ type: SET_SEARCH_RESULT, searchResult: null })
+}
+
 export const logOut = ({ user, password, sessionId }, dispatch) => {
   const options = {
     method: 'POST',
@@ -42,11 +49,10 @@ export const logOut = ({ user, password, sessionId }, dispatch) => {
     }),
   }
 
+  if (sessionId === 'demo') {
+    return resetStore(dispatch)
+  }
+
   return apiCall('/sessions/closesession', options)
-    .then(() => {
-      dispatch({ type: SET_USER, user: null })
-      dispatch({ type: SET_PASSWORD, password: null })
-      dispatch({ type: SET_SESSION_ID, sessionId: null })
-      dispatch({ type: SET_SEARCH_RESULT, searchResult: null })
-    })
+    .then(() => resetStore(dispatch))
 }

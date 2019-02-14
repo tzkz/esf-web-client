@@ -58,7 +58,7 @@ class Password extends React.Component {
   }
 
   setSessionId = ({ sessionId }) => {
-    this.props.dispatch({ type: SET_SESSION_ID,  sessionId })
+    this.props.dispatch({ type: SET_SESSION_ID, sessionId })
     return { sessionId }
   }
 
@@ -101,10 +101,24 @@ class Password extends React.Component {
       .catch(this.onSubmitError)
   }
 
+  onDemoSubmit = (event) => {
+    event.preventDefault()
+
+    if (this.state.password !== 'TestPass123') {
+      return this.setState({ passwordError: true })
+    }
+
+    this.props.dispatch({ type: SET_SESSION_ID, sessionId: 'demo' })
+    this.props.dispatch({ type: SET_USER, user: {} })
+    this.props.dispatch({ type: SET_PASSWORD, password: this.state.password })
+  }
+
   render() {
+    const { isDemo, p12decrypted } = this.props
+
     return (
       <AuthStep
-        onSubmit={this.onSubmit}
+        onSubmit={isDemo ? this.onDemoSubmit : this.onSubmit}
         onCancel={this.props.onCancel}
         isLoading={this.state.isLoading}
         show={this.props.show}
@@ -114,14 +128,14 @@ class Password extends React.Component {
           Account Password
         </div>
         <div className={css(subtitle)}>
-          For {this.props.p12decrypted && extractIdFromKey(this.props.p12decrypted)}
+          For {p12decrypted && extractIdFromKey(p12decrypted)}
         </div>
         <TextInput
           label="Password"
           placeholder="Password"
           value={this.state.password}
           onChange={this.onPasswordChange}
-          helperText={this.props.isDemo ? 'Enter "TestPass123" for demo' : ''}
+          helperText={isDemo ? 'Enter "TestPass123" for demo' : ''}
           errorMessage={this.state.passwordError ? 'Wrong Password' : ''}
           type="password"
           disabled={this.state.isLoading}
