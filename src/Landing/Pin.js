@@ -53,6 +53,7 @@ class Pin extends React.Component{
           placeholder="Pin"
           value={this.state.pin}
           onChange={this.onPinChange}
+          helperText={this.props.isDemo ? 'Enter "Qwerty12" for demo' : ''}
           errorMessage={this.state.pinError && 'Wrong PIN'}
           type="password"
           autoFocus
@@ -66,6 +67,7 @@ Pin.propTypes = {
   onDecrypt: PropTypes.func,
   onCancel: PropTypes.func,
   p12base64: PropTypes.string,
+  isDemo: PropTypes.bool,
 }
 
 export default Pin;

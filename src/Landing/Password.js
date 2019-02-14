@@ -121,6 +121,7 @@ class Password extends React.Component {
           placeholder="Password"
           value={this.state.password}
           onChange={this.onPasswordChange}
+          helperText={this.props.isDemo ? 'Enter "TestPass123" for demo' : ''}
           errorMessage={this.state.passwordError ? 'Wrong Password' : ''}
           type="password"
           disabled={this.state.isLoading}
@@ -135,6 +136,7 @@ Password.propTypes = {
   onCancel: PropTypes.func,
   p12decrypted: PropTypes.object,
   show: PropTypes.bool,
+  isDemo: PropTypes.bool,
 }
 
 export default connect()(Password)

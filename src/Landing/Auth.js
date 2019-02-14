@@ -62,12 +62,14 @@ class Auth extends React.Component {
             onDecrypt={this.onDecrypt}
             onCancel={this.onCancel}
             p12base64={this.props.p12base64}
+            isDemo={this.props.isDemo}
           />
         }
         {!!this.state.p12decrypted &&
           <Password
             onCancel={this.onCancel}
             p12decrypted={this.state.p12decrypted}
+            isDemo={this.props.isDemo}
           />
         }
       </div>
@@ -79,6 +81,7 @@ Auth.propTypes = {
   p12base64: PropTypes.string,
   onCancel: PropTypes.func,
   show: PropTypes.bool,
+  isDemo: PropTypes.bool,
 }
 
 export default Auth

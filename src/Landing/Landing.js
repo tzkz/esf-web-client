@@ -66,7 +66,12 @@ class Landing extends React.Component {
         />
         <Main onDemoClick={this.onDemoClick} onFileChange={this.onFileChange} />
         <Footer />
-        <Auth p12base64={p12base64} onCancel={this.onAuthCancel} show={!!p12base64} />
+        <Auth
+          p12base64={p12base64}
+          onCancel={this.onAuthCancel}
+          show={!!p12base64}
+          isDemo={this.state.p12base64 === testKey}
+        />
       </div>
     )
   }
