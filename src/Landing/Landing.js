@@ -27,7 +27,7 @@ class Landing extends React.Component {
   onFileChange = (event) => {
     const reader = new FileReader();
 
-    if (!event.target.files) {
+    if (event.target.files.length === 0) {
       return;
     }
 
