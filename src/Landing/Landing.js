@@ -27,6 +27,10 @@ class Landing extends React.Component {
   onFileChange = (event) => {
     const reader = new FileReader();
 
+    if (!event.target.files) {
+      return;
+    }
+
     reader.onload = () => this.setState({
       p12base64: reader.result.split(',')[1],
     })
