@@ -18,7 +18,8 @@ describe('apiUtils.js', () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        mode: 'cors',
       }
 
       return apiCall('/foo', { method: 'POST' })
@@ -31,7 +32,8 @@ describe('apiUtils.js', () => {
       const expectedOptions = {
         headers: {
           'Content-Type': 'application/pdf',
-        }
+        },
+        mode: 'cors',
       }
 
       return apiCall('/foo', { headers: { 'Content-Type': 'application/pdf' } })

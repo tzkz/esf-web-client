@@ -103,7 +103,6 @@ const fetchPdf = (item) => {
   const options = {
     method: 'POST',
     body: JSON.stringify(item),
-    mode: 'cors',
   }
 
   return apiCall('/pdfs', options)

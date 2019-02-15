@@ -25,6 +25,7 @@ export const apiCall = (endpoint, optionsArg) => {
     headers: {
       'Content-Type': 'application/json',
     },
+    mode: 'cors',
     ...optionsArg,
   }
 
