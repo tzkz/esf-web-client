@@ -74,7 +74,7 @@ const browseButtonContainer = {
   margin: '1.3em .5em',
 };
 
-const Main = ({ onDemoClick }) => (
+const Main = ({ onDemoClick, onFileChange }) => (
   <section className={css(main)}>
     <SectionContent>
       <div className={css(headline)}>
@@ -91,7 +91,12 @@ const Main = ({ onDemoClick }) => (
       </div>
       <div className={css(buttons)}>
         <div className={css(browseButtonContainer)}>
-          <FileInput className={css(signInButton)} labelClassName={css(signInLabel)}>
+          <FileInput
+            className={css(signInButton)}
+            labelClassName={css(signInLabel)}
+            accept=".p12"
+            onChange={onFileChange}
+          >
             <FormattedMessage
               id="LoginInitial.SignIn"
               defaultMessage="Sign In"
@@ -116,6 +121,7 @@ const Main = ({ onDemoClick }) => (
 
 Main.propTypes = {
   onDemoClick: PropTypes.func,
+  onFileChange: PropTypes.func,
 }
 
 export default Main

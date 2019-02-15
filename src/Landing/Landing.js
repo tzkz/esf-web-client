@@ -24,6 +24,24 @@ class Landing extends React.Component {
 
   onDemoClick = () => this.setState({ p12base64: testKey })
 
+  onFileChange = (event) => {
+    const reader = new FileReader()
+    const files = event.target.files
+
+    if (files.length === 0) {
+      return;
+    }
+
+    reader.onload = () => {
+      this.setState({
+        p12base64: reader.result.split(',')[1],
+      })
+    }
+
+    reader.readAsDataURL(files[0])
+    event.target.value = ''
+  }
+
   onAuthCancel = () => {
     this.setState({ p12base64: '' })
   }
@@ -50,9 +68,14 @@ class Landing extends React.Component {
             height: '74px',
           })}
         />
-        <Main onDemoClick={this.onDemoClick} />
+        <Main onDemoClick={this.onDemoClick} onFileChange={this.onFileChange} />
         <Footer />
-        <Auth p12base64={p12base64} onCancel={this.onAuthCancel} show={!!p12base64} />
+        <Auth
+          p12base64={p12base64}
+          onCancel={this.onAuthCancel}
+          show={!!p12base64}
+          isDemo={this.state.p12base64 === testKey}
+        />
       </div>
     )
   }
