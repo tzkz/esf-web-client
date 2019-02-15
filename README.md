@@ -3,6 +3,8 @@
 # GetESF Web App
 ![architecture](./architecture.png)
 ### Prerequisites
+- REST API proxy: https://github.com/timurengineer/esf-rest-proxy
+- JSON-to-PDF AWS Lambda: https://github.com/timurengineer/esf-pdf-lambda
 - Node.js 10+
 
 ### Quick start
@@ -13,10 +15,3 @@ $ cd esf-web-client
 $ npm install
 $ npm start
 ```
-
-### API
-
-RESTful proxy for SOAP API: https://github.com/timurengineer/esf-rest-proxy
-
-AWS lambda for JSON-to-PDF conversion: https://github.com/timurengineer/esf-pdf-lambda
-
