@@ -5,7 +5,7 @@
 ### Prerequisites
 - REST API proxy: https://github.com/timurengineer/esf-rest-proxy
 - JSON-to-PDF AWS Lambda: https://github.com/timurengineer/esf-pdf-lambda
-- Node.js 10+
+- Node.js 10+ (https://nodejs.org/en/download/package-manager)
 
 ### Quick start
 
