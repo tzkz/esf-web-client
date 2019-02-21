@@ -53,6 +53,18 @@ const signInLabel = {
   color: '#744fc6',
 };
 
+const fileInputLabel = {
+  display: 'flex',
+  flexDirection: 'column',
+  lineHeight: 'initial',
+  height: '49px',
+  justifyContent: 'center',
+}
+
+const fileInputSubtext = {
+  fontSize: '9px',
+}
+
 export const signInButton = {
   ':hover + label': {
     backgroundColor: 'rgba(255,255,255, .9)',
@@ -100,10 +112,18 @@ const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
           >
             {isFileLoading ?
               <Spinner size={12} color="#744fc6" /> :
-              <FormattedMessage
-                id="LoginInitial.SignIn"
-                defaultMessage="Sign In"
-              />
+              <div className={css(fileInputLabel)}>
+                <FormattedMessage
+                  id="LoginInitial.SignIn"
+                  defaultMessage="Sign In"
+                />
+                <div className={css(fileInputSubtext)}>
+                  <FormattedMessage
+                    id="LoginInitial.SignInSubtext"
+                    defaultMessage="with your key"
+                  />
+                </div>
+              </div>
             }
           </FileInput>
         </div>
