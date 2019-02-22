@@ -28,7 +28,7 @@ export const fakeFetch = (endpoint) => new Promise ((resolve) => {
     setTimeout(() => resolve({ sessionId: 'demo' }), 1000)
   }
   if (endpoint.startsWith('/sessions/currentuser')) {
-    setTimeout(() => resolve({ login: '123456789011' }), 1000)
+    setTimeout(() => resolve({ user: { login: '123456789011' } }), 1000)
   }
 })
 
@@ -68,7 +68,7 @@ export const logOut = ({ user, password, sessionId }, dispatch) => {
   const options = {
     method: 'POST',
     body: JSON.stringify({
-      username: user.login,
+      username: user && user.login,
       password: password,
       sessionId: sessionId,
     }),

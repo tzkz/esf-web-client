@@ -101,7 +101,7 @@ describe('apiUtils.js', () => {
     it('resolves to demo user', () => {
       return utils.fakeFetch('/sessions/currentuser')
         .then((result) => {
-          expect(result.login).toEqual('123456789011')
+          expect(result.user.login).toEqual('123456789011')
         })
     })
   })
