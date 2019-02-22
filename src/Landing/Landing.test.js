@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
 import Component from './Landing';
@@ -11,7 +12,9 @@ import store from '../store';
 const Landing = (...props) => (
   <Provider store={store}>
     <IntlProvider locale="en" messages={localeData.en}>
-      <Component {...props} />
+      <Router>
+        <Component {...props} />
+      </Router>
     </IntlProvider>
   </Provider>
 )

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { css } from 'emotion';
 
 const container = {
@@ -24,6 +25,8 @@ const leftContainer = {
 const title = {
   fontSize: '24px',
   fontWeight: 'bold',
+  textDecoration: 'none',
+  color: 'inherit',
 }
 
 const rightContainer = {
@@ -55,7 +58,12 @@ const Header = ({ className, burgerClassName, onMenuClick }) => (
         </button>
       </div>
       <div className={css(rightContainer)}>
-        <div className={css(title)}>GetESF</div>
+        <Link
+          className={css(title)}
+          to="/"
+        >
+          GetESF
+        </Link>
       </div>
     </div>
   </header>

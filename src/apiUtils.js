@@ -1,5 +1,7 @@
 import config from './config'
 import { SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT } from './store';
+import demoResult from './demoResult';
+import Alert from 'react-s-alert';
 
 const rejectError = (response) => {
   const error = new Error()
@@ -19,14 +21,45 @@ const rejectError = (response) => {
   return Promise.reject(error)
 }
 
-export const apiCall = (endpoint, optionsArg) => {
+export const fakeFetch = (endpoint) => new Promise ((resolve) => {
+  const delayedResolve = (data) => {
+    setTimeout(() => resolve(data), 1000)
+  }
+
+  if (endpoint.startsWith('/invoices/queryinvoice')) {
+    delayedResolve(demoResult)
+  } else if (endpoint.startsWith('/sessions/createsession')) {
+    delayedResolve({ sessionId: 'demo' })
+  } else if (endpoint.startsWith('/sessions/currentuser')) {
+    delayedResolve({ user: { login: '123456789011' } })
+  } else if (endpoint.startsWith('/sessions/closesession')) {
+    delayedResolve({ status: 'CLOSED' })
+  }
+})
+
+export const isDemo = (opts) => (
+  opts && (
+    (opts.headers && opts.headers['Session-ID'] === 'demo') ||
+    (opts.body && JSON.parse(opts.body).username === '123456789011')
+  )
+)
+
+export const apiCall = (
+  endpoint,
+  { headers: headersArg, ...otherOpts } = {}
+) => {
   const url = config.apiHost + endpoint
   const options = {
     headers: {
       'Content-Type': 'application/json',
+      ...headersArg,
     },
     mode: 'cors',
-    ...optionsArg,
+    ...otherOpts,
+  }
+
+  if (isDemo(options)) {
+    return fakeFetch(endpoint, options)
   }
 
   return fetch(url, options)
@@ -43,17 +76,23 @@ export const resetStore = (dispatch) => {
 export const logOut = ({ user, password, sessionId }, dispatch) => {
   const options = {
     method: 'POST',
+    headers: {
+      'Session-ID': sessionId,
+    },
     body: JSON.stringify({
-      username: user.login,
+      username: user && user.login,
       password: password,
       sessionId: sessionId,
     }),
   }
 
-  if (sessionId === 'demo') {
-    return resetStore(dispatch)
-  }
-
   return apiCall('/sessions/closesession', options)
     .then(() => resetStore(dispatch))
+    .catch(onLogoutFail)
+}
+
+export const onLogoutFail = (error) => {
+  if (error.name === 'ApiError') {
+    Alert.info(error.body.soapError.faultstring)
+  }
 }

@@ -6,6 +6,7 @@ import { css } from 'emotion';
 import SectionContent from '../common/SectionContent';
 import FileInput from '../common/FileInput';
 import Button from '../common/Button';
+import Spinner from '../common/Spinner';
 
 const main = {
   background: 'linear-gradient(90deg, #744fc6 12%, #697eff 100%)',
@@ -52,6 +53,18 @@ const signInLabel = {
   color: '#744fc6',
 };
 
+const fileInputLabel = {
+  display: 'flex',
+  flexDirection: 'column',
+  lineHeight: 'initial',
+  height: '49px',
+  justifyContent: 'center',
+}
+
+const fileInputSubtext = {
+  fontSize: '9px',
+}
+
 export const signInButton = {
   ':hover + label': {
     backgroundColor: 'rgba(255,255,255, .9)',
@@ -74,7 +87,7 @@ const browseButtonContainer = {
   margin: '1.3em .5em',
 };
 
-const Main = ({ onDemoClick, onFileChange }) => (
+const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
   <section className={css(main)}>
     <SectionContent>
       <div className={css(headline)}>
@@ -97,10 +110,21 @@ const Main = ({ onDemoClick, onFileChange }) => (
             accept=".p12"
             onChange={onFileChange}
           >
-            <FormattedMessage
-              id="LoginInitial.SignIn"
-              defaultMessage="Sign In"
-            />
+            {isFileLoading ?
+              <Spinner size={12} color="#744fc6" /> :
+              <div className={css(fileInputLabel)}>
+                <FormattedMessage
+                  id="LoginInitial.SignIn"
+                  defaultMessage="Sign In"
+                />
+                <div className={css(fileInputSubtext)}>
+                  <FormattedMessage
+                    id="LoginInitial.SignInSubtext"
+                    defaultMessage="with your key"
+                  />
+                </div>
+              </div>
+            }
           </FileInput>
         </div>
         <div className={css(browseButtonContainer)}>
@@ -122,6 +146,7 @@ const Main = ({ onDemoClick, onFileChange }) => (
 Main.propTypes = {
   onDemoClick: PropTypes.func,
   onFileChange: PropTypes.func,
+  isFileLoading: PropTypes.bool,
 }
 
 export default Main

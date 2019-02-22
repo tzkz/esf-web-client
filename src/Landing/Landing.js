@@ -20,6 +20,7 @@ const container = {
 class Landing extends React.Component {
   state = {
     p12base64: '',
+    isFileLoading: false,
   }
 
   onDemoClick = () => this.setState({ p12base64: testKey })
@@ -35,9 +36,11 @@ class Landing extends React.Component {
     reader.onload = () => {
       this.setState({
         p12base64: reader.result.split(',')[1],
+        isFileLoading: false,
       })
     }
 
+    this.setState({ isFileLoading: true })
     reader.readAsDataURL(files[0])
     event.target.value = ''
   }
@@ -68,7 +71,11 @@ class Landing extends React.Component {
             height: '74px',
           })}
         />
-        <Main onDemoClick={this.onDemoClick} onFileChange={this.onFileChange} />
+        <Main
+          onDemoClick={this.onDemoClick}
+          onFileChange={this.onFileChange}
+          isFileLoading={this.state.isFileLoading}
+        />
         <Footer />
         <Auth
           p12base64={p12base64}

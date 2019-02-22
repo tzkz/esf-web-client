@@ -101,24 +101,12 @@ class Password extends React.Component {
       .catch(this.onSubmitError)
   }
 
-  onDemoSubmit = (event) => {
-    event.preventDefault()
-
-    if (this.state.password !== 'TestPass123') {
-      return this.setState({ passwordError: true })
-    }
-
-    this.props.dispatch({ type: SET_SESSION_ID, sessionId: 'demo' })
-    this.props.dispatch({ type: SET_USER, user: {} })
-    this.props.dispatch({ type: SET_PASSWORD, password: this.state.password })
-  }
-
   render() {
     const { isDemo, p12decrypted } = this.props
 
     return (
       <AuthStep
-        onSubmit={isDemo ? this.onDemoSubmit : this.onSubmit}
+        onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
         isLoading={this.state.isLoading}
         show={this.props.show}
