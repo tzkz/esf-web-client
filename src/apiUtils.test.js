@@ -97,5 +97,12 @@ describe('apiUtils.js', () => {
           expect(result.sessionId).toEqual('demo')
         })
     })
+
+    it('resolves to demo user', () => {
+      return utils.fakeFetch('/sessions/currentuser')
+        .then((result) => {
+          expect(result.login).toEqual('123456789011')
+        })
+    })
   })
 })

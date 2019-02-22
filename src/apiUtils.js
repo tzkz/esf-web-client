@@ -27,6 +27,9 @@ export const fakeFetch = (endpoint) => new Promise ((resolve) => {
   if (endpoint.startsWith('/sessions/createsession')) {
     setTimeout(() => resolve({ sessionId: 'demo' }), 1000)
   }
+  if (endpoint.startsWith('/sessions/currentuser')) {
+    setTimeout(() => resolve({ login: '123456789011' }), 1000)
+  }
 })
 
 export const isDemo = (opts) => (
