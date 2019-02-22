@@ -106,7 +106,6 @@ const fetchPdf = (item) => {
 
   return apiCall('/pdfs', options)
     .then((result) => ({ ...result, invoiceId: item.invoiceId }))
-    .catch(this.handleUnknownError)
 }
 
 const fetchPdfs = ({ selected, invoiceInfo }) => {
@@ -208,6 +207,7 @@ class Result extends React.Component {
     return fetchPdfs({ selected, invoiceInfo })
       .then(generateZip)
       .then((blob) => saveAs(blob, `invoices-${Date.now()}`))
+      .catch(this.handleUnknownError)
       .finally(() => this.setState({ isDownloading: false }))
   }
 
