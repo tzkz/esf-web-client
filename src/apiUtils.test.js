@@ -72,6 +72,15 @@ describe('apiUtils.js', () => {
 
       expect(utils.isDemo(options)).toEqual(true)
     })
+
+    it('returns true if username is test user', () => {
+      const options = {
+        body: JSON.stringify({
+          username: '123456789011'
+        })
+      }
+      expect(utils.isDemo(options)).toEqual(true)
+    })
   })
 
   describe('fakeFetch()', () => {
@@ -83,7 +92,7 @@ describe('apiUtils.js', () => {
     })
 
     it('resolves to demo sessionId', () => {
-      return utils.fakeFetch('/sessions/create')
+      return utils.fakeFetch('/sessions/createsession')
         .then((result) => {
           expect(result.sessionId).toEqual('demo')
         })
