@@ -81,5 +81,12 @@ describe('apiUtils.js', () => {
           expect(result).toEqual(demoResult)
         })
     })
+
+    it('resolves to demo sessionId', () => {
+      return utils.fakeFetch('/sessions/create')
+        .then((result) => {
+          expect(result.sessionId).toEqual('demo')
+        })
+    })
   })
 })

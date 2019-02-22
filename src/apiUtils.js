@@ -24,6 +24,9 @@ export const fakeFetch = (endpoint) => new Promise ((resolve) => {
   if (endpoint.startsWith('/invoices/queryinvoice')) {
     setTimeout(() => resolve(demoResult), 1000)
   }
+  if (endpoint.startsWith('/sessions/create')) {
+    setTimeout(() => resolve({ sessionId: 'demo' }), 1000)
+  }
 })
 
 export const isDemo = (opts) => (
