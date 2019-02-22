@@ -106,6 +106,7 @@ const fetchPdf = (item) => {
 
   return apiCall('/pdfs', options)
     .then((result) => ({ ...result, invoiceId: item.invoiceId }))
+    .catch(this.handleUnknownError)
 }
 
 const fetchPdfs = ({ selected, invoiceInfo }) => {
