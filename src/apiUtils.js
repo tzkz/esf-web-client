@@ -21,17 +21,18 @@ const rejectError = (response) => {
 }
 
 export const fakeFetch = (endpoint) => new Promise ((resolve) => {
+  const delayedResolve = (data) => {
+    setTimeout(() => resolve(data), 1000)
+  }
+
   if (endpoint.startsWith('/invoices/queryinvoice')) {
-    setTimeout(() => resolve(demoResult), 1000)
-  }
-  if (endpoint.startsWith('/sessions/createsession')) {
-    setTimeout(() => resolve({ sessionId: 'demo' }), 1000)
-  }
-  if (endpoint.startsWith('/sessions/currentuser')) {
-    setTimeout(() => resolve({ user: { login: '123456789011' } }), 1000)
-  }
-  if (endpoint.startsWith('/sessions/closesession')) {
-    setTimeout(() => resolve({ status: 'CLOSED' }), 1000)
+    delayedResolve(demoResult)
+  } else if (endpoint.startsWith('/sessions/createsession')) {
+    delayedResolve({ sessionId: 'demo' })
+  } else if (endpoint.startsWith('/sessions/currentuser')) {
+    delayedResolve({ user: { login: '123456789011' } })
+  } else if (endpoint.startsWith('/sessions/closesession')) {
+    delayedResolve({ status: 'CLOSED' })
   }
 })
 
@@ -70,6 +71,9 @@ export const resetStore = (dispatch) => {
 export const logOut = ({ user, password, sessionId }, dispatch) => {
   const options = {
     method: 'POST',
+    headers: {
+      'Session-ID': sessionId,
+    },
     body: JSON.stringify({
       username: user && user.login,
       password: password,
