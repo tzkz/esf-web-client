@@ -77,10 +77,6 @@ export const logOut = ({ user, password, sessionId }, dispatch) => {
     }),
   }
 
-  if (sessionId === 'demo') {
-    return resetStore(dispatch)
-  }
-
   return apiCall('/sessions/closesession', options)
     .then(() => resetStore(dispatch))
 }
