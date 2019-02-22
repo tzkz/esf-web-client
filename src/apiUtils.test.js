@@ -104,5 +104,12 @@ describe('apiUtils.js', () => {
           expect(result.user.login).toEqual('123456789011')
         })
     })
+
+    it('resolves with timeout on closesession', () => {
+      return utils.fakeFetch('/sessions/closesession')
+        .then((result) => {
+          expect(result.status).toEqual('CLOSED')
+        })
+    })
   })
 })

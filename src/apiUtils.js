@@ -30,6 +30,9 @@ export const fakeFetch = (endpoint) => new Promise ((resolve) => {
   if (endpoint.startsWith('/sessions/currentuser')) {
     setTimeout(() => resolve({ user: { login: '123456789011' } }), 1000)
   }
+  if (endpoint.startsWith('/sessions/closesession')) {
+    setTimeout(() => resolve({ status: 'CLOSED' }), 1000)
+  }
 })
 
 export const isDemo = (opts) => (
