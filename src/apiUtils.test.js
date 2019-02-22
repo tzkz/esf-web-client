@@ -1,5 +1,6 @@
 import * as utils from './apiUtils'
 import config from './config';
+import demoResult from './demoResult';
 
 describe('apiUtils.js', () => {
   describe('apiCall()', () => {
@@ -70,6 +71,15 @@ describe('apiUtils.js', () => {
       }
 
       expect(utils.isDemo(options)).toEqual(true)
+    })
+  })
+
+  describe('fakeFetch()', () => {
+    it('resolves to demo result if endpoint is /invoices/queryinvoice', () => {
+      return utils.fakeFetch('/invoices/queryinvoice?direction=INBOUND')
+        .then((result) => {
+          expect(result).toEqual(demoResult)
+        })
     })
   })
 })

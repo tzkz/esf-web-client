@@ -1,5 +1,6 @@
 import config from './config'
 import { SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT } from './store';
+import demoResult from './demoResult';
 
 const rejectError = (response) => {
   const error = new Error()
@@ -19,7 +20,11 @@ const rejectError = (response) => {
   return Promise.reject(error)
 }
 
-export const fakeFetch = () => Promise.resolve()
+export const fakeFetch = (endpoint) => new Promise ((resolve) => {
+  if (endpoint.startsWith('/invoices/queryinvoice')) {
+    setTimeout(() => resolve(demoResult), 1000)
+  }
+})
 
 export const isDemo = (opts) => (
   opts && opts.headers && opts.headers['Session-ID'] === 'demo'
