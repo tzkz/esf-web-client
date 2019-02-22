@@ -1,6 +1,7 @@
 import config from './config'
 import { SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT } from './store';
 import demoResult from './demoResult';
+import Alert from 'react-s-alert';
 
 const rejectError = (response) => {
   const error = new Error()
@@ -43,17 +44,21 @@ export const isDemo = (opts) => (
   )
 )
 
-export const apiCall = (endpoint, optionsArg) => {
+export const apiCall = (
+  endpoint,
+  { headers: headersArg, ...otherOpts } = {}
+) => {
   const url = config.apiHost + endpoint
   const options = {
     headers: {
       'Content-Type': 'application/json',
+      ...headersArg,
     },
     mode: 'cors',
-    ...optionsArg,
+    ...otherOpts,
   }
 
-  if (isDemo(optionsArg)) {
+  if (isDemo(options)) {
     return fakeFetch(endpoint, options)
   }
 
@@ -83,4 +88,11 @@ export const logOut = ({ user, password, sessionId }, dispatch) => {
 
   return apiCall('/sessions/closesession', options)
     .then(() => resetStore(dispatch))
+    .catch(onLogoutFail)
+}
+
+export const onLogoutFail = (error) => {
+  if (error.name === 'ApiError') {
+    Alert.info(error.body.soapError.faultstring)
+  }
 }
