@@ -19,6 +19,12 @@ const rejectError = (response) => {
   return Promise.reject(error)
 }
 
+export const fakeFetch = () => Promise.resolve()
+
+export const isDemo = (opts) => (
+  opts && opts.headers && opts.headers['Session-ID'] === 'demo'
+)
+
 export const apiCall = (endpoint, optionsArg) => {
   const url = config.apiHost + endpoint
   const options = {
@@ -27,6 +33,10 @@ export const apiCall = (endpoint, optionsArg) => {
     },
     mode: 'cors',
     ...optionsArg,
+  }
+
+  if (isDemo(optionsArg)) {
+    return fakeFetch(endpoint, options)
   }
 
   return fetch(url, options)

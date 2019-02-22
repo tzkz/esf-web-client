@@ -1,4 +1,4 @@
-import { apiCall } from './apiUtils'
+import * as utils from './apiUtils'
 import config from './config';
 
 describe('apiUtils.js', () => {
@@ -22,7 +22,7 @@ describe('apiUtils.js', () => {
         mode: 'cors',
       }
 
-      return apiCall('/foo', { method: 'POST' })
+      return utils.apiCall('/foo', { method: 'POST' })
         .then(() => {
           expect(fetch).toBeCalledWith('https://example.com/foo', expectedOptions)
         })
@@ -36,14 +36,14 @@ describe('apiUtils.js', () => {
         mode: 'cors',
       }
 
-      return apiCall('/foo', { headers: { 'Content-Type': 'application/pdf' } })
+      return utils.apiCall('/foo', { headers: { 'Content-Type': 'application/pdf' } })
         .then(() => {
           expect(fetch).toBeCalledWith('https://example.com/foo', expectedOptions)
         })
     })
 
     it('calls response.json() when fetch is resolved', () => {
-      return apiCall('/foo')
+      return utils.apiCall('/foo')
         .then(() => {
           expect(response.json).toBeCalled()
         })
@@ -52,12 +52,24 @@ describe('apiUtils.js', () => {
     it('rejects if response is not ok', () => {
       response.ok = false;
 
-      return apiCall('/foo')
+      return utils.apiCall('/foo')
         .then(() => Promise.reject('shouldnotresolve'))
         .catch((error) => {
           expect(error).not.toEqual('shouldnotresolve')
           expect(error.response).toEqual(response)
         })
+    })
+  })
+  
+  describe('isDemo()', () => {
+    it('returns true if session id is "demo"', () => {
+      const options = {
+        headers: {
+          'Session-ID': 'demo',
+        }
+      }
+
+      expect(utils.isDemo(options)).toEqual(true)
     })
   })
 })
