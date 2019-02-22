@@ -29,7 +29,6 @@ const innerContainer = {
 }
 
 const wrapperContainer = {
-  backgroundColor: '#f8f8f8',
   flexGrow: '1',
   borderRadius: '5px',
 }
