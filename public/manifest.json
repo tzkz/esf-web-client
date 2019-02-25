@@ -1,5 +1,7 @@
 {
- "name": "App",
+ "name": "GetESF",
+ "short_name": "GetESF",
+ "theme_color": "#744fc6",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
