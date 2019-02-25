@@ -2,6 +2,8 @@
  "name": "GetESF",
  "short_name": "GetESF",
  "theme_color": "#744fc6",
+ "background_color": "#744fc6",
+ "start_url": "/",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
