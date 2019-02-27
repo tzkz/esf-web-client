@@ -65,7 +65,7 @@ const ruFlag = (
 );
 
 const localeOptions = [
-  { value: 'en', label: <span>{usFlag} Eng</span> },
+  { value: 'en-US', label: <span>{usFlag} Eng</span> },
   { value: 'kk', label: <span>{kzFlag} Қаз</span> },
   { value: 'ru', label: <span>{ruFlag} Рус</span> },
 ];
