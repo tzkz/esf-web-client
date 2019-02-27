@@ -70,8 +70,6 @@ const Header = ({ className, burgerClassName, onMenuClick }) => (
 );
 
 Header.propTypes = {
-  localeValue: PropTypes.string,
-  onLocaleChange: PropTypes.func,
   className: PropTypes.string,
   burgerClassName: PropTypes.string,
   onMenuClick: PropTypes.func,

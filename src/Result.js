@@ -224,14 +224,12 @@ class Result extends React.Component {
 
   render() {
     const { selected } = this.state
-    const { searchResult, locale, onLocaleChange, onMenuClick } = this.props
+    const { searchResult, onMenuClick } = this.props
 
     return (
       <PrivateComponent>
         <div className={css(container)}>
           <Header
-            localeValue={locale}
-            onLocaleChange={onLocaleChange}
             burgerClassName={css({ fill: '#697EFF' })}
             onMenuClick={onMenuClick}
           />

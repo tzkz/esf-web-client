@@ -37,7 +37,7 @@ const mainArea = {
   paddingTop: '15px',
 }
 
-const Search = ({ locale, onLocaleChange, onMenuClick, history }) => {
+const Search = ({ onMenuClick, history }) => {
   const onSubmit = (form) => {
     history.push(`/result${createQueryString(form)}`)
   }
@@ -46,8 +46,6 @@ const Search = ({ locale, onLocaleChange, onMenuClick, history }) => {
     <PrivateComponent>
       <div className={css(container)}>
         <Header
-          localeValue={locale}
-          onLocaleChange={onLocaleChange}
           burgerClassName={css({ fill: '#697EFF' })}
           onMenuClick={onMenuClick}
         />

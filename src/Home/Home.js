@@ -50,7 +50,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { locale, onLocaleChange, onMenuClick } = this.props
+    const { onMenuClick } = this.props
     const { p12base64 } = this.state
 
     if (this.props.sessionId) {
@@ -62,8 +62,6 @@ class Home extends React.Component {
     return (
       <div className={css(container)}>
         <Header
-          localeValue={locale}
-          onLocaleChange={onLocaleChange}
           onMenuClick={onMenuClick}
           className={css({
             backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
@@ -90,8 +88,6 @@ class Home extends React.Component {
 
 Home.propTypes = {
   sessionId: PropTypes.string,
-  locale: PropTypes.string,
-  onLocaleChange: PropTypes.func,
   onMenuClick: PropTypes.func,
 }
 
