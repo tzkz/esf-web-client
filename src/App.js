@@ -8,14 +8,9 @@ import { css } from 'emotion';
 import Alert from 'react-s-alert';
 import promiseFinally from 'promise.prototype.finally';
 
-import { addLocaleData, IntlProvider } from 'react-intl';
-import en from 'react-intl/locale-data/en';
-import kk from 'react-intl/locale-data/kk';
-import ru from 'react-intl/locale-data/ru';
-import localeData from './i18n/locales';
-
 import store from './store';
 
+import ProvideIntl from './common/ProvideIntl';
 import Home from './Home';
 import Search from './Search';
 import Result from './Result';
@@ -29,11 +24,6 @@ import 'react-dates/lib/css/_datepicker.css';
 import './react_dates_overrides.css';
 
 promiseFinally.shim(); // Promise.prototype.finally() polyfill
-
-if (!window.Intl) {
-  require('intl');
-}
-addLocaleData([...en, ...kk, ...ru]);
 
 const container = {
   minHeight: '100vh',
@@ -54,13 +44,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <IntlProvider
-          locale={this.state.locale}
-          messages={{
-            ...localeData.en,
-            ...localeData[this.state.locale],
-          }}
-        >
+        <ProvideIntl>
           <Router>
             <div className={css(container)}>
               {this.state.showSidebar && (
@@ -112,7 +96,7 @@ class App extends Component {
               />
             </div>
           </Router>
-        </IntlProvider>
+        </ProvideIntl>
       </Provider>
     );
   }
