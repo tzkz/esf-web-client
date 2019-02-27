@@ -1,12 +1,22 @@
 import { combineReducers, createStore } from 'redux'
 import { throttle } from 'lodash'
 
+export const SET_LOCALE = 'SET_LOCALE'
 export const SET_SESSION_ID = 'SET_SESSION_ID'
 export const SET_USER = 'SET_USER'
 export const SET_PASSWORD = 'SET_PASSWORD'
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 
 // reducers
+
+const locale = (state = 'en-US', action) => {
+  switch (action.type) {
+    case SET_LOCALE:
+      return action.locale;
+    default:
+      return state;
+  }
+}
 
 const sessionId = (state = null, action) => {
   switch (action.type) {
@@ -69,6 +79,7 @@ const saveState = (state) => {
 
 const store = createStore(
   combineReducers({
+    locale,
     sessionId,
     user,
     password,
