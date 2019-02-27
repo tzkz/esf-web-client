@@ -2,26 +2,26 @@
   {
     "id": "Main.Headline",
     "defaultMessage": "Export ESF invoices with ease",
-    "filepath": "./src/Landing/Main.js"
+    "filepath": "./src/Home/Main.js"
   },
   {
     "id": "Main.Subheadline",
     "defaultMessage": "Get what the official app is missing absolutely FREE",
-    "filepath": "./src/Landing/Main.js"
+    "filepath": "./src/Home/Main.js"
   },
   {
     "id": "Main.SignIn",
     "defaultMessage": "Sign In",
-    "filepath": "./src/Landing/Main.js"
+    "filepath": "./src/Home/Main.js"
   },
   {
     "id": "Main.SignInSubtext",
     "defaultMessage": "with your key",
-    "filepath": "./src/Landing/Main.js"
+    "filepath": "./src/Home/Main.js"
   },
   {
     "id": "Main.Demo",
     "defaultMessage": "Try Demo",
-    "filepath": "./src/Landing/Main.js"
+    "filepath": "./src/Home/Main.js"
   }
 ]

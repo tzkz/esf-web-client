@@ -17,7 +17,7 @@ const container = {
   flexDirection: 'column',
 }
 
-class Landing extends React.Component {
+class Home extends React.Component {
   state = {
     p12base64: '',
     isFileLoading: false,
@@ -88,7 +88,7 @@ class Landing extends React.Component {
   }
 }
 
-Landing.propTypes = {
+Home.propTypes = {
   sessionId: PropTypes.string,
   locale: PropTypes.string,
   onLocaleChange: PropTypes.func,
@@ -101,4 +101,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Landing)
+export default connect(mapStateToProps)(Home)

@@ -16,7 +16,7 @@ import localeData from './i18n/locales';
 
 import store from './store';
 
-import Landing from './Landing';
+import Home from './Home';
 import Search from './Search';
 import Result from './Result';
 import Sidebar from './Sidebar';
@@ -74,7 +74,7 @@ class App extends Component {
                 exact
                 path="/"
                 render={(props) => (
-                  <Landing
+                  <Home
                     {...props}
                     locale={this.state.locale}
                     onLocaleChange={this.onLocaleChange}
