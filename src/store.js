@@ -12,45 +12,45 @@ export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 const locale = (state = 'en-US', action) => {
   switch (action.type) {
     case SET_LOCALE:
-      return action.locale;
+      return action.locale
     default:
-      return state;
+      return state
   }
 }
 
 const sessionId = (state = null, action) => {
   switch (action.type) {
     case SET_SESSION_ID:
-      return action.sessionId;
+      return action.sessionId
     default:
-      return state;
+      return state
   }
 }
 
 const user = (state = null, action) => {
   switch (action.type) {
     case SET_USER:
-      return action.user;
+      return action.user
     default:
-      return state;
+      return state
   }
 }
 
 const password = (state = null, action) => {
   switch (action.type) {
     case SET_PASSWORD:
-      return action.password;
+      return action.password
     default:
-      return state;
+      return state
   }
 }
 
 const searchResult = (state = null, action) => {
   switch (action.type) {
     case SET_SEARCH_RESULT:
-      return action.searchResult;
+      return action.searchResult
     default:
-      return state;
+      return state
   }
 }
 

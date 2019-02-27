@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from 'emotion'
 
 import Button from '../common/Button'
-import Spinner from '../common/Spinner';
+import Spinner from '../common/Spinner'
 
 const buttonContainer = {
   display: 'flex',

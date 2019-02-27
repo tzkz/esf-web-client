@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
 import Pin from './Pin'
-import Password from './Password';
+import Password from './Password'
 
 const container = {
   position: 'fixed',

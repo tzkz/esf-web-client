@@ -130,7 +130,7 @@ class Result extends React.Component {
   }
 
   componentDidMount() {
-    const { sessionId, location: { search } } = this.props;
+    const { sessionId, location: { search } } = this.props
 
     if (search) {
       this.fetchInvoices({ search, sessionId })

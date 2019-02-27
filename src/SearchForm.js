@@ -7,7 +7,7 @@ import moment from 'moment'
 import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 
 import Button from './common/Button'
-import Radio from './common/Radio';
+import Radio from './common/Radio'
 
 const formContainerInner = {
   width: '100%',
@@ -172,7 +172,7 @@ class SearchForm extends React.Component {
       delivered,
       revoked,
       cancelled,
-    } = this.state;
+    } = this.state
 
     event.preventDefault()
     this.props.onSubmit({

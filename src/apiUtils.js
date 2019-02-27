@@ -1,7 +1,7 @@
 import config from './config'
-import { SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT } from './store';
-import demoResult from './demoResult';
-import Alert from 'react-s-alert';
+import { SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT } from './store'
+import demoResult from './demoResult'
+import Alert from 'react-s-alert'
 
 const rejectError = (response) => {
   const error = new Error()

@@ -11,7 +11,7 @@ export const extractCert = (p12) => {
   const bags = p12.getBags({ bagType: forge.pki.oids.certBag })
   const { cert } = bags[forge.pki.oids.certBag][0]
 
-  return cert;
+  return cert
 }
 
 export const extractIdFromKey = (p12) => (
