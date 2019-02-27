@@ -21,9 +21,6 @@ export const createQueryString = ({
   `.replace(/\s/g, '')
 )
 
-const container = {
-}
-
 const innerContainer = {
   display: 'flex',
   paddingTop: '16px',
@@ -44,7 +41,7 @@ const Search = ({ onMenuClick, history }) => {
 
   return (
     <PrivateComponent>
-      <div className={css(container)}>
+      <div>
         <Header
           burgerClassName={css({ fill: '#697EFF' })}
           onMenuClick={onMenuClick}

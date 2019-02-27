@@ -14,10 +14,6 @@ import Header from './common/Header'
 import Spinner from './common/Spinner'
 import Checkbox from './common/Checkbox'
 
-
-const container = {
-}
-
 const innerContainer = {
   display: 'flex',
   fontSize: '12px',
@@ -228,7 +224,7 @@ class Result extends React.Component {
 
     return (
       <PrivateComponent>
-        <div className={css(container)}>
+        <div>
           <Header
             burgerClassName={css({ fill: '#697EFF' })}
             onMenuClick={onMenuClick}
