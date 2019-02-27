@@ -1,10 +1,10 @@
-import React from 'react';
-import { css } from 'emotion';
+import React from 'react'
+import { css } from 'emotion'
 
-import Header from './common/Header';
-import SectionContent from './common/SectionContent';
-import PrivateComponent from './common/PrivateComponent';
-import SearchForm from './SearchForm';
+import Header from './common/Header'
+import SectionContent from './common/SectionContent'
+import PrivateComponent from './common/PrivateComponent'
+import SearchForm from './SearchForm'
 
 export const createQueryString = ({
   direction, startDate, endDate, created, delivered, revoked, cancelled, invoiceType,
@@ -61,4 +61,4 @@ const Search = ({ onMenuClick, history }) => {
   )
 }
 
-export default Search;
+export default Search

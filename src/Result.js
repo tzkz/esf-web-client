@@ -1,18 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { css } from 'emotion';
-import { isEmpty } from 'lodash';
-import Alert from 'react-s-alert';
-import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
+import React from 'react'
+import { connect } from 'react-redux'
+import { css } from 'emotion'
+import { isEmpty } from 'lodash'
+import Alert from 'react-s-alert'
+import JSZip from 'jszip'
+import { saveAs } from 'file-saver'
 
-import SectionContent from './common/SectionContent';
-import PrivateComponent from './common/PrivateComponent';
-import { apiCall } from './apiUtils';
-import { SET_SEARCH_RESULT } from './store';
-import Header from './common/Header';
-import Spinner from './common/Spinner';
-import Checkbox from './common/Checkbox';
+import SectionContent from './common/SectionContent'
+import PrivateComponent from './common/PrivateComponent'
+import { apiCall } from './apiUtils'
+import { SET_SEARCH_RESULT } from './store'
+import Header from './common/Header'
+import Spinner from './common/Spinner'
+import Checkbox from './common/Checkbox'
 
 
 const container = {
@@ -25,7 +25,7 @@ const innerContainer = {
   marginTop: '2px',
   '@media(min-width: 400px)': {
     paddingTop: '17px',
-  }
+  },
 }
 
 const wrapperContainer = {
@@ -41,7 +41,7 @@ const resultsContainer = {
   boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.4)',
   '@media(min-width: 400px)': {
     margin: '30px',
-  }
+  },
 }
 
 const headerContainer = {
@@ -88,7 +88,7 @@ const downloadButton = {
   padding: '10px 8px',
   ':hover': {
     cursor: 'pointer',
-  }
+  },
 }
 
 const getIvoiceIds = (searchResult) => {
@@ -174,16 +174,16 @@ class Result extends React.Component {
     let newSelected = []
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, item.invoiceId);
+      newSelected = newSelected.concat(selected, item.invoiceId)
     } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
+      newSelected = newSelected.concat(selected.slice(1))
     } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
+      newSelected = newSelected.concat(selected.slice(0, -1))
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1),
-      );
+      )
     }
 
     this.setState({ selected: newSelected })
@@ -315,7 +315,7 @@ class Result extends React.Component {
           </SectionContent>
         </div>
       </PrivateComponent>
-    );
+    )
   }
 }
 
@@ -324,4 +324,4 @@ const mapStateToProps = (state) => ({
   sessionId: state.sessionId,
 })
 
-export default connect(mapStateToProps)(Result);
+export default connect(mapStateToProps)(Result)
