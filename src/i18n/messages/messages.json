@@ -10,17 +10,17 @@
     "filepath": "./src/Landing/Main.js"
   },
   {
-    "id": "LoginInitial.SignIn",
+    "id": "Main.SignIn",
     "defaultMessage": "Sign In",
     "filepath": "./src/Landing/Main.js"
   },
   {
-    "id": "LoginInitial.SignInSubtext",
+    "id": "Main.SignInSubtext",
     "defaultMessage": "with your key",
     "filepath": "./src/Landing/Main.js"
   },
   {
-    "id": "LoginInitial.Demo",
+    "id": "Main.Demo",
     "defaultMessage": "Try Demo",
     "filepath": "./src/Landing/Main.js"
   }

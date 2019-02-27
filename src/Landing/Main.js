@@ -114,12 +114,12 @@ const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
               <Spinner size={12} color="#744fc6" /> :
               <div className={css(fileInputLabel)}>
                 <FormattedMessage
-                  id="LoginInitial.SignIn"
+                  id="Main.SignIn"
                   defaultMessage="Sign In"
                 />
                 <div className={css(fileInputSubtext)}>
                   <FormattedMessage
-                    id="LoginInitial.SignInSubtext"
+                    id="Main.SignInSubtext"
                     defaultMessage="with your key"
                   />
                 </div>
@@ -133,7 +133,7 @@ const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
             onClick={onDemoClick}
           >
             <FormattedMessage
-              id="LoginInitial.Demo"
+              id="Main.Demo"
               defaultMessage="Try Demo"
             />
           </Button>
