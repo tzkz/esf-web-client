@@ -6,6 +6,8 @@ export const SET_USER = 'SET_USER'
 export const SET_PASSWORD = 'SET_PASSWORD'
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 
+// reducers
+
 const sessionId = (state = null, action) => {
   switch (action.type) {
     case SET_SESSION_ID:
@@ -41,6 +43,8 @@ const searchResult = (state = null, action) => {
       return state;
   }
 }
+
+// local storage
 
 const loadState = () => {
   try {
