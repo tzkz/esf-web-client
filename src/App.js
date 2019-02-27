@@ -51,28 +51,19 @@ class App extends Component {
                 exact
                 path="/"
                 render={(props) => (
-                  <Home
-                    {...props}
-                    onMenuClick={this.onMenuClick}
-                  />
+                  <Home {...props} onMenuClick={this.onMenuClick} />
                 )}
               />
               <Route
                 path="/search"
                 render={(props) => (
-                  <Search
-                    {...props}
-                    onMenuClick={this.onMenuClick}
-                  />
+                  <Search {...props} onMenuClick={this.onMenuClick} />
                 )}
               />
               <Route
                 path="/result"
                 render={(props) => (
-                  <Result
-                    {...props}
-                    onMenuClick={this.onMenuClick}
-                  />
+                  <Result {...props} onMenuClick={this.onMenuClick} />
                 )}
               />
               <Alert
