@@ -31,11 +31,8 @@ const container = {
 
 class App extends Component {
   state = {
-    locale: 'en',
     showSidebar: false,
   }
-
-  onLocaleChange = (locale) => this.setState({ locale })
 
   onMenuClick = () => this.setState({ showSidebar: true })
 
@@ -48,11 +45,7 @@ class App extends Component {
           <Router>
             <div className={css(container)}>
               {this.state.showSidebar && (
-                <Sidebar 
-                  onOverlayClick={this.onOverlayClick}
-                  localeValue={this.state.locale}
-                  onLocaleChange={this.onLocaleChange}
-                />
+                <Sidebar onOverlayClick={this.onOverlayClick} />
               )}
               <Route
                 exact
@@ -60,8 +53,6 @@ class App extends Component {
                 render={(props) => (
                   <Home
                     {...props}
-                    locale={this.state.locale}
-                    onLocaleChange={this.onLocaleChange}
                     onMenuClick={this.onMenuClick}
                   />
                 )}
@@ -71,8 +62,6 @@ class App extends Component {
                 render={(props) => (
                   <Search
                     {...props}
-                    locale={this.state.locale}
-                    onLocaleChange={this.onLocaleChange}
                     onMenuClick={this.onMenuClick}
                   />
                 )}
@@ -82,8 +71,6 @@ class App extends Component {
                 render={(props) => (
                   <Result
                     {...props}
-                    locale={this.state.locale}
-                    onLocaleChange={this.onLocaleChange}
                     onMenuClick={this.onMenuClick}
                   />
                 )}
