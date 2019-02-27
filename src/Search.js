@@ -1,7 +1,6 @@
 import React from 'react'
 import { css } from 'emotion'
 
-import Header from './common/Header'
 import SectionContent from './common/SectionContent'
 import PrivateComponent from './common/PrivateComponent'
 import SearchForm from './SearchForm'
@@ -34,7 +33,7 @@ const mainArea = {
   paddingTop: '15px',
 }
 
-const Search = ({ onMenuClick, history }) => {
+const Search = ({ history }) => {
   const onSubmit = (form) => {
     history.push(`/result${createQueryString(form)}`)
   }
@@ -42,10 +41,6 @@ const Search = ({ onMenuClick, history }) => {
   return (
     <PrivateComponent>
       <div>
-        <Header
-          burgerClassName={css({ fill: '#697EFF' })}
-          onMenuClick={onMenuClick}
-        />
         <SectionContent>
           <div className={css(innerContainer)}>
             <div className={css(mainArea)}>

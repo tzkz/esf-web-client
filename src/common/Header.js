@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { css } from 'emotion';
 
-const container = {
+const getContainerStyle = ({ pathname }) => ({
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
-  color: '#697EFF',
-  height: '60px',
-}
+  color: pathname === '/' ? 'white' : '#697EFF',
+  backgroundImage: pathname === '/' ? 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)' : 'none',
+  height: pathname === '/' ? '74px' : '60px',
+})
 
 const headerContent = {
   height: '100%',
@@ -34,14 +35,14 @@ const rightContainer = {
   flex: '1',
 }
 
-const burgerButton = {
+const getBurgerStyle = ({ pathname }) => ({
   padding: '10px 16px 10px 24px',
   border: 'none',
   background: 'none',
   cursor: 'pointer',
   whiteSpace: 'nowrap',
-  fill: '#FFF',
-};
+  fill: pathname === '/' ? '#FFF' : '#697EFF',
+});
 
 const burger = (
   <svg viewBox='0 0 24 24' width='24' height='24'>
@@ -49,11 +50,11 @@ const burger = (
   </svg>
 );
 
-const Header = ({ className, burgerClassName, onMenuClick }) => (
-  <header className={css(container, className)}>
+const Header = ({ className, burgerClassName, onMenuClick, location }) => (
+  <header className={css(getContainerStyle(location), className)}>
     <div className={css(headerContent)}>
       <div className={css(leftContainer)}>
-        <button className={css(burgerButton, burgerClassName)} onClick={onMenuClick}>
+        <button className={css(getBurgerStyle(location), burgerClassName)} onClick={onMenuClick}>
           {burger}
         </button>
       </div>
@@ -83,4 +84,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(withRouter(Header));

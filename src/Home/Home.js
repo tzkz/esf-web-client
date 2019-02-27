@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { css } from 'emotion'
 
-import Header from '../common/Header'
 import Main from './Main'
 import Auth from './Auth'
 import Footer from './Footer'
@@ -50,7 +49,6 @@ class Home extends React.Component {
   }
 
   render() {
-    const { onMenuClick } = this.props
     const { p12base64 } = this.state
 
     if (this.props.sessionId) {
@@ -61,14 +59,6 @@ class Home extends React.Component {
 
     return (
       <div className={css(container)}>
-        <Header
-          onMenuClick={onMenuClick}
-          className={css({
-            backgroundImage: 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)',
-            color: 'white',
-            height: '74px',
-          })}
-        />
         <Main
           onDemoClick={this.onDemoClick}
           onFileChange={this.onFileChange}
@@ -88,7 +78,6 @@ class Home extends React.Component {
 
 Home.propTypes = {
   sessionId: PropTypes.string,
-  onMenuClick: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {

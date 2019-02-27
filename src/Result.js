@@ -10,7 +10,6 @@ import SectionContent from './common/SectionContent'
 import PrivateComponent from './common/PrivateComponent'
 import { apiCall } from './apiUtils'
 import { SET_SEARCH_RESULT } from './store'
-import Header from './common/Header'
 import Spinner from './common/Spinner'
 import Checkbox from './common/Checkbox'
 
@@ -220,15 +219,11 @@ class Result extends React.Component {
 
   render() {
     const { selected } = this.state
-    const { searchResult, onMenuClick } = this.props
+    const { searchResult } = this.props
 
     return (
       <PrivateComponent>
         <div>
-          <Header
-            burgerClassName={css({ fill: '#697EFF' })}
-            onMenuClick={onMenuClick}
-          />
           <SectionContent>
             <div className={css(innerContainer)}>
               <div className={css(wrapperContainer)}>

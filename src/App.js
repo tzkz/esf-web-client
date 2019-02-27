@@ -15,6 +15,7 @@ import Home from './Home'
 import Search from './Search'
 import Result from './Result'
 import Sidebar from './Sidebar'
+import Header from './common/Header'
 
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/stackslide.css'
@@ -47,25 +48,10 @@ class App extends Component {
               {this.state.showSidebar && (
                 <Sidebar onOverlayClick={this.onOverlayClick} />
               )}
-              <Route
-                exact
-                path="/"
-                render={(props) => (
-                  <Home {...props} onMenuClick={this.onMenuClick} />
-                )}
-              />
-              <Route
-                path="/search"
-                render={(props) => (
-                  <Search {...props} onMenuClick={this.onMenuClick} />
-                )}
-              />
-              <Route
-                path="/result"
-                render={(props) => (
-                  <Result {...props} onMenuClick={this.onMenuClick} />
-                )}
-              />
+              <Header onMenuClick={this.onMenuClick} />
+              <Route exact path="/" component={Home} />
+              <Route path="/search" component={Search} />
+              <Route path="/result" component={Result} />
               <Alert
                 stack={{ limit: 3 }}
                 effect="stackslide"
