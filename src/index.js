@@ -4,6 +4,17 @@ import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+import promiseFinally from 'promise.prototype.finally'
+
+import 'react-s-alert/dist/s-alert-default.css'
+import 'react-s-alert/dist/s-alert-css-effects/stackslide.css'
+
+import 'react-dates/initialize'
+import 'react-dates/lib/css/_datepicker.css'
+import './react_dates_overrides.css'
+
+promiseFinally.shim() // Promise.prototype.finally() polyfill
+
 ReactDOM.render(<App />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
