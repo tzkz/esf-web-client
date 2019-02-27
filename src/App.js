@@ -18,6 +18,8 @@ import Header from './common/Header'
 
 const container = {
   minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
 }
 
 class App extends Component {
