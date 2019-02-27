@@ -32,7 +32,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: aws s3 sync build/ s3://dev.getesf.com --delete
-      - run: aws cloudfront create-invalidation --distribution-id E3QPF8ETZMACTE --paths /
+      - run: aws cloudfront create-invalidation --distribution-id E3QPF8ETZMACTE --paths "/*"
 
   deploy-beta:
     docker:
@@ -44,7 +44,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: aws s3 sync build/ s3://getesf.com --delete
-      - run: aws cloudfront create-invalidation --distribution-id E3FJHNCB7VHTOC --paths /
+      - run: aws cloudfront create-invalidation --distribution-id E3FJHNCB7VHTOC --paths "/*"
 
 workflows:
   version: 2
