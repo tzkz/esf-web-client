@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from './apiUtils';
 import LangSelect from '../src/common/LangSelect';
+import { SET_LOCALE } from './store';
 
 const Container = {
   position: 'fixed',
@@ -100,7 +101,7 @@ const langSelectButton = {
   margin: '12px 5px',
 }
 
-const Sidebar = ({ localeValue, onLocaleChange, onOverlayClick, sessionId, user, password, dispatch }) => (
+const Sidebar = ({ locale, onOverlayClick, sessionId, user, password, dispatch }) => (
   <div className={css(Container)}>
     <div className={css(drawerContainer)}>
       <div className={css(dropdownContainer)}>
@@ -137,9 +138,11 @@ const Sidebar = ({ localeValue, onLocaleChange, onOverlayClick, sessionId, user,
               <path fill='#727272' id='ic_language_24px' d='M11.99 2A10 10 0 1 0 22 12 10 10 0 0 0 11.99 2zm6.93 6h-2.95a15.649 15.649 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04A14.087 14.087 0 0 1 13.91 8h-3.82A14.087 14.087 0 0 1 12 4.04zM4.26 14a7.822 7.822 0 0 1 0-4h3.38a16.515 16.515 0 0 0-.14 2 16.515 16.515 0 0 0 .14 2zm.82 2h2.95a15.649 15.649 0 0 0 1.38 3.56A7.987 7.987 0 0 1 5.08 16zm2.95-8H5.08a7.987 7.987 0 0 1 4.33-3.56A15.649 15.649 0 0 0 8.03 8zM12 19.96A14.087 14.087 0 0 1 10.09 16h3.82A14.087 14.087 0 0 1 12 19.96zM14.34 14H9.66a14.713 14.713 0 0 1-.16-2 14.585 14.585 0 0 1 .16-2h4.68a14.585 14.585 0 0 1 .16 2 14.713 14.713 0 0 1-.16 2zm.25 5.56A15.649 15.649 0 0 0 15.97 16h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14a16.515 16.515 0 0 0 .14-2 16.515 16.515 0 0 0-.14-2h3.38a7.822 7.822 0 0 1 0 4z' className='cls-1' transform='translate(-2 -2)' />
             </svg>
           </div>
-          <LangSelect className={css( langSelectButton)} value={localeValue} onChange={onLocaleChange}>
-            English
-          </LangSelect>
+          <LangSelect
+            className={css(langSelectButton)}
+            value={locale}
+            onChange={(value) => dispatch({ type: SET_LOCALE, locale: value })}
+          />
         </div>
         <button className={css(logOutButton, buttonsContainer, navLinkItem)} onClick={() => logOut({ user, password, sessionId}, dispatch)}>
           <div className={css(icons)}>
@@ -159,8 +162,6 @@ const Sidebar = ({ localeValue, onLocaleChange, onOverlayClick, sessionId, user,
 
 Sidebar.propTypes = {
   onOverlayClick: PropTypes.func,
-  localeValue: PropTypes.string,
-  onLocaleChange: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -168,6 +169,7 @@ const mapStateToProps = (state) => {
     sessionId: state.sessionId,
     user: state.user,
     password: state.password,
+    locale: state.locale,
   }
 }
 
