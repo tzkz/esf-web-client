@@ -49,7 +49,7 @@ const checkboxInput = {
   ':checked + label': {
     backgroundColor: '#697EFF',
     color: '#ffffff',
-  }
+  },
 }
 
 const checkboxLabel = {
@@ -73,7 +73,7 @@ const createdChecked = {
   ':checked + label': {
     borderBottom: 'solid 1px #5668D1',
     borderRight: 'solid 1px #5668D1',
-  }
+  },
 }
 
 const delivered = {
@@ -86,7 +86,7 @@ const deliveredChecked = {
   ':checked + label': {
     borderBottom: 'solid 1px #5668D1',
     borderLeft: 'solid 1px #7689FF',
-  }
+  },
 }
 
 const revoked = {
@@ -99,7 +99,7 @@ const revokedChecked = {
   ':checked + label': {
     borderTop: 'solid 1px #7689FF',
     borderRight: 'solid 1px #5668D1',
-  }
+  },
 }
 
 const cancelled = {
@@ -112,7 +112,7 @@ const cancelledChecked = {
   ':checked + label': {
     borderTop: 'solid 1px #7689FF',
     borderLeft: 'solid 1px #7689FF',
-  }
+  },
 }
 
 const buttonRow = {
@@ -137,75 +137,93 @@ const typeRadioContainer = {
 
 class SearchForm extends React.Component {
   state = {
-    startDate: moment().subtract(7, 'days'),
-    endDate: moment(),
+    form: {
+      direction: 'INBOUND',
+      startDate: moment().subtract(7, 'days'),
+      endDate: moment(),
+      invoiceType: 'any',
+      created: true,
+      delivered: true,
+      revoked: true,
+      cancelled: true,
+    },
     focusedInput: null,
-    direction: 'INBOUND',
-    invoiceType: 'any',
-    created: true,
-    delivered: true,
-    revoked: true,
-    cancelled: true,
+  }
+
+  onDatesChange = ({ startDate, endDate }) => {
+    this.setState(prevState => ({
+      form: {
+        ...prevState.form,
+        startDate,
+        endDate,
+      },
+    }))
   }
 
   onDirectionChange = (event) => {
-    this.setState({ direction: event.target.value })
+    const { value } = event.target
+
+    this.setState(prevState => ({
+      form: {
+        ...prevState.form,
+        direction: value,
+      },
+    }))
   }
 
   onTypeChange = (event) => {
-    this.setState({ invoiceType: event.target.value })
+    const { value } = event.target
+
+    this.setState(prevState => ({
+      form: {
+        ...prevState.form,
+        invoiceType: value,
+      },
+    }))
   }
 
   onStatusChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.checked,
-    })
+    const { checked, name } = event.target
+
+    this.setState(prevState => ({
+      form: {
+        ...prevState.form,
+        [name]: checked,
+      },
+    }))
   }
 
+  onFocusChange = focusedInput => this.setState({ focusedInput })
+
   onSubmit = (event) => {
-    const {
-      direction,
-      startDate,
-      endDate,
-      invoiceType,
-      created,
-      delivered,
-      revoked,
-      cancelled,
-    } = this.state
+    const { form } = this.state
+    const { onSubmit } = this.props
 
     event.preventDefault()
-    this.props.onSubmit({
-      direction,
-      startDate,
-      endDate,
-      invoiceType,
-      created,
-      delivered,
-      revoked,
-      cancelled,
-    })
+    onSubmit(form)
   }
 
   render() {
+    const { form, focusedInput } = this.state
+
     return (
       <form className={css(formContainerInner)} onSubmit={this.onSubmit}>
         <div className={css(inputRow)}>
           <Media query="(min-width: 1024px)">
-            {(matches) => (
+            {matches => (
               <DateRangePicker
-                orientation={ !matches
+                orientation={!matches
                   ? VERTICAL_ORIENTATION
                   : HORIZONTAL_ORIENTATION
                 }
                 withFullScreenPortal={!matches}
-                startDate={this.state.startDate}
+                startDate={form.startDate}
                 startDateId="your_unique_start_date_id"
-                endDate={this.state.endDate}
+                endDate={form.endDate}
                 endDateId="your_unique_end_date_id"
-                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
-                focusedInput={this.state.focusedInput}
-                onFocusChange={focusedInput => this.setState({ focusedInput })}
+                onDatesChange={this.onDatesChange}
+                focusedInput={focusedInput}
+                onFocusChange={this.onFocusChange}
                 noBorder
                 block
                 isOutsideRange={() => false}
@@ -215,12 +233,12 @@ class SearchForm extends React.Component {
           </Media>
         </div>
         <div className={css(inputRow)}>
-         <Radio
-          options={directionOptions}
-          name="direction"
-          selectedOption={this.state.direction}
-          onOptionChange={this.onDirectionChange}
-        />
+          <Radio
+            options={directionOptions}
+            name="direction"
+            selectedOption={form.direction}
+            onOptionChange={this.onDirectionChange}
+          />
         </div>
         <div className={css(checkboxRow)}>
           <div className={css(checkboxContainer1)}>
@@ -231,7 +249,7 @@ class SearchForm extends React.Component {
                 name="created"
                 className={css(checkboxInput, createdChecked)}
                 onChange={this.onStatusChange}
-                checked={this.state.created}
+                checked={form.created}
               />
               <label htmlFor="created" className={css(checkboxLabel, created)}>Created</label>
             </div>
@@ -242,7 +260,7 @@ class SearchForm extends React.Component {
                 name="delivered"
                 className={css(checkboxInput, deliveredChecked)}
                 onChange={this.onStatusChange}
-                checked={this.state.delivered}
+                checked={form.delivered}
               />
               <label htmlFor="delivered" className={css(checkboxLabel, delivered)}>Delivered</label>
             </div>
@@ -255,7 +273,7 @@ class SearchForm extends React.Component {
                 name="revoked"
                 className={css(checkboxInput, revokedChecked)}
                 onChange={this.onStatusChange}
-                checked={this.state.revoked}
+                checked={form.revoked}
               />
               <label htmlFor="revoked" className={css(checkboxLabel, revoked)}>Revoked</label>
             </div>
@@ -266,7 +284,7 @@ class SearchForm extends React.Component {
                 name="cancelled"
                 className={css(checkboxInput, cancelledChecked)}
                 onChange={this.onStatusChange}
-                checked={this.state.cancelled}
+                checked={form.cancelled}
               />
               <label htmlFor="cancelled" className={css(checkboxLabel, cancelled)}>Cancelled</label>
             </div>
@@ -277,7 +295,7 @@ class SearchForm extends React.Component {
             options={typeOptions}
             name="type"
             className={css(typeRadioContainer)}
-            selectedOption={this.state.invoiceType}
+            selectedOption={form.invoiceType}
             onOptionChange={this.onTypeChange}
           />
         </div>
@@ -292,7 +310,7 @@ class SearchForm extends React.Component {
 }
 
 SearchForm.propTypes = {
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default SearchForm

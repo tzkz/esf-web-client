@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
 import SectionContent from './common/SectionContent'
@@ -12,10 +13,10 @@ export const createQueryString = ({
     ${direction ? `direction=${direction}` : ''}
     ${startDate ? `&dateFrom=${startDate.format('YYYY-MM-DD')}` : ''}
     ${endDate ? `&dateTo=${endDate.format('YYYY-MM-DD')}` : ''}
-    ${created ? `&statuses[]=CREATED` : ''}
-    ${delivered ? `&statuses[]=DELIVERED` : ''}
-    ${revoked ? `&statuses[]=REVOKED` : ''}
-    ${cancelled ? `&statuses[]=CANCELED` : ''}
+    ${created ? '&statuses[]=CREATED' : ''}
+    ${delivered ? '&statuses[]=DELIVERED' : ''}
+    ${revoked ? '&statuses[]=REVOKED' : ''}
+    ${cancelled ? '&statuses[]=CANCELED' : ''}
     ${invoiceType && invoiceType !== 'any' ? `&invoiceType=${invoiceType}` : ''}
   `.replace(/\s/g, '')
 )
@@ -51,6 +52,10 @@ const Search = ({ history }) => {
       </div>
     </PrivateComponent>
   )
+}
+
+Search.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
 }
 
 export default Search

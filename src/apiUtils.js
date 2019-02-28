@@ -71,7 +71,7 @@ export const apiCall = (
 export const resetStore = (dispatch) => {
   dispatch({ type: SET_USER, user: null })
   dispatch({ type: SET_PASSWORD, password: null })
-  dispatch({ type: SET_SESSION_ID, sessionId: null })
+  dispatch({ type: SET_SESSION_ID, sessionId: '' })
   dispatch({ type: SET_SEARCH_RESULT, searchResult: null })
 }
 

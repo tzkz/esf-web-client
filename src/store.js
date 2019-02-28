@@ -18,7 +18,7 @@ const locale = (state = 'en-US', action) => {
   }
 }
 
-const sessionId = (state = null, action) => {
+const sessionId = (state = '', action) => {
   switch (action.type) {
     case SET_SESSION_ID:
       return action.sessionId
