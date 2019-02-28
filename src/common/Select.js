@@ -28,11 +28,10 @@ const components = {
   DropdownIndicator: () => (
     <span
       style={{
-        width: 0, 
-        height: 0, 
+        width: 0,
+        height: 0,
         borderLeft: '5px solid transparent',
         borderRight: '5px solid transparent',
-        
         borderTop: '5px solid white',
       }}
     />

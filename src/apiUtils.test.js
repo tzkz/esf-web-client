@@ -61,7 +61,7 @@ describe('apiUtils.js', () => {
         })
     })
   })
-  
+
   describe('isDemo()', () => {
     it('returns true if session id is "demo"', () => {
       const options = {
