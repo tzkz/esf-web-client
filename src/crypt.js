@@ -14,7 +14,7 @@ export const extractCert = (p12) => {
   return cert
 }
 
-export const extractIdFromKey = (p12) => (
+export const extractIdFromKey = p12 => (
   extractCert(p12)
     .subject
     .getField({ name: 'serialName' })
