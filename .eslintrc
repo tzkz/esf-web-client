@@ -6,7 +6,8 @@
     "no-unused-vars": "error",
     "semi": "off",
     "no-underscore-dangle": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "react/button-has-type": "off"
   },
   "globals": {
     "window": true,
