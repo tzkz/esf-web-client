@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FileInput, { input } from './FileInput';
 import { css } from 'emotion';
+import FileInput, { input } from './FileInput';
 
 describe('<FileInput />', () => {
   it('should not blow', () => {

@@ -10,8 +10,8 @@ describe('<ProvideIntl />', () => {
   it('renders without crashing', () => {
     const rendered = renderer.create(
       <Provider store={store}>
-        <ProvideIntl><div></div></ProvideIntl>
-      </Provider>
+        <ProvideIntl><div /></ProvideIntl>
+      </Provider>,
     ).toJSON()
 
     expect(rendered).toBeTruthy()

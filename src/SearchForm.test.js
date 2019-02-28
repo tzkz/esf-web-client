@@ -17,7 +17,7 @@ describe('<SearchForm />', () => {
     const testRenderer = renderer.create(<SearchForm onSubmit={onSubmitProp} />);
     const testInstance = testRenderer.root;
     const componentInstance = testRenderer.getInstance();
-    const form = testInstance.find((element) => element.type === 'form')
+    const form = testInstance.find(element => element.type === 'form')
     const fakeEvent = { preventDefault: jest.fn() }
 
     componentInstance.setState({
