@@ -17,7 +17,7 @@ const headerContent = {
   alignItems: 'center',
   '@media (min-width: 768px)': {
     justifyContent: 'space-between',
-  }
+  },
 };
 
 const leftContainer = {
@@ -45,16 +45,21 @@ const getBurgerStyle = ({ pathname }) => ({
 });
 
 const burger = (
-  <svg viewBox='0 0 24 24' width='24' height='24'>
-    <path d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' />
+  <svg viewBox="0 0 24 24" width="24" height="24">
+    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
   </svg>
 );
 
-const Header = ({ className, burgerClassName, onMenuClick, location }) => (
+const Header = ({
+  className, burgerClassName, onMenuClick, location,
+}) => (
   <header className={css(getContainerStyle(location), className)}>
     <div className={css(headerContent)}>
       <div className={css(leftContainer)}>
-        <button className={css(getBurgerStyle(location), burgerClassName)} onClick={onMenuClick}>
+        <button
+          className={css(getBurgerStyle(location), burgerClassName)}
+          onClick={onMenuClick}
+        >
           {burger}
         </button>
       </div>
@@ -74,14 +79,19 @@ Header.propTypes = {
   className: PropTypes.string,
   burgerClassName: PropTypes.string,
   onMenuClick: PropTypes.func,
+  location: PropTypes.shape({ pathname: PropTypes.string }).isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    sessionId: state.sessionId,
-    user: state.user,
-    password: state.password,
-  }
+Header.defaultProps = {
+  onMenuClick: () => {},
+  className: '',
+  burgerClassName: '',
 }
+
+const mapStateToProps = state => ({
+  sessionId: state.sessionId,
+  user: state.user,
+  password: state.password,
+})
 
 export default withRouter(connect(mapStateToProps)(Header))
