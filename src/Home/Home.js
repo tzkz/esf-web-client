@@ -26,7 +26,7 @@ class Home extends React.Component {
 
   onFileChange = (event) => {
     const reader = new FileReader()
-    const files = event.target.files
+    const { files } = event.target
 
     if (files.length === 0) {
       return
@@ -41,7 +41,7 @@ class Home extends React.Component {
 
     this.setState({ isFileLoading: true })
     reader.readAsDataURL(files[0])
-    event.target.value = ''
+    event.target.value = '' // eslint-disable-line no-param-reassign
   }
 
   onAuthCancel = () => {
@@ -49,9 +49,10 @@ class Home extends React.Component {
   }
 
   render() {
-    const { p12base64 } = this.state
+    const { p12base64, isFileLoading } = this.state
+    const { sessionId } = this.props
 
-    if (this.props.sessionId) {
+    if (sessionId) {
       return (
         <Redirect to="/search" />
       )
@@ -62,14 +63,14 @@ class Home extends React.Component {
         <Main
           onDemoClick={this.onDemoClick}
           onFileChange={this.onFileChange}
-          isFileLoading={this.state.isFileLoading}
+          isFileLoading={isFileLoading}
         />
         <Footer />
         <Auth
           p12base64={p12base64}
           onCancel={this.onAuthCancel}
           show={!!p12base64}
-          isDemo={this.state.p12base64 === testKey}
+          isDemo={p12base64 === testKey}
         />
       </div>
     )
@@ -77,13 +78,11 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  sessionId: PropTypes.string,
+  sessionId: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = (state) => {
-  return {
-    sessionId: state.sessionId,
-  }
-}
+const mapStateToProps = state => ({
+  sessionId: state.sessionId,
+})
 
 export default connect(mapStateToProps)(Home)
