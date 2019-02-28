@@ -16,7 +16,8 @@
     "FormData": true,
     "FileReader": true,
     "Blob": true,
-    "navigator": true
+    "navigator": true,
+    "fetch": true
   },
   "env": {
     "jest": true
