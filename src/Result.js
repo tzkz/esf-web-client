@@ -326,7 +326,7 @@ Result.propTypes = {
     invoiceInfoList: PropTypes.shape({
       invoiceInfo: PropTypes.arrayOf(PropTypes.object),
     }),
-  }).isRequired,
+  }),
   sessionId: PropTypes.string.isRequired,
   location: PropTypes.shape({ pathname: PropTypes.string }).isRequired,
   dispatch: PropTypes.func.isRequired,
