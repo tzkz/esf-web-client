@@ -11,6 +11,14 @@
     "no-param-reassign": "off",
     "no-use-before-define": "off"
   },
+  "overrides": [
+    {
+      "files": ["src/setupTests.js"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ],
   "globals": {
     "window": true,
     "document": true,
