@@ -32,12 +32,14 @@ class App extends Component {
   onOverlayClick = () => this.setState({ showSidebar: false })
 
   render() {
+    const { showSidebar } = this.state
+
     return (
       <Provider store={store}>
         <ProvideIntl>
           <Router>
             <div className={css(container)}>
-              {this.state.showSidebar && (
+              {showSidebar && (
                 <Sidebar onOverlayClick={this.onOverlayClick} />
               )}
               <Header onMenuClick={this.onMenuClick} />
