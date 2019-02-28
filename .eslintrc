@@ -7,7 +7,9 @@
     "semi": "off",
     "no-underscore-dangle": "off",
     "react/jsx-filename-extension": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "no-param-reassign": "off",
+    "no-use-before-define": "off"
   },
   "globals": {
     "window": true,
