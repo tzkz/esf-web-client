@@ -24,7 +24,9 @@ export const label = {
   transition: '.2s ease-in-out',
 };
 
-const FileInput = ({ children, className, labelClassName, ...other }) => (
+const FileInput = ({
+  children, className, labelClassName, ...other
+}) => (
   <div>
     <input
       type="file"
@@ -47,5 +49,11 @@ FileInput.propTypes = {
   className: PropTypes.string,
   labelClassName: PropTypes.string,
 };
+
+FileInput.defaultProps = {
+  children: <span>Browse</span>,
+  className: '',
+  labelClassName: '',
+}
 
 export default FileInput;

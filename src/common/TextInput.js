@@ -44,34 +44,37 @@ const errorContainer = {
 }
 
 const TextInput = React.forwardRef(
-  ({ className, errorMessage, label, helperText, small, ...other }, ref) => (
-  <div className={css(container)}>
-    {errorMessage &&
-      <div className={css(errorContainer)}>{errorMessage}</div>
+  ({
+    className, errorMessage, label, helperText, small, ...other
+  }, ref) => (
+    <div className={css(container)}>
+      {errorMessage
+      && <div className={css(errorContainer)}>{errorMessage}</div>
     }
-    {!errorMessage && helperText &&
-      <div className={css(helperStyle)}>{helperText}</div>
+      {!errorMessage && helperText
+      && <div className={css(helperStyle)}>{helperText}</div>
     }
-    <input
-      type="text"
-      size={10}
-      className={css({
-        ...input,
-        height: small ? '40px': '50px',
-        border: errorMessage ? '2px solid #B00020' : 'solid 1px rgb(0,0,0,.5)',
-        ':focus': {
-          border: errorMessage ? '2px solid #B00020' : '2px solid #697eff',
-        },
-        ':focus ~ label': {
-          color: errorMessage ? '#B00020' : '#697eff',
-        },
-      }, className)}
-      {...other}
-      ref={ref}
-    />
-    <label className={css(labelStyle, errorMessage && labelError)}>{label}</label>
-  </div>
-));
+      <input
+        type="text"
+        size={10}
+        className={css({
+          ...input,
+          height: small ? '40px' : '50px',
+          border: errorMessage ? '2px solid #B00020' : 'solid 1px rgb(0,0,0,.5)',
+          ':focus': {
+            border: errorMessage ? '2px solid #B00020' : '2px solid #697eff',
+          },
+          ':focus ~ label': {
+            color: errorMessage ? '#B00020' : '#697eff',
+          },
+        }, className)}
+        {...other}
+        ref={ref}
+      />
+      <label className={css(labelStyle, errorMessage && labelError)}>{label}</label>
+    </div>
+  ),
+);
 
 TextInput.propTypes = {
   className: PropTypes.string,
@@ -80,5 +83,13 @@ TextInput.propTypes = {
   helperText: PropTypes.string,
   small: PropTypes.bool,
 };
+
+TextInput.defaultProps = {
+  className: '',
+  errorMessage: '',
+  label: '',
+  helperText: '',
+  small: false,
+}
 
 export default TextInput

@@ -9,7 +9,7 @@ const container = {
   marginRight: 'auto',
   '@media (min-width: 768px)': {
     padding: '0 1em',
-  }
+  },
 }
 
 const SectionContent = ({ children, className, ...props }) => (
@@ -17,7 +17,12 @@ const SectionContent = ({ children, className, ...props }) => (
 );
 
 SectionContent.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 };
+
+SectionContent.defaultProps = {
+  className: '',
+}
 
 export default SectionContent;

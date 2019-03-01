@@ -1,5 +1,6 @@
 import React from 'react'
-import { css, keyframes } from 'emotion';
+import PropTypes from 'prop-types'
+import { css, keyframes } from 'emotion'
 
 const Spinner = ({ size, color, className }) => {
   const bouncedelay = keyframes`
@@ -39,16 +40,23 @@ const Spinner = ({ size, color, className }) => {
 
   return (
     <div className={css(spinner, className)}>
-      <div className={css(bounce1)}></div>
-      <div className={css(bounce2)}></div>
-      <div className={css(bounce3)}></div>
+      <div className={css(bounce1)} />
+      <div className={css(bounce2)} />
+      <div className={css(bounce3)} />
     </div>
   )
 };
 
+Spinner.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string,
+  className: PropTypes.string,
+}
+
 Spinner.defaultProps = {
   size: 18,
   color: '#697EFF',
+  className: '',
 }
 
 export default Spinner
