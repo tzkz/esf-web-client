@@ -45,7 +45,7 @@ const errorContainer = {
 
 const TextInput = React.forwardRef(
   ({
-    className, errorMessage, label, helperText, small, ...other
+    className, errorMessage, label, helperText, small, id, ...other
   }, ref) => (
     <div className={css(container)}>
       {errorMessage
@@ -55,6 +55,7 @@ const TextInput = React.forwardRef(
       && <div className={css(helperStyle)}>{helperText}</div>
     }
       <input
+        id={id}
         type="text"
         size={10}
         className={css({
@@ -71,7 +72,12 @@ const TextInput = React.forwardRef(
         {...other}
         ref={ref}
       />
-      <label className={css(labelStyle, errorMessage && labelError)}>{label}</label>
+      <label
+        htmlFor={id}
+        className={css(labelStyle, errorMessage && labelError)}
+      >
+        {label}
+      </label>
     </div>
   ),
 );
@@ -82,6 +88,7 @@ TextInput.propTypes = {
   label: PropTypes.string,
   helperText: PropTypes.string,
   small: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 TextInput.defaultProps = {
@@ -90,6 +97,7 @@ TextInput.defaultProps = {
   label: '',
   helperText: '',
   small: false,
+  id: '',
 }
 
 export default TextInput
