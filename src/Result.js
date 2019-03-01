@@ -331,6 +331,10 @@ Result.propTypes = {
   dispatch: PropTypes.func.isRequired,
 }
 
+Result.defaultProps = {
+  searchResult: [],
+}
+
 const mapStateToProps = state => ({
   searchResult: state.searchResult,
   sessionId: state.sessionId,
