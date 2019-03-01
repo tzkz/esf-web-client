@@ -111,13 +111,12 @@ const fetchPdfs = ({ selected, invoiceInfo }) => {
 }
 
 export const generateZip = (pdfs) => {
-  const zip = new JSZip()
+  const addFile = (acc, { invoiceId, pdfBase64 }) => (
+    acc.file(`${invoiceId}.pdf`, pdfBase64, { base64: true })
+  )
 
-  for (let i = 0; i < pdfs.length; i++) {
-    zip.file(`${pdfs[i].invoiceId}.pdf`, pdfs[i].pdfBase64, { base64: true })
-  }
-
-  return zip.generateAsync({ type: 'blob' })
+  return pdfs.reduce(addFile, new JSZip())
+    .generateAsync({ type: 'blob' })
 }
 
 class Result extends React.Component {
