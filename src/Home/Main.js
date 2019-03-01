@@ -51,6 +51,10 @@ const signInLabel = {
   backgroundColor: 'white',
   border: '2px solid white',
   color: '#744fc6',
+  ':hover': {
+    backgroundColor: 'rgba(255,255,255, .9)',
+    border: '2px solid rgba(255,255,255, .9)',
+  },
 };
 
 const fileInputLabel = {
@@ -64,13 +68,6 @@ const fileInputLabel = {
 const fileInputSubtext = {
   fontSize: '9px',
 }
-
-export const signInButton = {
-  ':hover + label': {
-    backgroundColor: 'rgba(255,255,255, .9)',
-    border: '2px solid rgba(255,255,255, .9)',
-  },
-};
 
 const buttons = {
   display: 'flex',
@@ -105,8 +102,8 @@ const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
       <div className={css(buttons)}>
         <div className={css(browseButtonContainer)}>
           <FileInput
-            className={css(signInButton)}
-            labelClassName={css(signInLabel)}
+            id="certificate-input"
+            className={css(signInLabel)}
             accept=".p12"
             onChange={onFileChange}
           >
