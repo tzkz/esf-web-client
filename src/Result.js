@@ -59,6 +59,7 @@ const tableTitleContainer = {
 
 const itemContainer = {
   ...headerContainer,
+  outline: 'none',
   ':hover': {
     cursor: 'pointer',
   },
@@ -292,7 +293,13 @@ class Result extends React.Component {
                             css(itemContainer, selected.indexOf(item.invoiceId) > -1 && { background: '#F5F5F5' })
                           }
                           key={item.invoiceId}
+                          role="checkbox"
+                          aria-checked={selected.indexOf(item.invoiceId) > -1}
+                          tabIndex={-1}
                           onClick={event => this.onItemClick(event, item)}
+                          onKeyUp={
+                            event => event.keyCode === 32 && this.onItemClick(event, item) // space
+                          }
                         >
                           <Checkbox
                             id={`checkbox-${item.invoiceId}`}
