@@ -21,7 +21,7 @@ describe('<SearchForm />', () => {
     const fakeEvent = { preventDefault: jest.fn() }
 
     componentInstance.setState({
-      form :{
+      form: {
         direction: 'OUTBOUND',
         startDate: moment('2018-12-01'),
         endDate: moment('2018-12-31'),
@@ -30,7 +30,7 @@ describe('<SearchForm />', () => {
         delivered: true,
         revoked: false,
         cancelled: false,
-      }
+      },
     })
     form.props.onSubmit(fakeEvent)
 
