@@ -110,7 +110,7 @@ const fetchPdfs = ({ selected, invoiceInfo }) => {
   return Promise.all(selectedInvoices.map(fetchPdf))
 }
 
-const generateZip = (pdfs) => {
+export const generateZip = (pdfs) => {
   const zip = new JSZip()
 
   for (let i = 0; i < pdfs.length; i++) {
