@@ -2,15 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
-const container = {
-  lineHeight: 0,
-}
-
 const checkboxInput = {
   display: 'none',
 }
 
 const checkboxLabel = {
+  lineHeight: 0,
   display: 'inline-block',
   cursor: 'pointer',
   height: '18px',
@@ -55,7 +52,10 @@ class Checkbox extends React.Component {
     } = this.props;
 
     return (
-      <div className={css(container)}>
+      <label
+        htmlFor={id}
+        className={css(checkboxLabel, checked && checkedLabel)}
+      >
         <input
           type="checkbox"
           id={id}
@@ -64,8 +64,7 @@ class Checkbox extends React.Component {
           onChange={event => (onChange ? onChange(event) : undefined)}
           {...props}
         />
-        <label htmlFor={id} className={css(checkboxLabel, checked && checkedLabel)} />
-      </div>
+      </label>
     )
   }
 }
