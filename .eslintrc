@@ -1,3 +1,37 @@
 {
-  "extends": "react-app"
+  "extends": "airbnb",
+  "rules": {
+    "no-irregular-whitespace": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-vars": "error",
+    "semi": "off",
+    "no-underscore-dangle": "off",
+    "react/jsx-filename-extension": "off",
+    "react/button-has-type": "off",
+    "no-param-reassign": "off",
+    "no-use-before-define": "off",
+    "jsx-a11y/label-has-for": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/setupTests.js"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ],
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true,
+    "fetch": true
+  },
+  "env": {
+    "jest": true
+  },
+  "parser": "babel-eslint"
 }

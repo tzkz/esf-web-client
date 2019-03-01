@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
 import Button from '../common/Button'
-import Spinner from '../common/Spinner';
+import Spinner from '../common/Spinner'
 
 const buttonContainer = {
   display: 'flex',
@@ -23,7 +24,9 @@ const cancelButton = {
   },
 }
 
-const AuthForm = ({ children, onCancel, isLoading, ...other }) => (
+const AuthForm = ({
+  children, onCancel, isLoading, ...other
+}) => (
   <form {...other}>
     {children}
     <div className={css(buttonContainer)}>
@@ -41,5 +44,17 @@ const AuthForm = ({ children, onCancel, isLoading, ...other }) => (
     </div>
   </form>
 )
+
+AuthForm.propTypes = {
+  children: PropTypes.node,
+  onCancel: PropTypes.func,
+  isLoading: PropTypes.bool,
+}
+
+AuthForm.defaultProps = {
+  children: null,
+  onCancel: () => {},
+  isLoading: false,
+}
 
 export default AuthForm

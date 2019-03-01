@@ -7,13 +7,20 @@ import Component from './Main';
 
 const Main = (...props) => (
   <IntlProvider locale="en" messages={localeData.en}>
-    <Component {...props} />
+    <Component
+      {...props}
+      onDemoClick={() => {}}
+      onFileChange={() => {}}
+      isFileLoading={false}
+    />
   </IntlProvider>
 )
 
 describe('<Main />', () => {
   it('renders without crashing', () => {
-    const rendered = renderer.create(<Main />).toJSON();
+    const rendered = renderer.create(
+      <Main />,
+    ).toJSON();
     expect(rendered).toBeTruthy();
   });
 });

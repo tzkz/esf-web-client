@@ -1,7 +1,7 @@
 {
-  "Header.Logout": "Log Out",
   "Main.Headline": "Export ESF invoices with ease",
   "Main.Subheadline": "Get what the official app is missing absolutely FREE",
-  "LoginInitial.SignIn": "Sign In",
-  "LoginInitial.Demo": "Try Demo"
+  "Main.SignIn": "Sign In",
+  "Main.SignInSubtext": "with your key",
+  "Main.Demo": "Try Demo"
 }

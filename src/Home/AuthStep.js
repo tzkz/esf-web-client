@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
 import AuthForm from './AuthForm'
@@ -45,30 +46,41 @@ const closeIcon = (
   </svg>
 )
 
-class AuthStep extends React.Component {
+const AuthStep = ({
+  children, onSubmit, onCancel, isLoading, className,
+}) => (
+  <div className={css(container, className)}>
+    <div className={css(header)}>
+      <button className={css(closeButton)} onClick={onCancel}>
+        {closeIcon}
+      </button>
+    </div>
+    <AuthForm
+      className={css(form)}
+      onSubmit={onSubmit}
+      onCancel={onCancel}
+      isLoading={isLoading}
+    >
+      {children}
+    </AuthForm>
+    <div className={css(footer)} />
+  </div>
+)
 
-  render() {
-    const { children, onSubmit, onCancel, isLoading, className } = this.props
+AuthStep.propTypes = {
+  children: PropTypes.node,
+  onSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
+  isLoading: PropTypes.bool,
+  className: PropTypes.string,
+}
 
-    return (
-      <div className={css(container, className)}>
-        <div className={css(header)}>
-          <button className={css(closeButton)} onClick={onCancel}>
-            {closeIcon}
-          </button>
-        </div>
-        <AuthForm
-          className={css(form)}
-          onSubmit={onSubmit}
-          onCancel={onCancel}
-          isLoading={isLoading}
-        >
-          {children}
-        </AuthForm>
-        <div className={css(footer)} />
-      </div>
-    )
-  }
+AuthStep.defaultProps = {
+  children: null,
+  onSubmit: () => {},
+  onCancel: () => {},
+  isLoading: false,
+  className: '',
 }
 
 export default AuthStep

@@ -9,7 +9,9 @@ describe('<Radio />', () => {
     { id: 'bar', value: 'OUTBOUND', label: 'Outbound' },
   ]
   it('renders without crashing', () => {
-    const rendered = renderer.create(<Radio options={options} name="direction" />).toJSON();
+    const rendered = renderer.create(
+      <Radio options={options} name="direction" onOptionChange={() => {}} />,
+    ).toJSON();
     expect(rendered).toBeTruthy();
   });
 })

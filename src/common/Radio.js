@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
 const container = {
@@ -16,7 +17,7 @@ const radioInput = {
     backgroundColor: '#697EFF',
     borderRadius: '5px',
     color: ' #ffffff',
-  }
+  },
 }
 
 const radioItem = {
@@ -35,9 +36,11 @@ const radioLabel = {
   },
 }
 
-const Radio = ({ options, name, className, onOptionChange, selectedOption }) => (
+const Radio = ({
+  options, name, className, onOptionChange, selectedOption,
+}) => (
   <div className={css(container, className)}>
-    {options.map((option) => (
+    {options.map(option => (
       <div className={css(radioItem)} key={option.id}>
         <input
           type="radio"
@@ -53,5 +56,21 @@ const Radio = ({ options, name, className, onOptionChange, selectedOption }) => 
     ))}
   </div>
 )
+
+Radio.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string,
+    label: PropTypes.node,
+  })).isRequired,
+  name: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  onOptionChange: PropTypes.func.isRequired,
+  selectedOption: PropTypes.string,
+}
+
+Radio.defaultProps = {
+  className: '',
+  selectedOption: '',
+}
 
 export default Radio

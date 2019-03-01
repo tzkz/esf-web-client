@@ -34,7 +34,7 @@ const subheadline = {
   '@media (min-width: 768px)': {
     lineHeight: '2.57',
     padding: '8px 24px 0',
-  }
+  },
 }
 
 const demoButton = {
@@ -51,6 +51,10 @@ const signInLabel = {
   backgroundColor: 'white',
   border: '2px solid white',
   color: '#744fc6',
+  ':hover': {
+    backgroundColor: 'rgba(255,255,255, .9)',
+    border: '2px solid rgba(255,255,255, .9)',
+  },
 };
 
 const fileInputLabel = {
@@ -65,13 +69,6 @@ const fileInputSubtext = {
   fontSize: '9px',
 }
 
-export const signInButton = {
-  ':hover + label': {
-    backgroundColor: 'rgba(255,255,255, .9)',
-    border: '2px solid rgba(255,255,255, .9)',
-  },
-};
-
 const buttons = {
   display: 'flex',
   justifyContent: 'center',
@@ -79,7 +76,7 @@ const buttons = {
   padding: '16px 16px 0',
   '@media (min-width: 768px)': {
     padding: '2em 16px',
-  }
+  },
 };
 
 const browseButtonContainer = {
@@ -105,25 +102,27 @@ const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
       <div className={css(buttons)}>
         <div className={css(browseButtonContainer)}>
           <FileInput
-            className={css(signInButton)}
-            labelClassName={css(signInLabel)}
+            id="certificate-input"
+            className={css(signInLabel)}
             accept=".p12"
             onChange={onFileChange}
           >
-            {isFileLoading ?
-              <Spinner size={12} color="#744fc6" /> :
-              <div className={css(fileInputLabel)}>
-                <FormattedMessage
-                  id="LoginInitial.SignIn"
-                  defaultMessage="Sign In"
-                />
-                <div className={css(fileInputSubtext)}>
+            {isFileLoading
+              ? <Spinner size={12} color="#744fc6" />
+              : (
+                <div className={css(fileInputLabel)}>
                   <FormattedMessage
-                    id="LoginInitial.SignInSubtext"
-                    defaultMessage="with your key"
+                    id="Main.SignIn"
+                    defaultMessage="Sign In"
                   />
+                  <div className={css(fileInputSubtext)}>
+                    <FormattedMessage
+                      id="Main.SignInSubtext"
+                      defaultMessage="with your key"
+                    />
+                  </div>
                 </div>
-              </div>
+              )
             }
           </FileInput>
         </div>
@@ -133,7 +132,7 @@ const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
             onClick={onDemoClick}
           >
             <FormattedMessage
-              id="LoginInitial.Demo"
+              id="Main.Demo"
               defaultMessage="Try Demo"
             />
           </Button>
@@ -144,9 +143,9 @@ const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
 )
 
 Main.propTypes = {
-  onDemoClick: PropTypes.func,
-  onFileChange: PropTypes.func,
-  isFileLoading: PropTypes.bool,
+  onDemoClick: PropTypes.func.isRequired,
+  onFileChange: PropTypes.func.isRequired,
+  isFileLoading: PropTypes.bool.isRequired,
 }
 
 export default Main

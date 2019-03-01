@@ -8,7 +8,9 @@ import Auth from './Auth';
 
 describe('<Auth />', () => {
   it('renders without crashing', () => {
-    const rendered = renderer.create(<Provider store={store}><Auth /></Provider>).toJSON();
+    const rendered = renderer.create(
+      <Provider store={store}><Auth isDemo p12base64="" /></Provider>,
+    ).toJSON();
     expect(rendered).toBeTruthy();
   });
 });

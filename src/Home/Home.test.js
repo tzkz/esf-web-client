@@ -1,27 +1,26 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
 import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
-import Component from './Landing';
+import Component from './Home';
 
-import localeData from '../i18n/locales';
 import store from '../store';
+import ProvideIntl from '../common/ProvideIntl';
 
-const Landing = (...props) => (
+const Home = (...props) => (
   <Provider store={store}>
-    <IntlProvider locale="en" messages={localeData.en}>
+    <ProvideIntl>
       <Router>
         <Component {...props} />
       </Router>
-    </IntlProvider>
+    </ProvideIntl>
   </Provider>
 )
 
-describe('<Landing />', () => {
+describe('<Home />', () => {
   it('renders without crashing', () => {
-    const rendered = renderer.create(<Landing />).toJSON();
+    const rendered = renderer.create(<Home />).toJSON();
     expect(rendered).toBeTruthy();
   });
 });

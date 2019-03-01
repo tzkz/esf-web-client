@@ -33,11 +33,13 @@
     "test": "react-scripts test --env=jsdom",
     "deploy-dev": "aws s3 sync build/ s3://dev.getesf.com --delete",
     "eject": "react-scripts eject",
-    "intl": "react-intl-cra './src/**/*.js' -o ./src/i18n/messages/messages.json"
+    "intl": "react-intl-cra './src/**/*.js' -o ./src/i18n/messages/messages.json",
+    "prettier": "prettier \"src/**/*.js\""
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "prettier": "^1.16.4",
     "react-intl-cra": "^0.3.3",
     "react-test-renderer": "^16.6.3"
   },

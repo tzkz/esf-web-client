@@ -1,10 +1,10 @@
-import React from 'react';
-import { css } from 'emotion';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { css } from 'emotion'
 
-import Header from './common/Header';
-import SectionContent from './common/SectionContent';
-import PrivateComponent from './common/PrivateComponent';
-import SearchForm from './SearchForm';
+import SectionContent from './common/SectionContent'
+import PrivateComponent from './common/PrivateComponent'
+import SearchForm from './SearchForm'
 
 export const createQueryString = ({
   direction, startDate, endDate, created, delivered, revoked, cancelled, invoiceType,
@@ -13,16 +13,13 @@ export const createQueryString = ({
     ${direction ? `direction=${direction}` : ''}
     ${startDate ? `&dateFrom=${startDate.format('YYYY-MM-DD')}` : ''}
     ${endDate ? `&dateTo=${endDate.format('YYYY-MM-DD')}` : ''}
-    ${created ? `&statuses[]=CREATED` : ''}
-    ${delivered ? `&statuses[]=DELIVERED` : ''}
-    ${revoked ? `&statuses[]=REVOKED` : ''}
-    ${cancelled ? `&statuses[]=CANCELED` : ''}
+    ${created ? '&statuses[]=CREATED' : ''}
+    ${delivered ? '&statuses[]=DELIVERED' : ''}
+    ${revoked ? '&statuses[]=REVOKED' : ''}
+    ${cancelled ? '&statuses[]=CANCELED' : ''}
     ${invoiceType && invoiceType !== 'any' ? `&invoiceType=${invoiceType}` : ''}
   `.replace(/\s/g, '')
 )
-
-const container = {
-}
 
 const innerContainer = {
   display: 'flex',
@@ -37,20 +34,14 @@ const mainArea = {
   paddingTop: '15px',
 }
 
-const Search = ({ locale, onLocaleChange, onMenuClick, history }) => {
+const Search = ({ history }) => {
   const onSubmit = (form) => {
     history.push(`/result${createQueryString(form)}`)
   }
 
   return (
     <PrivateComponent>
-      <div className={css(container)}>
-        <Header
-          localeValue={locale}
-          onLocaleChange={onLocaleChange}
-          burgerClassName={css({ fill: '#697EFF' })}
-          onMenuClick={onMenuClick}
-        />
+      <div>
         <SectionContent>
           <div className={css(innerContainer)}>
             <div className={css(mainArea)}>
@@ -63,4 +54,8 @@ const Search = ({ locale, onLocaleChange, onMenuClick, history }) => {
   )
 }
 
-export default Search;
+Search.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+}
+
+export default Search

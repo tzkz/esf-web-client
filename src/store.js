@@ -1,46 +1,60 @@
 import { combineReducers, createStore } from 'redux'
 import { throttle } from 'lodash'
 
+export const SET_LOCALE = 'SET_LOCALE'
 export const SET_SESSION_ID = 'SET_SESSION_ID'
 export const SET_USER = 'SET_USER'
 export const SET_PASSWORD = 'SET_PASSWORD'
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 
-const sessionId = (state = null, action) => {
+// reducers
+
+const locale = (state = 'en-US', action) => {
+  switch (action.type) {
+    case SET_LOCALE:
+      return action.locale
+    default:
+      return state
+  }
+}
+
+const sessionId = (state = '', action) => {
   switch (action.type) {
     case SET_SESSION_ID:
-      return action.sessionId;
+      return action.sessionId
     default:
-      return state;
+      return state
   }
 }
 
 const user = (state = null, action) => {
   switch (action.type) {
     case SET_USER:
-      return action.user;
+      return action.user
     default:
-      return state;
+      return state
   }
 }
 
 const password = (state = null, action) => {
   switch (action.type) {
     case SET_PASSWORD:
-      return action.password;
+      return action.password
     default:
-      return state;
+      return state
   }
 }
 
 const searchResult = (state = null, action) => {
   switch (action.type) {
     case SET_SEARCH_RESULT:
-      return action.searchResult;
+      return action.searchResult
     default:
-      return state;
+      return state
   }
 }
+
+// local storage
 
 const loadState = () => {
   try {
@@ -65,13 +79,14 @@ const saveState = (state) => {
 
 const store = createStore(
   combineReducers({
+    locale,
     sessionId,
     user,
     password,
     searchResult,
   }),
   loadState(),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
 
 store.subscribe(throttle(() => {
