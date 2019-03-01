@@ -111,8 +111,8 @@ const fetchPdfs = ({ selected, invoiceInfo }) => {
 }
 
 export const generateZip = (pdfs) => {
-  const addFile = (acc, { invoiceId, pdfBase64 }) => (
-    acc.file(`${invoiceId}.pdf`, pdfBase64, { base64: true })
+  const addFile = (zip, { invoiceId, pdfBase64 }) => (
+    zip.file(`${invoiceId}.pdf`, pdfBase64, { base64: true })
   )
 
   return pdfs.reduce(addFile, new JSZip())
