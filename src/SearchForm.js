@@ -38,23 +38,14 @@ const checkboxContainer2 = {
   borderRadius: '0px 0px 5px 5px',
 }
 
-const checkboxItem = {
-  display: 'flex',
-  flex: '1',
-  height: '40px',
-}
-
 const checkboxInput = {
   display: 'none',
-  ':checked + label': {
-    backgroundColor: '#697EFF',
-    color: '#ffffff',
-  },
 }
 
 const checkboxLabel = {
   display: 'flex',
   flex: '1',
+  height: '40px',
   alignItems: 'center',
   justifyContent: 'center',
   color: '#bbbbbb',
@@ -63,56 +54,61 @@ const checkboxLabel = {
   },
 }
 
+const checkedLabel = {
+  backgroundColor: '#697EFF',
+  color: '#ffffff',
+}
+
 const created = {
+  ...checkboxLabel,
   borderRadius: '5px 0px 0px 0px',
   borderBottom: 'solid 1px #f8f8f8',
   borderRight: 'solid 1px #f8f8f8',
 }
 
 const createdChecked = {
-  ':checked + label': {
-    borderBottom: 'solid 1px #5668D1',
-    borderRight: 'solid 1px #5668D1',
-  },
+  ...checkedLabel,
+  borderBottom: 'solid 1px #5668D1',
+  borderRight: 'solid 1px #5668D1',
 }
 
 const delivered = {
+  ...checkboxLabel,
   borderRadius: '0px 5px 0px 0px',
   borderBottom: 'solid 1px #f8f8f8',
   borderLeft: 'solid 1px #fcfcfc',
 }
 
 const deliveredChecked = {
-  ':checked + label': {
-    borderBottom: 'solid 1px #5668D1',
-    borderLeft: 'solid 1px #7689FF',
-  },
+  ...checkedLabel,
+  borderBottom: 'solid 1px #5668D1',
+  borderLeft: 'solid 1px #7689FF',
 }
 
 const revoked = {
+  ...checkboxLabel,
   borderRadius: '0px 0px 0px 5px',
   borderTop: 'solid 1px #fcfcfc',
   borderRight: 'solid 1px #f8f8f8',
 }
 
 const revokedChecked = {
-  ':checked + label': {
-    borderTop: 'solid 1px #7689FF',
-    borderRight: 'solid 1px #5668D1',
-  },
+  ...checkedLabel,
+  borderTop: 'solid 1px #7689FF',
+  borderRight: 'solid 1px #5668D1',
 }
 
 const cancelled = {
+  ...checkboxLabel,
   borderRadius: '0px 0px 5px 0px',
   borderTop: 'solid 1px #fcfcfc',
   borderLeft: 'solid 1px #fcfcfc',
 }
 
 const cancelledChecked = {
-  ':checked + label': {
-    borderTop: 'solid 1px #7689FF',
-    borderLeft: 'solid 1px #7689FF',
-  },
+  ...checkedLabel,
+  borderTop: 'solid 1px #7689FF',
+  borderLeft: 'solid 1px #7689FF',
 }
 
 const buttonRow = {
@@ -242,52 +238,64 @@ class SearchForm extends React.Component {
         </div>
         <div className={css(checkboxRow)}>
           <div className={css(checkboxContainer1)}>
-            <div className={css(checkboxItem)}>
+            <label
+              htmlFor="created"
+              className={css(created, form.created && createdChecked)}
+            >
+              Created
               <input
                 type="checkbox"
                 id="created"
                 name="created"
-                className={css(checkboxInput, createdChecked)}
+                className={css(checkboxInput)}
                 onChange={this.onStatusChange}
                 checked={form.created}
               />
-              <label htmlFor="created" className={css(checkboxLabel, created)}>Created</label>
-            </div>
-            <div className={css(checkboxItem)}>
+            </label>
+            <label
+              htmlFor="delivered"
+              className={css(delivered, form.delivered && deliveredChecked)}
+            >
+              Delivered
               <input
                 type="checkbox"
                 id="delivered"
                 name="delivered"
-                className={css(checkboxInput, deliveredChecked)}
+                className={css(checkboxInput)}
                 onChange={this.onStatusChange}
                 checked={form.delivered}
               />
-              <label htmlFor="delivered" className={css(checkboxLabel, delivered)}>Delivered</label>
-            </div>
+            </label>
           </div>
           <div className={css(checkboxContainer2)}>
-            <div className={css(checkboxItem)}>
+            <label
+              htmlFor="revoked"
+              className={css(revoked, form.revoked && revokedChecked)}
+            >
+              Revoked
               <input
                 type="checkbox"
                 id="revoked"
                 name="revoked"
-                className={css(checkboxInput, revokedChecked)}
+                className={css(checkboxInput)}
                 onChange={this.onStatusChange}
                 checked={form.revoked}
               />
-              <label htmlFor="revoked" className={css(checkboxLabel, revoked)}>Revoked</label>
-            </div>
-            <div className={css(checkboxItem)}>
+            </label>
+            <label
+              htmlFor="cancelled"
+              className={css(cancelled, form.cancelled && cancelledChecked)}
+            >
+              Cancelled
               <input
                 type="checkbox"
                 id="cancelled"
                 name="cancelled"
-                className={css(checkboxInput, cancelledChecked)}
+                className={css(checkboxInput)}
                 onChange={this.onStatusChange}
                 checked={form.cancelled}
               />
-              <label htmlFor="cancelled" className={css(checkboxLabel, cancelled)}>Cancelled</label>
-            </div>
+            </label>
           </div>
         </div>
         <div className={css(inputRow)}>
