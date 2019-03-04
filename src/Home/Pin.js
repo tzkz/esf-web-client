@@ -12,10 +12,15 @@ const formTitle = {
   paddingBottom: '24px',
 }
 
+const container = {
+  transition: 'all 300ms ease-out',
+}
+
 class Pin extends React.Component {
   state = {
     pin: '',
     pinError: null,
+    opacity: 1,
   }
 
   onPinChange = (event) => {
@@ -30,7 +35,9 @@ class Pin extends React.Component {
 
     try {
       const p12decrypted = decryptP12(p12base64, pin)
-      onDecrypt(p12decrypted)
+
+      this.setState({ opacity: 0 })
+      setTimeout(() => onDecrypt(p12decrypted), 300)
     } catch (error) {
       this.setState({ pinError: error })
     }
@@ -46,13 +53,14 @@ class Pin extends React.Component {
   }
 
   render() {
-    const { pin, pinError } = this.state
+    const { pin, pinError, opacity } = this.state
     const { isDemo } = this.props
 
     return (
       <AuthStep
         onSubmit={this.onSubmit}
         onCancel={this.onCancel}
+        className={css(container, { opacity })}
       >
         <div className={css(formTitle)}>
           Enter Certificate PIN
