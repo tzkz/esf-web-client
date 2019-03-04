@@ -1,5 +1,10 @@
 [
   {
+    "id": "AuthForm.CancelButton",
+    "defaultMessage": "Cancel",
+    "filepath": "./src/Home/AuthForm.js"
+  },
+  {
     "id": "AuthForm.ContinueButton",
     "defaultMessage": "Continue",
     "filepath": "./src/Home/AuthForm.js"

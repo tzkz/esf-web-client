@@ -37,7 +37,10 @@ const AuthForm = ({
         onClick={onCancel}
         disabled={isLoading}
       >
-        Cancel
+        <FormattedMessage
+          id="AuthForm.CancelButton"
+          defaultMessage="Cancel"
+        />
       </Button>
       <Button className={css(button)} type="submit" disabled={isLoading}>
         {isLoading
