@@ -46,7 +46,7 @@ const Footer = ({ locale, dispatch }) => (
     </a>
     <LangSelect
       value={locale}
-      onChange={(value) => dispatch({ type: SET_LOCALE, locale: value })}
+      onChange={value => dispatch({ type: SET_LOCALE, locale: value })}
       menuPlacement="top"
       className={css(langSelect)}
     />
@@ -63,10 +63,8 @@ Footer.defaultProps = {
   dispatch: () => {},
 }
 
-const mapStateToProps = (state) => {
-  return {
-    locale: state.locale,
-  }
-}
+const mapStateToProps = state => ({
+  locale: state.locale,
+})
 
 export default connect(mapStateToProps)(Footer)
