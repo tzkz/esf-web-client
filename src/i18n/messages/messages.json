@@ -35,6 +35,31 @@
     "filepath": "./src/Home/Main.js"
   },
   {
+    "id": "Password.Title",
+    "defaultMessage": "Account Password",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Password.Subtitle",
+    "defaultMessage": "For {id}",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Password.PasswordInputLabel",
+    "defaultMessage": "Password",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Password.PasswordDemoHelper",
+    "defaultMessage": "Enter \"TestPass123\" for demo",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Password.WrongPasswordError",
+    "defaultMessage": "Password",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
     "id": "Pin.Title",
     "defaultMessage": "Enter Certificate PIN",
     "filepath": "./src/Home/Pin.js"

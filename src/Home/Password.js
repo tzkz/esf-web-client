@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { css } from 'emotion'
 import Alert from 'react-s-alert'
+import { FormattedMessage } from 'react-intl'
 
 import TextInput from '../common/TextInput'
 import AuthStep from './AuthStep'
@@ -136,20 +137,48 @@ class Password extends React.Component {
         className={css(container, { opacity })}
       >
         <div className={css(formTitle)}>
-          Account Password
+          <FormattedMessage
+            id="Password.Title"
+            defaultMessage="Account Password"
+          />
         </div>
         <div className={css(subtitle)}>
-          For
-          {' '}
-          {p12decrypted && extractIdFromKey(p12decrypted)}
+          <FormattedMessage
+            id="Password.Subtitle"
+            defaultMessage="For {id}"
+            values={{
+              id: p12decrypted && extractIdFromKey(p12decrypted),
+            }}
+          />
         </div>
         <TextInput
-          label="Password"
+          label={(
+            <FormattedMessage
+              id="Password.PasswordInputLabel"
+              defaultMessage="Password"
+            />
+          )}
           placeholder="Password"
           value={password}
           onChange={this.onPasswordChange}
-          helperText={isDemo ? 'Enter "TestPass123" for demo' : ''}
-          errorMessage={passwordError ? 'Wrong Password' : ''}
+          helperText={isDemo
+            ? (
+              <FormattedMessage
+                id="Password.PasswordDemoHelper"
+                defaultMessage={'Enter "TestPass123" for demo'}
+              />
+            )
+            : ''
+          }
+          errorMessage={passwordError
+            ? (
+              <FormattedMessage
+                id="Password.WrongPasswordError"
+                defaultMessage="Password"
+              />
+            )
+            : ''
+          }
           type="password"
           disabled={isLoading}
           autoFocus
