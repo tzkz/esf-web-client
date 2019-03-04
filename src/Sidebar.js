@@ -53,6 +53,11 @@ const navLinkItem = {
 const buttonsContainer = {
   display: 'flex',
   alignItems: 'center',
+  ':hover': {
+    backgroundColor: '#dfe1e4',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  },
 }
 
 const icons = {
