@@ -10,6 +10,7 @@ const container = {
   left: 0,
   right: 0,
   transition: 'all 300ms ease-out',
+  backgroundColor: '#FFFFFF',
 }
 
 class Auth extends React.Component {
@@ -77,7 +78,7 @@ class Auth extends React.Component {
 
     return (
       <div className={css(container, position)}>
-        {!p12decrypted
+        {p12base64 && !p12decrypted
           && (
           <Pin
             onDecrypt={this.onDecrypt}
