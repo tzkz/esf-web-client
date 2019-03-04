@@ -8,6 +8,6 @@
   "Main.Demo": "Try Demo",
   "Pin.Title": "Enter Certificate PIN",
   "Pin.PinInputLabel": "PIN",
-  "Pin.PinInputHelper": "Enter \"Qwerty12\" for demo",
+  "Pin.PinDemoHelper": "Enter \"Qwerty12\" for demo",
   "Pin.WrongPinError": "Wrong PIN"
 }

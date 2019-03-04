@@ -45,7 +45,7 @@
     "filepath": "./src/Home/Pin.js"
   },
   {
-    "id": "Pin.PinInputHelper",
+    "id": "Pin.PinDemoHelper",
     "defaultMessage": "Enter \"Qwerty12\" for demo",
     "filepath": "./src/Home/Pin.js"
   },

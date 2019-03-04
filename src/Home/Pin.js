@@ -82,7 +82,7 @@ class Pin extends React.Component {
           helperText={isDemo
             ? (
               <FormattedMessage
-                id="Pin.PinInputHelper"
+                id="Pin.PinDemoHelper"
                 defaultMessage={'Enter "Qwerty12" for demo'}
               />
             )
