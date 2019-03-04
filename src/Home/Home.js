@@ -69,7 +69,6 @@ class Home extends React.Component {
         <Auth
           p12base64={p12base64}
           onCancel={this.onAuthCancel}
-          show={!!p12base64}
           isDemo={p12base64 === testKey}
         />
       </div>
