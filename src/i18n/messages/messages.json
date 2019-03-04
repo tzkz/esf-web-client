@@ -33,5 +33,25 @@
     "id": "Main.Demo",
     "defaultMessage": "Try Demo",
     "filepath": "./src/Home/Main.js"
+  },
+  {
+    "id": "Pin.Title",
+    "defaultMessage": "Enter Certificate PIN",
+    "filepath": "./src/Home/Pin.js"
+  },
+  {
+    "id": "Pin.PinInputLabel",
+    "defaultMessage": "PIN",
+    "filepath": "./src/Home/Pin.js"
+  },
+  {
+    "id": "Pin.PinInputHelper",
+    "defaultMessage": "Enter \"Qwerty12\" for demo",
+    "filepath": "./src/Home/Pin.js"
+  },
+  {
+    "id": "Pin.WrongPinError",
+    "defaultMessage": "Wrong PIN",
+    "filepath": "./src/Home/Pin.js"
   }
 ]

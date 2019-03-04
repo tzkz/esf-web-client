@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
-import { css } from 'emotion';
+import { css } from 'emotion'
+import { FormattedMessage } from 'react-intl'
 
-import TextInput from '../common/TextInput';
-import AuthStep from './AuthStep';
+import TextInput from '../common/TextInput'
+import AuthStep from './AuthStep'
 import { decryptP12 } from '../crypt'
 
 const formTitle = {
@@ -63,20 +64,41 @@ class Pin extends React.Component {
         className={css(container, { opacity })}
       >
         <div className={css(formTitle)}>
-          Enter Certificate PIN
+          <FormattedMessage
+            id="Pin.Title"
+            defaultMessage="Enter Certificate PIN"
+          />
         </div>
         <TextInput
-          label="PIN"
+          label={(
+            <FormattedMessage
+              id="Pin.PinInputLabel"
+              defaultMessage="PIN"
+            />
+          )}
           placeholder="Pin"
           value={pin}
           onChange={this.onPinChange}
-          helperText={isDemo ? 'Enter "Qwerty12" for demo' : ''}
-          errorMessage={pinError && 'Wrong PIN'}
+          helperText={isDemo
+            ? (
+              <FormattedMessage
+                id="Pin.PinInputHelper"
+                defaultMessage={'Enter "Qwerty12" for demo'}
+              />
+            )
+            : ''
+          }
+          errorMessage={pinError && (
+            <FormattedMessage
+              id="Pin.WrongPinError"
+              defaultMessage="Wrong PIN"
+            />
+          )}
           type="password"
           autoFocus
         />
       </AuthStep>
-    );
+    )
   }
 }
 
@@ -87,4 +109,4 @@ Pin.propTypes = {
   isDemo: PropTypes.bool.isRequired,
 }
 
-export default Pin;
+export default Pin
