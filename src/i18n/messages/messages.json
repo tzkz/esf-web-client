@@ -56,7 +56,7 @@
   },
   {
     "id": "Password.WrongPasswordError",
-    "defaultMessage": "Password",
+    "defaultMessage": "Wrong Password",
     "filepath": "./src/Home/Password.js"
   },
   {

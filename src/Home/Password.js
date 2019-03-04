@@ -174,7 +174,7 @@ class Password extends React.Component {
             ? (
               <FormattedMessage
                 id="Password.WrongPasswordError"
-                defaultMessage="Password"
+                defaultMessage="Wrong Password"
               />
             )
             : ''

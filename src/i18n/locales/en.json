@@ -10,7 +10,7 @@
   "Password.Subtitle": "For {id}",
   "Password.PasswordInputLabel": "Password",
   "Password.PasswordDemoHelper": "Enter \"TestPass123\" for demo",
-  "Password.WrongPasswordError": "Password",
+  "Password.WrongPasswordError": "Wrong Password",
   "Pin.Title": "Enter Certificate PIN",
   "Pin.PinInputLabel": "PIN",
   "Pin.PinDemoHelper": "Enter \"Qwerty12\" for demo",
