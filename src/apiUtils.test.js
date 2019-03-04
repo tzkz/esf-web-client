@@ -1,6 +1,7 @@
 import * as utils from './apiUtils'
-import config from './config';
 import demoResult from './demoResult';
+
+jest.mock('./config')
 
 describe('apiUtils.js', () => {
   describe('apiCall()', () => {
@@ -12,7 +13,6 @@ describe('apiUtils.js', () => {
       },
     }
     global.fetch = jest.fn().mockResolvedValue(response)
-    config.apiHost = 'https://example.com'
 
     it('calls fetch with correct url and options', () => {
       const expectedOptions = {
