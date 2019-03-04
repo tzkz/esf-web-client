@@ -10,6 +10,7 @@ const container = {
   left: 0,
   right: 0,
   transition: 'all 300ms ease-out',
+  backgroundColor: '#FFFFFF',
 }
 
 class Auth extends React.Component {
@@ -22,9 +23,9 @@ class Auth extends React.Component {
   }
 
   componentDidMount() {
-    const { show } = this.props
+    const { p12base64 } = this.props
 
-    if (show) {
+    if (p12base64) {
       this.setState({
         position: {
           bottom: 0,
@@ -35,15 +36,15 @@ class Auth extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { show } = this.props
+    const { p12base64 } = this.props
 
-    if (!show && prevProps.show) {
+    if (!p12base64 && prevProps.p12base64) {
       this.setPosition({
         bottom: '-100vh',
         top: '100vh',
       })
     }
-    if (show && !prevProps.show) {
+    if (p12base64 && !prevProps.p12base64) {
       this.setPosition({
         bottom: 0,
         top: 0,
@@ -77,7 +78,7 @@ class Auth extends React.Component {
 
     return (
       <div className={css(container, position)}>
-        {!p12decrypted
+        {p12base64 && !p12decrypted
           && (
           <Pin
             onDecrypt={this.onDecrypt}
@@ -104,14 +105,12 @@ class Auth extends React.Component {
 Auth.propTypes = {
   p12base64: PropTypes.string,
   onCancel: PropTypes.func,
-  show: PropTypes.bool,
   isDemo: PropTypes.bool,
 }
 
 Auth.defaultProps = {
   p12base64: '',
   onCancel: () => {},
-  show: false,
   isDemo: true,
 }
 

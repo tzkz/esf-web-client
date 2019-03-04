@@ -84,9 +84,9 @@ const TextInput = React.forwardRef(
 
 TextInput.propTypes = {
   className: PropTypes.string,
-  errorMessage: PropTypes.string,
-  label: PropTypes.string,
-  helperText: PropTypes.string,
+  errorMessage: PropTypes.node,
+  label: PropTypes.node,
+  helperText: PropTypes.node,
   small: PropTypes.bool,
   id: PropTypes.string,
 };

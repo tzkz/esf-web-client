@@ -1,16 +1,21 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import AuthStep from './AuthStep'
+import Pin from './Pin'
 import ProvideContext from '../common/ProvideContext'
 
-describe('<AuthStep />', () => {
+describe('<Pin />', () => {
   it('renders without crashing', () => {
     const rendered = renderer.create(
       <ProvideContext>
-        <AuthStep />
+        <Pin
+          isDemo
+          p12base64=""
+          onDecrypt={() => {}}
+          onCancel={() => {}}
+        />
       </ProvideContext>,
-    ).toJSON()
+    ).toJSON();
     expect(rendered).toBeTruthy()
   })
 })

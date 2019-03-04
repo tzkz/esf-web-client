@@ -19,13 +19,11 @@ const logo = {
 }
 
 const githubLink = {
-  padding: '0 16px',
+  padding: '4px 28px',
 }
 
 const langSelect = {
-  flexBasis: '70px',
-  margin: '2px 8px',
-  color: '#FFFFFF',
+  flexBasis: '72px',
 }
 
 const githubLogo = (
@@ -46,9 +44,13 @@ const Footer = ({ locale, dispatch }) => (
     </a>
     <LangSelect
       value={locale}
-      onChange={(value) => dispatch({ type: SET_LOCALE, locale: value })}
+      onChange={value => dispatch({ type: SET_LOCALE, locale: value })}
       menuPlacement="top"
       className={css(langSelect)}
+      controlStyles={{
+        color: '#FFFFFF',
+        height: '30px',
+      }}
     />
   </div>
 )
@@ -63,10 +65,8 @@ Footer.defaultProps = {
   dispatch: () => {},
 }
 
-const mapStateToProps = (state) => {
-  return {
-    locale: state.locale,
-  }
-}
+const mapStateToProps = state => ({
+  locale: state.locale,
+})
 
 export default connect(mapStateToProps)(Footer)

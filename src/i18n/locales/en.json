@@ -1,7 +1,18 @@
 {
+  "AuthForm.CancelButton": "Cancel",
+  "AuthForm.ContinueButton": "Continue",
   "Main.Headline": "Export ESF invoices with ease",
   "Main.Subheadline": "Get what the official app is missing absolutely FREE",
   "Main.SignIn": "Sign In",
   "Main.SignInSubtext": "with your key",
-  "Main.Demo": "Try Demo"
+  "Main.Demo": "Try Demo",
+  "Password.Title": "Account Password",
+  "Password.Subtitle": "For {id}",
+  "Password.PasswordInputLabel": "Password",
+  "Password.PasswordDemoHelper": "Enter \"TestPass123\" for demo",
+  "Password.WrongPasswordError": "Wrong Password",
+  "Pin.Title": "Enter Certificate PIN",
+  "Pin.PinInputLabel": "PIN",
+  "Pin.PinDemoHelper": "Enter \"Qwerty12\" for demo",
+  "Pin.WrongPinError": "Wrong PIN"
 }

@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
-import { css } from 'emotion';
+import { css } from 'emotion'
+import { FormattedMessage } from 'react-intl'
 
-import TextInput from '../common/TextInput';
-import AuthStep from './AuthStep';
+import TextInput from '../common/TextInput'
+import AuthStep from './AuthStep'
 import { decryptP12 } from '../crypt'
 
 const formTitle = {
@@ -12,10 +13,15 @@ const formTitle = {
   paddingBottom: '24px',
 }
 
+const container = {
+  transition: 'all 300ms ease-out',
+}
+
 class Pin extends React.Component {
   state = {
     pin: '',
     pinError: null,
+    opacity: 1,
   }
 
   onPinChange = (event) => {
@@ -30,7 +36,9 @@ class Pin extends React.Component {
 
     try {
       const p12decrypted = decryptP12(p12base64, pin)
-      onDecrypt(p12decrypted)
+
+      this.setState({ opacity: 0 })
+      setTimeout(() => onDecrypt(p12decrypted), 300)
     } catch (error) {
       this.setState({ pinError: error })
     }
@@ -46,29 +54,51 @@ class Pin extends React.Component {
   }
 
   render() {
-    const { pin, pinError } = this.state
+    const { pin, pinError, opacity } = this.state
     const { isDemo } = this.props
 
     return (
       <AuthStep
         onSubmit={this.onSubmit}
         onCancel={this.onCancel}
+        className={css(container, { opacity })}
       >
         <div className={css(formTitle)}>
-          Enter Certificate PIN
+          <FormattedMessage
+            id="Pin.Title"
+            defaultMessage="Enter Certificate PIN"
+          />
         </div>
         <TextInput
-          label="PIN"
+          label={(
+            <FormattedMessage
+              id="Pin.PinInputLabel"
+              defaultMessage="PIN"
+            />
+          )}
           placeholder="Pin"
           value={pin}
           onChange={this.onPinChange}
-          helperText={isDemo ? 'Enter "Qwerty12" for demo' : ''}
-          errorMessage={pinError && 'Wrong PIN'}
+          helperText={isDemo
+            ? (
+              <FormattedMessage
+                id="Pin.PinDemoHelper"
+                defaultMessage={'Enter "Qwerty12" for demo'}
+              />
+            )
+            : ''
+          }
+          errorMessage={pinError && (
+            <FormattedMessage
+              id="Pin.WrongPinError"
+              defaultMessage="Wrong PIN"
+            />
+          )}
           type="password"
           autoFocus
         />
       </AuthStep>
-    );
+    )
   }
 }
 
@@ -79,4 +109,4 @@ Pin.propTypes = {
   isDemo: PropTypes.bool.isRequired,
 }
 
-export default Pin;
+export default Pin

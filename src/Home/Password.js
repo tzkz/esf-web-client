@@ -3,12 +3,17 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { css } from 'emotion'
 import Alert from 'react-s-alert'
+import { FormattedMessage } from 'react-intl'
 
 import TextInput from '../common/TextInput'
 import AuthStep from './AuthStep'
 import { extractIdFromKey, extractCert, toTrimmedPem } from '../crypt'
 import { apiCall } from '../apiUtils';
 import { SET_SESSION_ID, SET_USER, SET_PASSWORD } from '../store';
+
+const container = {
+  transition: 'all 500ms ease-in',
+}
 
 const formTitle = {
   fontSize: '24px',
@@ -26,7 +31,14 @@ class Password extends React.Component {
     password: '',
     passwordError: null,
     isLoading: false,
+    opacity: 0,
   }
+
+  componentDidMount() {
+    this.setOpacity(1)
+  }
+
+  setOpacity = opacity => this.setState({ opacity })
 
   onPasswordChange = (event) => {
     this.setState({ password: event.target.value, passwordError: false })
@@ -112,33 +124,61 @@ class Password extends React.Component {
   }
 
   render() {
-    const { isLoading, password, passwordError } = this.state
     const {
-      isDemo, p12decrypted, onCancel,
-    } = this.props
+      isLoading, password, passwordError, opacity,
+    } = this.state
+    const { isDemo, p12decrypted, onCancel } = this.props
 
     return (
       <AuthStep
         onSubmit={this.onSubmit}
         onCancel={onCancel}
         isLoading={isLoading}
-        className={css({ transitionDelay: '400ms' })}
+        className={css(container, { opacity })}
       >
         <div className={css(formTitle)}>
-          Account Password
+          <FormattedMessage
+            id="Password.Title"
+            defaultMessage="Account Password"
+          />
         </div>
         <div className={css(subtitle)}>
-          For
-          {' '}
-          {p12decrypted && extractIdFromKey(p12decrypted)}
+          <FormattedMessage
+            id="Password.Subtitle"
+            defaultMessage="For {id}"
+            values={{
+              id: p12decrypted && extractIdFromKey(p12decrypted),
+            }}
+          />
         </div>
         <TextInput
-          label="Password"
+          label={(
+            <FormattedMessage
+              id="Password.PasswordInputLabel"
+              defaultMessage="Password"
+            />
+          )}
           placeholder="Password"
           value={password}
           onChange={this.onPasswordChange}
-          helperText={isDemo ? 'Enter "TestPass123" for demo' : ''}
-          errorMessage={passwordError ? 'Wrong Password' : ''}
+          helperText={isDemo
+            ? (
+              <FormattedMessage
+                id="Password.PasswordDemoHelper"
+                defaultMessage={'Enter "TestPass123" for demo'}
+              />
+            )
+            : ''
+          }
+          errorMessage={passwordError
+            ? (
+              <FormattedMessage
+                id="Password.WrongPasswordError"
+                defaultMessage="Wrong Password"
+              />
+            )
+            : ''
+          }
           type="password"
           disabled={isLoading}
           autoFocus

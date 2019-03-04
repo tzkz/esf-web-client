@@ -1,5 +1,15 @@
 [
   {
+    "id": "AuthForm.CancelButton",
+    "defaultMessage": "Cancel",
+    "filepath": "./src/Home/AuthForm.js"
+  },
+  {
+    "id": "AuthForm.ContinueButton",
+    "defaultMessage": "Continue",
+    "filepath": "./src/Home/AuthForm.js"
+  },
+  {
     "id": "Main.Headline",
     "defaultMessage": "Export ESF invoices with ease",
     "filepath": "./src/Home/Main.js"
@@ -23,5 +33,50 @@
     "id": "Main.Demo",
     "defaultMessage": "Try Demo",
     "filepath": "./src/Home/Main.js"
+  },
+  {
+    "id": "Password.Title",
+    "defaultMessage": "Account Password",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Password.Subtitle",
+    "defaultMessage": "For {id}",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Password.PasswordInputLabel",
+    "defaultMessage": "Password",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Password.PasswordDemoHelper",
+    "defaultMessage": "Enter \"TestPass123\" for demo",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Password.WrongPasswordError",
+    "defaultMessage": "Wrong Password",
+    "filepath": "./src/Home/Password.js"
+  },
+  {
+    "id": "Pin.Title",
+    "defaultMessage": "Enter Certificate PIN",
+    "filepath": "./src/Home/Pin.js"
+  },
+  {
+    "id": "Pin.PinInputLabel",
+    "defaultMessage": "PIN",
+    "filepath": "./src/Home/Pin.js"
+  },
+  {
+    "id": "Pin.PinDemoHelper",
+    "defaultMessage": "Enter \"Qwerty12\" for demo",
+    "filepath": "./src/Home/Pin.js"
+  },
+  {
+    "id": "Pin.WrongPinError",
+    "defaultMessage": "Wrong PIN",
+    "filepath": "./src/Home/Pin.js"
   }
 ]

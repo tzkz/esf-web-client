@@ -25,7 +25,7 @@ const rejectError = (response) => {
 
 export const fakeFetch = endpoint => new Promise((resolve) => {
   const delayedResolve = (data) => {
-    setTimeout(() => resolve(data), 1000)
+    setTimeout(() => resolve(data), config.fakeFetchDelay)
   }
 
   if (endpoint.startsWith('/invoices/queryinvoice')) {
