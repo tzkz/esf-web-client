@@ -23,7 +23,7 @@ const githubLink = {
 }
 
 const langSelect = {
-  flexBasis: '80px',
+  flexBasis: '72px',
 }
 
 const githubLogo = (
