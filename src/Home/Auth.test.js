@@ -9,7 +9,7 @@ describe('<Auth />', () => {
     const rendered = renderer.create(
       <ProvideContext>
         <Auth isDemo p12base64="" />
-      </ProvideContext>
+      </ProvideContext>,
     ).toJSON();
     expect(rendered).toBeTruthy()
   })

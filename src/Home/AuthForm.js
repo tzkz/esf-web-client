@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
+import { FormattedMessage } from 'react-intl'
 import Button from '../common/Button'
 import Spinner from '../common/Spinner'
-import { FormattedMessage } from 'react-intl'
 
 const buttonContainer = {
   display: 'flex',

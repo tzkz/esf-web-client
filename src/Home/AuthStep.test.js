@@ -9,7 +9,7 @@ describe('<AuthStep />', () => {
     const rendered = renderer.create(
       <ProvideContext>
         <AuthStep />
-      </ProvideContext>
+      </ProvideContext>,
     ).toJSON()
     expect(rendered).toBeTruthy()
   })
