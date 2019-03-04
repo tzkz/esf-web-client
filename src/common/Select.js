@@ -2,7 +2,7 @@ import React from 'react';
 import ReactSelect from 'react-select';
 
 const styles = {
-  control: (base) => ({
+  control: base => ({
     ...base,
     backgroundColor: 'transparent',
     border: '0',
@@ -10,11 +10,12 @@ const styles = {
     minHeight: 'initial',
     cursor: 'pointer',
   }),
-  valueContainer: (base) => ({
+  valueContainer: base => ({
     ...base,
     padding: '0 8px',
   }),
-  singleValue: (base) => ({
+  singleValue: base => ({
+    ...base,
     color: 'inherit',
   }),
   option: (base, state) => ({
@@ -28,11 +29,10 @@ const components = {
   DropdownIndicator: () => (
     <span
       style={{
-        width: 0, 
-        height: 0, 
+        width: 0,
+        height: 0,
         borderLeft: '5px solid transparent',
         borderRight: '5px solid transparent',
-        
         borderTop: '5px solid white',
       }}
     />

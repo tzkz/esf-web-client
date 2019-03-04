@@ -18,7 +18,7 @@ const locale = (state = 'en-US', action) => {
   }
 }
 
-const sessionId = (state = null, action) => {
+const sessionId = (state = '', action) => {
   switch (action.type) {
     case SET_SESSION_ID:
       return action.sessionId
@@ -86,7 +86,7 @@ const store = createStore(
     searchResult,
   }),
   loadState(),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
 
 store.subscribe(throttle(() => {

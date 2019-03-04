@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import TextInput from './TextInput';
-import { css } from 'emotion';
 
 describe('<TextInput />', () => {
   it('should not blow', () => {

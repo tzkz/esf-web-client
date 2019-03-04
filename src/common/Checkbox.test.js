@@ -7,10 +7,12 @@ describe('<Checkbox />', () => {
   const props = {
     id: 'testCheckbox',
     checked: false,
-    onChange: (event) => this.checked = event.target.checked,
+    onChange: (event) => { this.checked = event.target.checked },
   }
+
   it('renders without crashing', () => {
-    const rendered = renderer.create(<Checkbox {...props} />).toJSON();
-    expect(rendered).toBeTruthy();
-  });
+    const rendered = renderer.create(<Checkbox {...props} />).toJSON()
+
+    expect(rendered).toBeTruthy()
+  })
 })

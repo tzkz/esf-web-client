@@ -47,7 +47,7 @@ class Password extends React.Component {
     if (error.body.soapError.faultcode === 'ns1:SecurityError') {
       return this.setState({ passwordError: true })
     }
-    Alert.info(error.body.soapError.faultstring)
+    return Alert.info(error.body.soapError.faultstring)
   }
 
   handleUnknownError = (error) => {
@@ -58,16 +58,21 @@ class Password extends React.Component {
   }
 
   setSessionId = ({ sessionId }) => {
-    this.props.dispatch({ type: SET_SESSION_ID, sessionId })
+    const { dispatch } = this.props
+
+    dispatch({ type: SET_SESSION_ID, sessionId })
+
     return { sessionId }
   }
 
   fetchUser = ({ sessionId }) => {
+    const { p12decrypted } = this.props
+    const { password } = this.state
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        username: extractIdFromKey(this.props.p12decrypted),
-        password: this.state.password,
+        username: extractIdFromKey(p12decrypted),
+        password,
         sessionId,
       }),
     }
@@ -76,19 +81,24 @@ class Password extends React.Component {
   }
 
   setUser = ({ user }) => {
-    this.props.dispatch({ type: SET_USER, user })
-    this.props.dispatch({ type: SET_PASSWORD, password: this.state.password })
+    const { dispatch } = this.props
+    const { password } = this.state
+
+    dispatch({ type: SET_USER, user })
+    dispatch({ type: SET_PASSWORD, password })
   }
 
   onSubmit = (event) => {
-    const { password } = this.state;
+    const { password } = this.state
+    const { p12decrypted } = this.props
+
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        username: extractIdFromKey(this.props.p12decrypted),
+        username: extractIdFromKey(p12decrypted),
         password,
-        x509Certificate: toTrimmedPem(extractCert(this.props.p12decrypted)),
-      })
+        x509Certificate: toTrimmedPem(extractCert(p12decrypted)),
+      }),
     }
 
     event.preventDefault()
@@ -102,31 +112,35 @@ class Password extends React.Component {
   }
 
   render() {
-    const { isDemo, p12decrypted } = this.props
+    const { isLoading, password, passwordError } = this.state
+    const {
+      isDemo, p12decrypted, onCancel,
+    } = this.props
 
     return (
       <AuthStep
         onSubmit={this.onSubmit}
-        onCancel={this.props.onCancel}
-        isLoading={this.state.isLoading}
-        show={this.props.show}
+        onCancel={onCancel}
+        isLoading={isLoading}
         className={css({ transitionDelay: '400ms' })}
       >
         <div className={css(formTitle)}>
           Account Password
         </div>
         <div className={css(subtitle)}>
-          For {p12decrypted && extractIdFromKey(p12decrypted)}
+          For
+          {' '}
+          {p12decrypted && extractIdFromKey(p12decrypted)}
         </div>
         <TextInput
           label="Password"
           placeholder="Password"
-          value={this.state.password}
+          value={password}
           onChange={this.onPasswordChange}
           helperText={isDemo ? 'Enter "TestPass123" for demo' : ''}
-          errorMessage={this.state.passwordError ? 'Wrong Password' : ''}
+          errorMessage={passwordError ? 'Wrong Password' : ''}
           type="password"
-          disabled={this.state.isLoading}
+          disabled={isLoading}
           autoFocus
         />
       </AuthStep>
@@ -135,10 +149,16 @@ class Password extends React.Component {
 }
 
 Password.propTypes = {
-  onCancel: PropTypes.func,
-  p12decrypted: PropTypes.object,
-  show: PropTypes.bool,
-  isDemo: PropTypes.bool,
+  onCancel: PropTypes.func.isRequired,
+  p12decrypted: PropTypes.shape({
+    getBags: PropTypes.func,
+  }),
+  isDemo: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+}
+
+Password.defaultProps = {
+  p12decrypted: null,
 }
 
 export default connect()(Password)

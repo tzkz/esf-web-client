@@ -1,6 +1,6 @@
 import forge from 'node-forge'
 
-export const decryptP12 = (p12base64, password) => { 
+export const decryptP12 = (p12base64, password) => {
   const p12Der = forge.util.decode64(p12base64)
   const p12asn1 = forge.asn1.fromDer(p12Der)
 
@@ -14,7 +14,7 @@ export const extractCert = (p12) => {
   return cert
 }
 
-export const extractIdFromKey = (p12) => (
+export const extractIdFromKey = p12 => (
   extractCert(p12)
     .subject
     .getField({ name: 'serialName' })

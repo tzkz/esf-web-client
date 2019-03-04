@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { css } from 'emotion'
 import { isEmpty } from 'lodash'
@@ -58,6 +59,7 @@ const tableTitleContainer = {
 
 const itemContainer = {
   ...headerContainer,
+  outline: 'none',
   ':hover': {
     cursor: 'pointer',
   },
@@ -87,10 +89,10 @@ const downloadButton = {
 }
 
 const getIvoiceIds = (searchResult) => {
-  const getInvoiceId = (item) => item.invoiceId
+  const getInvoiceId = item => item.invoiceId
 
-  return searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo &&
-    searchResult.invoiceInfoList.invoiceInfo.map(getInvoiceId)
+  return searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo
+    && searchResult.invoiceInfoList.invoiceInfo.map(getInvoiceId)
 }
 
 const fetchPdf = (item) => {
@@ -100,25 +102,22 @@ const fetchPdf = (item) => {
   }
 
   return apiCall('/pdfs', options)
-    .then((result) => ({ ...result, invoiceId: item.invoiceId }))
+    .then(result => ({ ...result, invoiceId: item.invoiceId }))
 }
 
 const fetchPdfs = ({ selected, invoiceInfo }) => {
-  const selectedInvoices = invoiceInfo.filter((item) => {
-    return selected.includes(item.invoiceId)
-  })
+  const selectedInvoices = invoiceInfo.filter(item => selected.includes(item.invoiceId))
 
   return Promise.all(selectedInvoices.map(fetchPdf))
 }
 
-const generateZip = (pdfs) => {
-  const zip = new JSZip()
+export const generateZip = (pdfs) => {
+  const addFile = (zip, { invoiceId, pdfBase64 }) => (
+    zip.file(`${invoiceId}.pdf`, pdfBase64, { base64: true })
+  )
 
-  for (let i = 0; i < pdfs.length; i++) {
-    zip.file(`${pdfs[i].invoiceId}.pdf`, pdfs[i].pdfBase64, { base64: true })
-  }
-
-  return zip.generateAsync({ type: 'blob' })
+  return pdfs.reduce(addFile, new JSZip())
+    .generateAsync({ type: 'blob' })
 }
 
 class Result extends React.Component {
@@ -141,7 +140,7 @@ class Result extends React.Component {
     const options = {
       headers: {
         'Session-ID': sessionId,
-      }
+      },
     }
 
     this.setState({ isLoading: true })
@@ -152,9 +151,11 @@ class Result extends React.Component {
       .finally(() => this.setState({ isLoading: false }))
   }
 
-  setSearchResult = (searchResult) => (
-    this.props.dispatch({ type: SET_SEARCH_RESULT, searchResult })
-  )
+  setSearchResult = (searchResult) => {
+    const { dispatch } = this.props
+
+    dispatch({ type: SET_SEARCH_RESULT, searchResult })
+  }
 
   onFetchFail = (error) => {
     if (error.name === 'ApiError') {
@@ -185,23 +186,23 @@ class Result extends React.Component {
   }
 
   onSelectAllChange = (event) => {
-    const checked = event.target.checked
+    const { checked } = event.target
     const { searchResult } = this.props
     this.setState({
       selectAllChecked: checked,
-      selected: checked ? getIvoiceIds(searchResult) : []
+      selected: checked ? getIvoiceIds(searchResult) : [],
     })
   }
 
   onDowloadClick = () => {
     const { selected } = this.state
-    const { searchResult: { invoiceInfoList: { invoiceInfo }} } = this.props
+    const { searchResult: { invoiceInfoList: { invoiceInfo } } } = this.props
 
     this.setState({ isDownloading: true })
 
     return fetchPdfs({ selected, invoiceInfo })
       .then(generateZip)
-      .then((blob) => saveAs(blob, `invoices-${Date.now()}`))
+      .then(blob => saveAs(blob, `invoices-${Date.now()}`))
       .catch(this.handleUnknownError)
       .finally(() => this.setState({ isDownloading: false }))
   }
@@ -218,7 +219,9 @@ class Result extends React.Component {
   }
 
   render() {
-    const { selected } = this.state
+    const {
+      selected, isLoading, isDownloading, selectAllChecked,
+    } = this.state
     const { searchResult } = this.props
 
     return (
@@ -227,10 +230,11 @@ class Result extends React.Component {
           <SectionContent>
             <div className={css(innerContainer)}>
               <div className={css(wrapperContainer)}>
-                {this.state.isLoading &&
-                  <Spinner size={12} className={css({ margin: '24px 0' })} />
+                {isLoading
+                  && <Spinner size={12} className={css({ margin: '24px 0' })} />
                 }
-                {!isEmpty(searchResult) && !this.state.isLoading &&
+                {!isEmpty(searchResult) && !isLoading
+                  && (
                   <div className={css(resultsContainer)}>
                     <div
                       className={
@@ -240,33 +244,39 @@ class Result extends React.Component {
                             color: '#697EFF',
                             background: '#E3E7FF',
                             fontSize: '16px',
-                          }
+                          },
                         )
                       }
                     >
-                      {isEmpty(selected) &&
-                        <span>Invoices</span>
+                      {isEmpty(selected)
+                        && <span>Invoices</span>
                       }
-                      {!isEmpty(selected) &&
-                        <span>{selected.length} selected</span>
+                      {!isEmpty(selected)
+                        && (
+                        <span>
+                          {`${selected.length} selected`}
+                        </span>
+                        )
                       }
-                      {!isEmpty(selected) &&
+                      {!isEmpty(selected)
+                        && (
                         <button
                           className={css(downloadButton)}
                           onClick={this.onDowloadClick}
-                          disabled={this.state.isDownloading}
+                          disabled={isDownloading}
                         >
-                          {this.state.isDownloading ?
-                            <Spinner size={12} /> :
-                            <span>Download</span>
+                          {isDownloading
+                            ? <Spinner size={12} />
+                            : <span>Download</span>
                           }
                         </button>
+                        )
                       }
                     </div>
                     <div className={css(headerContainer)}>
                       <Checkbox
                         id="selectAllCheckbox"
-                        checked={this.state.selectAllChecked}
+                        checked={selectAllChecked}
                         onChange={this.onSelectAllChange}
                       />
                       <div className={css(regNumber)}>
@@ -276,19 +286,25 @@ class Result extends React.Component {
                         Status
                       </div>
                     </div>
-                    {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo &&
-                      searchResult.invoiceInfoList.invoiceInfo.map((item) => (
+                    {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo
+                      && searchResult.invoiceInfoList.invoiceInfo.map(item => (
                         <div
                           className={
-                            css(itemContainer, this.state.selected.indexOf(item.invoiceId) > -1 && { background: '#F5F5F5' })
+                            css(itemContainer, selected.indexOf(item.invoiceId) > -1 && { background: '#F5F5F5' })
                           }
                           key={item.invoiceId}
-                          onClick={(event) => this.onItemClick(event, item)}
+                          role="checkbox"
+                          aria-checked={selected.indexOf(item.invoiceId) > -1}
+                          tabIndex={-1}
+                          onClick={event => this.onItemClick(event, item)}
+                          onKeyUp={
+                            event => event.keyCode === 32 && this.onItemClick(event, item) // space
+                          }
                         >
                           <Checkbox
                             id={`checkbox-${item.invoiceId}`}
-                            checked={this.state.selected.indexOf(item.invoiceId) > -1}
-                            onClick={(event) => event.stopPropagation()}
+                            checked={selected.indexOf(item.invoiceId) > -1}
+                            onClick={event => event.stopPropagation()}
                           />
                           <div className={css(regNumber)}>
                             {item.registrationNumber}
@@ -300,6 +316,7 @@ class Result extends React.Component {
                       ))
                     }
                   </div>
+                  )
                 }
               </div>
             </div>
@@ -310,7 +327,22 @@ class Result extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+Result.propTypes = {
+  searchResult: PropTypes.shape({
+    invoiceInfoList: PropTypes.shape({
+      invoiceInfo: PropTypes.arrayOf(PropTypes.object),
+    }),
+  }),
+  sessionId: PropTypes.string.isRequired,
+  location: PropTypes.shape({ pathname: PropTypes.string }).isRequired,
+  dispatch: PropTypes.func.isRequired,
+}
+
+Result.defaultProps = {
+  searchResult: [],
+}
+
+const mapStateToProps = state => ({
   searchResult: state.searchResult,
   sessionId: state.sessionId,
 })

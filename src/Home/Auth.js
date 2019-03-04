@@ -22,55 +22,79 @@ class Auth extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.show) {
-      this.setState({ position: {
-        bottom: 0,
-        top: 0,
-      }})
+    const { show } = this.props
+
+    if (show) {
+      this.setState({
+        position: {
+          bottom: 0,
+          top: 0,
+        },
+      })
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (!this.props.show && prevProps.show) {
-      this.setState({ position: {
+    const { show } = this.props
+
+    if (!show && prevProps.show) {
+      this.setPosition({
         bottom: '-100vh',
         top: '100vh',
-      }})
+      })
     }
-    if (this.props.show && !prevProps.show) {
-      this.setState({ position: {
+    if (show && !prevProps.show) {
+      this.setPosition({
         bottom: 0,
         top: 0,
-      }})
+      })
     }
   }
 
-  onDecrypt = (p12decrypted) => this.setState({ p12decrypted })
+  setPosition = ({ top, bottom }) => {
+    this.setState({
+      position: {
+        bottom,
+        top,
+      },
+    })
+  }
+
+  onDecrypt = p12decrypted => this.setState({ p12decrypted })
 
   onCancel = (event) => {
+    const { onCancel } = this.props
+
     this.setState({ p12decrypted: null })
-    if(this.props.onCancel) {
-      this.props.onCancel(event)
+    if (onCancel) {
+      onCancel(event)
     }
   }
 
   render() {
+    const { p12decrypted, position } = this.state
+    const { p12base64, isDemo } = this.props
+
     return (
-      <div className={css(container, this.state.position )}>
-        {!this.state.p12decrypted &&
+      <div className={css(container, position)}>
+        {!p12decrypted
+          && (
           <Pin
             onDecrypt={this.onDecrypt}
             onCancel={this.onCancel}
-            p12base64={this.props.p12base64}
-            isDemo={this.props.isDemo}
+            p12base64={p12base64}
+            isDemo={isDemo}
           />
+          )
         }
-        {!!this.state.p12decrypted &&
+        {!!p12decrypted
+          && (
           <Password
             onCancel={this.onCancel}
-            p12decrypted={this.state.p12decrypted}
-            isDemo={this.props.isDemo}
+            p12decrypted={p12decrypted}
+            isDemo={isDemo}
           />
+          )
         }
       </div>
     )
@@ -82,6 +106,13 @@ Auth.propTypes = {
   onCancel: PropTypes.func,
   show: PropTypes.bool,
   isDemo: PropTypes.bool,
+}
+
+Auth.defaultProps = {
+  p12base64: '',
+  onCancel: () => {},
+  show: false,
+  isDemo: true,
 }
 
 export default Auth

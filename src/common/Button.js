@@ -24,7 +24,7 @@ export const button = {
     backgroundColor: 'rgba(0, 0, 0, .12)',
     border: 'none',
     color: 'rgba(0, 0, 0, .38)',
-  }
+  },
 };
 
 const Button = ({ children, className, ...other }) => (
@@ -40,5 +40,10 @@ Button.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
 };
+
+Button.defaultProps = {
+  children: <span>Submit</span>,
+  className: '',
+}
 
 export default Button;

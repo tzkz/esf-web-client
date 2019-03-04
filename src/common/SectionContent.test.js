@@ -5,7 +5,7 @@ import SectionContent from './SectionContent';
 
 describe('<SectionContent />', () => {
   it('renders without crashing', () => {
-    const rendered = renderer.create(<SectionContent />).toJSON();
+    const rendered = renderer.create(<SectionContent><div /></SectionContent>).toJSON();
     expect(rendered).toBeTruthy();
   });
 
@@ -17,7 +17,7 @@ describe('<SectionContent />', () => {
   });
 
   it('should pass props down to container div', () => {
-    const testRenderer = renderer.create(<SectionContent foo="bar" />)
+    const testRenderer = renderer.create(<SectionContent foo="bar"><div /></SectionContent>)
     const testInstance = testRenderer.root
 
     expect(testInstance.findByType('div').props.foo).toEqual('bar');

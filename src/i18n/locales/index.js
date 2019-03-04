@@ -5,5 +5,5 @@ import kk from './kk';
 export default {
   en,
   ru,
-  kk
+  kk,
 }

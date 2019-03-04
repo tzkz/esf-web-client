@@ -16,7 +16,7 @@ describe('createQueryString()', () => {
 
     expect(createQueryString(form))
       .toEqual(
-        '?direction=INBOUND&dateFrom=2018-12-01&dateTo=2018-12-31&statuses[]=CREATED&statuses[]=DELIVERED&invoiceType=ORDINARY_INVOICE'
+        '?direction=INBOUND&dateFrom=2018-12-01&dateTo=2018-12-31&statuses[]=CREATED&statuses[]=DELIVERED&invoiceType=ORDINARY_INVOICE',
       )
   })
 })

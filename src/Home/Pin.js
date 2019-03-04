@@ -12,7 +12,7 @@ const formTitle = {
   paddingBottom: '24px',
 }
 
-class Pin extends React.Component{
+class Pin extends React.Component {
   state = {
     pin: '',
     pinError: null,
@@ -23,23 +23,32 @@ class Pin extends React.Component{
   }
 
   onSubmit = (event) => {
+    const { pin } = this.state
+    const { p12base64, onDecrypt } = this.props
+
     event.preventDefault()
+
     try {
-      const p12decrypted = decryptP12(this.props.p12base64, this.state.pin)
-      this.props.onDecrypt(p12decrypted)
+      const p12decrypted = decryptP12(p12base64, pin)
+      onDecrypt(p12decrypted)
     } catch (error) {
       this.setState({ pinError: error })
     }
   }
 
   onCancel = (event) => {
+    const { onCancel } = this.props
+
     this.setState({ pin: '', pinError: null })
-    if (this.props.onCancel) {
-      this.props.onCancel(event)
+    if (onCancel) {
+      onCancel(event)
     }
   }
 
   render() {
+    const { pin, pinError } = this.state
+    const { isDemo } = this.props
+
     return (
       <AuthStep
         onSubmit={this.onSubmit}
@@ -51,10 +60,10 @@ class Pin extends React.Component{
         <TextInput
           label="PIN"
           placeholder="Pin"
-          value={this.state.pin}
+          value={pin}
           onChange={this.onPinChange}
-          helperText={this.props.isDemo ? 'Enter "Qwerty12" for demo' : ''}
-          errorMessage={this.state.pinError && 'Wrong PIN'}
+          helperText={isDemo ? 'Enter "Qwerty12" for demo' : ''}
+          errorMessage={pinError && 'Wrong PIN'}
           type="password"
           autoFocus
         />
@@ -64,10 +73,10 @@ class Pin extends React.Component{
 }
 
 Pin.propTypes = {
-  onDecrypt: PropTypes.func,
-  onCancel: PropTypes.func,
-  p12base64: PropTypes.string,
-  isDemo: PropTypes.bool,
+  onDecrypt: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  p12base64: PropTypes.string.isRequired,
+  isDemo: PropTypes.bool.isRequired,
 }
 
 export default Pin;

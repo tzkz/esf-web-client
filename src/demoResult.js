@@ -26,7 +26,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -36,13 +36,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -61,15 +61,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -78,11 +78,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -106,7 +106,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -116,13 +116,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -141,15 +141,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -158,11 +158,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -186,7 +186,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -196,13 +196,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -221,15 +221,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -238,11 +238,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -266,7 +266,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -276,13 +276,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -301,15 +301,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -318,11 +318,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -346,7 +346,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -356,13 +356,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -381,15 +381,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -398,11 +398,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -426,7 +426,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -436,13 +436,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -461,15 +461,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -478,11 +478,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -506,7 +506,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -516,13 +516,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -541,15 +541,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -558,11 +558,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -586,7 +586,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -596,13 +596,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -621,15 +621,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -638,11 +638,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -666,7 +666,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -676,13 +676,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -701,15 +701,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -718,11 +718,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -746,7 +746,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -756,13 +756,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -781,15 +781,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -798,11 +798,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -826,7 +826,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -836,13 +836,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -861,15 +861,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -878,11 +878,11 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
       {
         invoiceBody: '',
@@ -906,7 +906,7 @@ export default {
           turnoverDate: '14.02.2019',
           consignee: {
             TYPE_NAME: 'PO.Consignee',
-            countryCode: 'KZ'
+            countryCode: 'KZ',
           },
           customers: {
             TYPE_NAME: 'PO.InvoiceV2.Customers',
@@ -916,13 +916,13 @@ export default {
                 address: 'Казахстан, Алматинская обл., г. Алматы,',
                 countryCode: 'KZ',
                 name: 'John Doe',
-                tin: '112233445566'
-              }
-            ]
+                tin: '112233445566',
+              },
+            ],
           },
           deliveryTerm: {
             TYPE_NAME: 'PO.DeliveryTerm',
-            hasContract: false
+            hasContract: false,
           },
           productSet: {
             TYPE_NAME: 'PO.ProductSet',
@@ -941,15 +941,15 @@ export default {
                   truOriginCode: '4',
                   turnoverSize: 100,
                   unitNomenclature: '796',
-                  unitPrice: 100
-                }
-              ]
+                  unitPrice: 100,
+                },
+              ],
             },
             totalExciseAmount: 0,
             totalNdsAmount: 0,
             totalPriceWithTax: 100,
             totalPriceWithoutTax: 100,
-            totalTurnoverSize: 100
+            totalTurnoverSize: 100,
           },
           sellers: {
             TYPE_NAME: 'PO.InvoiceV2.Sellers',
@@ -958,12 +958,12 @@ export default {
                 TYPE_NAME: 'PO.Seller',
                 address: 'Казахстан, Алматинская обл., г. Алматы',
                 name: 'JANE SMITH',
-                tin: '0123456789011'
-              }
-            ]
-          }
-        }
+                tin: '0123456789011',
+              },
+            ],
+          },
+        },
       },
-    ]
-  }
+    ],
+  },
 }

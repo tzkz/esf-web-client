@@ -1,17 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
-
 import promiseFinally from 'promise.prototype.finally'
+
+import App from './App'
+
+import * as serviceWorker from './serviceWorker'
 
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/stackslide.css'
-
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
 import './react_dates_overrides.css'
+import './index.css'
+
 
 promiseFinally.shim() // Promise.prototype.finally() polyfill
 
