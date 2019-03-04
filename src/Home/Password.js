@@ -10,6 +10,10 @@ import { extractIdFromKey, extractCert, toTrimmedPem } from '../crypt'
 import { apiCall } from '../apiUtils';
 import { SET_SESSION_ID, SET_USER, SET_PASSWORD } from '../store';
 
+const container = {
+  transition: 'all 500ms ease-in',
+}
+
 const formTitle = {
   fontSize: '24px',
   color: 'rgb(0,0,0,0.87)',
@@ -26,7 +30,14 @@ class Password extends React.Component {
     password: '',
     passwordError: null,
     isLoading: false,
+    opacity: 0,
   }
+
+  componentDidMount() {
+    this.setOpacity(1)
+  }
+
+  setOpacity = opacity => this.setState({ opacity })
 
   onPasswordChange = (event) => {
     this.setState({ password: event.target.value, passwordError: false })
@@ -112,17 +123,17 @@ class Password extends React.Component {
   }
 
   render() {
-    const { isLoading, password, passwordError } = this.state
     const {
-      isDemo, p12decrypted, onCancel,
-    } = this.props
+      isLoading, password, passwordError, opacity,
+    } = this.state
+    const { isDemo, p12decrypted, onCancel } = this.props
 
     return (
       <AuthStep
         onSubmit={this.onSubmit}
         onCancel={onCancel}
         isLoading={isLoading}
-        className={css({ transitionDelay: '400ms' })}
+        className={css(container, { opacity })}
       >
         <div className={css(formTitle)}>
           Account Password
