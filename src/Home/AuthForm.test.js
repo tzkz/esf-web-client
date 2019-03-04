@@ -1,7 +1,15 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from 'react'
+import renderer from 'react-test-renderer'
 
-import AuthForm from './AuthForm';
+import ProvideContext from '../common/ProvideContext'
+
+import Component from './AuthForm'
+
+const AuthForm = ({ ...props }) => (
+  <ProvideContext>
+    <Component {...props} />
+  </ProvideContext>
+)
 
 describe('<AuthForm />', () => {
   it('renders without crashing', () => {

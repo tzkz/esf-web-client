@@ -4,6 +4,7 @@ import { css } from 'emotion'
 
 import Button from '../common/Button'
 import Spinner from '../common/Spinner'
+import { FormattedMessage } from 'react-intl'
 
 const buttonContainer = {
   display: 'flex',
@@ -39,7 +40,15 @@ const AuthForm = ({
         Cancel
       </Button>
       <Button className={css(button)} type="submit" disabled={isLoading}>
-        {isLoading ? <Spinner size={12} color="#FFF" /> : <span>Continue</span>}
+        {isLoading
+          ? <Spinner size={12} color="#FFF" />
+          : (
+            <FormattedMessage
+              id="AuthForm.ContinueButton"
+              defaultMessage="Continue"
+            />
+          )
+        }
       </Button>
     </div>
   </form>

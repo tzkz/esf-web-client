@@ -1,3 +1,5 @@
 {
-  "Main.SignIn": "Войти"
+  "Main.SignIn": "Войти",
+  "Main.Demo": "Демо",
+  "Main.SignInSubtext": "используя ЭЦП"
 }
