@@ -3,11 +3,14 @@ import renderer from 'react-test-renderer'
 import moment from 'moment'
 
 import Search, { createQueryString } from './Search'
+import ProvideContext from './common/ProvideContext'
 
 describe('createQueryString()', () => {
   it('renders without crashing', () => {
     const rendered = renderer.create(
-      <Search history={window.history} />
+      <ProvideContext>
+        <Search history={window.history} />
+      </ProvideContext>
     ).toJSON();
     expect(rendered).toBeTruthy()
   })

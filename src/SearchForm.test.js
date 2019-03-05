@@ -1,14 +1,23 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import moment from 'moment'
+import ProvideContext from './common/ProvideContext'
 
 import 'react-dates/initialize'
 
-import SearchForm from './SearchForm'
+import Component from './SearchForm'
+
+const SearchForm = (props) => (
+  <ProvideContext>
+    <Component {...props} />
+  </ProvideContext>
+)
 
 describe('<SearchForm />', () => {
   it('renders without crashing', () => {
-    const rendered = renderer.create(<SearchForm onSubmit={() => {}} />).toJSON();
+    const rendered = renderer.create(
+      <SearchForm onSubmit={() => {}} />
+    ).toJSON();
     expect(rendered).toBeTruthy();
   });
 
@@ -16,7 +25,7 @@ describe('<SearchForm />', () => {
     const onSubmitProp = jest.fn()
     const testRenderer = renderer.create(<SearchForm onSubmit={onSubmitProp} />);
     const testInstance = testRenderer.root;
-    const componentInstance = testRenderer.getInstance();
+    const componentInstance = testInstance.findByType(Component).instance;
     const form = testInstance.find(element => element.type === 'form')
     const fakeEvent = { preventDefault: jest.fn() }
 
