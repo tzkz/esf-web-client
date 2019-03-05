@@ -4,6 +4,7 @@ import { css } from 'emotion'
 import { DateRangePicker } from 'react-dates'
 import Media from 'react-media'
 import moment from 'moment'
+import { FormattedMessage } from 'react-intl'
 import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 
 import Button from './common/Button'
@@ -118,30 +119,60 @@ const buttonRow = {
 const directionOptions = [
   {
     value: 'INBOUND',
-    label: 'Inbound',
+    label: (
+      <FormattedMessage
+        id="SearchForm.DirectionInbound"
+        defaultMessage="Inbound"
+      />
+    ),
   },
   {
     value: 'OUTBOUND',
-    label: 'Outbound',
+    label: (
+      <FormattedMessage
+        id="SearchForm.DirectionOutbound"
+        defaultMessage="Outbound"
+      />
+    ),
   },
 ]
 
 const typeOptions = [
   {
     value: 'any',
-    label: 'Any',
+    label: (
+      <FormattedMessage
+        id="SearchForm.TypeAny"
+        defaultMessage="Any"
+      />
+    ),
   },
   {
     value: 'ORDINARY_INVOICE',
-    label: 'Ordinary',
+    label: (
+      <FormattedMessage
+        id="SearchForm.TypeOrdinary"
+        defaultMessage="Ordinary"
+      />
+    ),
   },
   {
     value: 'FIXED_INVOICE',
-    label: 'Corrected',
+    label: (
+      <FormattedMessage
+        id="SearchForm.TypeCorrected"
+        defaultMessage="Corrected"
+      />
+    ),
   },
   {
     value: 'ADDITIONAL_INVOICE',
-    label: 'Additional',
+    label: (
+      <FormattedMessage
+        id="SearchForm.TypeAdditional"
+        defaultMessage="Additional"
+      />
+    ),
   },
 ]
 
@@ -260,7 +291,10 @@ class SearchForm extends React.Component {
               htmlFor="created"
               className={css(created, form.created && createdChecked)}
             >
-              Created
+              <FormattedMessage
+                id="SearchForm.StatusCreated"
+                defaultMessage="Created"
+              />
               <input
                 type="checkbox"
                 id="created"
@@ -274,7 +308,10 @@ class SearchForm extends React.Component {
               htmlFor="delivered"
               className={css(delivered, form.delivered && deliveredChecked)}
             >
-              Delivered
+              <FormattedMessage
+                id="SearchForm.StatusDelivered"
+                defaultMessage="Delivered"
+              />
               <input
                 type="checkbox"
                 id="delivered"
@@ -290,7 +327,10 @@ class SearchForm extends React.Component {
               htmlFor="revoked"
               className={css(revoked, form.revoked && revokedChecked)}
             >
-              Revoked
+              <FormattedMessage
+                id="SearchForm.StatusRevoked"
+                defaultMessage="Revoked"
+              />
               <input
                 type="checkbox"
                 id="revoked"
@@ -304,7 +344,10 @@ class SearchForm extends React.Component {
               htmlFor="cancelled"
               className={css(cancelled, form.cancelled && cancelledChecked)}
             >
-              Cancelled
+              <FormattedMessage
+                id="SearchForm.StatusCanceled"
+                defaultMessage="Canceled"
+              />
               <input
                 type="checkbox"
                 id="cancelled"
@@ -327,7 +370,10 @@ class SearchForm extends React.Component {
         </div>
         <div className={css(buttonRow)}>
           <Button>
-            Search
+            <FormattedMessage
+              id="SearchForm.SearchButton"
+              defaultMessage="Search"
+            />
           </Button>
         </div>
       </form>
