@@ -18,11 +18,6 @@ const mapStateToProps = state => ({
 
 PrivateRoute.propTypes = {
   sessionId: PropTypes.string.isRequired,
-  children: PropTypes.node,
-}
-
-PrivateRoute.defaultProps = {
-  children: null,
 }
 
 export default withRouter(connect(mapStateToProps)(PrivateRoute))
