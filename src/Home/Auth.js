@@ -7,8 +7,8 @@ import Password from './Password'
 
 const container = {
   position: 'fixed',
-  left: 0,
-  right: 0,
+  height: '100%',
+  width: '100vw',
   transition: 'all 300ms ease-out',
   backgroundColor: '#FFFFFF',
 }
@@ -17,8 +17,7 @@ class Auth extends React.Component {
   state = {
     p12decrypted: null,
     position: {
-      bottom: '-100vh',
-      top: '100vh',
+      top: '100%',
     },
   }
 
@@ -40,13 +39,11 @@ class Auth extends React.Component {
 
     if (!p12base64 && prevProps.p12base64) {
       this.setPosition({
-        bottom: '-100vh',
-        top: '100vh',
+        top: '100%',
       })
     }
     if (p12base64 && !prevProps.p12base64) {
       this.setPosition({
-        bottom: 0,
         top: 0,
       })
     }
