@@ -1,7 +1,17 @@
+import React from 'react'
+import renderer from 'react-test-renderer'
 import moment from 'moment'
-import { createQueryString } from './Search'
+
+import Search, { createQueryString } from './Search'
 
 describe('createQueryString()', () => {
+  it('renders without crashing', () => {
+    const rendered = renderer.create(
+      <Search history={window.history} />
+    ).toJSON();
+    expect(rendered).toBeTruthy()
+  })
+
   it('generates query string based on form object', () => {
     const form = {
       direction: 'INBOUND',
