@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const PrivateRoute = ({ component: Component, sessionId, ...other }) => (
@@ -25,4 +25,4 @@ PrivateRoute.defaultProps = {
   children: null,
 }
 
-export default connect(mapStateToProps)(PrivateRoute)
+export default withRouter(connect(mapStateToProps)(PrivateRoute))
