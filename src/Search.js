@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
 import SectionContent from './common/SectionContent'
-import PrivateComponent from './common/PrivateComponent'
 import SearchForm from './SearchForm'
 
 export const createQueryString = ({
@@ -40,17 +39,15 @@ const Search = ({ history }) => {
   }
 
   return (
-    <PrivateComponent>
-      <div>
-        <SectionContent>
-          <div className={css(innerContainer)}>
-            <div className={css(mainArea)}>
-              <SearchForm onSubmit={onSubmit} />
-            </div>
+    <div>
+      <SectionContent>
+        <div className={css(innerContainer)}>
+          <div className={css(mainArea)}>
+            <SearchForm onSubmit={onSubmit} />
           </div>
-        </SectionContent>
-      </div>
-    </PrivateComponent>
+        </div>
+      </SectionContent>
+    </div>
   )
 }
 

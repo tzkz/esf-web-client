@@ -15,6 +15,7 @@ import Search from './Search'
 import Result from './Result'
 import Sidebar from './Sidebar'
 import Header from './common/Header'
+import PrivateRoute from './common/PrivateRoute'
 
 const container = {
   minHeight: '100vh',
@@ -44,8 +45,8 @@ class App extends Component {
               )}
               <Header onMenuClick={this.onMenuClick} />
               <Route exact path="/" component={Home} />
-              <Route path="/search" component={Search} />
-              <Route path="/result" component={Result} />
+              <PrivateRoute path="/search" component={Search} />
+              <PrivateRoute path="/result" component={Result} />
               <Alert
                 stack={{ limit: 3 }}
                 effect="stackslide"
