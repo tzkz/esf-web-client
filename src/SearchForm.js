@@ -116,15 +116,33 @@ const buttonRow = {
 }
 
 const directionOptions = [
-  { id: 'foo', value: 'INBOUND', label: 'Inbound' },
-  { id: 'bar', value: 'OUTBOUND', label: 'Outbound' },
+  {
+    value: 'INBOUND',
+    label: 'Inbound',
+  },
+  {
+    value: 'OUTBOUND',
+    label: 'Outbound',
+  },
 ]
 
 const typeOptions = [
-  { id: 'foo', value: 'any', label: 'Any' },
-  { id: 'bar', value: 'ORDINARY_INVOICE', label: 'Ordinary' },
-  { id: 'baz', value: 'FIXED_INVOICE', label: 'Corrected' },
-  { id: 'zoo', value: 'ADDITIONAL_INVOICE', label: 'Additional' },
+  {
+    value: 'any',
+    label: 'Any',
+  },
+  {
+    value: 'ORDINARY_INVOICE',
+    label: 'Ordinary',
+  },
+  {
+    value: 'FIXED_INVOICE',
+    label: 'Corrected',
+  },
+  {
+    value: 'ADDITIONAL_INVOICE',
+    label: 'Additional',
+  },
 ]
 
 const typeRadioContainer = {
