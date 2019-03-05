@@ -80,6 +80,76 @@
     "filepath": "./src/Home/Pin.js"
   },
   {
+    "id": "Result.StatusCreated",
+    "defaultMessage": "Created",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusDelivered",
+    "defaultMessage": "Delivered",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusCanceled",
+    "defaultMessage": "Canceled",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusRevoked",
+    "defaultMessage": "Revoked",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusImported",
+    "defaultMessage": "Imported",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusDraft",
+    "defaultMessage": "Draft",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusFailed",
+    "defaultMessage": "Failed",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusDeleted",
+    "defaultMessage": "Deleted",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusDeclined",
+    "defaultMessage": "Declined",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.Title",
+    "defaultMessage": "Invoices",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.SelectedCount",
+    "defaultMessage": "{count} selected",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.DownloadButton",
+    "defaultMessage": "Download",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.RegNumberHeader",
+    "defaultMessage": "Reg number",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusHeader",
+    "defaultMessage": "Status",
+    "filepath": "./src/Result.js"
+  },
+  {
     "id": "SearchForm.DirectionInbound",
     "defaultMessage": "Inbound",
     "filepath": "./src/SearchForm.js"

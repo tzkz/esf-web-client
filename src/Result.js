@@ -6,6 +6,7 @@ import { isEmpty } from 'lodash'
 import Alert from 'react-s-alert'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
+import { FormattedMessage } from 'react-intl'
 
 import SectionContent from './common/SectionContent'
 import { apiCall } from './apiUtils'
@@ -117,6 +118,76 @@ export const generateZip = (pdfs) => {
 
   return pdfs.reduce(addFile, new JSZip())
     .generateAsync({ type: 'blob' })
+}
+
+const getInvoiceStatus = ({ invoiceStatus }) => {
+  switch (invoiceStatus) {
+    case 'CREATED':
+      return (
+        <FormattedMessage
+          id="Result.StatusCreated"
+          defaultMessage="Created"
+        />
+      )
+    case 'DELIVERED':
+      return (
+        <FormattedMessage
+          id="Result.StatusDelivered"
+          defaultMessage="Delivered"
+        />
+      )
+    case 'CANCELED':
+      return (
+        <FormattedMessage
+          id="Result.StatusCanceled"
+          defaultMessage="Canceled"
+        />
+      )
+    case 'REVOKED':
+      return (
+        <FormattedMessage
+          id="Result.StatusRevoked"
+          defaultMessage="Revoked"
+        />
+      )
+    case 'IMPORTED':
+      return (
+        <FormattedMessage
+          id="Result.StatusImported"
+          defaultMessage="Imported"
+        />
+      )
+    case 'DRAFT':
+      return (
+        <FormattedMessage
+          id="Result.StatusDraft"
+          defaultMessage="Draft"
+        />
+      )
+    case 'FAILED':
+      return (
+        <FormattedMessage
+          id="Result.StatusFailed"
+          defaultMessage="Failed"
+        />
+      )
+    case 'DELETED':
+      return (
+        <FormattedMessage
+          id="Result.StatusDeleted"
+          defaultMessage="Deleted"
+        />
+      )
+    case 'DECLINED':
+      return (
+        <FormattedMessage
+          id="Result.StatusDeclined"
+          defaultMessage="Declined"
+        />
+      )
+    default:
+      return ''
+  }
 }
 
 class Result extends React.Component {
@@ -246,16 +317,19 @@ class Result extends React.Component {
                       )
                     }
                   >
-                    {isEmpty(selected)
-                      && <span>Invoices</span>
-                    }
-                    {!isEmpty(selected)
-                      && (
-                      <span>
-                        {`${selected.length} selected`}
-                      </span>
-                      )
-                    }
+                    {isEmpty(selected) && (
+                      <FormattedMessage
+                        id="Result.Title"
+                        defaultMessage="Invoices"
+                      />
+                    )}
+                    {!isEmpty(selected) && (
+                      <FormattedMessage
+                        id="Result.SelectedCount"
+                        defaultMessage="{count} selected"
+                        values={{ count: selected.length }}
+                      />
+                    )}
                     {!isEmpty(selected)
                       && (
                       <button
@@ -265,7 +339,12 @@ class Result extends React.Component {
                       >
                         {isDownloading
                           ? <Spinner size={12} />
-                          : <span>Download</span>
+                          : (
+                            <FormattedMessage
+                              id="Result.DownloadButton"
+                              defaultMessage="Download"
+                            />
+                          )
                         }
                       </button>
                       )
@@ -278,10 +357,16 @@ class Result extends React.Component {
                       onChange={this.onSelectAllChange}
                     />
                     <div className={css(regNumber)}>
-                      Reg number
+                      <FormattedMessage
+                        id="Result.RegNumberHeader"
+                        defaultMessage="Reg number"
+                      />
                     </div>
                     <div className={css(status)}>
-                      Status
+                      <FormattedMessage
+                        id="Result.StatusHeader"
+                        defaultMessage="Status"
+                      />
                     </div>
                   </div>
                   {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo
@@ -308,7 +393,7 @@ class Result extends React.Component {
                           {item.registrationNumber}
                         </div>
                         <div className={css(status)}>
-                          {item.invoiceStatus}
+                          {getInvoiceStatus(item)}
                         </div>
                       </div>
                     ))
