@@ -6,9 +6,9 @@ import { isEmpty } from 'lodash'
 import Alert from 'react-s-alert'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
+import { FormattedMessage } from 'react-intl'
 
 import SectionContent from './common/SectionContent'
-import PrivateComponent from './common/PrivateComponent'
 import { apiCall } from './apiUtils'
 import { SET_SEARCH_RESULT } from './store'
 import Spinner from './common/Spinner'
@@ -120,6 +120,76 @@ export const generateZip = (pdfs) => {
     .generateAsync({ type: 'blob' })
 }
 
+const getInvoiceStatus = ({ invoiceStatus }) => {
+  switch (invoiceStatus) {
+    case 'CREATED':
+      return (
+        <FormattedMessage
+          id="Result.StatusCreated"
+          defaultMessage="Created"
+        />
+      )
+    case 'DELIVERED':
+      return (
+        <FormattedMessage
+          id="Result.StatusDelivered"
+          defaultMessage="Delivered"
+        />
+      )
+    case 'CANCELED':
+      return (
+        <FormattedMessage
+          id="Result.StatusCanceled"
+          defaultMessage="Canceled"
+        />
+      )
+    case 'REVOKED':
+      return (
+        <FormattedMessage
+          id="Result.StatusRevoked"
+          defaultMessage="Revoked"
+        />
+      )
+    case 'IMPORTED':
+      return (
+        <FormattedMessage
+          id="Result.StatusImported"
+          defaultMessage="Imported"
+        />
+      )
+    case 'DRAFT':
+      return (
+        <FormattedMessage
+          id="Result.StatusDraft"
+          defaultMessage="Draft"
+        />
+      )
+    case 'FAILED':
+      return (
+        <FormattedMessage
+          id="Result.StatusFailed"
+          defaultMessage="Failed"
+        />
+      )
+    case 'DELETED':
+      return (
+        <FormattedMessage
+          id="Result.StatusDeleted"
+          defaultMessage="Deleted"
+        />
+      )
+    case 'DECLINED':
+      return (
+        <FormattedMessage
+          id="Result.StatusDeclined"
+          defaultMessage="Declined"
+        />
+      )
+    default:
+      return ''
+  }
+}
+
 class Result extends React.Component {
   state = {
     isLoading: false,
@@ -225,104 +295,116 @@ class Result extends React.Component {
     const { searchResult } = this.props
 
     return (
-      <PrivateComponent>
-        <div>
-          <SectionContent>
-            <div className={css(innerContainer)}>
-              <div className={css(wrapperContainer)}>
-                {isLoading
-                  && <Spinner size={12} className={css({ margin: '24px 0' })} />
-                }
-                {!isEmpty(searchResult) && !isLoading
-                  && (
-                  <div className={css(resultsContainer)}>
-                    <div
-                      className={
-                        css(
-                          tableTitleContainer,
-                          !isEmpty(selected) && {
-                            color: '#697EFF',
-                            background: '#E3E7FF',
-                            fontSize: '16px',
-                          },
-                        )
-                      }
-                    >
-                      {isEmpty(selected)
-                        && <span>Invoices</span>
-                      }
-                      {!isEmpty(selected)
-                        && (
-                        <span>
-                          {`${selected.length} selected`}
-                        </span>
-                        )
-                      }
-                      {!isEmpty(selected)
-                        && (
-                        <button
-                          className={css(downloadButton)}
-                          onClick={this.onDowloadClick}
-                          disabled={isDownloading}
-                        >
-                          {isDownloading
-                            ? <Spinner size={12} />
-                            : <span>Download</span>
-                          }
-                        </button>
-                        )
-                      }
-                    </div>
-                    <div className={css(headerContainer)}>
-                      <Checkbox
-                        id="selectAllCheckbox"
-                        checked={selectAllChecked}
-                        onChange={this.onSelectAllChange}
+      <div>
+        <SectionContent>
+          <div className={css(innerContainer)}>
+            <div className={css(wrapperContainer)}>
+              {isLoading
+                && <Spinner size={12} className={css({ margin: '24px 0' })} />
+              }
+              {!isEmpty(searchResult) && !isLoading
+                && (
+                <div className={css(resultsContainer)}>
+                  <div
+                    className={
+                      css(
+                        tableTitleContainer,
+                        !isEmpty(selected) && {
+                          color: '#697EFF',
+                          background: '#E3E7FF',
+                          fontSize: '16px',
+                        },
+                      )
+                    }
+                  >
+                    {isEmpty(selected) && (
+                      <FormattedMessage
+                        id="Result.Title"
+                        defaultMessage="Invoices"
                       />
-                      <div className={css(regNumber)}>
-                        Reg number
-                      </div>
-                      <div className={css(status)}>
-                        Status
-                      </div>
-                    </div>
-                    {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo
-                      && searchResult.invoiceInfoList.invoiceInfo.map(item => (
-                        <div
-                          className={
-                            css(itemContainer, selected.indexOf(item.invoiceId) > -1 && { background: '#F5F5F5' })
-                          }
-                          key={item.invoiceId}
-                          role="checkbox"
-                          aria-checked={selected.indexOf(item.invoiceId) > -1}
-                          tabIndex={-1}
-                          onClick={event => this.onItemClick(event, item)}
-                          onKeyUp={
-                            event => event.keyCode === 32 && this.onItemClick(event, item) // space
-                          }
-                        >
-                          <Checkbox
-                            id={`checkbox-${item.invoiceId}`}
-                            checked={selected.indexOf(item.invoiceId) > -1}
-                            onClick={event => event.stopPropagation()}
-                          />
-                          <div className={css(regNumber)}>
-                            {item.registrationNumber}
-                          </div>
-                          <div className={css(status)}>
-                            {item.invoiceStatus}
-                          </div>
-                        </div>
-                      ))
+                    )}
+                    {!isEmpty(selected) && (
+                      <FormattedMessage
+                        id="Result.SelectedCount"
+                        defaultMessage="{count} selected"
+                        values={{ count: selected.length }}
+                      />
+                    )}
+                    {!isEmpty(selected)
+                      && (
+                      <button
+                        className={css(downloadButton)}
+                        onClick={this.onDowloadClick}
+                        disabled={isDownloading}
+                      >
+                        {isDownloading
+                          ? <Spinner size={12} />
+                          : (
+                            <FormattedMessage
+                              id="Result.DownloadButton"
+                              defaultMessage="Download"
+                            />
+                          )
+                        }
+                      </button>
+                      )
                     }
                   </div>
-                  )
-                }
-              </div>
+                  <div className={css(headerContainer)}>
+                    <Checkbox
+                      id="selectAllCheckbox"
+                      checked={selectAllChecked}
+                      onChange={this.onSelectAllChange}
+                    />
+                    <div className={css(regNumber)}>
+                      <FormattedMessage
+                        id="Result.RegNumberHeader"
+                        defaultMessage="Reg number"
+                      />
+                    </div>
+                    <div className={css(status)}>
+                      <FormattedMessage
+                        id="Result.StatusHeader"
+                        defaultMessage="Status"
+                      />
+                    </div>
+                  </div>
+                  {searchResult.invoiceInfoList && searchResult.invoiceInfoList.invoiceInfo
+                    && searchResult.invoiceInfoList.invoiceInfo.map(item => (
+                      <div
+                        className={
+                          css(itemContainer, selected.indexOf(item.invoiceId) > -1 && { background: '#F5F5F5' })
+                        }
+                        key={item.invoiceId}
+                        role="checkbox"
+                        aria-checked={selected.indexOf(item.invoiceId) > -1}
+                        tabIndex={-1}
+                        onClick={event => this.onItemClick(event, item)}
+                        onKeyUp={
+                          event => event.keyCode === 32 && this.onItemClick(event, item) // space
+                        }
+                      >
+                        <Checkbox
+                          id={`checkbox-${item.invoiceId}`}
+                          checked={selected.indexOf(item.invoiceId) > -1}
+                          onClick={event => event.stopPropagation()}
+                        />
+                        <div className={css(regNumber)}>
+                          {item.registrationNumber}
+                        </div>
+                        <div className={css(status)}>
+                          {getInvoiceStatus(item)}
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+                )
+              }
             </div>
-          </SectionContent>
-        </div>
-      </PrivateComponent>
+          </div>
+        </SectionContent>
+      </div>
     )
   }
 }

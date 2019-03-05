@@ -78,5 +78,130 @@
     "id": "Pin.WrongPinError",
     "defaultMessage": "Wrong PIN",
     "filepath": "./src/Home/Pin.js"
+  },
+  {
+    "id": "Result.StatusCreated",
+    "defaultMessage": "Created",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusDelivered",
+    "defaultMessage": "Delivered",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusCanceled",
+    "defaultMessage": "Canceled",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusRevoked",
+    "defaultMessage": "Revoked",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusImported",
+    "defaultMessage": "Imported",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusDraft",
+    "defaultMessage": "Draft",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusFailed",
+    "defaultMessage": "Failed",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusDeleted",
+    "defaultMessage": "Deleted",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusDeclined",
+    "defaultMessage": "Declined",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.Title",
+    "defaultMessage": "Invoices",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.SelectedCount",
+    "defaultMessage": "{count} selected",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.DownloadButton",
+    "defaultMessage": "Download",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.RegNumberHeader",
+    "defaultMessage": "Reg number",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "Result.StatusHeader",
+    "defaultMessage": "Status",
+    "filepath": "./src/Result.js"
+  },
+  {
+    "id": "SearchForm.DirectionInbound",
+    "defaultMessage": "Inbound",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.DirectionOutbound",
+    "defaultMessage": "Outbound",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.TypeAny",
+    "defaultMessage": "Any",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.TypeOrdinary",
+    "defaultMessage": "Ordinary",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.TypeCorrected",
+    "defaultMessage": "Corrected",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.TypeAdditional",
+    "defaultMessage": "Additional",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.StatusCreated",
+    "defaultMessage": "Created",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.StatusDelivered",
+    "defaultMessage": "Delivered",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.StatusRevoked",
+    "defaultMessage": "Revoked",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.StatusCanceled",
+    "defaultMessage": "Canceled",
+    "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "SearchForm.SearchButton",
+    "defaultMessage": "Search",
+    "filepath": "./src/SearchForm.js"
   }
 ]

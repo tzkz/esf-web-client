@@ -24,6 +24,14 @@ class Pin extends React.Component {
     opacity: 1,
   }
 
+  textInput = React.createRef()
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.textInput.current.focus()
+    }, 300)
+  }
+
   onPinChange = (event) => {
     this.setState({ pin: event.target.value, pinError: null })
   }
@@ -69,6 +77,19 @@ class Pin extends React.Component {
             defaultMessage="Enter Certificate PIN"
           />
         </div>
+        {/* The fake text input below is a workaround for Safari */}
+        {/* https://blog.opendigerati.com/the-eccentric-ways-of-ios-safari-with-the-keyboard-b5aa3f34228d */}
+        <input
+          id="fakeInput"
+          style={{
+            height: '0px',
+            outline: 'none',
+            padding: 0,
+            border: 'none',
+            fontSize: 'inherit',
+          }}
+          autoFocus
+        />
         <TextInput
           label={(
             <FormattedMessage
@@ -95,7 +116,7 @@ class Pin extends React.Component {
             />
           )}
           type="password"
-          autoFocus
+          ref={this.textInput}
         />
       </AuthStep>
     )

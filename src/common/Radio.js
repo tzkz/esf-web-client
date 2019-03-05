@@ -41,7 +41,7 @@ const Radio = ({
 }) => (
   <div className={css(container, className)}>
     {options.map(option => (
-      <div className={css(radioItem)} key={option.id}>
+      <div className={css(radioItem)} key={option.value}>
         <input
           type="radio"
           name={name}
