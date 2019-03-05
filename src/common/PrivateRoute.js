@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
 
 PrivateRoute.propTypes = {
   sessionId: PropTypes.string.isRequired,
-  component: PropTypes.node,
+  component: PropTypes.elementType,
 }
 
 PrivateRoute.defaultProps = {
