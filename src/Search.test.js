@@ -10,7 +10,7 @@ describe('createQueryString()', () => {
     const rendered = renderer.create(
       <ProvideContext>
         <Search history={window.history} />
-      </ProvideContext>
+      </ProvideContext>,
     ).toJSON();
     expect(rendered).toBeTruthy()
   })

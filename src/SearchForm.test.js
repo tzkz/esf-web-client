@@ -7,7 +7,7 @@ import 'react-dates/initialize'
 
 import Component from './SearchForm'
 
-const SearchForm = (props) => (
+const SearchForm = props => (
   <ProvideContext>
     <Component {...props} />
   </ProvideContext>
@@ -16,7 +16,7 @@ const SearchForm = (props) => (
 describe('<SearchForm />', () => {
   it('renders without crashing', () => {
     const rendered = renderer.create(
-      <SearchForm onSubmit={() => {}} />
+      <SearchForm onSubmit={() => {}} />,
     ).toJSON();
     expect(rendered).toBeTruthy();
   });
