@@ -25,7 +25,7 @@
   "Result.StatusDeleted": "Удален",
   "Result.StatusDeclined": "Откланен",
   "Result.Title": "Счета-фактуры",
-  "Result.SelectedCount": "{count} выбрано",
+  "Result.SelectedCount": "выбрано {count}",
   "Result.DownloadButton": "Скачать",
   "Result.RegNumberHeader": "Регистрационный номер",
   "Result.StatusHeader": "Статус",
