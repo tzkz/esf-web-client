@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { css } from 'emotion';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+
 import { logOut } from './apiUtils';
 import LangSelect from './common/LangSelect';
 import { SET_LOCALE } from './store';
-import { FormattedMessage } from 'react-intl';
 
 const Container = {
   position: 'fixed',
@@ -182,13 +183,35 @@ const Sidebar = ({
         </button>
       </div>
     </div>
-    <div className={css(overlayContainer)} onClick={onOverlayClick} />
+    <div
+      className={css(overlayContainer)}
+      onClick={onOverlayClick}
+      role="button"
+      tabIndex={-1}
+      onKeyUp={
+        event => event.keyCode === 32 && onOverlayClick(event) // space
+      }
+    />
   </div>
 );
 
 Sidebar.propTypes = {
-  onOverlayClick: PropTypes.func,
+  onOverlayClick: PropTypes.func.isRequired,
+  locale: PropTypes.string,
+  sessionId: PropTypes.string,
+  user: PropTypes.shape({
+    login: PropTypes.string,
+  }),
+  password: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
 };
+
+Sidebar.defaultProps = {
+  locale: 'en-US',
+  sessionId: '',
+  user: null,
+  password: null,
+}
 
 const mapStateToProps = state => ({
   sessionId: state.sessionId,
