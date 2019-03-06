@@ -7,6 +7,7 @@ const checkboxInput = {
 }
 
 const checkboxLabel = {
+  flexShrink: 0,
   lineHeight: 0,
   display: 'inline-block',
   cursor: 'pointer',

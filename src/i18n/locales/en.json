@@ -39,5 +39,8 @@
   "SearchForm.StatusDelivered": "Delivered",
   "SearchForm.StatusRevoked": "Revoked",
   "SearchForm.StatusCanceled": "Canceled",
-  "SearchForm.SearchButton": "Search"
+  "SearchForm.SearchButton": "Search",
+  "Sidebar.SearchNavLink": "Search",
+  "Sidebar.ResultsNavLink": "Results",
+  "Sidebar.LogoutNavLink": "Log Out"
 }

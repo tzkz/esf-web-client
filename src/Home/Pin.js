@@ -88,7 +88,7 @@ class Pin extends React.Component {
             border: 'none',
             fontSize: 'inherit',
           }}
-          autoFocus
+          autoFocus // eslint-disable-line jsx-a11y/no-autofocus
         />
         <TextInput
           label={(

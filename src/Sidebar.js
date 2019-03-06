@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from 'emotion';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+
 import { logOut } from './apiUtils';
 import LangSelect from './common/LangSelect';
 import { SET_LOCALE } from './store';
@@ -122,7 +124,10 @@ const Sidebar = ({
               </svg>
             </div>
             <div className={css(buttons)}>
-                Search
+              <FormattedMessage
+                id="Sidebar.SearchNavLink"
+                defaultMessage="Search"
+              />
             </div>
           </div>
         </NavLink>
@@ -135,7 +140,10 @@ const Sidebar = ({
               </svg>
             </div>
             <div className={css(buttons)}>
-                Results
+              <FormattedMessage
+                id="Sidebar.ResultsNavLink"
+                defaultMessage="Results"
+              />
             </div>
           </div>
         </NavLink>
@@ -153,7 +161,13 @@ const Sidebar = ({
             onChange={value => dispatch({ type: SET_LOCALE, locale: value })}
           />
         </div>
-        <button className={css(logOutButton, buttonsContainer, navLinkItem)} onClick={() => logOut({ user, password, sessionId }, dispatch)}>
+        <button
+          className={css(logOutButton, buttonsContainer, navLinkItem)}
+          onClick={() => {
+            logOut({ user, password, sessionId }, dispatch)
+              .then(onOverlayClick)
+          }}
+        >
           <div className={css(icons)}>
             <svg height="18px" width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
               <defs />
@@ -161,18 +175,43 @@ const Sidebar = ({
             </svg>
           </div>
           <div className={css(buttons)}>
-            Log Out
+            <FormattedMessage
+              id="Sidebar.LogoutNavLink"
+              defaultMessage="Log Out"
+            />
           </div>
         </button>
       </div>
     </div>
-    <div className={css(overlayContainer)} onClick={onOverlayClick} />
+    <div
+      className={css(overlayContainer)}
+      onClick={onOverlayClick}
+      role="button"
+      tabIndex={-1}
+      onKeyUp={
+        event => event.keyCode === 32 && onOverlayClick(event) // space
+      }
+    />
   </div>
 );
 
 Sidebar.propTypes = {
-  onOverlayClick: PropTypes.func,
+  onOverlayClick: PropTypes.func.isRequired,
+  locale: PropTypes.string,
+  sessionId: PropTypes.string,
+  user: PropTypes.shape({
+    login: PropTypes.string,
+  }),
+  password: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
 };
+
+Sidebar.defaultProps = {
+  locale: 'en-US',
+  sessionId: '',
+  user: null,
+  password: null,
+}
 
 const mapStateToProps = state => ({
   sessionId: state.sessionId,
