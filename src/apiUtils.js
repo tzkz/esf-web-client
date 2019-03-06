@@ -93,8 +93,26 @@ export const logOut = ({ user, password, sessionId }, dispatch) => {
     .catch(onLogoutFail)
 }
 
+const handleApiError = (error) => {
+  if (!error.body.soapError) {
+    return Alert.info('Unknown API Error')
+  }
+
+  return Alert.info(error.body.soapError.faultstring)
+}
+
+const handleUnknownError = (error) => {
+  if (error.response) {
+    return Alert.info(`${error.response.status} ${error.response.statusText}`)
+  }
+
+  return Alert.info(`${error.name}: ${error.message}`)
+}
+
 export const onLogoutFail = (error) => {
   if (error.name === 'ApiError') {
-    Alert.info(error.body.soapError.faultstring)
+    return handleApiError(error)
   }
+
+  return handleUnknownError(error)
 }
