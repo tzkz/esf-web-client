@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { logOut } from './apiUtils';
 import LangSelect from './common/LangSelect';
 import { SET_LOCALE } from './store';
+import { FormattedMessage } from 'react-intl';
 
 const Container = {
   position: 'fixed',
@@ -122,7 +123,10 @@ const Sidebar = ({
               </svg>
             </div>
             <div className={css(buttons)}>
-                Search
+              <FormattedMessage
+                id="Sidebar.SearchNavLink"
+                defaultMessage="Search"
+              />
             </div>
           </div>
         </NavLink>
@@ -135,7 +139,10 @@ const Sidebar = ({
               </svg>
             </div>
             <div className={css(buttons)}>
-                Results
+              <FormattedMessage
+                id="Sidebar.ResultsNavLink"
+                defaultMessage="Results"
+              />
             </div>
           </div>
         </NavLink>
@@ -153,7 +160,13 @@ const Sidebar = ({
             onChange={value => dispatch({ type: SET_LOCALE, locale: value })}
           />
         </div>
-        <button className={css(logOutButton, buttonsContainer, navLinkItem)} onClick={() => logOut({ user, password, sessionId }, dispatch)}>
+        <button
+          className={css(logOutButton, buttonsContainer, navLinkItem)}
+          onClick={() => {
+            logOut({ user, password, sessionId }, dispatch)
+              .then(onOverlayClick)
+          }}
+        >
           <div className={css(icons)}>
             <svg height="18px" width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
               <defs />
@@ -161,7 +174,10 @@ const Sidebar = ({
             </svg>
           </div>
           <div className={css(buttons)}>
-            Log Out
+            <FormattedMessage
+              id="Sidebar.LogoutNavLink"
+              defaultMessage="Log Out"
+            />
           </div>
         </button>
       </div>

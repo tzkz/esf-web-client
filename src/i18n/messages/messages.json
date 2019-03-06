@@ -203,5 +203,20 @@
     "id": "SearchForm.SearchButton",
     "defaultMessage": "Search",
     "filepath": "./src/SearchForm.js"
+  },
+  {
+    "id": "Sidebar.SearchNavLink",
+    "defaultMessage": "Search",
+    "filepath": "./src/Sidebar.js"
+  },
+  {
+    "id": "Sidebar.ResultsNavLink",
+    "defaultMessage": "Results",
+    "filepath": "./src/Sidebar.js"
+  },
+  {
+    "id": "Sidebar.LogoutNavLink",
+    "defaultMessage": "Log Out",
+    "filepath": "./src/Sidebar.js"
   }
 ]
