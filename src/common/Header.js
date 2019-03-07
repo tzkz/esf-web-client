@@ -8,7 +8,7 @@ const getContainerStyle = ({ pathname }) => ({
   boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
   color: pathname === '/' ? 'white' : '#697EFF',
   backgroundImage: pathname === '/' ? 'linear-gradient(90deg,#744fc6 12%,#697eff 100%)' : 'none',
-  height: pathname === '/' ? '74px' : '60px',
+  height: pathname === '/' ? '104px' : '60px',
 })
 
 const headerContent = {
@@ -21,13 +21,6 @@ const headerContent = {
 };
 
 const leftContainer = {
-}
-
-const title = {
-  fontSize: '24px',
-  fontWeight: 'bold',
-  textDecoration: 'none',
-  color: 'inherit',
 }
 
 const rightContainer = {
@@ -56,16 +49,26 @@ const Header = ({
   <header className={css(getContainerStyle(location), className)}>
     <div className={css(headerContent)}>
       <div className={css(leftContainer)}>
-        <button
-          className={css(getBurgerStyle(location), burgerClassName)}
-          onClick={onMenuClick}
-        >
-          {burger}
-        </button>
+        {location.pathname !== '/' && (
+          <button
+            className={css(getBurgerStyle(location), burgerClassName)}
+            onClick={onMenuClick}
+          >
+            {burger}
+          </button>
+        )}
       </div>
-      <div className={css(rightContainer)}>
+      <div
+        className={
+          css(rightContainer, location.pathname === '/' && { justifyContent: 'center' })
+        }
+      >
         <Link
-          className={css(title)}
+          className={css({
+            fontSize: location.pathname === '/' ? '34px' : '24px',
+            textDecoration: 'none',
+            color: 'inherit',
+          })}
           to="/"
         >
           GetESF
