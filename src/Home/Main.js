@@ -19,8 +19,9 @@ const main = {
 const headline = {
   fontSize: '30px',
   fontWeight: '600',
-  margin: '10vh 24px 0',
+  margin: '3vh 12px 0',
   '@media (min-width: 768px)': {
+    margin: '10vh 24px 0',
     fontSize: '34px',
     lineHeight: '50px',
   },
