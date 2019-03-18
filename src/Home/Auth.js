@@ -7,6 +7,8 @@ import Password from './Password'
 
 const container = {
   position: 'fixed',
+  left: 0,
+  right: 0,
   height: '100%',
   width: '100vw',
   transition: 'all 300ms ease-out',
