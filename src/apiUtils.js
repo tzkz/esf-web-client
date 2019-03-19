@@ -1,7 +1,7 @@
 import Alert from 'react-s-alert'
 import config from './config'
 import {
-  SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT,
+  SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT, RESET_USER,
 } from './store'
 import demoResult from './demoResult'
 
@@ -23,6 +23,14 @@ const rejectError = (response) => {
   return Promise.reject(error)
 }
 
+const demoUser = {
+  login: '123456789011',
+  taxpayer: {
+    firstNameRu: 'Demo',
+    lastNameRu: 'User',
+  },
+}
+
 export const fakeFetch = endpoint => new Promise((resolve) => {
   const delayedResolve = (data) => {
     setTimeout(() => resolve(data), config.fakeFetchDelay)
@@ -33,7 +41,7 @@ export const fakeFetch = endpoint => new Promise((resolve) => {
   } else if (endpoint.startsWith('/sessions/createsession')) {
     delayedResolve({ sessionId: 'demo' })
   } else if (endpoint.startsWith('/sessions/currentuser')) {
-    delayedResolve({ user: { login: '123456789011' } })
+    delayedResolve({ user: demoUser })
   } else if (endpoint.startsWith('/sessions/closesession')) {
     delayedResolve({ status: 'CLOSED' })
   }
@@ -69,10 +77,10 @@ export const apiCall = (
 }
 
 export const resetStore = (dispatch) => {
-  dispatch({ type: SET_USER, user: null })
-  dispatch({ type: SET_PASSWORD, password: null })
+  dispatch({ type: RESET_USER })
+  dispatch({ type: SET_PASSWORD, password: '' })
   dispatch({ type: SET_SESSION_ID, sessionId: '' })
-  dispatch({ type: SET_SEARCH_RESULT, searchResult: null })
+  dispatch({ type: SET_SEARCH_RESULT, searchResult: {} })
 }
 
 export const logOut = ({ user, password, sessionId }, dispatch) => {

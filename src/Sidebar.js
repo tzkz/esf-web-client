@@ -30,12 +30,23 @@ const drawerContainer = {
 const dropdownContainer = {
   display: 'flex',
   alignItems: 'flex-end',
-  justifyContent: 'center',
   backgroundColor: '#744fc6',
   color: '#ffffff',
   flexBasis: '172px',
   paddingBottom: '15px',
   flexShrink: '0',
+}
+
+const accountContainer = {
+  padding: '0 12px',
+}
+
+const login = {
+  padding: '6px 0',
+}
+
+const name = {
+  fontSize: '10px',
 }
 
 const searchResultContainer = {
@@ -113,7 +124,16 @@ const Sidebar = ({
 }) => (
   <div className={css(Container)}>
     <div className={css(drawerContainer)}>
-      <div className={css(dropdownContainer)} />
+      <div className={css(dropdownContainer)}>
+        <div className={css(accountContainer)}>
+          <div className={css(login)}>{user.login}</div>
+          {user.taxpayer && (
+            <div className={css(name)}>
+              {`${user.taxpayer.firstNameRu} ${user.taxpayer.lastNameRu}`}
+            </div>
+          )}
+        </div>
+      </div>
       <div className={css(searchResultContainer, navItemPadding)}>
         <NavLink to="/search" className={css(navLinkItem)} activeClassName={css(active)} onClick={onOverlayClick}>
           <div className={css(buttonsContainer)}>
