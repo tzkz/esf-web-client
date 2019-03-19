@@ -127,7 +127,11 @@ const Sidebar = ({
       <div className={css(dropdownContainer)}>
         <div className={css(accountContainer)}>
           <div className={css(login)}>{user.login}</div>
-          <div className={css(name)}>{`${user.taxpayer.firstNameRu} ${user.taxpayer.lastNameRu}`}</div>
+          {user.taxpayer && (
+            <div className={css(name)}>
+              {`${user.taxpayer.firstNameRu} ${user.taxpayer.lastNameRu}`}
+            </div>
+          )}
         </div>
       </div>
       <div className={css(searchResultContainer, navItemPadding)}>
