@@ -23,6 +23,14 @@ const rejectError = (response) => {
   return Promise.reject(error)
 }
 
+const demoUser = {
+  login: '123456789011',
+  taxpayer: {
+    firstNameRu: 'Demo',
+    lastNameRu: 'User',
+  },
+}
+
 export const fakeFetch = endpoint => new Promise((resolve) => {
   const delayedResolve = (data) => {
     setTimeout(() => resolve(data), config.fakeFetchDelay)
@@ -33,7 +41,7 @@ export const fakeFetch = endpoint => new Promise((resolve) => {
   } else if (endpoint.startsWith('/sessions/createsession')) {
     delayedResolve({ sessionId: 'demo' })
   } else if (endpoint.startsWith('/sessions/currentuser')) {
-    delayedResolve({ user: { login: '123456789011' } })
+    delayedResolve({ user: demoUser })
   } else if (endpoint.startsWith('/sessions/closesession')) {
     delayedResolve({ status: 'CLOSED' })
   }
