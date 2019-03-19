@@ -1,7 +1,7 @@
 import Alert from 'react-s-alert'
 import config from './config'
 import {
-  SET_USER, SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT,
+  SET_PASSWORD, SET_SESSION_ID, SET_SEARCH_RESULT, RESET_USER,
 } from './store'
 import demoResult from './demoResult'
 
@@ -69,10 +69,10 @@ export const apiCall = (
 }
 
 export const resetStore = (dispatch) => {
-  dispatch({ type: SET_USER, user: null })
-  dispatch({ type: SET_PASSWORD, password: null })
+  dispatch({ type: RESET_USER })
+  dispatch({ type: SET_PASSWORD, password: '' })
   dispatch({ type: SET_SESSION_ID, sessionId: '' })
-  dispatch({ type: SET_SEARCH_RESULT, searchResult: null })
+  dispatch({ type: SET_SEARCH_RESULT, searchResult: {} })
 }
 
 export const logOut = ({ user, password, sessionId }, dispatch) => {

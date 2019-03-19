@@ -4,6 +4,7 @@ import { throttle } from 'lodash'
 export const SET_LOCALE = 'SET_LOCALE'
 export const SET_SESSION_ID = 'SET_SESSION_ID'
 export const SET_USER = 'SET_USER'
+export const RESET_USER = 'RESET_USER'
 export const SET_PASSWORD = 'SET_PASSWORD'
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 
@@ -27,16 +28,26 @@ const sessionId = (state = '', action) => {
   }
 }
 
-const user = (state = null, action) => {
+const userInitialState = {
+  login: '',
+  taxpayer: {
+    firstNameRu: '',
+    lastNameRu: '',
+  },
+}
+
+const user = (state = userInitialState, action) => {
   switch (action.type) {
     case SET_USER:
       return action.user
+    case RESET_USER:
+      return userInitialState
     default:
       return state
   }
 }
 
-const password = (state = null, action) => {
+const password = (state = '', action) => {
   switch (action.type) {
     case SET_PASSWORD:
       return action.password
@@ -45,7 +56,7 @@ const password = (state = null, action) => {
   }
 }
 
-const searchResult = (state = null, action) => {
+const searchResult = (state = {}, action) => {
   switch (action.type) {
     case SET_SEARCH_RESULT:
       return action.searchResult
