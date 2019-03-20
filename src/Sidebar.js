@@ -42,11 +42,11 @@ const accountContainer = {
 }
 
 const login = {
-  padding: '6px 0',
+  fontSize: '10px',
 }
 
 const name = {
-  fontSize: '10px',
+  padding: '4px 0',
 }
 
 const searchResultContainer = {
@@ -126,12 +126,12 @@ const Sidebar = ({
     <div className={css(drawerContainer)}>
       <div className={css(dropdownContainer)}>
         <div className={css(accountContainer)}>
-          <div className={css(login)}>{user.login}</div>
           {user.taxpayer && (
             <div className={css(name)}>
               {`${user.taxpayer.firstNameRu} ${user.taxpayer.lastNameRu}`}
             </div>
           )}
+          <div className={css(login)}>{user.login}</div>
         </div>
       </div>
       <div className={css(searchResultContainer, navItemPadding)}>
