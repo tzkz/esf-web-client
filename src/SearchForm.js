@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
 import { DateRangePicker } from 'react-dates'
@@ -249,6 +250,7 @@ class SearchForm extends React.Component {
   }
 
   render() {
+    const { locale } = this.props
     const { form, focusedInput } = this.state
 
     return (
@@ -273,6 +275,7 @@ class SearchForm extends React.Component {
                 block
                 isOutsideRange={() => false}
                 readOnly
+                renderMonthElement={({ month }) => moment(month).locale(locale).format('MMMM YYYY')}
               />
             )}
           </Media>
@@ -383,6 +386,15 @@ class SearchForm extends React.Component {
 
 SearchForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  locale: PropTypes.string,
 }
 
-export default SearchForm
+SearchForm.defaultProps = {
+  locale: 'en-US',
+}
+
+const mapStateToProps = (state) => ({
+  locale: state.locale,
+})
+
+export default connect(mapStateToProps)(SearchForm)
