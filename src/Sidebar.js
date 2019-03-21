@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { logOut } from './apiUtils';
 import LangSelect from './common/LangSelect';
-import { SET_LOCALE } from './store';
+import { onLocaleChange } from './store';
 
 const Container = {
   position: 'fixed',
@@ -178,7 +178,7 @@ const Sidebar = ({
           <LangSelect
             className={css(langSelectButton)}
             value={locale}
-            onChange={value => dispatch({ type: SET_LOCALE, locale: value })}
+            onChange={value => onLocaleChange(value, dispatch)}
           />
         </div>
         <button
