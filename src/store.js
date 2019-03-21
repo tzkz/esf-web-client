@@ -1,5 +1,8 @@
 import { combineReducers, createStore } from 'redux'
 import { throttle } from 'lodash'
+import 'moment/locale/ru'
+import 'moment/locale/kk'
+import moment from 'moment'
 
 export const SET_LOCALE = 'SET_LOCALE'
 export const SET_SESSION_ID = 'SET_SESSION_ID'
@@ -100,8 +103,15 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
 
+moment.locale(store.getState().locale)
+
 store.subscribe(throttle(() => {
   saveState(store.getState())
 }))
+
+export const onLocaleChange = (value, dispatch) => {
+  moment.locale(value)
+  dispatch({ type: SET_LOCALE, locale: value })
+}
 
 export default store

@@ -4,7 +4,7 @@ import { css } from 'emotion'
 import { connect } from 'react-redux'
 
 import LangSelect from '../common/LangSelect'
-import { SET_LOCALE } from '../store'
+import { onLocaleChange } from '../store'
 
 const container = {
   height: '80px',
@@ -44,7 +44,7 @@ const Footer = ({ locale, dispatch }) => (
     </a>
     <LangSelect
       value={locale}
-      onChange={value => dispatch({ type: SET_LOCALE, locale: value })}
+      onChange={value => onLocaleChange(value, dispatch)}
       menuPlacement="top"
       className={css(langSelect)}
       controlStyles={{
