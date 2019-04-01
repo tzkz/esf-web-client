@@ -9,30 +9,24 @@ const container = {
   position: 'fixed',
   left: 0,
   right: 0,
+  top: '100%',
   height: '100%',
   width: '100vw',
-  transition: 'all 300ms ease-out',
+  transition: 'transform 300ms ease-out',
   backgroundColor: '#FFFFFF',
 }
 
 class Auth extends React.Component {
   state = {
     p12decrypted: null,
-    position: {
-      top: '100%',
-    },
+    position: {},
   }
 
   componentDidMount() {
     const { p12base64 } = this.props
 
     if (p12base64) {
-      this.setState({
-        position: {
-          bottom: 0,
-          top: 0,
-        },
-      })
+      this.slideUp()
     }
   }
 
@@ -40,23 +34,26 @@ class Auth extends React.Component {
     const { p12base64 } = this.props
 
     if (!p12base64 && prevProps.p12base64) {
-      this.setPosition({
-        top: '100%',
-      })
+      this.slideDown()
     }
     if (p12base64 && !prevProps.p12base64) {
-      this.setPosition({
-        top: 0,
-      })
+      this.slideUp()
     }
   }
 
-  setPosition = ({ top, bottom }) => {
+  slideUp = () => {
     this.setState({
       position: {
-        bottom,
-        top,
-      },
+        transform: 'translateY(-100%)',
+      }
+    })
+  }
+
+  slideDown = () => {
+    this.setState({
+      position: {
+        transform: 'none',
+      }
     })
   }
 
