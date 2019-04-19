@@ -35,7 +35,7 @@ const githubLogo = (
 const Footer = ({ locale, dispatch }) => (
   <div className={css(container)}>
     <a
-      href="https://github.com/timurengineer/esf-web-client"
+      href="https://github.com/tzkz/esf-web-client"
       target="_blank"
       rel="noopener noreferrer"
       className={css(githubLink)}
