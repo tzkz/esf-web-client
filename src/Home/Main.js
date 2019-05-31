@@ -12,14 +12,13 @@ const main = {
   flex: '1',
   color: '#FFFFFF',
   textAlign: 'center',
+  padding: '5vh 0',
 }
 
 const headline = {
   fontSize: '30px',
   fontWeight: '600',
-  margin: '3vh 12px 0',
   '@media (min-width: 768px)': {
-    margin: '10vh 24px 0',
     fontSize: '34px',
     lineHeight: '50px',
   },
