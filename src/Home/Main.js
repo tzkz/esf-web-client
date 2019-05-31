@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { css } from 'emotion';
 
-import SectionContent from '../common/SectionContent';
 import FileInput from '../common/FileInput';
 import Button from '../common/Button';
 import Spinner from '../common/Spinner';
 
 const main = {
   background: 'linear-gradient(90deg, #744fc6 12%, #697eff 100%)',
-  display: 'flex',
   flex: '1',
   color: '#FFFFFF',
   textAlign: 'center',
@@ -87,59 +85,57 @@ const browseButtonContainer = {
 
 const Main = ({ onDemoClick, onFileChange, isFileLoading }) => (
   <section className={css(main)}>
-    <SectionContent>
-      <div className={css(headline)}>
-        <FormattedMessage
-          id="Main.Headline"
-          defaultMessage="Export ESF invoices with ease"
-        />
-      </div>
-      <div className={css(subheadline)}>
-        <FormattedMessage
-          id="Main.Subheadline"
-          defaultMessage="Get what the official app is missing absolutely FREE"
-        />
-      </div>
-      <div className={css(buttons)}>
-        <div className={css(browseButtonContainer)}>
-          <FileInput
-            id="certificate-input"
-            className={css(signInLabel)}
-            accept=".p12"
-            onChange={onFileChange}
-          >
-            {isFileLoading
-              ? <Spinner size={12} color="#744fc6" />
-              : (
-                <div className={css(fileInputLabel)}>
+    <div className={css(headline)}>
+      <FormattedMessage
+        id="Main.Headline"
+        defaultMessage="Export ESF invoices with ease"
+      />
+    </div>
+    <div className={css(subheadline)}>
+      <FormattedMessage
+        id="Main.Subheadline"
+        defaultMessage="Get what the official app is missing absolutely FREE"
+      />
+    </div>
+    <div className={css(buttons)}>
+      <div className={css(browseButtonContainer)}>
+        <FileInput
+          id="certificate-input"
+          className={css(signInLabel)}
+          accept=".p12"
+          onChange={onFileChange}
+        >
+          {isFileLoading
+            ? <Spinner size={12} color="#744fc6" />
+            : (
+              <div className={css(fileInputLabel)}>
+                <FormattedMessage
+                  id="Main.SignIn"
+                  defaultMessage="Sign In"
+                />
+                <div className={css(fileInputSubtext)}>
                   <FormattedMessage
-                    id="Main.SignIn"
-                    defaultMessage="Sign In"
+                    id="Main.SignInSubtext"
+                    defaultMessage="with your key"
                   />
-                  <div className={css(fileInputSubtext)}>
-                    <FormattedMessage
-                      id="Main.SignInSubtext"
-                      defaultMessage="with your key"
-                    />
-                  </div>
                 </div>
-              )
-            }
-          </FileInput>
-        </div>
-        <div className={css(browseButtonContainer)}>
-          <Button
-            className={css(demoButton)}
-            onClick={onDemoClick}
-          >
-            <FormattedMessage
-              id="Main.Demo"
-              defaultMessage="Try Demo"
-            />
-          </Button>
-        </div>
+              </div>
+            )
+          }
+        </FileInput>
       </div>
-    </SectionContent>
+      <div className={css(browseButtonContainer)}>
+        <Button
+          className={css(demoButton)}
+          onClick={onDemoClick}
+        >
+          <FormattedMessage
+            id="Main.Demo"
+            defaultMessage="Try Demo"
+          />
+        </Button>
+      </div>
+    </div>
   </section>
 )
 
