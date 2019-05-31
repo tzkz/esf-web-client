@@ -13,26 +13,22 @@ const main = {
   color: '#FFFFFF',
   textAlign: 'center',
   padding: '5vh 0',
+  '@media (min-width: 768px)': {
+    padding: '10vh 0',
+  },
 }
 
 const headline = {
-  fontSize: '30px',
+  fontSize: '2em',
   fontWeight: '600',
-  '@media (min-width: 768px)': {
-    fontSize: '34px',
-    lineHeight: '50px',
-  },
+  padding: '0.5em 0.5em 0',
 }
 
 const subheadline = {
   fontSize: '18px',
   fontWeight: '600',
   lineHeight: '1.67',
-  padding: '16px 24px 0',
-  '@media (min-width: 768px)': {
-    lineHeight: '2.57',
-    padding: '8px 24px 0',
-  },
+  padding: '0.9em 1.2em 0',
 }
 
 const demoButton = {
@@ -71,10 +67,7 @@ const buttons = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  padding: '16px 16px 0',
-  '@media (min-width: 768px)': {
-    padding: '2em 16px',
-  },
+  padding: '1em 1em 0',
 };
 
 const browseButtonContainer = {
